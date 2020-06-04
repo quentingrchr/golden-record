@@ -1,31 +1,71 @@
 <template>
-  <div id="app">
-    <transition name="fade">
-      <div v-if="unit < 1000" class="a"></div>
+  <div id="app" @wheel="wheel">
+    <transition name="slide-fade" appear mode="out-in">
+      <Message v-if="currentPage === 1" key="message" />
+      <Team v-else-if="currentPage === 2" key="team" />
+      <Content v-else-if="currentPage === 3" key="content" />
+      <Method v-else-if="currentPage === 4" key="method" />
+      <Limits v-else-if="currentPage === 5" key="limit" />
     </transition>
-    <transition name="fade">
-      <div v-if="unit >= 1000 && unit < 2000" class="b"></div>
-    </transition>
-    <transition name="fade">
-      <div v-if="unit > 2000" class="c"></div>
-    </transition>
+    <ProgressBar :page="currentPage" @jumpToPart="changePart" />
   </div>
 </template>
 
 <script>
+import Message from '@/views/Message.vue';
+import Team from '@/views/Team.vue';
+import Content from '@/views/Content.vue';
+import Method from '@/views/Method.vue';
+import Limits from '@/views/Limits.vue';
+import ProgressBar from '@/components/partial/ProgressBar.vue';
+
 export default {
   data() {
     return {
-      unit: 0,
+      wheelUnit: 0,
     };
   },
-  methods: {
-    scroll() {
-      this.unit = window.scrollY;
+  computed: {
+    currentPage: function() {
+      if (this.wheelUnit < 50) {
+        return 1;
+      } else if (this.wheelUnit >= 50 && this.wheelUnit < 100) {
+        return 2;
+      } else if (this.wheelUnit >= 100 && this.wheelUnit < 150) {
+        return 3;
+      } else if (this.wheelUnit >= 150 && this.wheelUnit < 200) {
+        return 4;
+      } else {
+        return 5;
+      }
     },
   },
-  created() {
-    window.addEventListener('scroll', this.scroll);
+  methods: {
+    wheel(e) {
+      e.preventDefault();
+      if (this.wheelUnit >= 0 && this.wheelUnit <= 250) {
+        if (e.deltaY > 0 || e.deltaX < 0) {
+          this.wheelUnit--;
+        } else {
+          this.wheelUnit++;
+        }
+      } else if (this.wheelUnit < 0) {
+        this.wheelUnit = 0;
+      } else {
+        this.wheelUnit = 250;
+      }
+    },
+    changePart(value) {
+      this.wheelUnit = value;
+    },
+  },
+  components: {
+    Team,
+    Message,
+    Content,
+    Method,
+    Limits,
+    ProgressBar,
   },
 };
 </script>
@@ -37,50 +77,22 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  height: 500vh;
+}
+body {
+  margin: 0;
 }
 
-.a,
-.b,
-.c {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.5s;
 }
 
-.a {
-  background-color: blue;
+.slide-fade-enter {
+  opacity: 0;
+  transform: translateX(30px);
 }
-.b {
-  background-color: red;
-}
-.c {
-  background-color: yellow;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 1s;
-}
-
-.fade-enter {
-  transform: translateX(100%);
-  //opacity: 0;
-}
-.fade-leave-to {
-  transform: translateX(-100%);
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
 }
 </style>
