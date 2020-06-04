@@ -8,8 +8,8 @@ export default {};
 
 <style lang="scss" scoped>
 .message {
-  background-color: whitesmoke;
-  width: 100vw;
-  height: 100vh;
+  background-color: rebeccapurple;
+  width: 100%;
+  height: 100%;
 }
 </style>

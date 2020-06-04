@@ -1,10 +1,25 @@
 <template>
   <div class="progress">
-    <div @click="jumpToPart(25)" :class="page >= 1 ? 'colored' : null"></div>
-    <div @click="jumpToPart(75)" :class="page >= 2 ? 'colored' : null"></div>
-    <div @click="jumpToPart(125)" :class="page >= 3 ? 'colored' : null"></div>
-    <div @click="jumpToPart(175)" :class="page >= 4 ? 'colored' : null"></div>
-    <div @click="jumpToPart(225)" :class="page >= 5 ? 'colored' : null"></div>
+    <div
+      @click="jumpToPart(scroll * 5)"
+      :class="page >= 1 ? 'colored' : null"
+    ></div>
+    <div
+      @click="jumpToPart(scroll * 15)"
+      :class="page >= 2 ? 'colored' : null"
+    ></div>
+    <div
+      @click="jumpToPart(scroll * 25)"
+      :class="page >= 3 ? 'colored' : null"
+    ></div>
+    <div
+      @click="jumpToPart(scroll * 35)"
+      :class="page >= 4 ? 'colored' : null"
+    ></div>
+    <div
+      @click="jumpToPart(scroll * 45)"
+      :class="page >= 5 ? 'colored' : null"
+    ></div>
   </div>
 </template>
 <script>
@@ -13,6 +28,9 @@ export default {
     page: {
       type: Number,
       required: true,
+    },
+    scroll: {
+      type: Number,
     },
   },
   methods: {
@@ -27,19 +45,33 @@ export default {
 .progress {
   position: fixed;
   bottom: 10px;
-  left: 0;
-  height: 20px;
-  width: 100%;
-  background-color: white;
+  height: 5px;
+  width: 95%;
+  margin-left: 2.5%;
   display: flex;
+  transition: height 0.2s;
   cursor: pointer;
 
+  &:hover {
+    height: 20px;
+  }
+
   & div {
+    background-color: white;
     border-right: 0.1px solid black;
     flex-grow: 1;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
 
     &.colored {
-      background-color: black;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-right: 0.1px solid white;
+      &:hover {
+        background-color: black;
+      }
     }
   }
 }

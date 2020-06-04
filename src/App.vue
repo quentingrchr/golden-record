@@ -1,13 +1,21 @@
 <template>
   <div id="app" @wheel="wheel">
-    <transition name="slide-fade" appear mode="out-in">
+    <transition
+      :name="pageMoveNext ? 'slide-forward' : 'slide-backward'"
+      appear
+      mode="out-in"
+    >
       <Message v-if="currentPage === 1" key="message" />
       <Team v-else-if="currentPage === 2" key="team" />
       <Content v-else-if="currentPage === 3" key="content" />
       <Method v-else-if="currentPage === 4" key="method" />
       <Limits v-else-if="currentPage === 5" key="limit" />
     </transition>
-    <ProgressBar :page="currentPage" @jumpToPart="changePart" />
+    <ProgressBar
+      :page="currentPage"
+      :scroll="this.scrollSpeed"
+      @jumpToPart="changePart"
+    />
   </div>
 </template>
 
@@ -22,18 +30,29 @@ import ProgressBar from '@/components/partial/ProgressBar.vue';
 export default {
   data() {
     return {
-      wheelUnit: 0,
+      wheelCount: 0,
+      scrollSpeed: 10,
+      pageMoveNext: true,
     };
   },
   computed: {
     currentPage: function() {
-      if (this.wheelUnit < 50) {
+      if (this.wheelCount < this.scrollSpeed * 10) {
         return 1;
-      } else if (this.wheelUnit >= 50 && this.wheelUnit < 100) {
+      } else if (
+        this.wheelCount >= this.scrollSpeed * 10 &&
+        this.wheelCount < this.scrollSpeed * 20
+      ) {
         return 2;
-      } else if (this.wheelUnit >= 100 && this.wheelUnit < 150) {
+      } else if (
+        this.wheelCount >= this.scrollSpeed * 20 &&
+        this.wheelCount < this.scrollSpeed * 30
+      ) {
         return 3;
-      } else if (this.wheelUnit >= 150 && this.wheelUnit < 200) {
+      } else if (
+        this.wheelCount >= this.scrollSpeed * 30 &&
+        this.wheelCount < this.scrollSpeed * 40
+      ) {
         return 4;
       } else {
         return 5;
@@ -43,20 +62,29 @@ export default {
   methods: {
     wheel(e) {
       e.preventDefault();
-      if (this.wheelUnit >= 0 && this.wheelUnit <= 250) {
-        if (e.deltaY > 0 || e.deltaX < 0) {
-          this.wheelUnit--;
+      console.log(this.wheelCount);
+      if (this.wheelCount >= 0 && this.wheelCount <= this.scrollSpeed * 50) {
+        if (e.deltaY < 0 || e.deltaX < 0) {
+          this.wheelCount--;
+          this.pageMoveNext = false;
+          return;
         } else {
-          this.wheelUnit++;
+          this.wheelCount++;
+          this.pageMoveNext = true;
+          return;
         }
-      } else if (this.wheelUnit < 0) {
-        this.wheelUnit = 0;
+      } else if (this.wheelCount < 0) {
+        this.wheelCount = this.scrollSpeed * 50;
       } else {
-        this.wheelUnit = 250;
+        this.wheelCount = 0;
       }
     },
     changePart(value) {
-      this.wheelUnit = value;
+      value > this.wheelCount
+        ? (this.pageMoveNext = true)
+        : (this.pageMoveNext = false);
+      this.wheelCount = value;
+      console.log('CLICK ' + value);
     },
   },
   components: {
@@ -71,28 +99,52 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+  box-sizing: border-box;
+}
+body,
+h1 {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+button {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  transition: transform 1s;
+  &.ok {
+    transform: scale(1.5) rotate(90deg);
+  }
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-body {
-  margin: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.slide-fade-enter-active,
-.slide-fade-leave-active {
+.slide-forward-enter-active,
+.slide-forward-leave-active,
+.slide-backward-enter-active,
+.slide-backward-leave-active {
   transition: all 0.5s;
 }
 
-.slide-fade-enter {
-  opacity: 0;
-  transform: translateX(30px);
+.slide-forward-enter,
+.slide-backward-leave-to {
+  opacity: 0.3;
+  transform: translateX(100%);
 }
-.slide-fade-leave-to {
-  opacity: 0;
-  transform: translateX(-20px);
+.slide-forward-leave-to,
+.slide-backward-enter {
+  opacity: 0.3;
+  transform: translateX(-100%);
 }
 </style>

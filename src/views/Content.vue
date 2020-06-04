@@ -1,5 +1,7 @@
 <template>
-  <div class="content"><h1>Contenu</h1></div>
+  <div class="content">
+    <h1>Contenu</h1>
+  </div>
 </template>
 
 <script>
@@ -9,7 +11,7 @@ export default {};
 <style lang="scss" scoped>
 .content {
   background-color: gold;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 </style>
