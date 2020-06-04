@@ -1,12 +1,34 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <transition name="fade">
+      <div v-if="unit < 1000" class="a"></div>
+    </transition>
+    <transition name="fade">
+      <div v-if="unit >= 1000 && unit < 2000" class="b"></div>
+    </transition>
+    <transition name="fade">
+      <div v-if="unit > 2000" class="c"></div>
+    </transition>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      unit: 0,
+    };
+  },
+  methods: {
+    scroll() {
+      this.unit = window.scrollY;
+    },
+  },
+  created() {
+    window.addEventListener('scroll', this.scroll);
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -15,6 +37,38 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 500vh;
+}
+
+.a,
+.b,
+.c {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+}
+
+.a {
+  background-color: blue;
+}
+.b {
+  background-color: red;
+}
+.c {
+  background-color: yellow;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 1s;
+}
+
+.fade-enter {
+  transform: translateX(100%);
+  //opacity: 0;
+}
+.fade-leave-to {
+  transform: translateX(-100%);
 }
 
 #nav {
