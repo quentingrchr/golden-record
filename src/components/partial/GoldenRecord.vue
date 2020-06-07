@@ -21,21 +21,32 @@ export default {
 div {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
-  background-color: gold;
+  background-image: url('./../../assets/pictures/disk.png');
+  background-size: 100%;
+  background-position-y: top;
   position: absolute;
   top: 50%;
   left: -10px;
-  transition: transform 1s;
+  transition: all 1s;
 
   &.step2 {
-    transform: translateX(800%) scale(6);
+    transform: scale(6);
+    left: 100%;
   }
   &.step3 {
-    transform: translateX(100%) translateY(-200%) scale(0.5);
+    transform: scale(0.5);
+    left: 0;
+    top: 5%;
   }
   &.step4 {
-    transform: translateX(600%) translateY(-200%) scale(1.4);
+    transform: scale(1.4);
+    top: -5%;
+    left: 80%;
+  }
+  &.step5 {
+    transform: scale(1) translateY(-50%) translateX(-50%);
+    top: 50%;
+    left: 50%;
   }
 }
 </style>
