@@ -11,6 +11,7 @@
       <Method v-else-if="currentPage === 4" key="method" />
       <Limits v-else-if="currentPage === 5" key="limit" />
     </transition>
+    <GoldenRecord :step="currentPage" />
     <ProgressBar
       :page="currentPage"
       :scroll="this.scrollSpeed"
@@ -26,12 +27,13 @@ import Content from '@/views/Content.vue';
 import Method from '@/views/Method.vue';
 import Limits from '@/views/Limits.vue';
 import ProgressBar from '@/components/partial/ProgressBar.vue';
+import GoldenRecord from '@/components/partial/GoldenRecord';
 
 export default {
   data() {
     return {
       wheelCount: 0,
-      scrollSpeed: 10,
+      scrollSpeed: 7,
       pageMoveNext: true,
     };
   },
@@ -62,7 +64,6 @@ export default {
   methods: {
     wheel(e) {
       e.preventDefault();
-      console.log(this.wheelCount);
       if (this.wheelCount >= 0 && this.wheelCount <= this.scrollSpeed * 50) {
         if (e.deltaY < 0 || e.deltaX < 0) {
           this.wheelCount--;
@@ -74,9 +75,9 @@ export default {
           return;
         }
       } else if (this.wheelCount < 0) {
-        this.wheelCount = this.scrollSpeed * 50;
-      } else {
         this.wheelCount = 0;
+      } else {
+        this.wheelCount = this.scrollSpeed * 50;
       }
     },
     changePart(value) {
@@ -84,7 +85,6 @@ export default {
         ? (this.pageMoveNext = true)
         : (this.pageMoveNext = false);
       this.wheelCount = value;
-      console.log('CLICK ' + value);
     },
   },
   components: {
@@ -94,6 +94,7 @@ export default {
     Method,
     Limits,
     ProgressBar,
+    GoldenRecord,
   },
 };
 </script>

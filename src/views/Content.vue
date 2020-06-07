@@ -10,8 +10,8 @@ export default {};
 
 <style lang="scss" scoped>
 .content {
-  background-color: gold;
-  width: 100%;
-  height: 100%;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
 }
 </style>
