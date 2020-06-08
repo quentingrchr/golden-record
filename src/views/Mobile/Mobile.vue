@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "Mobile",
+  name: "Mobile"
 };
 </script>
 
