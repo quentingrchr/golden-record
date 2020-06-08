@@ -105,7 +105,6 @@ export default {
         left: 10px;
         top: -10px;
         width: 150px;
-        transition: none;
       }
       &.isSelected p {
         font-size: 1.02rem;

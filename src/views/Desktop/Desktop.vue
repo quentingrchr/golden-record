@@ -36,7 +36,7 @@ export default {
     return {
       wheelCount: 0,
       // You just have to change he value below to set the scroll' sensitive rate (the highest is less sensitive)
-      scrollSpeed: 10,
+      scrollSpeed: 7,
     };
   },
   computed: {
@@ -71,6 +71,7 @@ export default {
           this.wheelCount--;
           return;
         } else {
+          this.wheelCount++;
           return;
         }
       } else if (this.wheelCount < 0) {
