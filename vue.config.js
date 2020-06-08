@@ -9,7 +9,6 @@ module.exports = {
           @import "@/scss/_medias.scss";
           @import "@/scss/_mixins.scss";
           @import "@/scss/_style.scss";
-
         `
       }
     }
