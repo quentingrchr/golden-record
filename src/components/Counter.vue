@@ -2,12 +2,12 @@
   <div>
     <p>{{ this.title }}</p>
     <span>
-      <em id="voy1_yrs">{{ counter.years }}</em> yrs
-      <em id="voy1_mth">{{ this.displayValue(counter.months) }}</em> mth
-      <em id="voy1_days">{{ this.displayValue(counter.days) }}</em> days
-      <em id="voy1_hrs">{{ this.displayValue(counter.hours) }}</em> hrs
-      <em id="voy1_mins">{{ this.displayValue(counter.mins) }}</em> mins
-      <em id="voy1_sec">{{ this.displayValue(counter.secs) }}</em>
+      <em>{{ counter.years }}</em> yrs
+      <em>{{ this.displayValue(counter.months) }}</em> mth
+      <em>{{ this.displayValue(counter.days) }}</em> days
+      <em>{{ this.displayValue(counter.hours) }}</em> hrs
+      <em>{{ this.displayValue(counter.mins) }}</em> mins
+      <em>{{ this.displayValue(counter.secs) }}</em>
       sec
     </span>
   </div>
