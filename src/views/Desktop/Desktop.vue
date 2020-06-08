@@ -1,5 +1,5 @@
 <template>
-  <div @wheel="wheel" class="desktopViews-container">
+  <main @wheel="wheel" class="desktopViews-container">
     <transition appear name="slide" mode="out-in">
       <TheJourney v-if="currentPage === 1" key="Journey" />
       <HowToUseIt v-else-if="currentPage === 2" key="How" />
@@ -12,7 +12,7 @@
       :scroll="scrollSpeed"
       @jumpToOtherChapter="changeChapter"
     />
-  </div>
+  </main>
 </template>
 
 <script>
