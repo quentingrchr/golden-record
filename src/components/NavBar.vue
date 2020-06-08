@@ -97,7 +97,7 @@ export default {
     transform: none;
     width: 250px;
 
-    & div div {
+    & nav div {
       & p {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
         transform: none;
