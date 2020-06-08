@@ -1,15 +1,19 @@
 <template>
-  <section>
-    <TimeElapsed />
-  </section>
+  <div class="infos">
+    <h3 class="infos__title">🌍 Time elapsed</h3>
+    <div class="infos__content">
+      <Counter title="🛰 ️Voyager 1" />
+      <hr />
+      <Counter title="🛰 ️Voyager 2" />
+    </div>
+  </div>
 </template>
 
 <script>
-import TimeElapsed from "../../components/TimeElapsed.vue";
-
+import Counter from "./Counter.vue";
 export default {
-  name: "Quentin",
-  components: { TimeElapsed },
+  name: "TimeElapsed",
+  components: { Counter },
 };
 </script>
 
@@ -29,8 +33,8 @@ section {
   @media (max-width: 740px) {
     font-size: 12px;
   }
-  @media (max-width: 370px) {
-    font-size: 10px;
+  @media (max-width: 380px) {
+    font-size: 12px;
   }
   &__title {
     margin-bottom: 16px;
@@ -51,23 +55,6 @@ section {
 
       @media (max-width: 580px) {
         padding: 8px 16px;
-      }
-
-      span {
-        margin-left: 40px;
-        color: $color-primary;
-        @media (max-width: 390px) {
-          margin-left: 20px;
-        }
-
-        @media (max-width: 316px) {
-          margin-left: 8px;
-        }
-
-        em {
-          font-size: 1.2em;
-          color: $color-font-main;
-        }
       }
     }
     hr {
