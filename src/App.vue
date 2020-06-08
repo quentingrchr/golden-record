@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <Desktop v-if="isBigScreen" />
+    <Mobile v-else />
   </div>
 </template>
 
 <script>
 import Desktop from '@/views/Desktop/Desktop.vue';
+import Mobile from '@/views/Mobile/Mobile.vue';
 
 export default {
   computed: {
@@ -19,6 +21,7 @@ export default {
   },
   components: {
     Desktop,
+    Mobile,
   },
 };
 </script>
@@ -27,8 +30,7 @@ export default {
 * {
   box-sizing: border-box;
 }
-body,
-h1 {
+body {
   margin: 0;
   width: 100vw;
   height: 100vh;
