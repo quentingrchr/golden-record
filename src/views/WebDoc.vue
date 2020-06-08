@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Webdoc</h1>
     <!--- Contient le web docu a partir de Qu'est ce que c'est -->
     <Desktop />
     <Mobile />
@@ -19,12 +18,12 @@ export default {
       } else {
         return false;
       }
-    },
+    }
   },
   components: {
     Desktop,
-    Mobile,
-  },
+    Mobile
+  }
 };
 </script>
 
