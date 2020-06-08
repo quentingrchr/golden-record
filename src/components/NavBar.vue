@@ -17,7 +17,7 @@
           class="navBar__volumeLogo"
         />
       </div>
-      <div class="navBar__timeLine">
+      <nav class="navBar__timeLine">
         <div
           @click="jumpToOtherChapter(scroll * 45)"
           :class="page === 5 ? 'isSelected' : null"
@@ -50,7 +50,7 @@
         >
           <p>The Journey</p>
         </div>
-      </div>
+      </nav>
     </div>
   </div>
 </template>
