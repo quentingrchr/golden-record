@@ -1,11 +1,9 @@
 <template>
-  <h1>Mobile</h1>
+  <div>Yo le rap</div>
 </template>
 
 <script>
-export default {
-  name: "Mobile",
-};
+export default {};
 </script>
 
 <style></style>
