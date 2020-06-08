@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <router-view>
+      test
       <!-- Route de l'application -->
     </router-view>
   </div>
@@ -9,7 +10,7 @@
 <script>
 export default {
   computed: {},
-  components: {},
+  components: {}
 };
 </script>
 
