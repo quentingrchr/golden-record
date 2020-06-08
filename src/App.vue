@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <router-view>
-      test
       <!-- Route de l'application -->
     </router-view>
   </div>
@@ -10,7 +9,7 @@
 <script>
 export default {
   computed: {},
-  components: {}
+  components: {},
 };
 </script>
 
@@ -31,5 +30,6 @@ body {
   color: #2c3e50;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 </style>
