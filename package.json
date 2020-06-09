@@ -1,5 +1,5 @@
 {
-  "name": "webdocvue",
+  "name": "y",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -25,5 +25,17 @@
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "description": "## Project setup ``` npm install ```",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedaHamouche/WebDocVuejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RedaHamouche/WebDocVuejs/issues"
+  },
+  "homepage": "https://github.com/RedaHamouche/WebDocVuejs#readme"
 }
