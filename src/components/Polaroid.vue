@@ -1,11 +1,17 @@
 <template>
   <figure
     @click="handleClick(index)"
-    :style="isClicked ? {} : null"
+    :class="isFocused ? 'is-focused' : ''"
     class="pola"
   >
     <figcaption class="pola__caption">{{ caption }}</figcaption>
-    <img class="pola__img" :src="src" alt="team member" />
+    <div class="pola__img">
+      <img :src="imgUrl" alt="team member" />
+      <video autoplay loop muted :src="vidUrl" type="video/mp4">
+        <source :src="vidUrl" type="video/mp4" />
+        Your browser doesn't support the video player
+      </video>
+    </div>
   </figure>
 </template>
 
@@ -16,34 +22,35 @@ export default {
   components: {},
   methods: {
     handleClick(index) {
-      // this.isClicked = !this.isClicked;
       this.$emit("focused", index);
     },
-
   },
   data: function() {
     return {
       isClicked: false,
       zIndex: {
-        zIndex: 11
+        zIndex: 11,
       },
-
     };
   },
   props: {
-    src: {
+    isFocused: {
+      type: Boolean,
+    },
+    imgUrl: {
       required: true,
-      type: String
+      type: String,
+    },
+    vidUrl: {
+      type: String,
     },
     caption: {
-      required: true,
       type: String,
     },
     index: {
       type: Number,
     },
   },
-
 };
 </script>
 
@@ -74,21 +81,47 @@ export default {
   padding: 16px;
   background-color: $primary-white;
   border-radius: 4px;
-  height: 270px;
-  max-height: 300px;
+  height: 420px; // Constante !
 
   &__img {
-    width: 200px;
+    width: 300px;
     border-radius: 5px;
     overflow: hidden;
+    position: relative;
 
     img {
-      transition: filter 0.3s ease, transform 10s;
+      width: 300px;
+      border-radius: 5px;
+      transition: filter 0.3s ease, transform 10s, opacity 0.1s ease;
+    }
+    video {
+      transition: opacity 0.1s;
+      visibility: hidden;
+      height: 300px;
+      border-radius: 5px;
+      opacity: 0;
     }
   }
   &__caption {
     margin-bottom: 24px;
+    font-size: 18px;
     font-weight: 700;
+  }
+
+  &.is-focused {
+    img {
+      transition: opacity 1s 3s ease;
+      opacity: 0;
+    }
+    video {
+      visibility: visible;
+      transition: opacity 1s 3s ease;
+      position: absolute;
+      left: 0;
+      opacity: 1;
+      height: 300px;
+      border-radius: 5px;
+    }
   }
 }
 </style>
