@@ -1,6 +1,6 @@
 <template>
   <div class="intro">
-    <h1 class="title-welcome">The song of Earth</h1>
+    <h1 class="title-welcome">The Golden Record</h1>
     <img class="earth-bg" src="@/assets/earth-welcome.png" alt />
     <div class="stars"></div>
     <div class="twinkling"></div>
