@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue';
+import NavBar from '@/components/NavBar__Desktop.vue';
 import DiscoverImg from '@/layouts/desktop/DiscoverImg.vue';
 import DiscoverSound from '@/layouts/desktop/DiscoverSound.vue';
 import HowToUseIt from '@/layouts/desktop/HowToUseIt.vue';

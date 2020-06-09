@@ -1,11 +1,22 @@
 <template>
-  <h1>Mobile</h1>
+  <main>
+    <NavBar />
+  </main>
 </template>
 
 <script>
+import NavBar from '@/components/NavBar__Mobile.vue';
 export default {
-  name: "Mobile"
+  name: 'Mobile',
+  components: {
+    NavBar,
+  },
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+main {
+  background-color: $primary-darkblue;
+  width: 100vh;
+}
+</style>
