@@ -1,15 +1,57 @@
 <template>
   <main>
-    <NavBar />
+    <transition>
+      <Journey v-if="currentPage === 1" />
+      <HowToUse v-else-if="currentPage === 2" />
+      <Images v-else-if="currentPage === 3" />
+      <Sounds v-else-if="currentPage === 4" />
+      <Team v-else-if="currentPage === 5" />
+    </transition>
+    <NavBar
+      :titles="chaptersName"
+      @getSelectedPageIndex="setSelectedPage"
+      :actualSelectedPage="currentPage"
+    />
   </main>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar__Mobile.vue';
+
+import Images from '@/layouts/mobile/DiscoverImg.vue';
+import Sounds from '@/layouts/mobile/DiscoverSound.vue';
+import HowToUse from '@/layouts/mobile/HowToUseIt.vue';
+import Journey from '@/layouts/mobile/TheJourney.vue';
+import Team from '@/layouts/mobile/Team.vue';
 export default {
   name: 'Mobile',
+  data() {
+    return {
+      chaptersName: [
+        'The Journey',
+        'How to use it',
+        'Visual content',
+        'Audio content',
+        'Who did it?',
+      ],
+      currentPage: 1,
+    };
+  },
   components: {
     NavBar,
+    Images,
+    Sounds,
+    HowToUse,
+    Journey,
+    Team,
+  },
+  methods: {
+    check(e) {
+      console.log(e.target.offsetTop);
+    },
+    setSelectedPage(index) {
+      this.currentPage = index + 1;
+    },
   },
 };
 </script>
@@ -17,6 +59,6 @@ export default {
 <style lang="scss" scoped>
 main {
   background-color: $primary-darkblue;
-  width: 100vh;
+  width: 100%;
 }
 </style>

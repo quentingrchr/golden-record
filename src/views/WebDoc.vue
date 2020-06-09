@@ -27,4 +27,8 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scped>
+div {
+  width: 100%;
+}
+</style>

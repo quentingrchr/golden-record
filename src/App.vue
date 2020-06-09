@@ -20,7 +20,6 @@ export default {
 body {
   margin: 0;
   width: 100vw;
-  height: 100vh;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -29,7 +28,6 @@ body {
   text-align: center;
   color: #2c3e50;
   width: 100%;
-  height: 100%;
   overflow: hidden;
 }
 </style>
