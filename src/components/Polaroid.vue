@@ -19,19 +19,21 @@ export default {
       // this.isClicked = !this.isClicked;
       this.$emit("focused", index);
     },
+
   },
   data: function() {
     return {
       isClicked: false,
       zIndex: {
-        zIndex: 11,
+        zIndex: 11
       },
+
     };
   },
   props: {
     src: {
       required: true,
-      type: String,
+      type: String
     },
     caption: {
       required: true,
@@ -41,6 +43,7 @@ export default {
       type: Number,
     },
   },
+
 };
 </script>
 
