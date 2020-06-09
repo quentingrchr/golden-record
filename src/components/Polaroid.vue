@@ -1,17 +1,7 @@
 <template>
   <figure
-    ref="pola"
-    @mouseenter="handleHover"
-    @mouseleave="handleHover"
-    @click="handleClick()"
-    :style="
-      isClicked
-        ? {
-            transform: `translate(${0}px, 0px) rotate(0deg)`,
-            zIndex: 11,
-          }
-        : null
-    "
+    @click="handleClick(index)"
+    :style="isClicked ? {} : null"
     class="pola"
   >
     <figcaption class="pola__caption">{{ caption }}</figcaption>
@@ -25,15 +15,9 @@ export default {
 
   components: {},
   methods: {
-    handleHover() {
-      this.isHovered = !this.isHovered;
-    },
-    handleClick() {
-      this.isClicked = !this.isClicked;
-      this.element.left = this.$refs.pola.getBoundingClientRect().left;
-      this.element.top = this.$refs.pola.getBoundingClientRect().top;
-      this.element.height = this.$refs.pola.getBoundingClientRect().height;
-      this.element.width = this.$refs.pola.getBoundingClientRect().width;
+    handleClick(index) {
+      // this.isClicked = !this.isClicked;
+      this.$emit("focused", index);
     },
   },
   data: function() {
@@ -41,16 +25,6 @@ export default {
       isClicked: false,
       zIndex: {
         zIndex: 11,
-      },
-      window: {
-        h: window.innerHeight,
-        w: window.innerWidth,
-      },
-      element: {
-        left: null,
-        top: null,
-        width: null,
-        height: null,
       },
     };
   },
@@ -63,29 +37,51 @@ export default {
       required: true,
       type: String,
     },
-  },
-  mounted() {
-    console.log(this.$refs);
+    index: {
+      type: Number,
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .pola {
+  &:not(:hover) {
+    & .pola__caption {
+      opacity: 0.7;
+    }
+    img {
+      filter: blur(0.7px);
+    }
+  }
+
+  &.focused {
+    & .pola__caption {
+      opacity: 1;
+    }
+    img {
+      filter: blur(0px);
+    }
+  }
+
   position: absolute;
   transform-origin: center;
-  transition: all 1s;
   display: flex;
   flex-direction: column;
   padding: 16px;
-  background-color: $color-white;
+  background-color: $primary-white;
   border-radius: 4px;
-  max-height: 280px;
+  height: 270px;
+  max-height: 300px;
 
   &__img {
     width: 200px;
     border-radius: 5px;
     overflow: hidden;
+
+    img {
+      transition: filter 0.3s ease, transform 10s;
+    }
   }
   &__caption {
     margin-bottom: 24px;

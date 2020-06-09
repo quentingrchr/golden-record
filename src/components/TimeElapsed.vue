@@ -10,19 +10,14 @@
 </template>
 
 <script>
-import Counter from './Counter.vue';
+import Counter from "./Counter.vue";
 export default {
-  name: 'TimeElapsed',
+  name: "TimeElapsed",
   components: { Counter },
 };
 </script>
 
 <style lang="scss" scoped>
-section {
-  height: 100vh;
-  background-color: $primary-darkblue;
-}
-
 .infos {
   display: inline-block;
   font-family: Product Sans;
@@ -60,7 +55,7 @@ section {
     hr {
       display: block;
       margin: auto;
-      content: '';
+      content: "";
       background-color: $primary-darkblue;
       opacity: 0.5;
       height: 2px;
