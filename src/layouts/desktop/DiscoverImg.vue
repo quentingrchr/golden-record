@@ -1,5 +1,5 @@
 <template>
-  <div>//<img v-for="img in imgs.src" :key="img" :src="img" /></div>
+  <div></div>
 </template>
 
 <script>
@@ -9,6 +9,9 @@ export default {
     return {
       imgs: json,
     };
+  },
+  beforeMount() {
+    console.log(json);
   },
 };
 </script>
