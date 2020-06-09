@@ -69,6 +69,9 @@ export default {
     jumpToChapter(index) {
       this.$emit('getSelectedPageIndex', index);
       this.isMenuOpen = false;
+      window.scrollTo({
+        top: 0,
+      });
     },
   },
 };
@@ -84,6 +87,7 @@ export default {
   height: 90vh;
   transform: translateX(100%);
   transition: transform 0.3s;
+  z-index: 2;
 
   &.isOpen {
     transform: none;

@@ -12,6 +12,8 @@
       @getSelectedPageIndex="setSelectedPage"
       :actualSelectedPage="currentPage"
     />
+    <div class="gradientEffect gradientEffect--top"></div>
+    <div class="gradientEffect gradientEffect--bottom"></div>
   </main>
 </template>
 
@@ -60,5 +62,20 @@ export default {
 main {
   background-color: $primary-darkblue;
   width: 100%;
+}
+.gradientEffect {
+  width: 100%;
+  height: 15vh;
+  position: fixed;
+
+  &--top {
+    top: 0;
+    background: linear-gradient($primary-darkblue 10%, transparent);
+  }
+
+  &--bottom {
+    bottom: 10vh;
+    background: linear-gradient(transparent 10%, $primary-darkblue);
+  }
 }
 </style>

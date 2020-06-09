@@ -12,6 +12,7 @@ export default {};
 div {
   width: 100%;
   height: 1000px;
-  background-color: red;
+  background-color: $primary-darkblue;
+  color: $primary-white;
 }
 </style>
