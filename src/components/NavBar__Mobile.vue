@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import Icons from '@/components/Icons.vue';
-import BaseIcon from '@/components/BaseIcon.vue';
+import Icons from "@/components/Icons.vue";
+import BaseIcon from "@/components/BaseIcon.vue";
 export default {
   data() {
     return {
@@ -67,7 +67,7 @@ export default {
       this.isMenuOpen = !this.isMenuOpen;
     },
     jumpToChapter(index) {
-      this.$emit('getSelectedPageIndex', index);
+      this.$emit("getSelectedPageIndex", index);
       this.isMenuOpen = false;
       window.scrollTo({
         top: 0,
@@ -80,6 +80,7 @@ export default {
 <style lang="scss" scoped>
 .menu {
   position: fixed;
+  z-index: 700;
   top: 0;
   left: 0;
   background-color: $mobile-background;
@@ -87,7 +88,6 @@ export default {
   height: 90vh;
   transform: translateX(100%);
   transition: transform 0.3s;
-  z-index: 2;
 
   &.isOpen {
     transform: none;
@@ -109,7 +109,7 @@ export default {
       opacity: 0.7;
 
       &::before {
-        content: '';
+        content: "";
         display: block;
         width: 5px;
         height: 5px;
@@ -133,6 +133,7 @@ export default {
 }
 
 .navBar {
+  z-index: 100;
   position: fixed;
   display: flex;
   bottom: 0;
@@ -168,7 +169,7 @@ export default {
   position: relative;
   &.volumeOff::after {
     position: absolute;
-    content: '';
+    content: "";
     display: block;
     width: 50%;
     height: 3px;
@@ -203,7 +204,7 @@ export default {
   transition: transform 0.3s;
 
   &::after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     top: 10px;
@@ -212,7 +213,7 @@ export default {
     background-color: $primary-white;
   }
   &::before {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     top: -10px;
