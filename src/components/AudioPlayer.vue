@@ -49,7 +49,9 @@
       </defs>
     </svg>
 
-    <p class="player__title">Songs - Title of Song</p>
+    <div class="player__titleContainer">
+      <p class="player__title">Songs - Title of Song</p>
+    </div>
     <div class="player__controller">
       <div class="player__mainSettings">
         <svg>
@@ -89,6 +91,7 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .player__title {
@@ -176,5 +179,23 @@ input {
   padding: 4px;
   background: $primary-darkblue;
   margin-top: -3px;
+}
+
+@keyframes slidein {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(105%);
+  }
+}
+
+p {
+  animation: 10s linear 1s infinite running slidein;
+}
+
+.player__titleContainer {
+  overflow-x: hidden;
+  width: 60%;
 }
 </style>
