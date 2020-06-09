@@ -43,7 +43,7 @@ import srcVid3 from "../../assets/video/carl-vid.mp4";
 import srcVid4 from "../../assets/video/jon-vid.mp4";
 import srcVid5 from "../../assets/video/frank-vid.mp4";
 
-import Polaroid from "../../components/Polaroid.vue";
+import Polaroid from "../../components/Polaroid__Desktop.vue";
 import Icons from "../../components/Icons";
 import BaseIcon from "../../components/BaseIcon";
 import Title from "../../components/Title";
