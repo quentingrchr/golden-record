@@ -6,20 +6,19 @@
   </div>
 </template>
 
-
 <script>
-import Welcome from "@/layouts/intro/welcome.vue";
-import Video from "@/layouts/intro/video.vue";
+import Welcome from '@/layouts/intro/welcome.vue';
+import Video from '@/layouts/intro/video.vue';
 
 export default {
   computed: {},
   components: {
     Welcome,
-    Video
+    Video,
   },
   data() {
     return {
-      scrolled: false
+      scrolled: false,
     };
   },
   methods: {
@@ -28,12 +27,12 @@ export default {
       if (e.deltaY > 0) {
         this.scrolled = true;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style lang="scss" scoped >
+<style lang="scss" scoped>
 .intro {
   overflow: hidden;
   width: 100vw;
