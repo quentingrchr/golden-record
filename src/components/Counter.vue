@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "Counter",
+  name: 'Counter',
   props: {
     title: String,
   },
@@ -118,7 +118,7 @@ div {
 
   span {
     margin-left: 40px;
-    color: $color-primary;
+    color: $primary-white;
     @media (max-width: 500px) {
       margin-left: 20px;
     }
@@ -129,7 +129,7 @@ div {
 
     em {
       font-size: 1.2em;
-      color: $color-font-main;
+      color: $secondary-blue;
     }
   }
 }

@@ -17,18 +17,18 @@
           class="navBar__volumeLogo"
         />
       </div>
-      <div class="navBar__timeLine">
+      <nav class="navBar__timeLine">
         <div
-          @click="jumpToOtherChapter(scroll * 45)"
-          :class="page === 5 ? 'isSelected' : null"
+          @click="jumpToOtherChapter(scroll * 5)"
+          :class="page === 1 ? 'isSelected' : null"
         >
-          <p>Who did it ?</p>
+          <p>The Journey</p>
         </div>
         <div
-          @click="jumpToOtherChapter(scroll * 35)"
-          :class="page === 4 ? 'isSelected' : null"
+          @click="jumpToOtherChapter(scroll * 15)"
+          :class="page === 2 ? 'isSelected' : null"
         >
-          <p>Audio Content</p>
+          <p>How to use it</p>
         </div>
         <div
           @click="jumpToOtherChapter(scroll * 25)"
@@ -39,18 +39,18 @@
           </p>
         </div>
         <div
-          @click="jumpToOtherChapter(scroll * 15)"
-          :class="page === 2 ? 'isSelected' : null"
+          @click="jumpToOtherChapter(scroll * 35)"
+          :class="page === 4 ? 'isSelected' : null"
         >
-          <p>How to use it</p>
+          <p>Audio Content</p>
         </div>
         <div
-          @click="jumpToOtherChapter(scroll * 5)"
-          :class="page === 1 ? 'isSelected' : null"
+          @click="jumpToOtherChapter(scroll * 45)"
+          :class="page === 5 ? 'isSelected' : null"
         >
-          <p>The Journey</p>
+          <p>Who did it ?</p>
         </div>
-      </div>
+      </nav>
     </div>
   </div>
 </template>
@@ -90,14 +90,15 @@ export default {
   left: 0;
   height: 100vh;
   width: 60px;
-  background-color: black;
+  background-color: $primary-darkblue;
   transition: width 0.2s;
+  overflow: hidden;
 
   &:hover {
     transform: none;
     width: 250px;
 
-    & div div {
+    & nav div {
       & p {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
         transform: none;
@@ -123,23 +124,22 @@ export default {
 .navBar__timeLine {
   height: 70%;
   width: 2px;
-  background-color: white;
-  margin-left: 20px;
+  background-color: $primary-white;
+  margin-left: 27px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   & div {
     position: relative;
-    background-color: black;
+    background-color: $primary-darkblue;
     left: -200%;
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    border: 2px solid white;
-
+    border: 2px solid $primary-white;
     &.isSelected {
-      background-color: white;
+      background-color: $primary-white;
       & p {
         animation: chapterTitleShowUp 1.5s forwards;
       }
@@ -148,13 +148,13 @@ export default {
     & p {
       position: absolute;
       clip-path: polygon(0 0, 0 0, 0 99%, 0% 100%);
-      left: -55px;
+      left: -52px;
       top: -200%;
       transform: rotate(-90deg);
-      color: white;
+      color: $primary-white;
       font-weight: bold;
       font-size: 0.8rem;
-      background-color: black;
+      background-color: $primary-darkblue;
       padding: 5px 0;
       width: 110px;
 
@@ -169,8 +169,8 @@ export default {
 .navBar__earthLogo {
   z-index: 2;
   position: fixed;
-  top: 10px;
-  left: 10px;
+  top: 15px;
+  left: 15px;
   width: 30px;
   height: 30px;
   cursor: pointer;
@@ -184,10 +184,10 @@ export default {
 .navBar__containerVolumeLogo {
   position: fixed;
   z-index: 2;
-  left: 10px;
-  bottom: 10px;
-  width: 25px;
-  height: 25px;
+  left: 17px;
+  bottom: 15px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 
   & img {
@@ -203,11 +203,11 @@ export default {
     content: "";
     position: absolute;
     display: block;
-    width: 40px;
-    height: 4px;
-    background-color: white;
-    border: 0.2px solid black;
-    transform: translateY(-17px) translatex(-10px) rotate(-45deg);
+    width: 30px;
+    height: 2px;
+    background-color: $primary-white;
+    border: 0.2px solid $primary-darkblue;
+    transform: translateY(-12px) translatex(-7px) rotate(-45deg);
   }
 }
 </style>

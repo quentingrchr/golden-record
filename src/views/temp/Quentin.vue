@@ -18,6 +18,7 @@ import img3 from "../../assets/img/eward_c_stone.jpg";
 import img4 from "../../assets/img/jon_lomberg.jpg";
 import img5 from "../../assets/img/frank_drake.jpg";
 
+
 import Polaroid from "../../components/Polaroid.vue";
 export default {
   name: "Quentin",
@@ -35,13 +36,14 @@ export default {
   methods: {
     handleClick: function() {},
   },
+
 };
 </script>
 
 <style lang="scss" scoped>
 section {
   height: 100vh;
-  background-color: $color-body;
+  background-color: $primary-darkblue;
 }
 
 .polaroids {
@@ -78,6 +80,7 @@ figure {
   &:nth-child(5) {
     z-index: 1;
     transform: scale(0.6) rotate(4deg) translateY(-30%) translateX(450%);
+
   }
 }
 </style>
