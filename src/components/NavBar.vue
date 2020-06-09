@@ -90,7 +90,7 @@ export default {
   left: 0;
   height: 100vh;
   width: 60px;
-  background-color: black;
+  background-color: $primary-darkblue;
   transition: width 0.2s;
   overflow: hidden;
 
@@ -124,7 +124,7 @@ export default {
 .navBar__timeLine {
   height: 70%;
   width: 2px;
-  background-color: white;
+  background-color: $primary-white;
   margin-left: 27px;
   display: flex;
   flex-direction: column;
@@ -132,15 +132,14 @@ export default {
 
   & div {
     position: relative;
-    background-color: black;
+    background-color: $primary-darkblue;
     left: -200%;
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    border: 2px solid white;
-
+    border: 2px solid $primary-white;
     &.isSelected {
-      background-color: white;
+      background-color: $primary-white;
       & p {
         animation: chapterTitleShowUp 1.5s forwards;
       }
@@ -152,10 +151,10 @@ export default {
       left: -52px;
       top: -200%;
       transform: rotate(-90deg);
-      color: white;
+      color: $primary-white;
       font-weight: bold;
       font-size: 0.8rem;
-      background-color: black;
+      background-color: $primary-darkblue;
       padding: 5px 0;
       width: 110px;
 
@@ -206,8 +205,8 @@ export default {
     display: block;
     width: 30px;
     height: 2px;
-    background-color: white;
-    border: 0.2px solid black;
+    background-color: $primary-white;
+    border: 0.2px solid $primary-darkblue;
     transform: translateY(-12px) translatex(-7px) rotate(-45deg);
   }
 }
