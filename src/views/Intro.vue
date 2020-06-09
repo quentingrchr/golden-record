@@ -1,43 +1,35 @@
 <template>
-  <div class="intro">
-    <!--- Contient la vidéo responsive (mobile / desktop) -->
-    <h1 class="title-welcome">The song of Earth</h1>
-    <img class="earth-bg" src="@/assets/earth-welcome.png" alt />
-    <div class="stars"></div>
-    <div class="twinkling"></div>
-    <svg
-      class="icone-scroll"
-      width="15"
-      height="39"
-      viewBox="0 0 30 69"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect
-        x="1.25"
-        y="1.25"
-        width="27.5"
-        height="46.7857"
-        rx="13.75"
-        stroke="#F8F8F8"
-        stroke-width="2.5"
-      />
-      <rect x="13" y="10.7144" width="3.21429" height="8.57143" rx="1.60714" fill="#F8F8F8" />
-      <path
-        class="scroll-arrow"
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M28.1295 55.6256C28.5995 55.1556 28.5995 54.3937 28.1295 53.9238C27.6596 53.4538 26.8976 53.4538 26.4277 53.9238L15.241 65.1104L4.0543 53.9238C3.58435 53.4538 2.82241 53.4538 2.35246 53.9238C1.88251 54.3937 1.88251 55.1556 2.35246 55.6256L14.3788 67.6519C14.6167 67.8899 14.9295 68.0073 15.2413 68.0043C15.553 68.0071 15.8654 67.8897 16.1032 67.6519L28.1295 55.6256Z"
-        fill="#F8F8F8"
-      />
-    </svg>
+  <!--- Contient la vidéo responsive (mobile / desktop) -->
+  <div @wheel="isScrolled">
+    <Welcome v-if="!scrolled" />
+    <Video v-else />
   </div>
 </template>
 
+
 <script>
+import Welcome from "@/layouts/intro/welcome.vue";
+import Video from "@/layouts/intro/video.vue";
+
 export default {
   computed: {},
-  components: {}
+  components: {
+    Welcome,
+    Video
+  },
+  data() {
+    return {
+      scrolled: false
+    };
+  },
+  methods: {
+    isScrolled(e) {
+      e.preventDefault();
+      if (e.deltaY > 0) {
+        this.scrolled = true;
+      }
+    }
+  }
 };
 </script>
 
@@ -81,7 +73,7 @@ export default {
   }
 }
 
-.icone-scroll {
+.icone-scroll__desktop {
   position: absolute;
   z-index: 10;
   bottom: 10px;
@@ -89,6 +81,39 @@ export default {
   display: flex;
   justify-content: center;
 }
+.icone-scroll__mobile {
+  position: absolute;
+  z-index: 10;
+  bottom: 40px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  display: none;
+  p {
+    margin-bottom: 10px;
+    font-family: Product Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #f8f8f8;
+  }
+  svg {
+    animation: scroll-mouse 2s infinite;
+  }
+}
+@media screen and (max-width: 768px) {
+  .icone-scroll__desktop {
+    display: none;
+  }
+  .icone-scroll__mobile {
+    display: block;
+  }
+}
+
 .scroll-arrow {
   animation: scroll-mouse 2s infinite;
   width: 1px;
