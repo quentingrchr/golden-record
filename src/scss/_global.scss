@@ -80,3 +80,33 @@ button {
 .fade-leave-to {
   opacity: 0;
 }
+
+//GLOBAL STYLE HTML ELEMENTS
+h1 {
+  font-family: Product Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 60px;
+}
+
+h2 {
+  font-family: Product Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 45px;
+}
+
+h3 {
+  font-family: Product Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+}
+
+p {
+  font-family: Product Sans Light;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 150%;
+}
