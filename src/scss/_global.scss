@@ -1,4 +1,6 @@
-html, body, #app {
+html,
+body,
+#app {
   min-height: 100vh;
 }
 
@@ -23,7 +25,8 @@ img {
 }
 
 // firefox fix 'shaking font inside button'
-input[type=button], button {
+input[type="button"],
+button {
   padding: 0;
 }
 
@@ -71,8 +74,9 @@ input[type=button], button {
 
 // routes transition animation
 .fade-enter-active {
-  transition: opacity .8s
+  transition: opacity 0.8s;
 }
-.fade-enter, .fade-leave-to {
-  opacity: 0
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
