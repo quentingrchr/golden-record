@@ -1,9 +1,19 @@
 <template>
-  <h1>IMAGES</h1>
+  <div></div>
 </template>
 
 <script>
-export default {};
+import json from '@/picturesLink.json';
+export default {
+  data() {
+    return {
+      imgs: json,
+    };
+  },
+  beforeMount() {
+    console.log(json);
+  },
+};
 </script>
 
 <style></style>
