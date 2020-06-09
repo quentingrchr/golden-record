@@ -1,9 +1,16 @@
 <template>
-  <h1>IMAGES</h1>
+  <div>//<img v-for="img in imgs.src" :key="img" :src="img" /></div>
 </template>
 
 <script>
-export default {};
+import json from '@/picturesLink.json';
+export default {
+  data() {
+    return {
+      imgs: json,
+    };
+  },
+};
 </script>
 
 <style></style>
