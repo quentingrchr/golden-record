@@ -1,15 +1,42 @@
 <template>
   <section>
-    <TimeElapsed />
+    <div class="polaroids" :class="[isClicked ? 'is-clicked' : '']">
+      <Polaroid caption="Ann druyan" :src="img2" />
+      <Polaroid caption="Eward C Stone" :src="img3" />
+      <Polaroid caption="Carl Sagan" :src="img1" />
+      <Polaroid caption="Jon Lomberg" :src="img4" />
+      <Polaroid caption="Frank Drake" :src="img5" />
+    </div>
   </section>
 </template>
 
 <script>
-import TimeElapsed from '../../components/TimeElapsed.vue';
+// Polaroids images (to fetch from API)
+import img1 from "../../assets/img/carl_sagan.jpg";
+import img2 from "../../assets/img/ann_druyan.jpg";
+import img3 from "../../assets/img/eward_c_stone.jpg";
+import img4 from "../../assets/img/jon_lomberg.jpg";
+import img5 from "../../assets/img/frank_drake.jpg";
 
+
+import Polaroid from "../../components/Polaroid.vue";
 export default {
-  name: 'Quentin',
-  components: { TimeElapsed },
+  name: "Quentin",
+  components: { Polaroid },
+  props: {},
+  data: () => {
+    return {
+      img1,
+      img2,
+      img3,
+      img4,
+      img5,
+    };
+  },
+  methods: {
+    handleClick: function() {},
+  },
+
 };
 </script>
 
@@ -19,67 +46,41 @@ section {
   background-color: $primary-darkblue;
 }
 
-.infos {
-  display: inline-block;
-  font-family: Product Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 19px;
-  @media (max-width: 740px) {
-    font-size: 12px;
+.polaroids {
+  margin: auto;
+  margin-top: 25vh;
+  display: flex;
+  background-color: red;
+  flex-wrap: nowrap;
+  position: relative;
+}
+
+figure {
+  .hovered {
+    z-index: 6;
   }
-  @media (max-width: 370px) {
-    font-size: 10px;
+  box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+  &:nth-child(1) {
+    z-index: 2;
+
+    transform: scale(0.6) rotate(-21.93deg) translateX(50%) translateY(15%);
   }
-  &__title {
-    margin-bottom: 16px;
-    color: $primary-white;
+  &:nth-child(2) {
+    z-index: 3;
+    transform: scale(0.6) rotate(7.36deg) translateY(30%) translateX(150%);
   }
-  &__content {
-    border-radius: 5px;
-    background-color: $primary-white;
-    padding: 16px 0px;
-    @media (max-width: 740px) {
-      padding: 8px 0px;
-    }
+  &:nth-child(3) {
+    z-index: 4;
+    transform: scale(0.9) translateX(170%) translateY(-10%);
+  }
+  &:nth-child(4) {
+    z-index: 5;
+    transform: scale(0.8) rotate(-12.6deg) translateY(100%) translateX(250%);
+  }
+  &:nth-child(5) {
+    z-index: 1;
+    transform: scale(0.6) rotate(4deg) translateY(-30%) translateX(450%);
 
-    div {
-      display: flex;
-      padding: 8px 32px;
-      position: relative;
-
-      @media (max-width: 580px) {
-        padding: 8px 16px;
-      }
-
-      span {
-        margin-left: 40px;
-        color: $primary-white;
-        @media (max-width: 390px) {
-          margin-left: 20px;
-        }
-
-        @media (max-width: 316px) {
-          margin-left: 8px;
-        }
-
-        em {
-          font-size: 1.2em;
-          color: $primary-white;
-        }
-      }
-    }
-    hr {
-      display: block;
-      margin: auto;
-      content: '';
-      background-color: $primary-darkblue;
-      opacity: 0.5;
-      height: 2px;
-      border-radius: 15px;
-      width: 75%;
-    }
   }
 }
 </style>

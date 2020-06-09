@@ -67,7 +67,7 @@ export default {
       this.isMute = !this.isMute;
     },
     jumpToOtherChapter(value) {
-      this.$emit('jumpToOtherChapter', value);
+      this.$emit("jumpToOtherChapter", value);
     },
   },
   props: {
@@ -200,7 +200,7 @@ export default {
   }
 
   &.isMute::after {
-    content: '';
+    content: "";
     position: absolute;
     display: block;
     width: 30px;
