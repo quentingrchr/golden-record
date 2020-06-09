@@ -45,10 +45,6 @@ export default {
 .title-welcome {
   position: absolute;
   z-index: 3;
-  font-family: lato;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 60px;
   top: 200px;
   /* identical to box height */
 

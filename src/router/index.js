@@ -12,12 +12,12 @@ const routes = [
   { path: "/", name: "Intro", component: Intro },
   { path: "/golden-record", name: "WebDoc", component: WebDoc },
   { path: "/quentin", name: "Quentin", component: Quentin },
-  { path: "/reda", name: "Reda", component: Reda }
+  { path: "/reda", name: "Reda", component: Reda },
 ];
 
 const router = new VueRouter({
   mode: "history",
-  routes
+  routes,
 });
 
 export default router;
