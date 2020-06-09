@@ -34,39 +34,39 @@ export default {
       this.element.top = this.$refs.pola.getBoundingClientRect().top;
       this.element.height = this.$refs.pola.getBoundingClientRect().height;
       this.element.width = this.$refs.pola.getBoundingClientRect().width;
-    },
+    }
   },
   data: function() {
     return {
       isClicked: false,
       zIndex: {
-        zIndex: 11,
+        zIndex: 11
       },
       window: {
         h: window.innerHeight,
-        w: window.innerWidth,
+        w: window.innerWidth
       },
       element: {
         left: null,
         top: null,
         width: null,
-        height: null,
-      },
+        height: null
+      }
     };
   },
   props: {
     src: {
       required: true,
-      type: String,
+      type: String
     },
     caption: {
       required: true,
-      type: String,
-    },
+      type: String
+    }
   },
   mounted() {
     console.log(this.$refs);
-  },
+  }
 };
 </script>
 
@@ -78,7 +78,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 16px;
-  background-color: $color-white;
+  background-color: $primary-white;
   border-radius: 4px;
   max-height: 280px;
 
