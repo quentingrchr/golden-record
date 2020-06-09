@@ -84,6 +84,7 @@ export default {
 <style lang="scss" scoped>
 .navBar__timeLineContainer {
   position: fixed;
+  z-index: 70;
   display: flex;
   align-items: center;
   top: 0;
@@ -122,6 +123,7 @@ export default {
 }
 
 .navBar__timeLine {
+  z-index: 70;
   height: 70%;
   width: 2px;
   background-color: $primary-white;
