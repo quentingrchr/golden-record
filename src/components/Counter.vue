@@ -113,6 +113,7 @@ div {
   font-size: 16px;
   p {
     font-weight: 700;
+    font-family: Product Sans;
   }
 
   @media (max-width: 580px) {
