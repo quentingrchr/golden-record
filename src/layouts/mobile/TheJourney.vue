@@ -70,7 +70,7 @@ export default {
     }
   }
   .time {
-    margin-top: 24px;
+    margin-top: 40px;
   }
 }
 </style>

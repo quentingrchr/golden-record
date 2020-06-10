@@ -21,7 +21,14 @@
         stroke="#F8F8F8"
         stroke-width="2.5"
       />
-      <rect x="13" y="10.7144" width="3.21429" height="8.57143" rx="1.60714" fill="#F8F8F8" />
+      <rect
+        x="13"
+        y="10.7144"
+        width="3.21429"
+        height="8.57143"
+        rx="1.60714"
+        fill="#F8F8F8"
+      />
       <path
         class="scroll-arrow"
         fill-rule="evenodd"
@@ -52,5 +59,4 @@
 export default {};
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

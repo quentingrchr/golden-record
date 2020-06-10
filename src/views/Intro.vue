@@ -28,7 +28,9 @@ export default {
       if (e.deltaY > 0) {
         this.scrollRate++;
       }
+
       console.log(this.scrollRate);
+
     },
   },
 };

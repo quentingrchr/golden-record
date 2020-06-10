@@ -57,6 +57,7 @@ export default {
     padding: 20px 150px;
   }
 }
+
 .voyager {
   width: 80vw;
   height: 80vh;
@@ -65,11 +66,18 @@ export default {
   justify-content: space-between;
   h4 {
     color: white;
+    margin-top: 18px;
+    text-align: left;
+    font-size: 20px;
   }
   &_image {
     display: flex;
     flex-direction: column;
     align-items: center;
+    img {
+      width: 300px;
+      margin-top: 16px;
+    }
   }
   &_description {
     display: flex;
@@ -78,7 +86,7 @@ export default {
   p {
     width: 500px;
     margin-top: 28px;
-    font-family: Product Sans Light;
+    font-family: Product Sans;
     font-style: normal;
     font-weight: 300;
     font-size: 18px;

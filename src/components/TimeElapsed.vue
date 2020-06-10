@@ -25,6 +25,7 @@ export default {
   font-weight: normal;
   font-size: 16px;
   line-height: 19px;
+
   @media (max-width: 740px) {
     font-size: 12px;
   }
@@ -38,7 +39,7 @@ export default {
   &__content {
     border-radius: 5px;
     background-color: $primary-white;
-    padding: 16px 0px;
+    padding: 4px 0px;
     @media (max-width: 740px) {
       padding: 8px 0px;
     }

@@ -6,6 +6,7 @@
       <Images v-else-if="currentPage === 3" />
       <Sounds v-else-if="currentPage === 4" />
       <Team v-else-if="currentPage === 5" />
+      <Icon />
     </transition>
     <NavBar
       :titles="chaptersName"
@@ -18,25 +19,27 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar__Mobile.vue';
+import NavBar from "@/components/NavBar__Mobile.vue";
 
-import Images from '@/layouts/mobile/DiscoverImg.vue';
-import Sounds from '@/layouts/mobile/DiscoverSound.vue';
-import HowToUse from '@/layouts/mobile/HowToUseIt.vue';
-import Journey from '@/layouts/mobile/TheJourney.vue';
-import Team from '@/layouts/mobile/Team.vue';
+import Images from "@/layouts/mobile/DiscoverImg.vue";
+import Sounds from "@/layouts/mobile/DiscoverSound.vue";
+import HowToUse from "@/layouts/mobile/HowToUseIt.vue";
+import Journey from "@/layouts/mobile/TheJourney.vue";
+import Team from "@/layouts/mobile/Team.vue";
+import Icon from "../../components/Icons";
+
 export default {
-  name: 'Mobile',
+  name: "Mobile",
   data() {
     return {
       chaptersName: [
-        'The Journey',
-        'How to use it',
-        'Visual content',
-        'Audio content',
-        'Who did it?',
+        "The Journey",
+        "How to use it",
+        "Visual content",
+        "Audio content",
+        "Who did it?"
       ],
-      currentPage: 1,
+      currentPage: 1
     };
   },
   components: {
@@ -46,6 +49,7 @@ export default {
     HowToUse,
     Journey,
     Team,
+    Icon
   },
   methods: {
     check(e) {
@@ -53,8 +57,8 @@ export default {
     },
     setSelectedPage(index) {
       this.currentPage = index + 1;
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -10,7 +10,6 @@
 import Desktop from "@/views/desktop/Desktop.vue";
 import Mobile from "@/views/mobile/Mobile.vue";
 
-
 export default {
   computed: {
     isBigScreen: function() {
