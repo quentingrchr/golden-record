@@ -12,7 +12,7 @@
       :scroll="scrollSpeed"
       @jumpToOtherChapter="changeChapter"
     />
-    <Icon/>
+    <Icon />
   </main>
 </template>
 
@@ -23,7 +23,7 @@ import DiscoverSound from '@/layouts/desktop/DiscoverSound.vue';
 import HowToUseIt from '@/layouts/desktop/HowToUseIt.vue';
 import Team from '@/layouts/desktop/Team.vue';
 import TheJourney from '@/layouts/desktop/TheJourney.vue';
-import Icon from '@/components/Icons.vue'
+import Icon from '@/components/Icons.vue';
 
 export default {
   components: {
@@ -33,7 +33,7 @@ export default {
     HowToUseIt,
     Team,
     TheJourney,
-    Icon
+    Icon,
   },
   data() {
     return {
