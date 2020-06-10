@@ -4,11 +4,7 @@
     <div class="twinkling"></div>
     <Title class="visualContent__title" text="Visual content" />
     <div class="visualContent__images" :class="moveDirection" :style="position">
-      <div
-        v-for="(image, index) in imgs"
-        :key="index"
-        @click="isSelected(image)"
-      >
+      <div v-for="(image, index) in imgs" :key="index" @click="isSelected(image)">
         <img :src="image" alt="One of the golden record pictures" />
       </div>
     </div>
@@ -111,7 +107,7 @@ export default {
 }
 section {
   position: relative;
-  z-index: 1000;
+  z-index: 1;
   width: 100%;
   height: 100%;
 }
