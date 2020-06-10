@@ -1,7 +1,8 @@
 <template>
   <section class="thejourney">
     <Title class="thejourney_title" text="The journey" />
-
+    <div class="stars"></div>
+    <div class="twinkling"></div>
     <div class="voyager">
       <div class="voyager_image">
         <h4>Voyager probe</h4>
@@ -10,17 +11,18 @@
       </div>
       <div class="voyager_description">
         <p>
-          NASA placed an amibitous message aboard Voyager 1 and 2,
-          a kind of time capsule, intended to communicate a story of our
-          world to extraterrestrials.
+          NASA placed an amibitous message aboard Voyager 1 and 2, a kind of
+          time capsule, intended to communicate a story of our world to
+          extraterrestrials.
         </p>
         <p>
-          It is carried by a phonograph record, a gold-plated copper disk called “The Golden Record“
-          containing what’s supposed to be the portray of the diversity of life and culture on Earth.
+          It is carried by a phonograph record, a gold-plated copper disk called
+          “The Golden Record“ containing what’s supposed to be the portray of
+          the diversity of life and culture on Earth.
         </p>
         <p>
-          How inteligent life would be able to use this disk ?
-          Scroll down to discover how scientifcs tried to answer that question
+          How inteligent life would be able to use this disk ? Scroll down to
+          discover how scientifcs tried to answer that question
         </p>
         <Time-elapsed class="time" />
       </div>
@@ -45,7 +47,6 @@ export default {
   box-sizing: border-box;
 }
 .thejourney {
-  background: rgb(33, 32, 32);
   height: 100vh;
   width: 100vw;
   &_title {
@@ -55,6 +56,8 @@ export default {
     align-items: center;
     width: 100%;
     padding: 20px 150px;
+    position: relative;
+    z-index: 20;
   }
 }
 
@@ -64,6 +67,8 @@ export default {
   margin: auto;
   display: flex;
   justify-content: space-between;
+  position: relative;
+  z-index: 10;
   h4 {
     color: white;
     margin-top: 18px;
