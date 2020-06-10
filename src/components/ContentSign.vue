@@ -1,5 +1,5 @@
 <template>
-  <div :class="contentRight ? 'Use__text--right' : 'Use__text--left'" class="Use__text">
+  <div v-on="$listeners" :class="contentRight ? 'Use__text--right' : 'Use__text--left'" class="Use__text">
     <span class="Use__title">{{ title }}</span>
     <BaseIcon class="Use__plus" 
     href="#plus" 
@@ -30,14 +30,11 @@ export default {
 <style lang="scss">
 .Use{
     &__text {
-    height: 50%;
+    height: 18%;
     width: 65%;
     display: flex;
     align-items: center;
     position: absolute;
-    filter: drop-shadow(-8px 9px 11px rgba(0, 0, 0, 0.8));
-    // border: 1px solid yellow;
-
     
     &__title {
       font-family: 'Product Sans Regular';

@@ -1,8 +1,8 @@
 <template>
-  <div class="Use__symbol">
+  <div v-on="$listeners" class="Use__symbol">
     <slot name="left"></slot>
     <BaseIcon class="Use__svg" 
-    :href="nameIcon" 
+    :href="nameIcon"
     />
     <slot name="right"></slot>
     <Icon/>
@@ -18,12 +18,12 @@ export default {
     nameIcon:{
       type: String,
       required: true
-    }
-  },
+    },
+  },  
   components:{
     BaseIcon,
     Icon
-  }
+  },
 }
 </script>
 
