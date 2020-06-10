@@ -1,7 +1,9 @@
 <template>
   <div class="Use">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
     <header class="Use__mainTitle">
-      <Title text="How To Use It"/>
+      <Title text="How To Use It" />
     </header>
     <div class="Use__container">
       <div class="Use__content">
@@ -36,7 +38,7 @@
           nameIcon="#pulsar" 
         >
           <template v-slot:right>
-              <ContentSign :contentRight="false" title="Pulsar"/>
+            <ContentSign :contentRight="false" title="Pulsar" />
           </template>
         </Sign>
       </div>
@@ -55,7 +57,7 @@
           nameIcon="#waveForm"
         >
           <template v-slot:left>
-              <ContentSign :contentRight="true" title="The waves"/>
+            <ContentSign :contentRight="true" title="The waves" />
           </template>
         </Sign>
         <Sign 
@@ -64,7 +66,7 @@
           nameIcon="#frames"
         >
           <template v-slot:left>
-              <ContentSign :contentRight="true" title="Show the image"/>
+            <ContentSign :contentRight="true" title="Show the image" />
           </template>
         </Sign>
         <Sign
@@ -73,7 +75,7 @@
           nameIcon="#hydrogen"
         >
           <template v-slot:left>
-              <ContentSign :contentRight="true" title="Hydrogen atoms"/>
+            <ContentSign :contentRight="true" title="Hydrogen atoms" />
           </template>
         </Sign>
       </div>
@@ -82,11 +84,10 @@
 </template>
 
 <script>
-
-import BaseIcon from '@/components/BaseIcon.vue';
-import Sign from '@/components/Sign.vue';
-import ContentSign from '@/components/ContentSign.vue';
-import Title from '@/components/Title.vue';
+import BaseIcon from "@/components/BaseIcon.vue";
+import Sign from "@/components/Sign.vue";
+import ContentSign from "@/components/ContentSign.vue";
+import Title from "@/components/Title.vue";
 
 export default {
   name: 'UseIt',
@@ -99,15 +100,16 @@ export default {
     Sign,
     ContentSign
   },
-  methods:{
-    test(){
-      console.log('it work')
-    }
-  }
 };
 </script>
 
 <style lang="scss">
+.stars {
+  z-index: 0;
+}
+.twinkling {
+  z-index: 0;
+}
 .Use {
   display: flex;
   flex-direction: column;
@@ -117,7 +119,7 @@ export default {
   background-color: $primary-darkblue;
   // border: 1px solid red;
 
-  &__mainTitle{
+  &__mainTitle {
     display: flex;
     align-items: flex-start;
     // border: 1px solid blue;
@@ -127,13 +129,13 @@ export default {
     height: 20%;
   }
 
+
   &__text{
     &:hover{
     filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.8));
     }
   }
-
-  &__container{
+  &__container {
     display: flex;
     align-items: center;
     justify-content: space-between;

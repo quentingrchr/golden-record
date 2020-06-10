@@ -1,15 +1,10 @@
 <template>
-  <figure
-    @click="handleClick(index)"
-    :class="isFocused ? 'is-focused' : ''"
-    class="pola"
-  >
+  <figure @click="handleClick(index)" :class="isFocused ? 'is-focused' : ''" class="pola">
     <figcaption class="pola__caption">{{ caption }}</figcaption>
     <div class="pola__img">
       <img :src="imgUrl" alt="team member" />
       <video autoplay loop muted :src="vidUrl" type="video/mp4">
-        <source :src="vidUrl" type="video/mp4" />
-        Your browser doesn't support the video player
+        <source :src="vidUrl" type="video/mp4" />Your browser doesn't support the video player
       </video>
     </div>
   </figure>
@@ -23,34 +18,34 @@ export default {
   methods: {
     handleClick(index) {
       this.$emit("focused", index);
-    },
+    }
   },
   data: function() {
     return {
       isClicked: false,
       zIndex: {
-        zIndex: 11,
-      },
+        zIndex: 11
+      }
     };
   },
   props: {
     isFocused: {
-      type: Boolean,
+      type: Boolean
     },
     imgUrl: {
       required: true,
-      type: String,
+      type: String
     },
     vidUrl: {
-      type: String,
+      type: String
     },
     caption: {
-      type: String,
+      type: String
     },
     index: {
-      type: Number,
-    },
-  },
+      type: Number
+    }
+  }
 };
 </script>
 
@@ -82,6 +77,7 @@ export default {
   background-color: $primary-white;
   border-radius: 4px;
   height: 420px; // Constante !
+  cursor: pointer;
 
   &__img {
     width: 300px;
@@ -109,6 +105,7 @@ export default {
   }
 
   &.is-focused {
+    cursor: initial;
     img {
       transition: opacity 1s 3s ease;
       opacity: 0;

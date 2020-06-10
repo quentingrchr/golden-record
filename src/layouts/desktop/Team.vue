@@ -1,5 +1,7 @@
 <template>
   <section>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
     <Icons />
     <header class="header">
       <Title text="Who did it ?" />
@@ -23,10 +25,9 @@
         :vidUrl="img.vidUrl"
         :isFocused="index === indexFocused"
       />
-      <p
-        class="polaroids__description"
-        :class="focusMode ? 'visible' : ''"
-      >{{ focusMode ? imgs[indexFocused].description : "" }}</p>
+      <p class="polaroids__description" :class="focusMode ? 'visible' : ''">
+        {{ focusMode ? imgs[indexFocused].description : "" }}
+      </p>
     </div>
   </section>
 </template>
@@ -168,7 +169,14 @@ export default {
 <style lang="scss" scoped>
 section {
   height: 100vh;
-  background-color: $primary-darkblue;
+  position: relative;
+  z-index: 10;
+}
+.stars {
+  z-index: -1;
+}
+.twinkling {
+  z-index: 0;
 }
 
 header.header {
@@ -178,6 +186,8 @@ header.header {
   align-items: center;
   width: 100%;
   padding: 20px 150px;
+  position: relative;
+  z-index: 10;
 }
 
 .icon-container {

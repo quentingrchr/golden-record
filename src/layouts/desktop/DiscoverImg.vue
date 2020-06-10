@@ -1,12 +1,10 @@
 <template>
   <section class="visualContent">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
     <Title class="visualContent__title" text="Visual content" />
     <div class="visualContent__images" :class="moveDirection" :style="position">
-      <div
-        v-for="(image, index) in imgs"
-        :key="index"
-        @click="isSelected(image)"
-      >
+      <div v-for="(image, index) in imgs" :key="index" @click="isSelected(image)">
         <img :src="image" alt="One of the golden record pictures" />
       </div>
     </div>
@@ -47,46 +45,46 @@
 
 <script>
 //SRCs will be imported bu fetch
-import json from '@/picturesLink.json';
+import json from "@/picturesLink.json";
 
-import Title from '@/components/Title.vue';
+import Title from "@/components/Title.vue";
 export default {
   data() {
     return {
       imgs: json.src,
       moveDirection: null,
       position: {
-        top: '-20%',
-        left: '-20%',
+        top: "-20%",
+        left: "-20%"
       },
-      selectedImage: null,
+      selectedImage: null
     };
   },
   components: {
-    Title,
+    Title
   },
   methods: {
     setDirection(value) {
       //console.log(window.innerHeight - imgContainer.offsetHeight);
-      const imgContainer = document.querySelector('.visualContent__images');
-      if (value === 'down') {
-        this.position.top = '100px';
-      } else if (value === 'right') {
-        this.position.left = '170px';
-      } else if (value === 'left') {
+      const imgContainer = document.querySelector(".visualContent__images");
+      if (value === "down") {
+        this.position.top = "100px";
+      } else if (value === "right") {
+        this.position.left = "170px";
+      } else if (value === "left") {
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          'px';
-      } else if (value === 'up') {
+          "px";
+      } else if (value === "up") {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          'px';
+          "px";
       }
     },
     cancelDirection() {
-      const imgContainer = document.querySelector('.visualContent__images');
-      const top = imgContainer.offsetTop + 'px';
-      const left = imgContainer.offsetLeft + 'px';
+      const imgContainer = document.querySelector(".visualContent__images");
+      const top = imgContainer.offsetTop + "px";
+      const left = imgContainer.offsetLeft + "px";
       this.position.top = top;
       this.position.left = left;
     },
@@ -95,15 +93,21 @@ export default {
     },
     closeOverlay() {
       this.selectedImage = null;
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+.stars {
+  z-index: -1;
+}
+.twinkling {
+  z-index: 0;
+}
 section {
   position: relative;
-  background-color: $primary-darkblue;
+  z-index: 1;
   width: 100%;
   height: 100%;
 }
