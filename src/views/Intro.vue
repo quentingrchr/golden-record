@@ -14,12 +14,12 @@ export default {
   computed: {},
   components: {
     Welcome,
-    Video
+    Video,
   },
 
   data() {
     return {
-      scrolled: false
+      scrolled: false,
     };
   },
   methods: {
@@ -28,10 +28,9 @@ export default {
       if (e.deltaY > 0) {
         this.scrolled = true;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
