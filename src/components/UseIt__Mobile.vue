@@ -103,7 +103,6 @@ export default {
   align-items: center;
   background-color: $primary-darkblue;
   color: $primary-white;
-  height: 5000px;
 }
 
 .useIt__title {
@@ -198,7 +197,6 @@ export default {
 
 .useIt__explications {
   width: 50vw;
-  height: 400vh;
   margin-top: 50px;
   margin-right: 40vw;
 }
