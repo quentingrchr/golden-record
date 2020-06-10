@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <UseItMobile />
-  </div>
+  <UseIt />
 </template>
 
 <script>
-import UseItMobile from "../../components/UseIt__Mobile";
+import UseIt from "../../layouts/mobile/HowToUseIt";
 export default {
   name: "Toto",
-  components: { UseItMobile },
+  components: { UseIt },
   props: {},
   data: () => {
     return {};
@@ -16,6 +14,8 @@ export default {
   methods: {}
 };
 </script>
+
+<style></style>
 
 <style lang="scss" scoped>
 </style>

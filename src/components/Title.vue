@@ -7,13 +7,13 @@
 
 <script>
 export default {
-  name: 'Title',
+  name: "Title",
   props: {
     text: {
       type: String,
-      Required: true,
-    },
-  },
+      Required: true
+    }
+  }
 };
 </script>
 
@@ -33,7 +33,7 @@ h2 {
 }
 
 h2::after {
-  content: '';
+  content: "";
   width: 150%;
   height: 5px;
   background-color: $primary-white;
