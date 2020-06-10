@@ -7,42 +7,73 @@
     </header>
     <div class="Use__container">
       <div class="Use__content">
-        <Sign nameIcon="#record">
+        <Sign
+        @mouseover="hovering = 1"
+        @mouseleave="hovering = 0"
+        nameIcon="#record"
+        >
           <template v-slot:right>
-            <ContentSign :contentRight="false" title="Radial circle" />
+              <ContentSign
+              class="Use__text"
+                :contentRight="false" 
+                title="Radial circle"
+              />
           </template>
         </Sign>
-        <Sign nameIcon="#elevation">
+        <Sign
+          @mouseover="hovering = 2"
+          @mouseleave="hovering = 0" 
+          nameIcon="#elevation"
+        >
           <template v-slot:right>
-            <ContentSign :contentRight="false" title="Side view of disc" />
+              <ContentSign 
+                :contentRight="false" 
+                title="Side view of disc"
+              />
           </template>
         </Sign>
-        <Sign nameIcon="#pulsar">
+        <Sign 
+          @mouseover="hovering = 3"
+          @mouseleave="hovering = 0" 
+          nameIcon="#pulsar" 
+        >
           <template v-slot:right>
             <ContentSign :contentRight="false" title="Pulsar" />
           </template>
         </Sign>
       </div>
       <div class="Use__ellipse">
-        <BaseIcon class="Use__pulsar" href="#pulsar" />
-        <BaseIcon class="Use__waveForm" href="#waveForm" />
-        <BaseIcon class="Use__hydrogen" href="#hydrogen" />
-        <BaseIcon class="Use__frames" href="#frames" />
-        <BaseIcon class="Use__elevation" href="#elevation" />
-        <BaseIcon class="Use__record" href="#record" />
+        <BaseIcon :class="{'hovering': hovering === 3}" class="Use__pulsar" href="#pulsar" />
+        <BaseIcon :class="{'hovering': hovering === 4}" class="Use__waveForm" href="#waveForm" />
+        <BaseIcon :class="{'hovering': hovering === 6}" class="Use__hydrogen" href="#hydrogen" />
+        <BaseIcon :class="{'hovering': hovering === 5}" class="Use__frames" href="#frames" />
+        <BaseIcon :class="{'hovering': hovering === 2}" class="Use__elevation" href="#elevation" />
+        <BaseIcon :class="{'hovering': hovering === 1}" class="Use__record" href="#record" />
       </div>
       <div class="Use__content">
-        <Sign nameIcon="#waveForm">
+        <Sign
+          @mouseover="hovering = 4"
+          @mouseleave="hovering = 0" 
+          nameIcon="#waveForm"
+        >
           <template v-slot:left>
             <ContentSign :contentRight="true" title="The waves" />
           </template>
         </Sign>
-        <Sign nameIcon="#frames">
+        <Sign 
+          @mouseover="hovering = 5"
+          @mouseleave="hovering = 0" 
+          nameIcon="#frames"
+        >
           <template v-slot:left>
             <ContentSign :contentRight="true" title="Show the image" />
           </template>
         </Sign>
-        <Sign nameIcon="#hydrogen">
+        <Sign
+          @mouseover="hovering = 6"
+          @mouseleave="hovering = 0" 
+          nameIcon="#hydrogen"
+        >
           <template v-slot:left>
             <ContentSign :contentRight="true" title="Hydrogen atoms" />
           </template>
@@ -59,13 +90,16 @@ import ContentSign from "@/components/ContentSign.vue";
 import Title from "@/components/Title.vue";
 
 export default {
-  name: "UseIt",
+  name: 'UseIt',
+  data:() => ({
+    hovering: 0,
+  }),
   components: {
     BaseIcon,
     Title,
     Sign,
     ContentSign
-  }
+  },
 };
 </script>
 
@@ -95,6 +129,12 @@ export default {
     height: 20%;
   }
 
+
+  &__text{
+    &:hover{
+    filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.8));
+    }
+  }
   &__container {
     display: flex;
     align-items: center;
@@ -185,5 +225,12 @@ export default {
       filter: drop-shadow(12px 12px 6px rgba(0, 0, 0, 1));
     }
   }
+
+  .hovering{
+    stroke: white;
+    filter: drop-shadow(0px 6px 2px rgba($primary-darkblue, 0.7));
+  }
+
+
 }
 </style>
