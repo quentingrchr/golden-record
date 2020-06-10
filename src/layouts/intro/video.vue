@@ -9,16 +9,18 @@
       <div class="pulsar">
         <img class="pulsar" src="@/assets/video/pulsar.svg" alt />
       </div>
-      <div class="next" @click="videoEnd">
-        <svg
-          width="12"
-          height="38"
-          viewBox="0 0 28 51"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M1 50L26 25.5L1 1" stroke="#E5E5E5" stroke-width="2" />
-        </svg>
+      <div class="next">
+        <router-link to="/golden-record">
+          <svg
+            width="12"
+            height="38"
+            viewBox="0 0 28 51"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M1 50L26 25.5L1 1" stroke="#E5E5E5" stroke-width="2" />
+          </svg>
+        </router-link>
       </div>
     </div>
   </div>
@@ -26,13 +28,7 @@
 
 <script>
 export default {
-  name: "App",
-  methods: {
-    videoEnd() {
-      let video = document.querySelector(".video");
-      video.pause();
-    }
-  }
+  name: "App"
 };
 </script>
 
@@ -76,13 +72,13 @@ export default {
   top: 0;
   left: 0;
   display: block;
-  padding: 0;
-  object-fit: cover;
+
+  object-fit: fill;
 }
 
 @media (min-aspect-ratio: 16/9) {
   .fullscreen-bg__video {
-    height: 100vh;
+    height: 95vh;
     width: 100vw;
   }
 }
@@ -98,7 +94,7 @@ export default {
   position: fixed;
   bottom: 0;
   left: 0;
-  height: 10vh;
+  height: 20vh;
   width: 100%;
   font-size: 30px;
   display: flex;
