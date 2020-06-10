@@ -6,6 +6,7 @@ import WebDoc from "@/views/WebDoc.vue";
 import Quentin from "@/views/temp/Quentin.vue";
 import Reda from "@/views/temp/Reda.vue";
 import Use from "@/views/temp/Use.vue";
+import Quentint from "@/views/temp/Quentint.vue";
 
 Vue.use(VueRouter);
 
@@ -18,7 +19,9 @@ const routes = [
     path: "/use",
     name: "Use",
     component: Use,
-  }
+  },
+  { path: "/quentint", name: "Quentint", component: Quentint },
+
 ];
 
 const router = new VueRouter({
