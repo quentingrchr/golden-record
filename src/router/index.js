@@ -7,6 +7,7 @@ import Quentin from "@/views/temp/Quentin.vue";
 import Reda from "@/views/temp/Reda.vue";
 import Use from "@/views/temp/Use.vue";
 import Quentint from "@/views/temp/Quentint.vue";
+import Toto from "@/views/temp/Toto.vue";
 
 Vue.use(VueRouter);
 
@@ -21,7 +22,7 @@ const routes = [
     component: Use,
   },
   { path: "/quentint", name: "Quentint", component: Quentint },
-
+  { path: "/toto", name: "Toto", component: Toto },
 ];
 
 const router = new VueRouter({
