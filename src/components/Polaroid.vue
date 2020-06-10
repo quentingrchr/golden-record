@@ -78,7 +78,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 16px;
-  background-color: $color-white;
+  background-color: $primary-white;
   border-radius: 4px;
   max-height: 280px;
 
