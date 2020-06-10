@@ -2,82 +2,90 @@
   <section class="visualContent">
     <Title class="visualContent__title" text="Visual content" />
     <div class="visualContent__images" :class="moveDirection" :style="position">
-      <div
-        v-for="(image, index) in imgs"
-        :key="index"
-        @click="isSelected(image)"
-      >
+      <div v-for="(image, index) in imgs" :key="index" @click="isSelected(image)">
         <img :src="image" alt="One of the golden record pictures" />
       </div>
     </div>
-    <div class="overlay" v-if="selectedImage" @click="closeOverlay">
-      <img :src="selectedImage" alt="One of the golden record pictures" />
+    <div class="visualContent__overlays">
+      <transition name="fade">
+        <div class="overlay" v-if="selectedImage" @click="closeOverlay">
+          <img :src="selectedImage" alt="One of the golden record pictures" />
+        </div>
+      </transition>
+      <div class="borderEffect top"></div>
+      <div
+        class="borderEffect topOverlay"
+        @mouseenter="setDirection('down')"
+        @mouseleave="cancelDirection"
+        @click="closeOverlay"
+      ></div>
+      <div
+        class="borderEffect bottom"
+        @mouseenter="setDirection('up')"
+        @mouseleave="cancelDirection"
+        @click="closeOverlay"
+      ></div>
+      <div
+        class="borderEffect left"
+        @mouseenter="setDirection('right')"
+        @mouseleave="cancelDirection"
+        @click="closeOverlay"
+      ></div>
+      <div
+        class="borderEffect right"
+        @mouseenter="setDirection('left')"
+        @mouseleave="cancelDirection"
+        @click="closeOverlay"
+      ></div>
     </div>
-    <div class="borderEffect top"></div>
-    <div
-      class="borderEffect topOverlay"
-      @mouseenter="setDirection('down')"
-      @mouseleave="cancelDirection"
-    ></div>
-    <div
-      class="borderEffect bottom"
-      @mouseenter="setDirection('up')"
-      @mouseleave="cancelDirection"
-    ></div>
-    <div
-      class="borderEffect left"
-      @mouseenter="setDirection('right')"
-      @mouseleave="cancelDirection"
-    ></div>
-    <div
-      class="borderEffect right"
-      @mouseenter="setDirection('left')"
-      @mouseleave="cancelDirection"
-    ></div>
   </section>
 </template>
 
 <script>
 //SRCs will be imported bu fetch
-import json from '@/picturesLink.json';
+import json from "@/picturesLink.json";
 
-import Title from '@/components/Title.vue';
+import Title from "@/components/Title.vue";
 export default {
   data() {
     return {
       imgs: json.src,
       moveDirection: null,
       position: {
-        top: '-10%',
-        left: '-10%',
+
+        top: '-20%',
+        left: '-20%',
+
       },
-      selectedImage: null,
+      selectedImage: null
     };
   },
   components: {
-    Title,
+    Title
   },
   methods: {
     setDirection(value) {
       //console.log(window.innerHeight - imgContainer.offsetHeight);
       const imgContainer = document.querySelector('.visualContent__images');
       if (value === 'down') {
-        this.position.top = '10px';
+        this.position.top = '100px';
       } else if (value === 'right') {
-        this.position.left = '70px';
+        this.position.left = '170px';
       } else if (value === 'left') {
         this.position.left =
-          (window.innerWidth - imgContainer.offsetWidth - 10).toString() + 'px';
+          (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
+          'px';
       } else if (value === 'up') {
         this.position.top =
-          (window.innerHeight - imgContainer.offsetHeight - 10).toString() +
+          (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
           'px';
+
       }
     },
     cancelDirection() {
-      const imgContainer = document.querySelector('.visualContent__images');
-      const top = imgContainer.offsetTop + 'px';
-      const left = imgContainer.offsetLeft + 'px';
+      const imgContainer = document.querySelector(".visualContent__images");
+      const top = imgContainer.offsetTop + "px";
+      const left = imgContainer.offsetLeft + "px";
       this.position.top = top;
       this.position.left = left;
     },
@@ -86,8 +94,8 @@ export default {
     },
     closeOverlay() {
       this.selectedImage = null;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -110,8 +118,8 @@ section {
 
 .visualContent__images {
   position: absolute;
-  width: 120%;
-  height: 150%;
+  width: 220%;
+  height: 250%;
   display: grid;
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: repeat(11, 1fr);
@@ -148,6 +156,7 @@ section {
   & img {
     width: 50%;
     max-width: 400px;
+    max-height: 70%;
     z-index: 3;
   }
 }
@@ -196,5 +205,13 @@ section {
     background: linear-gradient(to left, black, transparent);
     cursor: e-resize;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
