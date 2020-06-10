@@ -36,6 +36,7 @@ h2::after {
   width: 150%;
   height: 5px;
   background-color: $primary-white;
+  border-radius: 10px;
   position: absolute;
   top: 45px;
   left: 0px;
