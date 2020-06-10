@@ -25,6 +25,7 @@ import Team from "@/layouts/desktop/Team.vue";
 import TheJourney from "@/layouts/desktop/TheJourney.vue";
 import Icon from "@/components/Icons.vue";
 
+
 export default {
   components: {
     NavBar,
