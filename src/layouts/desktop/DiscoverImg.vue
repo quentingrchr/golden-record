@@ -2,11 +2,7 @@
   <section class="visualContent">
     <Title class="visualContent__title" text="Visual content" />
     <div class="visualContent__images" :class="moveDirection" :style="position">
-      <div
-        v-for="(image, index) in imgs"
-        :key="index"
-        @click="isSelected(image)"
-      >
+      <div v-for="(image, index) in imgs" :key="index" @click="isSelected(image)">
         <img :src="image" alt="One of the golden record pictures" />
       </div>
     </div>
@@ -19,11 +15,7 @@
       @mouseenter="setDirection('down')"
       @mouseleave="cancelDirection"
     ></div>
-    <div
-      class="borderEffect bottom"
-      @mouseenter="setDirection('up')"
-      @mouseleave="cancelDirection"
-    ></div>
+    <div class="borderEffect bottom" @mouseenter="setDirection('up')" @mouseleave="cancelDirection"></div>
     <div
       class="borderEffect left"
       @mouseenter="setDirection('right')"
@@ -39,45 +31,45 @@
 
 <script>
 //SRCs will be imported bu fetch
-import json from '@/picturesLink.json';
+import json from "@/picturesLink.json";
 
-import Title from '@/components/Title.vue';
+import Title from "@/components/Title.vue";
 export default {
   data() {
     return {
       imgs: json.src,
       moveDirection: null,
       position: {
-        top: '-10%',
-        left: '-10%',
+        top: "-10%",
+        left: "-10%"
       },
-      selectedImage: null,
+      selectedImage: null
     };
   },
   components: {
-    Title,
+    Title
   },
   methods: {
     setDirection(value) {
       //console.log(window.innerHeight - imgContainer.offsetHeight);
-      const imgContainer = document.querySelector('.visualContent__images');
-      if (value === 'down') {
-        this.position.top = '10px';
-      } else if (value === 'right') {
-        this.position.left = '70px';
-      } else if (value === 'left') {
+      const imgContainer = document.querySelector(".visualContent__images");
+      if (value === "down") {
+        this.position.top = "10px";
+      } else if (value === "right") {
+        this.position.left = "70px";
+      } else if (value === "left") {
         this.position.left =
-          (window.innerWidth - imgContainer.offsetWidth - 10).toString() + 'px';
-      } else if (value === 'up') {
+          (window.innerWidth - imgContainer.offsetWidth - 10).toString() + "px";
+      } else if (value === "up") {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 10).toString() +
-          'px';
+          "px";
       }
     },
     cancelDirection() {
-      const imgContainer = document.querySelector('.visualContent__images');
-      const top = imgContainer.offsetTop + 'px';
-      const left = imgContainer.offsetLeft + 'px';
+      const imgContainer = document.querySelector(".visualContent__images");
+      const top = imgContainer.offsetTop + "px";
+      const left = imgContainer.offsetLeft + "px";
       this.position.top = top;
       this.position.left = left;
     },
@@ -86,8 +78,8 @@ export default {
     },
     closeOverlay() {
       this.selectedImage = null;
-    },
-  },
+    }
+  }
 };
 </script>
 
