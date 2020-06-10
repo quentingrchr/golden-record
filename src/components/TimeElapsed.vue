@@ -13,7 +13,7 @@
 import Counter from "./Counter.vue";
 export default {
   name: "TimeElapsed",
-  components: { Counter },
+  components: { Counter }
 };
 </script>
 

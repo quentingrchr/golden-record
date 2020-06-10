@@ -17,7 +17,7 @@
 export default {
   name: "Counter",
   props: {
-    title: String,
+    title: String
   },
   mounted() {
     this.startCounter();
@@ -30,8 +30,8 @@ export default {
         days: 25,
         hours: 12,
         mins: 35,
-        secs: 56,
-      },
+        secs: 56
+      }
     };
   },
 
@@ -100,8 +100,8 @@ export default {
       } else {
         return value;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -111,14 +111,18 @@ div {
   padding: 8px 32px;
   position: relative;
   font-size: 16px;
+  p {
+    font-weight: 700;
+  }
 
   @media (max-width: 580px) {
     padding: 8px 16px;
   }
 
   span {
+    color: $secondary-blue;
     margin-left: 40px;
-    color: $primary-white;
+    margin: auto 8px;
     @media (max-width: 500px) {
       margin-left: 20px;
     }
@@ -129,7 +133,8 @@ div {
 
     em {
       font-size: 1.2em;
-      color: $secondary-blue;
+
+      color: $primary-darkblue;
     }
   }
 }
