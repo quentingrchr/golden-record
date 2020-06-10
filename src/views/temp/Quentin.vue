@@ -1,12 +1,14 @@
 <template>
-  <Team />
+  <section>
+    <NextCtaMobile />
+  </section>
 </template>
 
 <script>
-import Team from "../../layouts/desktop/Team";
+import NextCtaMobile from "../../components/NextCtaMobile";
 export default {
   name: "Quentin",
-  components: { Team },
+  components: { NextCtaMobile },
   props: {},
   data: () => {
     return {};
@@ -14,8 +16,6 @@ export default {
   methods: {},
 };
 </script>
-
-<style></style>
 
 <style lang="scss" scoped>
 section {

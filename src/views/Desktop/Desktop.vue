@@ -12,18 +12,18 @@
       :scroll="scrollSpeed"
       @jumpToOtherChapter="changeChapter"
     />
-    <Icon/>
+    <Icon />
   </main>
 </template>
 
 <script>
-import NavBar from '@/components/NavBar__Desktop.vue';
-import DiscoverImg from '@/layouts/desktop/DiscoverImg.vue';
-import DiscoverSound from '@/layouts/desktop/DiscoverSound.vue';
-import HowToUseIt from '@/layouts/desktop/HowToUseIt.vue';
-import Team from '@/layouts/desktop/Team.vue';
-import TheJourney from '@/layouts/desktop/TheJourney.vue';
-import Icon from '@/components/Icons.vue'
+import NavBar from "@/components/NavBar__Desktop.vue";
+import DiscoverImg from "@/layouts/desktop/DiscoverImg.vue";
+import DiscoverSound from "@/layouts/desktop/DiscoverSound.vue";
+import HowToUseIt from "@/layouts/desktop/HowToUseIt.vue";
+import Team from "@/layouts/desktop/Team.vue";
+import TheJourney from "@/layouts/desktop/TheJourney.vue";
+import Icon from "@/components/Icons.vue";
 
 export default {
   components: {
@@ -33,7 +33,7 @@ export default {
     HowToUseIt,
     Team,
     TheJourney,
-    Icon
+    Icon,
   },
   data() {
     return {
