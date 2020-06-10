@@ -4,13 +4,13 @@
       <Title class="title" text="How to use it ?" />
       <Icons />
     </header>
-    <div class="disc">
+    <div class="disc" :class="step">
       <BaseIcon class="disc__logo disc__record" href="record" />
       <BaseIcon class="disc__logo disc__elevation" href="elevation" />
       <BaseIcon class="disc__logo disc__pulsar" href="pulsar" />
       <BaseIcon class="disc__logo disc__hydrogen" href="hydrogen" />
-      <BaseIcon class="disc__logo disc__waveForm" href="waveForm" />
       <BaseIcon class="disc__logo disc__frames" href="frames" />
+      <BaseIcon class="disc__logo disc__waveForm" href="waveForm" />
     </div>
     <section class="useIt__explications">
       <article>
@@ -61,21 +61,21 @@
         </p>
       </article>
       <article>
-        <BaseIcon class="article__logo article__waveForm" href="waveForm" />
-        <h3>The Waves</h3>
-        <p>
-          This symbol shows when the waveform data should be broken down. Accompanied by a binary number : 11,845,632, if we multiply this binary number with our key figure : 0.7 nanoseconds, this gives us 0.008 seconds.
-          <br />
-          <br />This means that each section takes 0.008 seconds to play.
-        </p>
-      </article>
-      <article>
         <BaseIcon class="article__logo article__frames" href="frames" />
         <h3>The Images</h3>
         <p>
           This symbol follows the wave symbol. It is accompanied by a binary number: 512.
           <br />
           <br />It should be understood that each section of data completes one of the 512 scan lines which form a complete image.
+        </p>
+      </article>
+      <article>
+        <BaseIcon class="article__logo article__waveForm" href="waveForm" />
+        <h3>The Waves</h3>
+        <p>
+          This symbol shows when the waveform data should be broken down. Accompanied by a binary number : 11,845,632, if we multiply this binary number with our key figure : 0.7 nanoseconds, this gives us 0.008 seconds.
+          <br />
+          <br />This means that each section takes 0.008 seconds to play.
         </p>
       </article>
     </section>
@@ -89,7 +89,31 @@ import Icons from "../components/Icons";
 export default {
   components: { Title, BaseIcon, Icons },
   data: () => {
-    return {};
+    return {
+      step: "step0"
+    };
+  },
+  methods: {
+    isScrolling() {
+      let isScrollingDown = window.scrollY > this.prevScrollY;
+      let scrollPosition = window.innerHeight + window.scrollY;
+
+      document.querySelectorAll("article").forEach((e, i) => {
+        let initPos = e.offsetTop;
+        if (scrollPosition > e.offsetTop + 150) {
+          scrollPosition > e.offsetTop + 150 && e.offsetTop > window.scrollY;
+          this.step = `step${i.toString()}`;
+        }
+      });
+      console.log(this.step);
+      this.prevScrollY = window.scrollY;
+    }
+  },
+  created() {
+    document.addEventListener("scroll", this.isScrolling);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.isScrolling);
   }
 };
 </script>
@@ -121,7 +145,7 @@ export default {
   width: 220px;
   height: 220px;
   border-radius: 100000px;
-  transform: rotate(-35deg);
+  transition: transform 1s;
   background: linear-gradient(
     45deg,
     rgba(166, 122, 59, 1) 0%,
@@ -135,7 +159,6 @@ export default {
     stroke: $primary-darkblue;
   }
   &__record {
-    stroke: white;
     width: 60px;
     bottom: 80px;
     left: 25px;
@@ -155,15 +178,57 @@ export default {
     bottom: -40px;
     right: 55px;
   }
+  &__frames {
+    width: 30px;
+    bottom: 30px;
+    right: 60px;
+  }
   &__waveForm {
     width: 80px;
     top: -15px;
     right: 35px;
   }
-  &__frames {
-    width: 30px;
-    bottom: 30px;
-    right: 60px;
+}
+
+.step0 {
+  transform: rotate(-35deg);
+  .disc__record {
+    stroke: $primary-white;
+  }
+}
+
+.step1 {
+  transform: rotate(0deg);
+  .disc__elevation {
+    stroke: $primary-white;
+  }
+}
+
+.step2 {
+  transform: rotate(45deg);
+  .disc__pulsar {
+    stroke: $primary-white;
+  }
+}
+
+.step3 {
+  transform: rotate(130deg);
+  .disc__hydrogen {
+    stroke: $primary-white;
+  }
+}
+
+.step4 {
+  transform: rotate(180deg);
+  .disc__frames {
+    stroke: $primary-white;
+  }
+}
+
+.step5 {
+  transform: rotate(220deg);
+  .disc__waveForm {
+    stroke: $primary-white;
   }
 }
 
