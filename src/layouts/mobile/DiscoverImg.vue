@@ -147,16 +147,4 @@ export default {
     max-height: 100%;
   }
 }
-
-@keyframes odd {
-  to {
-    transform: translateX(25%);
-  }
-}
-
-@keyframes even {
-  to {
-    transform: translateX(-25%);
-  }
-}
 </style>
