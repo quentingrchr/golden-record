@@ -10,7 +10,11 @@
         :class="isInOddRow(index)"
         :ref="`row${isInOddRow(index)}`"
       >
-        <img :src="image" alt="one of golden pictures content" />
+        <img
+          :src="image"
+          alt="one of golden pictures content"
+          :ref="`image${isInOddRow(index)}`"
+        />
       </div>
     </div>
   </section>
@@ -75,7 +79,7 @@ export default {
         let initPos = el.offsetLeft;
         if (
           scrollPosition > el.parentNode.offsetTop + 100 &&
-          el.parentNode.offsetTop > window.scrollY - 60
+          el.parentNode.offsetTop > window.scrollY - 40
         ) {
           if (isScrollingDown) {
             el.style.left = (initPos + 1).toString() + 'px';
@@ -90,7 +94,7 @@ export default {
         let initPos = el.offsetLeft;
         if (
           scrollPosition > el.parentNode.offsetTop + 100 &&
-          el.parentNode.offsetTop > window.scrollY - 60
+          el.parentNode.offsetTop > window.scrollY - 40
         ) {
           if (isScrollingDown) {
             el.style.left = (initPos - 1).toString() + 'px';
