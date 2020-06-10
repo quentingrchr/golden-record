@@ -1,23 +1,25 @@
 <template>
   <div class="Use">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
     <header class="Use__mainTitle">
-      <Title text="How To Use It"/>
+      <Title text="How To Use It" />
     </header>
     <div class="Use__container">
       <div class="Use__content">
         <Sign nameIcon="#record">
           <template v-slot:right>
-              <ContentSign :contentRight="false" title="Radial circle"/>
+            <ContentSign :contentRight="false" title="Radial circle" />
           </template>
         </Sign>
         <Sign nameIcon="#elevation">
           <template v-slot:right>
-              <ContentSign :contentRight="false" title="Side view of disc"/>
+            <ContentSign :contentRight="false" title="Side view of disc" />
           </template>
         </Sign>
         <Sign nameIcon="#pulsar">
           <template v-slot:right>
-              <ContentSign :contentRight="false" title="Pulsar"/>
+            <ContentSign :contentRight="false" title="Pulsar" />
           </template>
         </Sign>
       </div>
@@ -32,17 +34,17 @@
       <div class="Use__content">
         <Sign nameIcon="#waveForm">
           <template v-slot:left>
-              <ContentSign :contentRight="true" title="The waves"/>
+            <ContentSign :contentRight="true" title="The waves" />
           </template>
         </Sign>
         <Sign nameIcon="#frames">
           <template v-slot:left>
-              <ContentSign :contentRight="true" title="Show the image"/>
+            <ContentSign :contentRight="true" title="Show the image" />
           </template>
         </Sign>
         <Sign nameIcon="#hydrogen">
           <template v-slot:left>
-              <ContentSign :contentRight="true" title="Hydrogen atoms"/>
+            <ContentSign :contentRight="true" title="Hydrogen atoms" />
           </template>
         </Sign>
       </div>
@@ -51,24 +53,29 @@
 </template>
 
 <script>
-
-import BaseIcon from '@/components/BaseIcon.vue';
-import Sign from '@/components/Sign.vue';
-import ContentSign from '@/components/ContentSign.vue';
-import Title from '@/components/Title.vue';
+import BaseIcon from "@/components/BaseIcon.vue";
+import Sign from "@/components/Sign.vue";
+import ContentSign from "@/components/ContentSign.vue";
+import Title from "@/components/Title.vue";
 
 export default {
-  name: 'UseIt',
+  name: "UseIt",
   components: {
     BaseIcon,
     Title,
     Sign,
     ContentSign
-  },
+  }
 };
 </script>
 
 <style lang="scss">
+.stars {
+  z-index: 0;
+}
+.twinkling {
+  z-index: 0;
+}
 .Use {
   display: flex;
   flex-direction: column;
@@ -78,7 +85,7 @@ export default {
   background-color: $primary-darkblue;
   // border: 1px solid red;
 
-  &__mainTitle{
+  &__mainTitle {
     display: flex;
     align-items: flex-start;
     // border: 1px solid blue;
@@ -88,7 +95,7 @@ export default {
     height: 20%;
   }
 
-  &__container{
+  &__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
