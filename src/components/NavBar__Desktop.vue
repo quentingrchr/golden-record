@@ -69,7 +69,7 @@ export default {
       this.isMute = !this.isMute;
     },
     jumpToOtherChapter(value) {
-      this.$emit('jumpToOtherChapter', value);
+      this.$emit("jumpToOtherChapter", value);
     },
   },
   props: {
@@ -172,7 +172,7 @@ export default {
 }
 
 .navBar__earthLogo {
-  z-index: 2;
+  z-index: 700;
   position: fixed;
   top: 15px;
   left: 15px;
@@ -205,7 +205,7 @@ export default {
   }
 
   &.isMute::after {
-    content: '';
+    content: "";
     position: absolute;
     display: block;
     width: 30px;
