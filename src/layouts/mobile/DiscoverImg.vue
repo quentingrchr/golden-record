@@ -30,6 +30,9 @@ export default {
   created() {
     document.addEventListener('scroll', this.isScrolling);
   },
+  destroyed() {
+    window.removeEventListener('scroll', this.isScrolling);
+  },
   computed: {
     dispachByRow() {
       const odd = [];
@@ -66,22 +69,32 @@ export default {
 
       document.querySelectorAll('.odd img').forEach((el) => {
         let initPos = el.offsetLeft;
-        if (scrollPosition > el.parentNode.offsetTop + 150) {
+        if (
+          scrollPosition > el.parentNode.offsetTop + 100 &&
+          el.parentNode.offsetTop > window.scrollY - 60
+        ) {
           if (isScrollingDown) {
             el.style.left = (initPos + 1).toString() + 'px';
           } else {
             el.style.left = (initPos - 1).toString() + 'px';
           }
+        } else {
+          el.style.left = '0px';
         }
       });
       document.querySelectorAll('.even img').forEach((el) => {
         let initPos = el.offsetLeft;
-        if (scrollPosition > el.parentNode.offsetTop + 150) {
+        if (
+          scrollPosition > el.parentNode.offsetTop + 100 &&
+          el.parentNode.offsetTop > window.scrollY - 60
+        ) {
           if (isScrollingDown) {
             el.style.left = (initPos - 1).toString() + 'px';
           } else {
             el.style.left = (initPos + 1).toString() + 'px';
           }
+        } else {
+          el.style.left = '0px';
         }
       });
       this.prevScrollY = window.scrollY;
