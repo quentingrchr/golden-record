@@ -67,6 +67,7 @@
 </template>
 
 <script>
+
 import BaseIcon from '@/components/BaseIcon.vue';
 
 export default {
