@@ -47,7 +47,7 @@ export default {
     },
     jumpToOtherChapter(value) {
       this.$emit("jumpToOtherChapter", value);
-    }
+    },
   },
   props: {
     page: {
@@ -149,7 +149,7 @@ export default {
 }
 
 .navBar__earthLogo {
-  z-index: 2;
+  z-index: 700;
   position: fixed;
   top: 15px;
   left: 15px;
