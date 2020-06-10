@@ -3,12 +3,12 @@
     <svg style="position: absolute; width: 0; height: 0; overflow: hidden">
       <defs>
         <symbol id="previous" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="16" transform="rotate(180 16 16)" fill="#F8F8F8" />
+          <circle cx="16" cy="16" r="16" transform="rotate(180 16 16)" fill="#14131C" />
           <path
             fill-rule="evenodd"
             clip-rule="evenodd"
             d="M21.8997 12.0717L17.5 15.374L17.5 12.8715C17.5 12.0473 16.5589 11.577 15.8997 12.0717L11.0656 15.7C11.0428 15.7171 11.0209 15.735 11 15.7536L11 11.9998L9 11.9998L9 20.9998L11 20.9998L11 17.246C11.0209 17.2646 11.0428 17.2824 11.0656 17.2996L15.8997 20.9279C16.5589 21.4226 17.5 20.9523 17.5 20.1281L17.5 17.6256L21.8997 20.9279C22.5589 21.4226 23.5 20.9523 23.5 20.1281L23.5 12.8715C23.5 12.0473 22.5589 11.577 21.8997 12.0717Z"
-            fill="#14131C"
+            fill="#F8F8F8"
           />
         </symbol>
         <symbol id="play" viewBox="0 0 32 32" fill="none">
@@ -19,12 +19,12 @@
           />
         </symbol>
         <symbol id="next" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="16" transform="rotate(180 16 16)" fill="#F8F8F8" />
+          <circle cx="16" cy="16" r="16" transform="rotate(180 16 16)" fill="#14131C" />
           <path
             fill-rule="evenodd"
             clip-rule="evenodd"
             d="M10.1003 19.9283L14.5 16.626V19.1285C14.5 19.9527 15.4411 20.423 16.1003 19.9283L20.9344 16.3C20.9572 16.2829 20.9791 16.265 21 16.2464V20.0002H23V11.0002H21V14.754C20.9791 14.7354 20.9572 14.7176 20.9344 14.7004L16.1003 11.0721C15.4411 10.5774 14.5 11.0477 14.5 11.8719V14.3744L10.1003 11.0721C9.44109 10.5774 8.5 11.0477 8.5 11.8719V19.1285C8.5 19.9527 9.44109 20.423 10.1003 19.9283Z"
-            fill="#14131C"
+            fill="#F8F8F8"
           />
         </symbol>
         <symbol id="soundon" viewBox="0 0 16 16" fill="none">
@@ -46,6 +46,17 @@
             stroke="#14131C"
           />
         </symbol>
+        <symbol id="pause" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="16" fill="#F8F8F8" />
+          <path
+            d="M14.2906 21.05C14.2906 22.1269 13.4175 23 12.3406 23C11.2637 23 10.3906 22.1269 10.3906 21.05V10.95C10.3906 9.87311 11.2637 9 12.3406 9C13.4175 9 14.2906 9.87311 14.2906 10.95V21.05Z"
+            fill="#14131C"
+          />
+          <path
+            d="M21.609 21.05C21.609 22.1269 20.7359 23 19.659 23C18.5821 23 17.709 22.1269 17.709 21.05V10.95C17.7093 9.87311 18.5824 9 19.659 9C20.7359 9 21.609 9.87311 21.609 10.95V21.05Z"
+            fill="#14131C"
+          />
+        </symbol>
       </defs>
     </svg>
 
@@ -57,7 +68,10 @@
         <svg>
           <use href="#previous" />
         </svg>
-        <svg>
+        <svg @click="togglePlay" v-if="isPlaying">
+          <use href="#pause" />
+        </svg>
+        <svg @click="togglePlay" v-else>
           <use href="#play" />
         </svg>
         <svg>
@@ -65,10 +79,13 @@
         </svg>
       </div>
       <div class="player__soundSettings">
-        <svg>
+        <svg @click="toggleMute" v-if="isMuted">
+          <use href="#soundoff" />
+        </svg>
+        <svg @click="toggleMute" v-else>
           <use href="#soundon" />
         </svg>
-        <input class="player__soundSlider" type="range" min="0" max="100" />
+        <input v-model="volume" class="player__soundSlider" type="range" min="0" max="100" />
       </div>
     </div>
   </div>
@@ -76,7 +93,24 @@
 
 <script>
 export default {
-  name: "AudioPlayer"
+  name: "AudioPlayer",
+  data() {
+    return {
+      volume: 0,
+      isPlaying: false,
+      isMuted: false
+    };
+  },
+  methods: {
+    togglePlay() {
+      this.isPlaying = !this.isPlaying;
+      console.log(this.volume);
+    },
+
+    toggleMute() {
+      this.isMuted = !this.isMuted;
+    }
+  }
 };
 </script>
 
@@ -84,6 +118,15 @@ export default {
 svg,
 input {
   cursor: pointer;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(105%);
+  }
 }
 
 .player {
@@ -94,8 +137,15 @@ input {
   align-items: center;
 }
 
+.player__titleContainer {
+  overflow-x: hidden;
+  width: 60%;
+  padding-bottom: 4px;
+}
+
 .player__title {
-  margin-bottom: 8px;
+  color: $primary-white;
+  animation: 10s linear 1s infinite running slide;
 }
 
 .player__controller {
@@ -106,7 +156,7 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $secondary-grey-blue;
+  background-color: #b68d01;
 }
 
 .player__mainSettings {
@@ -133,8 +183,8 @@ input {
 }
 
 .player__soundSettings input {
-  -webkit-appearance: none; /*nécessaire pour Chrome */
-  -moz-appearance: none;
+  -webkit-appearance: none; /* reset default style for chrome */
+  -moz-appearance: none; /* reset default style for mozz */
   width: 92px;
   outline: none;
   background-color: transparent;
@@ -159,7 +209,7 @@ input {
 
 /* cursor for chrome*/
 .player__soundSettings input::-webkit-slider-thumb {
-  -webkit-appearance: none; /* également nécessaire sur le curseur */
+  -webkit-appearance: none;
   width: 8px;
   height: 8px;
   border: 1px solid $primary-darkblue;
@@ -179,23 +229,5 @@ input {
   padding: 4px;
   background: $primary-darkblue;
   margin-top: -3px;
-}
-
-@keyframes slidein {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(105%);
-  }
-}
-
-p {
-  animation: 10s linear 1s infinite running slidein;
-}
-
-.player__titleContainer {
-  overflow-x: hidden;
-  width: 60%;
 }
 </style>

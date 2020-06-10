@@ -1,6 +1,11 @@
 <template>
   <div>
     <Title :text="title" />
+    <img
+      :class="isPlaying ? 'isRotate' : ''"
+      src="../../assets/img/song_of_earth.png"
+      alt="disc song of earth"
+    />
     <AudioPlayer />
     <div class="categoryContainer">
       <AudioCategory
@@ -50,5 +55,18 @@ export default {
 <style lang="scss" scoped>
 .categoryContainer {
   display: flex;
+}
+
+@keyframes rotate {
+  from {
+    tranform: rotate(0deg);
+  }
+  to {
+    tranform: rotate(180deg);
+  }
+}
+
+.isRotate {
+  animation: 3.6s linear infinite running slide;
 }
 </style>

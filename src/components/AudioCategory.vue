@@ -35,7 +35,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  color: $primary-darkblue;
+  color: $primary-white;
 }
 
 svg {
