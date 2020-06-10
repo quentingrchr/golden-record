@@ -194,6 +194,7 @@ export default {
   transform: rotate(-35deg);
   .disc__record {
     stroke: $primary-white;
+    filter: drop-shadow(0px 4px 2px rgba($primary-darkblue, 0.8));
   }
 }
 
@@ -201,6 +202,7 @@ export default {
   transform: rotate(0deg);
   .disc__elevation {
     stroke: $primary-white;
+    filter: drop-shadow(0px 4px 2px rgba($primary-darkblue, 0.8));
   }
 }
 
@@ -208,6 +210,7 @@ export default {
   transform: rotate(45deg);
   .disc__pulsar {
     stroke: $primary-white;
+    filter: drop-shadow(0px 4px 2px rgba($primary-darkblue, 0.8));
   }
 }
 
@@ -215,6 +218,7 @@ export default {
   transform: rotate(130deg);
   .disc__hydrogen {
     stroke: $primary-white;
+    filter: drop-shadow(0px 3px 1px rgba($primary-darkblue, 0.8));
   }
 }
 
@@ -222,6 +226,7 @@ export default {
   transform: rotate(180deg);
   .disc__frames {
     stroke: $primary-white;
+    filter: drop-shadow(0px 4px 2px rgba($primary-darkblue, 0.8));
   }
 }
 
@@ -229,6 +234,7 @@ export default {
   transform: rotate(220deg);
   .disc__waveForm {
     stroke: $primary-white;
+    filter: drop-shadow(0px 4px 2px rgba($primary-darkblue, 0.8));
   }
 }
 
