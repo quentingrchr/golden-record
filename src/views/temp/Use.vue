@@ -12,7 +12,7 @@ import Icon from '@/components/Icons.vue'
 export default {
     components:{
     HowToUseIt,
-    Icon
+    Icon,
   }
 }
 </script>
