@@ -116,18 +116,12 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue'
+import NavBar from '@/components/NavBar__Desktop.vue'
 import BaseIcon from '@/components/BaseIcon.vue'
 
 
 export default {
   name: 'UseIt',
-  props:{
-    symbol:{
-      type: Number,
-      required: true,
-    }
-  },
   data:() => ({
     hovering: false,
   }),
