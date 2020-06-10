@@ -1,8 +1,13 @@
 <template>
   <div id="app">
     <div class="fullscreen-bg">
-      <video autoplay muted loop class="fullscreen-bg__video video">
-        <source src="@/assets/video/video.mp4" type="video/mp4" />
+      <video autoplay loop class="fullscreen-bg__video video" id="video">
+        <source src="@/assets/video/video.mp4" type="video/mp4" />Sorry, your browser doesn't support embedded videos,
+        but don't worry, you can
+        <a
+          href="@/assets/video/video.mp4"
+        >download it</a>
+        and watch it with your favorite video player!
       </video>
     </div>
     <div class="video-bottom">
