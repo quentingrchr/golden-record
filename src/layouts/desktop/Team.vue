@@ -25,9 +25,13 @@
         :vidUrl="img.vidUrl"
         :isFocused="index === indexFocused"
       />
-      <p class="polaroids__description" :class="focusMode ? 'visible' : ''">
-        {{ focusMode ? imgs[indexFocused].description : "" }}
-      </p>
+      <div class="polaroids__text">
+        <h3 class="polaroids__title">{{ focusMode ? imgs[indexFocused].title : "" }}</h3>
+        <p
+          class="polaroids__description"
+          :class="focusMode ? 'visible' : ''"
+        >{{ focusMode ? imgs[indexFocused].description : "" }}</p>
+      </div>
     </div>
   </section>
 </template>
@@ -66,16 +70,18 @@ export default {
           vidUrl: srcVid1,
           caption: "Ann druyan",
           style: {},
+          title: "The pen of the project",
           description:
-            "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou"
+            "Ann Druyan is an American journalist, writer, lecturer, director and producer, the late wife and widow of astronomer and writer Carl Sagan. She is also involved in science popularization projects. In particular, she is co-author of the Cosmos series. /The chances of aliens finding the Voyagers in the vast emptiness of space are small—some say infinitesimal—but we took our jobs seriously, recalls team member Ann Druyan. /From the moment when Carl first broached the project to Tim Ferris and me, it felt mythic./"
         },
         {
           isFocused: false,
           imgUrl: srcImg2,
           vidUrl: srcVid2,
           caption: "Eward C Stone",
+          title: "Inside the science",
           description:
-            "Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée par l'addition d'humour ou de mots aléatoires qui ne ressemblent pas une seconde à du texte standard. Si vous voulez utiliser un passage du Lorem Ipsum, vous devez être sûr qu'il n'y a rien d'embarrassant caché dans le texte. Tous les générateurs de Lorem Ipsum sur Internet tendent à reproduire le même extrait sans fin, ce qui fait de lipsum.com le seul vrai générateur de Lorem Ipsum. Iil utilise",
+            "Edward Carroll Stone (born January 23, 1936) is an American space scientist, professor of physics at the California Institute of Technology, and former director of the NASA Jet Propulsion Laboratory (JPL). As project scientist for the unmanned Voyager spacecraft missions to the outer Solar System since 1972, and a major spokesman for the Voyager science team, he became especially well known to the public in the 1980s. He has since been principal investigator on nine NASA spacecraft missions and coinvestigator on five more.",
           style: {}
         },
         {
@@ -84,8 +90,9 @@ export default {
           imgUrl: srcImg3,
           caption: "Carl Sagan",
           style: {},
+          title: "Chairman of the comittee",
           description:
-            "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié"
+            "He was an American astronomer, planetary scientist, cosmologist, astrophysicist, astrobiologist, author, science popularizer, and science communicator. He is best known as a science popularizer and communicator. His best known scientific contribution is research on extraterrestrial life, including experimental demonstration of the production of amino acids from basic chemicals by radiation. Sagan assembled the first physical messages sent into space: the Pioneer plaque and the Voyager Golden Record, universal messages that could potentially be understood by any extraterrestrial intelligence that might find them."
         },
         {
           isFocused: false,
@@ -93,8 +100,9 @@ export default {
           imgUrl: srcImg4,
           caption: "Jon Lomberg",
           style: {},
+          title: "The artist",
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vulputate massa ac purus venenatis commodo. Pellentesque dictum orci vel gravida tristique. Phasellus in purus tellus. Vivamus lobortis pharetra tortor, eget tempor orci interdum quis. Sed condimentum iaculis risus sit amet imperdiet. Ut efficitur libero ut tellus suscipit maximus. Quisque turpis mauris, fringilla sit amet consectetur id, tempus nec velit. Morbi hendrerit metus sed ornare accumsan. Ut tempor arcu sem, vitae pulvinar ligula accumsan vel. Nulla augue massa, porttitor sit amet mattis condimentum, pellentesque at dui. Maecenas ut commodo magna. Cras efficitur facilisis varius. Quisque ultrices erat erat, id sagittis ex gravida nec. Phasellus eget metus turpis."
+            "Jon Lomberg (born 1948) is an American space artist and science journalist. He was Carl Sagan's principal artistic collaborator for more than twenty years on many projects from 1972 through 1996. In 1998, the International Astronomical Union officially named an asteroid (6446 Lomberg) in recognition of his achievements in science communication. In 1972, Lomberg showed some of his paintings to astronomer Carl Sagan, who then asked him to illustrate The Cosmic Connection. This was the beginning of their quarter century of collaboration on many projects, including the NASA's interstellar Voyager Golden Record"
         },
         {
           isFocused: false,
@@ -102,8 +110,9 @@ export default {
           imgUrl: srcImg5,
           caption: "Frank Drake",
           style: {},
+          title: "DJsigner Frank",
           description:
-            "Integer efficitur erat at sapien pharetra congue. Praesent velit dui, rutrum vitae metus consequat, sagittis tempor massa. Curabitur ligula purus, luctus ac lacus eget, interdum pellentesque est. Pellentesque vel sem et lacus sodales dignissim. Sed enim elit, iaculis quis magna ac, auctor volutpat erat. Ut quis arcu condimentum, suscipit tortor id, condimentum ex. Integer sed sapien enim. Maecenas aliquet suscipit dui, vel dignissim elit dictum pharetra. Nullam dictum pretium ex vel efficitur."
+            "Frank Drake (born May 28, 1930 in Chicago) is an American astronomer. Founder of the SETI project, he is the author of the famous Drake equation. Drake co-designed the Pioneer plaque with Carl Sagan in 1972, the first physical message sent into space. The plaque was designed to be understandable by extraterrestrials should they encounter it. He later supervised the creation of the Voyager Golden Record. He was elected to the American Academy of Arts and Sciences in 1974."
         }
       ]
     };
@@ -208,14 +217,25 @@ header.header {
 .polaroids {
   margin: auto;
   margin-top: 14vh;
-  background-color: red;
   flex-wrap: nowrap;
   position: relative;
 
-  &__description {
+  &__text {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     left: 50%;
     width: 40%;
+  }
+
+  &__title {
+    left: 50%;
+    margin-bottom: 50px;
+    text-align: justify;
+    color: $primary-white;
+  }
+
+  &__description {
     text-align: justify;
     visibility: hidden;
     opacity: 0;

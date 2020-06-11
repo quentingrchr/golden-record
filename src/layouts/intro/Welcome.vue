@@ -1,5 +1,5 @@
 <template>
-  <div class="intro">
+  <div class="intro" @click="$emit('clickWelcome', welcome)">
     <h1 class="title-welcome">The Golden Record</h1>
     <img class="earth-bg" src="@/assets/earth-welcome.png" alt />
     <div class="stars"></div>
@@ -21,14 +21,7 @@
         stroke="#F8F8F8"
         stroke-width="2.5"
       />
-      <rect
-        x="13"
-        y="10.7144"
-        width="3.21429"
-        height="8.57143"
-        rx="1.60714"
-        fill="#F8F8F8"
-      />
+      <rect x="13" y="10.7144" width="3.21429" height="8.57143" rx="1.60714" fill="#F8F8F8" />
       <path
         class="scroll-arrow"
         fill-rule="evenodd"
@@ -56,7 +49,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Welcome"
+};
 </script>
 
 <style lang="scss"></style>
