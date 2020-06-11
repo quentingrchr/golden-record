@@ -114,6 +114,7 @@ div {
   p {
     font-weight: 700;
     font-family: Product Sans;
+    color: $primary-darkblue;
   }
 
   @media (max-width: 580px) {
