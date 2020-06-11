@@ -13,6 +13,7 @@
       @jumpToOtherChapter="changeChapter"
     />
     <Icon />
+    <ModalsManager />
   </main>
 </template>
 
@@ -24,6 +25,7 @@ import HowToUseIt from "@/layouts/desktop/HowToUseIt.vue";
 import Team from "@/layouts/desktop/Team.vue";
 import TheJourney from "@/layouts/desktop/TheJourney.vue";
 import Icon from "@/components/Icons.vue";
+import ModalsManager from "@/components/modals/ModalsManager.vue";
 
 export default {
   components: {
@@ -34,6 +36,7 @@ export default {
     Team,
     TheJourney,
     Icon,
+    ModalsManager,
   },
   data() {
     return {
