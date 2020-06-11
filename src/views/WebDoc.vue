@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Desktop from "@/views/Desktop/Desktop.vue";
-import Mobile from "@/views/Mobile/Mobile.vue";
+import Desktop from "@/views/desktop/Desktop.vue";
+import Mobile from "@/views/mobile/Mobile.vue";
 
 export default {
   computed: {

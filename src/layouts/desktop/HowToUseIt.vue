@@ -6,13 +6,11 @@
       <Title text="How To Use It" />
     </header>
     <div class="Use__container">
-    <PopUp v-show="here"/>
       <div class="Use__content">
         <Sign
-        @click="appear"
-        @mouseover="hovering = 1"
-        @mouseleave="hovering = 0"
-        nameIcon="#record"
+          @mouseover="hovering = 1"
+          @mouseleave="hovering = 0"
+          nameIcon="#record"
         >
           <template v-slot:right>
               <ContentSign
@@ -90,26 +88,18 @@ import BaseIcon from "@/components/BaseIcon.vue";
 import Sign from "@/components/Sign.vue";
 import ContentSign from "@/components/ContentSign.vue";
 import Title from "@/components/Title.vue";
-import PopUp from "@/components/HowToUse__PopUp.vue"
 
 export default {
   name: 'UseIt',
   data:() => ({
     hovering: 0,
-    here: false,
   }),
   components: {
     BaseIcon,
     Title,
     Sign,
     ContentSign,
-    PopUp
   },
-  methods:{
-    appear(){
-      this.here = true
-    }
-  }
 };
 </script>
 
@@ -139,18 +129,13 @@ export default {
     height: 20%;
   }
 
-
-  &__text{
-    &:hover{
-    filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.8));
-    }
-  }
   &__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 85%;
     height: 100%;
+    transition: opacity 0.3s ease;
   }
 
   &__content {
@@ -227,11 +212,9 @@ export default {
     height: 80px;
     stroke: $primary-darkblue;
     fill: none;
-    transition: transform 0.5s ease;
 
     &--hovering {
       stroke: $primary-white;
-      transform: rotate(90deg);
       filter: drop-shadow(12px 12px 6px rgba(0, 0, 0, 1));
     }
   }
@@ -240,6 +223,9 @@ export default {
     stroke: white;
     filter: drop-shadow(0px 6px 2px rgba($primary-darkblue, 0.7));
   }
-
+  .home{
+    color: white;
+    z-index: 100000;
+  }
 }
 </style>
