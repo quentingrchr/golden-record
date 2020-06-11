@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Welcome from '@/layouts/intro/Welcome.vue';
-import Video from '@/layouts/intro/Video.vue';
+import Welcome from '@/layouts/intro/welcome.vue';
+import Video from '@/layouts/intro/video.vue';
 
 export default {
   computed: {},
@@ -30,7 +30,6 @@ export default {
       }
 
       console.log(this.scrollRate);
-
     },
   },
 };

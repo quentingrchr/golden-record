@@ -4,7 +4,11 @@
     <div class="twinkling"></div>
     <Title class="visualContent__title" text="Visual content" />
     <div class="visualContent__images" :class="moveDirection" :style="position">
-      <div v-for="(image, index) in imgs" :key="index" @click="isSelected(image)">
+      <div
+        v-for="(image, index) in imgs"
+        :key="index"
+        @click="isSelected(image)"
+      >
         <img :src="image" alt="One of the golden record pictures" />
       </div>
     </div>
@@ -44,47 +48,57 @@
 </template>
 
 <script>
-//SRCs will be imported bu fetch
-import json from "@/picturesLink.json";
-
-import Title from "@/components/Title.vue";
+import Title from '@/components/Title.vue';
 export default {
   data() {
     return {
-      imgs: json.src,
+      imgs: [],
       moveDirection: null,
       position: {
-        top: "-20%",
-        left: "-20%"
+        top: '-20%',
+        left: '-20%',
       },
-      selectedImage: null
+      selectedImage: null,
     };
   },
+  beforeCreate() {
+    fetch(
+      'https://cors-anywhere.herokuapp.com/https://custom-cwxn.frb.io/query/visual_content',
+      {
+        method: 'GET',
+      }
+    )
+      .then((response) => response.json())
+      .then((data) =>
+        data.forEach((element) => {
+          this.imgs.push(element.src);
+        })
+      );
+  },
   components: {
-    Title
+    Title,
   },
   methods: {
     setDirection(value) {
-      //console.log(window.innerHeight - imgContainer.offsetHeight);
-      const imgContainer = document.querySelector(".visualContent__images");
-      if (value === "down") {
-        this.position.top = "100px";
-      } else if (value === "right") {
-        this.position.left = "170px";
-      } else if (value === "left") {
+      const imgContainer = document.querySelector('.visualContent__images');
+      if (value === 'down') {
+        this.position.top = '100px';
+      } else if (value === 'right') {
+        this.position.left = '170px';
+      } else if (value === 'left') {
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          "px";
-      } else if (value === "up") {
+          'px';
+      } else if (value === 'up') {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          "px";
+          'px';
       }
     },
     cancelDirection() {
-      const imgContainer = document.querySelector(".visualContent__images");
-      const top = imgContainer.offsetTop + "px";
-      const left = imgContainer.offsetLeft + "px";
+      const imgContainer = document.querySelector('.visualContent__images');
+      const top = imgContainer.offsetTop + 'px';
+      const left = imgContainer.offsetLeft + 'px';
       this.position.top = top;
       this.position.left = left;
     },
@@ -93,8 +107,8 @@ export default {
     },
     closeOverlay() {
       this.selectedImage = null;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -127,7 +141,7 @@ section {
   height: 250%;
   display: grid;
   grid-template-columns: repeat(11, 1fr);
-  grid-template-rows: repeat(11, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
   grid-gap: 10px;
   transition: all 2s ease-in;
 
