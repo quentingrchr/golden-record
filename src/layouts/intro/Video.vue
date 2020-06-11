@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="fullscreen-bg">
-      <video autoplay loop class="fullscreen-bg__video video" id="video">
+      <video autoplay preload="auto" loop class="fullscreen-bg__video video" id="video">
         <source src="@/assets/video/video_intro.mp4" type="video/mp4" />Sorry, your browser doesn't support embedded videos,
         but don't worry, you can
         <a
