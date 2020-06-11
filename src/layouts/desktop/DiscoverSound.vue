@@ -111,9 +111,10 @@
 import Title from "../../components/Title.vue";
 import AudioPlayer from "../../components/AudioPlayer.vue";
 import AudioCategory from "../../components/AudioCategory.vue";
+import Popup from "@/components/Popup.vue";
 
 export default {
-  components: { Title, AudioPlayer, AudioCategory },
+  components: { Title, AudioPlayer, AudioCategory, Popup },
   data() {
     return {
       title: "Audio content",
