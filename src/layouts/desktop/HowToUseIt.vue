@@ -6,8 +6,10 @@
       <Title text="How To Use It" />
     </header>
     <div class="Use__container">
+    <PopUp v-show="here"/>
       <div class="Use__content">
         <Sign
+        @click="appear"
         @mouseover="hovering = 1"
         @mouseleave="hovering = 0"
         nameIcon="#record"
@@ -88,18 +90,26 @@ import BaseIcon from "@/components/BaseIcon.vue";
 import Sign from "@/components/Sign.vue";
 import ContentSign from "@/components/ContentSign.vue";
 import Title from "@/components/Title.vue";
+import PopUp from "@/components/HowToUse__PopUp.vue"
 
 export default {
   name: 'UseIt',
   data:() => ({
     hovering: 0,
+    here: false,
   }),
   components: {
     BaseIcon,
     Title,
     Sign,
-    ContentSign
+    ContentSign,
+    PopUp
   },
+  methods:{
+    appear(){
+      this.here = true
+    }
+  }
 };
 </script>
 
@@ -230,7 +240,6 @@ export default {
     stroke: white;
     filter: drop-shadow(0px 6px 2px rgba($primary-darkblue, 0.7));
   }
-
 
 }
 </style>

@@ -759,6 +759,14 @@
 <rect x="12.333" y="9" width="1.33333" height="8" fill="#14131C"/>
 <rect x="17" y="12.3335" width="1.33333" height="8" transform="rotate(90 17 12.3335)" fill="#14131C"/>
             </symbol>
+            <symbol
+            id="frame"
+            viewBox="0 0 1084"
+            fill="none"
+            >
+              <path d="M17.7498 52.1525L17.7503 19.2903L53.5471 19.2903L17.7498 52.1525Z" stroke="#F8F8F8"/>
+              <path d="M1083.75 19.2905H67.25L17.75 65.7905L17.75 549.291H581.75" stroke="#F8F8F8"/>
+            </symbol>
         </defs>
     </svg>
 </template>
