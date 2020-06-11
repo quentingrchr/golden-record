@@ -25,7 +25,6 @@ import Team from "@/layouts/desktop/Team.vue";
 import TheJourney from "@/layouts/desktop/TheJourney.vue";
 import Icon from "@/components/Icons.vue";
 
-
 export default {
   components: {
     NavBar,
@@ -94,6 +93,7 @@ export default {
 <style lang="scss" scoped>
 main {
   height: 100vh;
+  background-color: black;
 }
 .desktopViews-container {
   overflow: hidden;
