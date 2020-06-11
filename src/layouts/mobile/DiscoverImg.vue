@@ -22,15 +22,28 @@
 
 <script>
 import Title from '@/components/Title.vue';
-import json from '@/picturesLink.json';
 export default {
   data() {
     return {
-      imgs: json.src,
+      imgs: [],
       scroll: false,
       isScrollingStop: null,
       prevScrollY: null,
     };
+  },
+  beforeCreate() {
+    fetch(
+      'https://cors-anywhere.herokuapp.com/https://custom-cwxn.frb.io/query/visual_content',
+      {
+        method: 'GET',
+      }
+    )
+      .then((response) => response.json())
+      .then((data) =>
+        data.forEach((element) => {
+          this.imgs.push(element.src);
+        })
+      );
   },
   created() {
     document.addEventListener('scroll', this.isScrolling);
@@ -99,7 +112,7 @@ export default {
           if (isScrollingDown) {
             el.style.left = (initPos - 1).toString() + 'px';
           } else {
-            el.style.left = (initPos + 1).toString() + 'px';
+            el.style.left = (initPos + 0.2).toString() + 'px';
           }
         } else {
           el.style.left = '0px';
@@ -153,6 +166,13 @@ export default {
   height: 100px;
   margin-bottom: 20px;
   transition: transform 2s linear;
+
+  @media (min-width: 400px) {
+    height: 150px;
+  }
+  @media (min-width: 600px) {
+    height: 200px;
+  }
 
   &.odd {
     transform: translateX(-25%);
