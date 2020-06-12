@@ -1,7 +1,11 @@
 <template>
   <section class="visualContent">
     <Title class="visualContent__title" text="Visual content" />
-    <div class="visualContent__images" :class="moveDirection" :style="position">
+    <div
+      class="visualContent__images"
+      :class="imagesApparition ? 'isVisible' : null"
+      :style="position"
+    >
       <div
         v-for="(image, index) in imgs"
         :key="index"
@@ -76,6 +80,7 @@ export default {
     return {
       imgs: [],
       moveDirection: null,
+      imagesApparition: false,
       position: {
         top: '-20%',
         left: '-20%',
@@ -100,6 +105,9 @@ export default {
   components: {
     Title,
   },
+  beforeUpdate() {
+    this.imagesApparition = true;
+  },
   methods: {
     setDirection(value) {
       const imgContainer = document.querySelector('.visualContent__images');
@@ -116,13 +124,13 @@ export default {
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
           'px';
       } else if (value === 'cornerTopRight') {
-        this.position.top = '0px';
+        this.position.top = '100px';
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
           'px';
       } else if (value === 'cornerTopLeft') {
         this.position.left = '170px';
-        this.position.top = '0px';
+        this.position.top = '100px';
       } else if (value === 'cornerBottomRight') {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
@@ -179,7 +187,12 @@ section {
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: repeat(auto, 1fr);
   grid-gap: 10px;
-  transition: all 2s ease-in;
+  opacity: 0;
+  transition: all 2s ease-in, opacity linear 0.5s 3s;
+
+  &.isVisible {
+    opacity: 1;
+  }
 
   filter: contrast(120%);
 
