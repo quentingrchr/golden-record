@@ -80,7 +80,7 @@ export default {
   left: 0;
   height: 100vh;
   width: 60px;
-  background-color: $primary-darkblue;
+  background-color: rgba($color: #000000, $alpha: 0.9);
   transition: width 0.3s;
   overflow: hidden;
   border-right: 0.5px solid $primary-white;
@@ -151,7 +151,7 @@ export default {
       color: $primary-white;
       font-weight: bold;
       font-size: 0.8rem;
-      background-color: $primary-darkblue;
+      background-color: #000000;
       padding: 5px 0;
       width: 110px;
 
