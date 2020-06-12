@@ -1,6 +1,6 @@
 <template>
   <div v-on="$listeners" :class="contentRight ? 'Use__text--right' : 'Use__text--left'" class="Use__text">
-    <span class="Use__title">{{ title }}</span>
+    <p class="Use__title">{{ title }}</p>
     <BaseIcon class="Use__plus" 
     href="#plus" 
     />
@@ -31,25 +31,33 @@ export default {
 .Use{
     &__text {
     height: 18%;
-    width: 65%;
+    width: 73%;
     display: flex;
     align-items: center;
     position: absolute;
-    
-    &__title {
-      font-family: 'Product Sans Regular';
-      font-size: 20px;
-      color: $primary-white;
-  }
+
+    @include media_tablet {
+      width: 75%;
+    }
 
     &--left {
-      top: 60%;
+      top: 65%;
       left: 55%;
+
+      @include media_tablet {
+        top: 65%;
+        left: 40%;
+      }
     }
 
     &--right {
       top: 55%;
       right: 55%;
+
+      @include media_tablet {
+        top: 65%;
+        right: 40%;
+      }
     }
   }
 

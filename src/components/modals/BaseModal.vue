@@ -1,5 +1,9 @@
 <template>
   <div class="modal">
+    <BaseIcon
+    class="modal__aroundIcon"
+    href="#frame"
+    />
     <BaseIcon 
       class="modal__icon"
       :href="content.icon"
@@ -37,18 +41,29 @@ export default {
 
 <style lang="scss">
   .modal{
-    width: 70vw;
-    height: 80vh;
+    width: 100%;
+    height: 95%;
+    position: relative;
     display: flex;
     justify-content: space-around;
     align-items: center;
     color: $primary-white;
+    // border: 1px solid red;
 
     &__icon{
       stroke: $primary-white;
       fill: none;
       width: 300px;
       height: 40%;
+    }
+
+    &__aroundIcon{
+      position: absolute;
+      stroke: $primary-white;
+      height: 100%;
+      width: 100%;
+      left: -5%;
+      top: -2%;
     }
 
     &__content{
