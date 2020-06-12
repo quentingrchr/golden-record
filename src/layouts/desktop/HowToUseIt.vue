@@ -2,9 +2,7 @@
   <div class="Use">
     <div class="stars"></div>
     <div class="twinkling"></div>
-    <header class="Use__mainTitle">
-      <Title text="How To Use It" />
-    </header>
+    <Header class="Use__mainTitle" text="How To Use It" />
     <div class="Use__container">
       <div class="Use__content">
         <Sign @mouseover="hovering = 1" @mouseleave="hovering = 0" nameIcon="#record">
@@ -56,8 +54,7 @@
 import BaseIcon from "@/components/BaseIcon.vue";
 import Sign from "@/components/Sign.vue";
 import ContentSign from "@/components/ContentSign.vue";
-import Title from "@/components/Title.vue";
-import Popup from "@/components/Popup.vue";
+import Header from "@/components/Header.vue";
 
 export default {
   name: "UseIt",
@@ -67,10 +64,9 @@ export default {
   }),
   components: {
     BaseIcon,
-    Title,
     Sign,
     ContentSign,
-    Popup
+    Header
   }
 };
 </script>
@@ -108,6 +104,7 @@ export default {
     justify-content: space-between;
     width: 85%;
     height: 100%;
+    padding-bottom: 5vh;
     transition: opacity 0.3s ease;
   }
 

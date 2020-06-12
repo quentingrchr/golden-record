@@ -67,9 +67,7 @@
       </defs>
     </svg>
 
-    <header>
-      <Title :text="title" />
-    </header>
+    <Header :text="title" />
 
     <img
       class="audio__imgBras"
@@ -108,13 +106,12 @@
 </template>
 
 <script>
-import Title from "../../components/Title.vue";
+import Header from "../../components/Header.vue";
 import AudioPlayer from "../../components/AudioPlayer.vue";
 import AudioCategory from "../../components/AudioCategory.vue";
-import Popup from "@/components/Popup.vue";
 
 export default {
-  components: { Title, AudioPlayer, AudioCategory, Popup },
+  components: { Header, AudioPlayer, AudioCategory },
   data() {
     return {
       title: "Audio content",

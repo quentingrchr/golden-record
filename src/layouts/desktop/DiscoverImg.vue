@@ -2,13 +2,9 @@
   <section class="visualContent">
     <div class="stars"></div>
     <div class="twinkling"></div>
-    <Title class="visualContent__title" text="Visual content" />
+    <Header class="visualContent__title" text="Visual content" />
     <div class="visualContent__images" :class="moveDirection" :style="position">
-      <div
-        v-for="(image, index) in imgs"
-        :key="index"
-        @click="isSelected(image)"
-      >
+      <div v-for="(image, index) in imgs" :key="index" @click="isSelected(image)">
         <img :src="image" alt="One of the golden record pictures" />
       </div>
     </div>
@@ -48,57 +44,57 @@
 </template>
 
 <script>
-import Title from '@/components/Title.vue';
+import Header from "@/components/Header.vue";
 export default {
   data() {
     return {
       imgs: [],
       moveDirection: null,
       position: {
-        top: '-20%',
-        left: '-20%',
+        top: "-20%",
+        left: "-20%"
       },
-      selectedImage: null,
+      selectedImage: null
     };
   },
   beforeCreate() {
     fetch(
-      'https://cors-anywhere.herokuapp.com/https://custom-cwxn.frb.io/query/visual_content',
+      "https://cors-anywhere.herokuapp.com/https://custom-cwxn.frb.io/query/visual_content",
       {
-        method: 'GET',
+        method: "GET"
       }
     )
-      .then((response) => response.json())
-      .then((data) =>
-        data.forEach((element) => {
+      .then(response => response.json())
+      .then(data =>
+        data.forEach(element => {
           this.imgs.push(element.src);
         })
       );
   },
   components: {
-    Title,
+    Header
   },
   methods: {
     setDirection(value) {
-      const imgContainer = document.querySelector('.visualContent__images');
-      if (value === 'down') {
-        this.position.top = '100px';
-      } else if (value === 'right') {
-        this.position.left = '170px';
-      } else if (value === 'left') {
+      const imgContainer = document.querySelector(".visualContent__images");
+      if (value === "down") {
+        this.position.top = "100px";
+      } else if (value === "right") {
+        this.position.left = "170px";
+      } else if (value === "left") {
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          'px';
-      } else if (value === 'up') {
+          "px";
+      } else if (value === "up") {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          'px';
+          "px";
       }
     },
     cancelDirection() {
-      const imgContainer = document.querySelector('.visualContent__images');
-      const top = imgContainer.offsetTop + 'px';
-      const left = imgContainer.offsetLeft + 'px';
+      const imgContainer = document.querySelector(".visualContent__images");
+      const top = imgContainer.offsetTop + "px";
+      const left = imgContainer.offsetLeft + "px";
       this.position.top = top;
       this.position.left = left;
     },
@@ -107,8 +103,8 @@ export default {
     },
     closeOverlay() {
       this.selectedImage = null;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -124,15 +120,6 @@ section {
   z-index: 1;
   width: 100%;
   height: 100%;
-}
-
-.visualContent__title {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  padding: 20px 150px;
 }
 
 .visualContent__images {
