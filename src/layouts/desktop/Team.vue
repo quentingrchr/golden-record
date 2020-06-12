@@ -4,9 +4,9 @@
     <div class="twinkling"></div>
     <Icons />
     <header class="header">
-      <Title text="Who did it ?" />
+      <Header text="Who did it ?" />
       <BaseIcon
-        href="sound"
+        href="arrow-top"
         class="icon-container"
         :class="focusMode ? 'focus-mode' : ''"
         @click="quitFocus"
@@ -24,10 +24,17 @@
         :style="img.style"
         :vidUrl="img.vidUrl"
         :isFocused="index === indexFocused"
+        :class="focusMode ? 'focusMode' : ''"
       />
-      <p class="polaroids__description" :class="focusMode ? 'visible' : ''">
-        {{ focusMode ? imgs[indexFocused].description : "" }}
-      </p>
+      <div class="polaroids__text">
+        <h3 class="polaroids__title">
+          {{ focusMode ? imgs[indexFocused].title : "" }}
+        </h3>
+        <div class="polaroids__description" :class="focusMode ? 'visible' : ''">
+          <p>{{ focusMode ? imgs[indexFocused].description[0] : "" }}</p>
+          <p>{{ focusMode ? imgs[indexFocused].description[1] : "" }}</p>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -38,6 +45,7 @@ import srcImg2 from "../../assets/img/eward_c_stone.jpg";
 import srcImg3 from "../../assets/img/carl_sagan.jpg";
 import srcImg4 from "../../assets/img/jon_lomberg.jpg";
 import srcImg5 from "../../assets/img/frank_drake.jpg";
+import notFound from "../../assets/img/pola_thumbnail.jpg";
 
 import srcVid1 from "../../assets/video/ann-vid.mp4";
 import srcVid2 from "../../assets/video/ann-vid.mp4";
@@ -48,11 +56,13 @@ import srcVid5 from "../../assets/video/frank-vid.mp4";
 import Polaroid from "../../components/Polaroid__Desktop.vue";
 import Icons from "../../components/Icons";
 import BaseIcon from "../../components/BaseIcon";
-import Title from "../../components/Title";
+import Header from "../../components/Header";
+
+import { url } from "@/constants.js";
 
 export default {
   name: "Team",
-  components: { Polaroid, BaseIcon, Icons, Title },
+  components: { Polaroid, BaseIcon, Icons, Header },
   props: {},
   data: () => {
     return {
@@ -62,51 +72,104 @@ export default {
       imgs: [
         {
           isFocused: false,
-          imgUrl: srcImg1,
-          vidUrl: srcVid1,
-          caption: "Ann druyan",
+          vidUrl: null,
+          imgUrl: notFound,
+          title: "Loading",
+          caption: "Loading",
           style: {},
-          description:
-            "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou"
+          description: [null, null],
         },
         {
           isFocused: false,
-          imgUrl: srcImg2,
-          vidUrl: srcVid2,
-          caption: "Eward C Stone",
-          description:
-            "Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée par l'addition d'humour ou de mots aléatoires qui ne ressemblent pas une seconde à du texte standard. Si vous voulez utiliser un passage du Lorem Ipsum, vous devez être sûr qu'il n'y a rien d'embarrassant caché dans le texte. Tous les générateurs de Lorem Ipsum sur Internet tendent à reproduire le même extrait sans fin, ce qui fait de lipsum.com le seul vrai générateur de Lorem Ipsum. Iil utilise",
-          style: {}
+          vidUrl: null,
+          imgUrl: notFound,
+          title: "Loading",
+          caption: "Loading",
+          style: {},
+          description: [null, null],
         },
         {
           isFocused: false,
-          vidUrl: srcVid3,
-          imgUrl: srcImg3,
-          caption: "Carl Sagan",
+          vidUrl: null,
+          imgUrl: notFound,
+          title: "Loading",
+          caption: "Loading",
           style: {},
-          description:
-            "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié"
+          description: [null, null],
         },
         {
           isFocused: false,
-          vidUrl: srcVid4,
-          imgUrl: srcImg4,
-          caption: "Jon Lomberg",
+          vidUrl: null,
+          imgUrl: notFound,
+          title: "Loading",
+          caption: "Loading",
           style: {},
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vulputate massa ac purus venenatis commodo. Pellentesque dictum orci vel gravida tristique. Phasellus in purus tellus. Vivamus lobortis pharetra tortor, eget tempor orci interdum quis. Sed condimentum iaculis risus sit amet imperdiet. Ut efficitur libero ut tellus suscipit maximus. Quisque turpis mauris, fringilla sit amet consectetur id, tempus nec velit. Morbi hendrerit metus sed ornare accumsan. Ut tempor arcu sem, vitae pulvinar ligula accumsan vel. Nulla augue massa, porttitor sit amet mattis condimentum, pellentesque at dui. Maecenas ut commodo magna. Cras efficitur facilisis varius. Quisque ultrices erat erat, id sagittis ex gravida nec. Phasellus eget metus turpis."
+          description: [null, null],
         },
         {
           isFocused: false,
-          vidUrl: srcVid5,
-          imgUrl: srcImg5,
-          caption: "Frank Drake",
+          vidUrl: null,
+          imgUrl: notFound,
+          title: "Loading",
+          caption: "Loading",
           style: {},
-          description:
-            "Integer efficitur erat at sapien pharetra congue. Praesent velit dui, rutrum vitae metus consequat, sagittis tempor massa. Curabitur ligula purus, luctus ac lacus eget, interdum pellentesque est. Pellentesque vel sem et lacus sodales dignissim. Sed enim elit, iaculis quis magna ac, auctor volutpat erat. Ut quis arcu condimentum, suscipit tortor id, condimentum ex. Integer sed sapien enim. Maecenas aliquet suscipit dui, vel dignissim elit dictum pharetra. Nullam dictum pretium ex vel efficitur."
-        }
-      ]
+          description: [null, null],
+        },
+      ],
     };
+  },
+  beforeCreate() {
+    let staticData = {
+      annDruyan: {
+        vidSrc: srcVid1,
+        imgSrc: srcImg1,
+        caption: "Ann Druyan",
+        order: 0,
+      },
+      carlSagan: {
+        vidSrc: srcVid3,
+        imgSrc: srcImg3,
+        caption: "Carl Sagan",
+        order: 2,
+      },
+      frankDrake: {
+        vidSrc: srcVid5,
+        imgSrc: srcImg5,
+        caption: "Frank Drake",
+        order: 4,
+      },
+      jonLomberg: {
+        vidSrc: srcVid4,
+        imgSrc: srcImg4,
+        caption: "Jon Lomberg",
+        order: 3,
+      },
+      ewardCStone: {
+        vidSrc: srcVid2,
+        imgSrc: srcImg2,
+        caption: "Eward C Stone",
+        order: 1,
+      },
+    };
+
+    fetch(`${url}/query/polaroids`, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        this.imgs = [];
+        data.forEach((el) => {
+          this.imgs[staticData[el.name].order] = {
+            isFocused: false,
+            vidUrl: staticData[el.name].vidSrc,
+            imgUrl: staticData[el.name].imgSrc,
+            title: el.title,
+            caption: staticData[el.name].caption,
+            style: {},
+            description: [el.text_1, el.text_2],
+          };
+        });
+      });
   },
   methods: {
     handleFocus: function(index) {
@@ -137,7 +200,7 @@ export default {
           img.style = {
             transform: `translate(${MARGIN_LEFT +
               POLA_WIDTH * SCALE}px, 0px) rotate(0deg)`,
-            zIndex: 11
+            zIndex: 11,
           };
         } else {
           // Code for unfocused polas
@@ -148,7 +211,7 @@ export default {
               POLA_WIDTH / 2 +
               MARGIN_LEFT -
               GAP_HORIZONTAL}px, ${incr * (SM_POLA_HEIGHT + GAP_VERTICAL) -
-              OFFSET}px) rotate(0deg) scale(${SCALE})`
+              OFFSET}px) rotate(0deg) scale(${SCALE})`,
           };
           incr++;
         }
@@ -157,12 +220,12 @@ export default {
     quitFocus: function() {
       this.focusMode = false;
       this.indexFocused = null;
-      this.imgs.forEach(img => {
+      this.imgs.forEach((img) => {
         img.isFocused = false;
         img.style = {};
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -179,43 +242,59 @@ section {
   z-index: 0;
 }
 
-header.header {
+.header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 20px 150px;
+  padding-right: 10%;
   position: relative;
   z-index: 10;
 }
 
 .icon-container {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   top: 50px;
   right: 50px;
   fill: white;
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.2s;
+  cursor: pointer;
+
   &.focus-mode {
     visibility: visible;
-    opacity: 1;
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 
 .polaroids {
   margin: auto;
   margin-top: 14vh;
-  background-color: red;
   flex-wrap: nowrap;
   position: relative;
 
-  &__description {
+  &__text {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     left: 50%;
     width: 40%;
+  }
+
+  &__title {
+    left: 50%;
+    margin-bottom: 50px;
+    text-align: justify;
+    color: $primary-white;
+  }
+
+  &__description {
     text-align: justify;
     visibility: hidden;
     opacity: 0;
@@ -225,33 +304,75 @@ header.header {
       visibility: visible;
       opacity: 1;
     }
+
+    p {
+      margin-bottom: 20px;
+    }
   }
 }
 
+$hoverOffset: 5;
+
 figure {
   transition: transform 1s;
+  &.focusMode {
+    transition: transform 1s;
+  }
 
   box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
   &:nth-child(1) {
     z-index: 2;
-
     transform: scale(0.6) rotate(-21.93deg) translateX(50%) translateY(15%);
+
+    &:hover:not(.focusMode) {
+      transition: transform 0.5s ease;
+
+      transform: scale(0.6) rotate(-21.93deg) translateX(50%)
+        translateY(15% - $hoverOffset);
+    }
   }
   &:nth-child(2) {
     z-index: 3;
     transform: scale(0.6) rotate(7.36deg) translateY(30%) translateX(150%);
+
+    &:hover:not(.focusMode) {
+      transition: transform 0.5s ease;
+
+      transform: scale(0.6) rotate(7.36deg) translateY(30% - $hoverOffset)
+        translateX(150%);
+    }
   }
   &:nth-child(3) {
     z-index: 4;
     transform: scale(0.9) translateX(180%) translateY(-10%);
+
+    &:hover:not(.focusMode) {
+      transition: transform 0.5s ease;
+
+      transform: scale(0.9) translateX(180%) translateY(-10% - $hoverOffset);
+    }
   }
   &:nth-child(4) {
     z-index: 5;
     transform: scale(0.8) rotate(-12.6deg) translateY(100%) translateX(250%);
+
+    &:hover:not(.focusMode) {
+      transition: transform 0.5s ease;
+
+      transform: scale(0.8) rotate(-12.6deg) translateY(100% - $hoverOffset)
+        translateX(250%);
+    }
   }
   &:nth-child(5) {
     z-index: 1;
     transform: scale(0.6) rotate(4deg) translateY(-30%) translateX(450%);
+
+    &:hover:not(.focusMode) {
+      transition: transform 0.5s ease;
+
+      transform: scale(0.6) rotate(4deg) translateY(-30% - $hoverOffset)
+        translateX(450%);
+    }
   }
 }
 </style>

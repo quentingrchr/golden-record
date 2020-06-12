@@ -1,8 +1,8 @@
 <template>
   <!--- Contient la vidéo responsive (mobile / desktop) -->
   <div @wheel="isScrolled">
-    <Welcome v-if="scrollRate < 100" />
-    <Video v-else />
+    <Welcome v-if="scrollRate < 100" v-on:clickWelcome="clickWelcome" />
+    <Video v-show="scrollRate > 100" />
   </div>
 </template>
 
@@ -30,7 +30,9 @@ export default {
       }
 
       console.log(this.scrollRate);
-
+    },
+    clickWelcome() {
+      this.scrollRate = 200;
     },
   },
 };

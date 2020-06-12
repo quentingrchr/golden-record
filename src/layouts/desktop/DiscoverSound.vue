@@ -108,9 +108,7 @@
       </defs>
     </svg>
 
-    <header>
-      <Title :text="title" />
-    </header>
+    <Header :text="title" />
 
     <img
       class="audio__imgDisc"
@@ -136,12 +134,16 @@
 </template>
 
 <script>
-import Title from "../../components/Title.vue";
-import AudioPlayer from "../../components/AudioPlayer.vue";
-import Playlist from "../../components/Playlist.vue";
+import Header from '../../components/Header.vue';
+import AudioPlayer from '../../components/AudioPlayer.vue';
+import AudioCategory from '../../components/AudioCategory.vue';
 
 export default {
-  components: { Title, Playlist, AudioPlayer },
+  components: {
+    Header,
+    AudioPlayer,
+    AudioCategory
+  },
   data() {
     return {
       title: "Audio content",

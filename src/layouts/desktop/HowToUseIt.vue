@@ -2,42 +2,35 @@
   <div class="Use">
     <div class="stars"></div>
     <div class="twinkling"></div>
-    <header class="Use__mainTitle">
-      <Title text="How To Use It" />
-    </header>
+    <Header class="Use__mainTitle" text="How To Use It" />
     <div class="Use__container">
-    <PopUp v-show="here"/>
       <div class="Use__content">
         <Sign
-        @click="appear"
-        @mouseover="hovering = 1"
-        @mouseleave="hovering = 0"
-        nameIcon="#record"
+          @mouseover="hovering = 1"
+          @mouseleave="hovering = 0"
+          nameIcon="#record"
         >
           <template v-slot:right>
-              <ContentSign
+            <ContentSign
               class="Use__text"
-                :contentRight="false" 
-                title="Radial circle"
-              />
+              :contentRight="false"
+              title="Radial circle"
+            />
           </template>
         </Sign>
         <Sign
           @mouseover="hovering = 2"
-          @mouseleave="hovering = 0" 
+          @mouseleave="hovering = 0"
           nameIcon="#elevation"
         >
           <template v-slot:right>
-              <ContentSign 
-                :contentRight="false" 
-                title="Side view of disc"
-              />
+            <ContentSign :contentRight="false" title="Side view of disc" />
           </template>
         </Sign>
-        <Sign 
+        <Sign
           @mouseover="hovering = 3"
-          @mouseleave="hovering = 0" 
-          nameIcon="#pulsar" 
+          @mouseleave="hovering = 0"
+          nameIcon="#pulsar"
         >
           <template v-slot:right>
             <ContentSign :contentRight="false" title="Pulsar" />
@@ -45,26 +38,28 @@
         </Sign>
       </div>
       <div class="Use__ellipse">
-        <BaseIcon :class="{'hovering': hovering === 3}" class="Use__pulsar" href="#pulsar" />
-        <BaseIcon :class="{'hovering': hovering === 4}" class="Use__waveForm" href="#waveForm" />
-        <BaseIcon :class="{'hovering': hovering === 6}" class="Use__hydrogen" href="#hydrogen" />
-        <BaseIcon :class="{'hovering': hovering === 5}" class="Use__frames" href="#frames" />
-        <BaseIcon :class="{'hovering': hovering === 2}" class="Use__elevation" href="#elevation" />
-        <BaseIcon :class="{'hovering': hovering === 1}" class="Use__record" href="#record" />
+
+        <BaseIcon :class="{ hovering: hovering === 3 }" class="Use__pulsar" href="#pulsar" />
+        <BaseIcon :class="{ hovering: hovering === 4 }" class="Use__waveForm" href="#waveForm" />
+        <BaseIcon :class="{ hovering: hovering === 6 }" class="Use__hydrogen" href="#hydrogen" />
+        <BaseIcon :class="{ hovering: hovering === 5 }" class="Use__frames" href="#frames" />
+        <BaseIcon :class="{ hovering: hovering === 2 }" class="Use__elevation" href="#elevation" />
+        <BaseIcon :class="{ hovering: hovering === 1 }" class="Use__record" href="#record" />
+
       </div>
       <div class="Use__content">
         <Sign
           @mouseover="hovering = 4"
-          @mouseleave="hovering = 0" 
+          @mouseleave="hovering = 0"
           nameIcon="#waveForm"
         >
           <template v-slot:left>
             <ContentSign :contentRight="true" title="The waves" />
           </template>
         </Sign>
-        <Sign 
+        <Sign
           @mouseover="hovering = 5"
-          @mouseleave="hovering = 0" 
+          @mouseleave="hovering = 0"
           nameIcon="#frames"
         >
           <template v-slot:left>
@@ -73,7 +68,7 @@
         </Sign>
         <Sign
           @mouseover="hovering = 6"
-          @mouseleave="hovering = 0" 
+          @mouseleave="hovering = 0"
           nameIcon="#hydrogen"
         >
           <template v-slot:left>
@@ -89,26 +84,19 @@
 import BaseIcon from "@/components/BaseIcon.vue";
 import Sign from "@/components/Sign.vue";
 import ContentSign from "@/components/ContentSign.vue";
-import Title from "@/components/Title.vue";
-import PopUp from "@/components/HowToUse__PopUp.vue"
+import Header from "@/components/Header.vue";
 
 export default {
   name: 'UseIt',
-  data:() => ({
+  data: () => ({
     hovering: 0,
-    here: false,
+    isClosed: false,
   }),
   components: {
     BaseIcon,
-    Title,
     Sign,
     ContentSign,
-    PopUp
-  },
-  methods:{
-    appear(){
-      this.here = true
-    }
+    Header
   }
 };
 </script>
@@ -127,30 +115,26 @@ export default {
   width: 100vw;
   height: 100vh;
   background-color: $primary-darkblue;
-  // border: 1px solid red;
+  position: relative;
 
   &__mainTitle {
     display: flex;
     align-items: flex-start;
-    // border: 1px solid blue;
     margin-left: 10%;
     padding-top: 20px;
-    width: 85%;
+    width: 80%;
     height: 20%;
   }
 
-
-  &__text{
-    &:hover{
-    filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.8));
-    }
-  }
   &__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 85%;
+    width: 90%;
     height: 100%;
+    padding-bottom: 5vh;
+    transition: opacity 0.3s ease;
+
   }
 
   &__content {
@@ -158,7 +142,6 @@ export default {
     height: 90%;
     width: 25%;
     flex-direction: column;
-    // border: 1px solid blue;
   }
 
   &__ellipse {
@@ -167,6 +150,12 @@ export default {
     width: 350px;
     border-radius: 50%;
     background: linear-gradient(#d7c37f, #a67a3b);
+
+    
+    @include media_tablet {
+      width: 32%;
+      height: 40%;
+    }
   }
 
   &__pulsar {
@@ -177,6 +166,11 @@ export default {
     height: 150px;
     stroke: $primary-darkblue;
     fill: none;
+
+    @include media_tablet {
+      width: 120px;
+      height: 120px;
+    }
   }
 
   &__waveForm {
@@ -187,6 +181,11 @@ export default {
     height: 80px;
     stroke: $primary-darkblue;
     fill: none;
+
+    @include media_tablet {
+      width: 90px;
+      height: 70px;
+    }
   }
 
   &__hydrogen {
@@ -197,6 +196,11 @@ export default {
     height: 80px;
     stroke: $primary-darkblue;
     fill: none;
+
+    @include media_tablet {
+      width: 50px;
+      height: 50px;
+    }
   }
 
   &__frames {
@@ -207,6 +211,11 @@ export default {
     height: 80px;
     stroke: $primary-darkblue;
     fill: none;
+
+    @include media_tablet {
+      width: 60px;
+      height: 60px;
+    }
   }
 
   &__elevation {
@@ -217,6 +226,11 @@ export default {
     height: 80px;
     stroke: $primary-darkblue;
     fill: none;
+
+    @include media_tablet {
+      width: 60px;
+      height: 60px;
+    }
   }
 
   &__record {
@@ -227,19 +241,25 @@ export default {
     height: 80px;
     stroke: $primary-darkblue;
     fill: none;
-    transition: transform 0.5s ease;
+
+    @include media_tablet {
+      width: 60px;
+      height: 60px;
+    }
 
     &--hovering {
       stroke: $primary-white;
-      transform: rotate(90deg);
       filter: drop-shadow(12px 12px 6px rgba(0, 0, 0, 1));
     }
   }
 
-  .hovering{
+  .hovering {
     stroke: white;
     filter: drop-shadow(0px 6px 2px rgba($primary-darkblue, 0.7));
   }
-
+  .home {
+    color: white;
+    z-index: 100000;
+  }
 }
 </style>

@@ -1,59 +1,69 @@
 <template>
-  <div v-on="$listeners" :class="contentRight ? 'Use__text--right' : 'Use__text--left'" class="Use__text">
-    <span class="Use__title">{{ title }}</span>
-    <BaseIcon class="Use__plus" 
-    href="#plus" 
-    />
+  <div
+    v-on="$listeners"
+    :class="contentRight ? 'Use__text--right' : 'Use__text--left'"
+    class="Use__text"
+  >
+    <p class="Use__title">{{ title }}</p>
+    <BaseIcon class="Use__plus" href="#plus" />
   </div>
 </template>
 
 <script>
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from "@/components/BaseIcon.vue";
 
 export default {
-  props:{
+  props: {
     title: {
       type: String,
       required: true
     },
-    contentRight:{
+    contentRight: {
       type: Boolean,
-      required: true,
+      required: true
     }
   },
-  components:{
+  components: {
     BaseIcon
   }
-}
+};
 </script>
 
 <style lang="scss">
-.Use{
-    &__text {
+.Use {
+  &__text {
     height: 18%;
-    width: 65%;
+    width: 73%;
     display: flex;
     align-items: center;
     position: absolute;
-    
-    &__title {
-      font-family: 'Product Sans Regular';
-      font-size: 20px;
-      color: $primary-white;
-  }
+
+    @include media_tablet {
+      width: 75%;
+    }
 
     &--left {
-      top: 60%;
+      top: 65%;
       left: 55%;
+
+      @include media_tablet {
+        top: 65%;
+        left: 40%;
+      }
     }
 
     &--right {
       top: 55%;
       right: 55%;
+
+      @include media_tablet {
+        top: 65%;
+        right: 40%;
+      }
     }
   }
 
-    &__plus {
+  &__plus {
     width: 20px;
     height: 20px;
     margin-left: 10px;
