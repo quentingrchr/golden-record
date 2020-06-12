@@ -1,5 +1,5 @@
 <template>
-  <div class="intro" @click="$emit('clickWelcome', welcome)">
+  <div class="intro" @click="$emit('clickWelcome')">
     <h1 class="title-welcome">The Golden Record</h1>
     <h1 class="title-blur">
       <em>T</em>

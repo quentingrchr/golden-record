@@ -83,10 +83,14 @@
 </template>
 
 <script>
+
+
+
 import BaseIcon from '@/components/BaseIcon.vue';
 import Sign from '@/components/Sign.vue';
 import ContentSign from '@/components/ContentSign.vue';
 import Title from '@/components/Title.vue';
+
 
 export default {
   name: 'UseIt',
@@ -98,8 +102,9 @@ export default {
     BaseIcon,
     Title,
     Sign,
-    ContentSign,
+    ContentSign
   },
+
 };
 </script>
 
