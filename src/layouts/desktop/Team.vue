@@ -4,7 +4,7 @@
     <div class="twinkling"></div>
     <Icons />
     <header class="header">
-      <Title text="Who did it ?" />
+      <Header text="Who did it ?" />
       <BaseIcon
         href="arrow-top"
         class="icon-container"
@@ -55,11 +55,11 @@ import srcVid5 from "../../assets/video/frank-vid.mp4";
 import Polaroid from "../../components/Polaroid__Desktop.vue";
 import Icons from "../../components/Icons";
 import BaseIcon from "../../components/BaseIcon";
-import Title from "../../components/Title";
+import Header from "../../components/Header";
 
 export default {
   name: "Team",
-  components: { Polaroid, BaseIcon, Icons, Title },
+  components: { Polaroid, BaseIcon, Icons, Header },
   props: {},
   data: () => {
     return {
@@ -201,13 +201,13 @@ section {
   z-index: 0;
 }
 
-header.header {
+.header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 20px 150px;
+  padding-right: 10%;
   position: relative;
   z-index: 10;
 }

@@ -1,6 +1,6 @@
 <template>
   <section class="thejourney">
-    <Title class="thejourney_title" text="The journey" />
+    <Header class="thejourney_title" text="The journey" />
     <div class="stars"></div>
     <div class="twinkling"></div>
     <div class="voyager">
@@ -37,12 +37,12 @@
 </template>
 
 <script>
-import Title from "../../components/Title";
+import Header from "../../components/Header";
 import TimeElapsed from "../../components/TimeElapsed.vue";
 
 export default {
   name: "TheJourney",
-  components: { Title, TimeElapsed },
+  components: { Header, TimeElapsed },
   data() {
     return {
       zoomedIn: false
@@ -65,16 +65,6 @@ export default {
 .thejourney {
   height: 100vh;
   width: 100vw;
-  &_title {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 20px 150px;
-    position: relative;
-    z-index: 20;
-  }
 }
 
 .voyager {
