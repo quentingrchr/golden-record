@@ -3,7 +3,13 @@
     <svg style="position: absolute; width: 0; height: 0; overflow: hidden">
       <defs>
         <symbol id="previous" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="16" transform="rotate(180 16 16)" fill="#14131C" />
+          <circle
+            cx="16"
+            cy="16"
+            r="16"
+            transform="rotate(180 16 16)"
+            fill="#14131C"
+          />
           <path
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -26,7 +32,13 @@
           />
         </symbol>
         <symbol id="next" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="16" transform="rotate(180 16 16)" fill="#14131C" />
+          <circle
+            cx="16"
+            cy="16"
+            r="16"
+            transform="rotate(180 16 16)"
+            fill="#14131C"
+          />
           <path
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -67,9 +79,7 @@
       </defs>
     </svg>
 
-    <header>
-      <Title :text="title" />
-    </header>
+    <Header :text="title" />
 
     <img
       class="audio__imgBras"
@@ -108,7 +118,7 @@
 </template>
 
 <script>
-import Title from "../../components/Title.vue";
+import Header from "../../components/Header.vue";
 import AudioPlayer from "../../components/AudioPlayer.vue";
 import AudioCategory from "../../components/AudioCategory.vue";
 
@@ -120,35 +130,35 @@ export default {
   },
   data() {
     return {
-      title: "Audio content",
+      title: 'Audio content',
       audioSettings: {
         isPlaying: false,
         isMuted: false,
-        volume: 50
+        volume: 50,
       },
       selectedCategory: 0,
       categories: [
         {
           categoryId: 1,
-          categoryName: "Songs",
-          categoryInstruction: "Press play button to play a song random",
-          isSelected: false
+          categoryName: 'Songs',
+          categoryInstruction: 'Press play button to play a song random',
+          isSelected: false,
         },
         {
           categoryId: 2,
-          categoryName: "Hellos",
+          categoryName: 'Hellos',
           categoryInstruction:
-            "Press play button to hear someone say hello in a random language",
-          isSelected: false
+            'Press play button to hear someone say hello in a random language',
+          isSelected: false,
         },
         {
           categoryId: 3,
-          categoryName: "Noises",
+          categoryName: 'Noises',
           categoryInstruction:
-            "Press play button to play a noise random you can hear on earth",
-          isSelected: false
-        }
-      ]
+            'Press play button to play a noise random you can hear on earth',
+          isSelected: false,
+        },
+      ],
     };
   },
   methods: {
@@ -176,8 +186,8 @@ export default {
 
     updateCategory(index) {
       this.selectedCategory = index;
-    }
-  }
+    },
+  },
 };
 </script>
 

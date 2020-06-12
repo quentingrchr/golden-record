@@ -34,11 +34,10 @@ h2 {
 h2::after {
   content: "";
   width: 150%;
-  height: 5px;
+  height: 4px;
   background-color: $primary-white;
-  border-radius: 10px;
   position: absolute;
-  top: 45px;
+  top: 50px;
   left: 0px;
 
   @include media_tablet {

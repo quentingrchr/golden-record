@@ -1,3 +1,24 @@
+@keyframes blur-moving {
+  0% {
+    top: 0px;
+    left: 0px;
+    opacity: 1;
+  }
+  40% {
+    top: 20px;
+    left: 0px;
+  }
+  80% {
+    top: -5px;
+    left: -5px;
+  }
+  100% {
+    top: -20px;
+    left: 3px;
+    opacity: 0.3;
+  }
+}
+
 .intro {
   overflow: hidden;
   width: 100vw;
@@ -6,14 +27,59 @@
   display: flex;
   justify-content: center;
 }
-.title-welcome {
+
+.title-blur {
+  left: 50%;
+  transform: translateX(-50%);
   position: absolute;
   z-index: 3;
-  font-family: lato;
+  font-family: Lato;
   font-style: normal;
   font-weight: bold;
   font-size: 60px;
   top: 200px;
+  color: $primary-white;
+  filter: blur(40px);
+  transition: opacity 2s;
+
+  &.scrolled {
+    opacity: 0;
+    em {
+      animation: none;
+    }
+  }
+
+  em {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    @for $i from 1 through 40 {
+      &:nth-child(#{$i}) {
+        animation: blur-moving
+          #{($i * 0.5) +
+          2.5}s
+          ease
+          infinite
+          alternate-reverse;
+      }
+    }
+  }
+}
+
+.title-welcome {
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  z-index: 3;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 60px;
+  top: 200px;
+
+  &.scrolled {
+    animation: title-closing 0.3s 2s ease-out forwards;
+  }
   /* identical to box height */
 
   background: -webkit-linear-gradient(
@@ -26,15 +92,29 @@
   -webkit-text-fill-color: transparent;
 }
 
+.earth-bg-container {
+  position: absolute;
+  right: 50%;
+  width: 775px;
+  transition: top 1s ease;
+  top: 50vh;
+}
+
 .earth-bg {
   z-index: 2;
   width: 775px;
   height: auto;
   position: absolute;
-  bottom: -95%;
   animation: earth-rotation 140s infinite forwards;
-  opacity: 0.8;
+  opacity: 1;
 }
+
+@media screen and (max-width: 300px) {
+  .earth-bg {
+    width: 400px;
+  }
+}
+
 @media screen and (max-width: 300px) {
   .earth-bg {
     width: 400px;
@@ -44,7 +124,9 @@
 .icone-scroll__desktop {
   position: absolute;
   z-index: 10;
-  bottom: 10px;
+  right: 50%;
+  top: 90vh;
+  width: 20px;
   height: 60px;
   display: flex;
   justify-content: center;
@@ -53,6 +135,7 @@
   position: absolute;
   z-index: 10;
   bottom: 40px;
+  right: 50%;
   height: 20px;
   display: flex;
   justify-content: center;

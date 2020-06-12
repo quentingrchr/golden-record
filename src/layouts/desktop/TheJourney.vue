@@ -1,13 +1,19 @@
 <template>
   <section class="thejourney">
-    <Title class="thejourney_title" text="The journey" />
+    <Header class="thejourney_title" text="The journey" />
     <div class="stars"></div>
     <div class="twinkling"></div>
     <div class="voyager">
       <div class="voyager_image">
         <h4>Voyager probe</h4>
-        <img src="@/assets/img/voyager_journey.png" alt="voyager prob" />
-        <h4>The golden record</h4>
+        <img class="probe" src="@/assets/img/voyager_journey.png" alt="voyager prob" />
+        <img
+          class="golden-record"
+          :class="zoomedIn ? 'zoom-in-record' : ''"
+          src="@/assets/img/golden-record.png"
+          alt="voyager prob"
+          @click="zoomIn"
+        />
       </div>
       <div class="voyager_description">
         <p>
@@ -31,12 +37,22 @@
 </template>
 
 <script>
-import Title from "../../components/Title";
+import Header from "../../components/Header";
 import TimeElapsed from "../../components/TimeElapsed.vue";
 
 export default {
   name: "TheJourney",
-  components: { Title, TimeElapsed }
+  components: { Header, TimeElapsed },
+  data() {
+    return {
+      zoomedIn: false
+    };
+  },
+  methods: {
+    zoomIn() {
+      this.zoomedIn = !this.zoomedIn;
+    }
+  }
 };
 </script>
 
@@ -49,16 +65,6 @@ export default {
 .thejourney {
   height: 100vh;
   width: 100vw;
-  &_title {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 20px 150px;
-    position: relative;
-    z-index: 20;
-  }
 }
 
 .voyager {
@@ -79,9 +85,24 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    img {
+    .probe {
       width: 300px;
       margin-top: 16px;
+    }
+    .golden-record {
+      position: absolute;
+      top: 38px;
+      left: 5px;
+      transform: scale(0.06);
+      transition: transform 2s;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .zoom-in-record {
+      transform: scale(1);
+      transform: translateY(200px) translateX(20px);
     }
   }
   &_description {
@@ -101,6 +122,14 @@ export default {
   }
   .time {
     margin-top: 24px;
+  }
+}
+@keyframes scaling {
+  from {
+    transform: scale(0.06);
+  }
+  to {
+    transform: scale(0.1);
   }
 }
 </style>
