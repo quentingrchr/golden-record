@@ -1,5 +1,5 @@
 <template>
-  <div class="pop_up" v-bind:class="{ 'closed': isClosed, 'open': !isClosed}">
+  <div class="pop_up" v-bind:class="{ closed: isClosed, open: !isClosed }">
     <svg
       @click="closePopUp"
       class="pop_up_close"
@@ -15,7 +15,7 @@
       />
     </svg>
 
-    <p>{{text}}</p>
+    <p>{{ text }}</p>
   </div>
 </template>
 

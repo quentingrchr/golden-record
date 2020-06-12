@@ -1,68 +1,87 @@
 <template>
   <div class="player">
-    <div class="player__titleContainer">
-      <p class="player__title">Songs - Title of Song</p>
-    </div>
     <div class="player__controller">
+      <div class="player__titleContainer">
+        <p class="player__title">Title of Song</p>
+      </div>
+      <audio ref="audio">
+        <source src type="audio/mpeg" />
+      </audio>
       <div class="player__mainSettings">
         <svg>
           <use href="#previous" />
         </svg>
-        <svg @click="clickPlay" v-if="isPlaying">
-          <use href="#pause" />
-        </svg>
-        <svg @click="clickPlay" v-else>
-          <use href="#play" />
+        <svg @click="togglePlay">
+          <use :href="playing ? '#pause' : '#play'" />
         </svg>
         <svg>
           <use href="#next" />
         </svg>
       </div>
       <div class="player__soundSettings">
-        <svg @click="clickMute" v-if="isMuted">
-          <use href="#soundoff" />
-        </svg>
-        <svg @click="clickMute" v-else>
-          <use href="#soundon" />
+        <svg @click="isMuted">
+          <use :href="muted ? '#soundoff' : '#soundon'" />
         </svg>
         <input
           class="player__soundSlider"
+          ref="slider"
           type="range"
           min="0"
           max="100"
           step="1"
           value="50"
-          @input="changeVolume"
+          @input="updateVolume"
         />
       </div>
     </div>
+    <div id="waveform" class="player__waveForm"></div>
   </div>
 </template>
 
 <script>
 export default {
   name: "AudioPlayer",
-  props: {
-    isPlaying: {
-      type: Boolean,
-      required: true
+  data() {
+    return {
+      playing: false,
+      muted: false,
+      volume: 0
+    };
+  },
+  computed: {
+    audio() {
+      return this.$refs["audio"];
     },
-    isMuted: {
-      type: Boolean,
-      required: true
+    slider() {
+      return this.$refs["slider"];
     }
   },
   methods: {
-    clickPlay() {
-      this.$emit("click-play");
+    togglePlay() {
+      if (!this.audio.paused && !this.audio.ended) {
+        this.audio.pause();
+        this.playing = !this.playing;
+      } else {
+        this.audio.play();
+        this.playing = !this.playing;
+      }
     },
-
-    clickMute() {
-      this.$emit("click-mute");
+    updateVolume: function(e) {
+      this.volume = e.target.value;
+      console.log(this.volume, this.audio.volume);
+      this.audio.volume = this.volume / 100;
+      this.volume == 0 ? (this.muted = true) : (this.muted = false);
     },
-
-    changeVolume: function(e) {
-      this.$emit("change-volume", e);
+    isMuted() {
+      this.muted = !this.muted;
+      let volumeNow = this.audio.volume * 100;
+      if (this.audio.muted != true) {
+        this.audio.muted = true;
+        this.slider.value = 0;
+      } else {
+        this.audio.muted = false;
+        this.slider.value = volumeNow;
+      }
     }
   }
 };
@@ -84,7 +103,26 @@ input {
 }
 
 .player {
-  width: 304px;
+  width: 800px;
+  height: 300px;
+  border: 1px solid red;
+  position: relative;
+  top: 270px;
+}
+
+.player__waveForm {
+  width: 100%;
+  height: 300px;
+  position: absolute;
+  border: 1px solid yellow;
+}
+
+.player__controller {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -93,8 +131,8 @@ input {
 
 .player__titleContainer {
   overflow-x: hidden;
-  width: 60%;
-  padding-bottom: 4px;
+  width: 80%;
+  margin-bottom: 16px;
 }
 
 .player__title {
@@ -102,26 +140,20 @@ input {
   animation: 10s linear 1s infinite running slide;
 }
 
-.player__controller {
-  width: 100%;
-  height: 48px;
-  padding: 8px 16px;
-  border-radius: 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #b68d01;
-}
-
 .player__mainSettings {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
 
   svg {
-    width: 32px;
-    height: 32px;
+    width: 50px;
+    height: 50px;
 
     &:nth-child(2) {
-      margin: 0px 16px;
+      width: 70px;
+      height: 70px;
+      margin: 0px 24px;
     }
   }
 }
@@ -131,18 +163,18 @@ input {
   align-items: center;
 
   svg {
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
+    fill: #ae8908;
   }
 }
 
 .player__soundSettings input {
   -webkit-appearance: none; /* reset default style for chrome */
   -moz-appearance: none; /* reset default style for mozz */
-  width: 92px;
   outline: none;
   background-color: transparent;
-  margin-left: 8px;
+  margin-left: 16px;
 }
 
 /* slider for chrome*/
@@ -166,10 +198,10 @@ input {
   -webkit-appearance: none;
   width: 8px;
   height: 8px;
-  border: 1px solid $primary-darkblue;
+  border: 1px solid #ae8908;
   border-radius: 50%;
   padding: 4px;
-  background: $primary-darkblue;
+  background: #ae8908;
   margin-top: -3px;
 }
 
@@ -181,7 +213,7 @@ input {
   border: none;
   border-radius: 50%;
   padding: 4px;
-  background: $primary-darkblue;
+  background: #ae8908;
   margin-top: -3px;
 }
 </style>
