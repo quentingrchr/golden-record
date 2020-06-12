@@ -102,6 +102,10 @@ export default {
       &.isSelected p {
         font-size: 1.02rem;
         opacity: 1;
+        &:hover {
+          text-decoration: none;
+          cursor: default;
+        }
       }
     }
   }

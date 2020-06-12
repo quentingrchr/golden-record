@@ -7,23 +7,23 @@
 </template>
 
 <script>
-import Desktop from '@/views/Desktop/Desktop.vue';
-import Mobile from '@/views/Mobile/Mobile.vue';
+import Desktop from "@/views/desktop/Desktop.vue";
+import Mobile from "@/views/mobile/Mobile.vue";
 
 export default {
   computed: {
     isBigScreen: function() {
-      if (window.matchMedia('(min-width: 768px)').matches) {
+      if (window.matchMedia("(min-width: 768px)").matches) {
         return true;
       } else {
         return false;
       }
-    },
+    }
   },
   components: {
     Desktop,
-    Mobile,
-  },
+    Mobile
+  }
 };
 </script>
 
