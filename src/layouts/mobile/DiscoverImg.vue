@@ -22,6 +22,8 @@
 
 <script>
 import Title from '@/components/Title.vue';
+import { url } from '@/constants.js';
+
 export default {
   data() {
     return {
@@ -32,12 +34,9 @@ export default {
     };
   },
   beforeCreate() {
-    fetch(
-      'https://cors-anywhere.herokuapp.com/https://custom-cwxn.frb.io/query/visual_content',
-      {
-        method: 'GET',
-      }
-    )
+    fetch(`${url}/query/visual_content`, {
+      method: 'GET',
+    })
       .then((response) => response.json())
       .then((data) =>
         data.forEach((element) => {

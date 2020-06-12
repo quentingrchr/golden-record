@@ -104,7 +104,6 @@ export default {
         })
       );
   },
-
   beforeUpdate() {
     this.imagesApparition = true;
   },
