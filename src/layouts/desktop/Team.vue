@@ -45,6 +45,7 @@ import srcImg2 from "../../assets/img/eward_c_stone.jpg";
 import srcImg3 from "../../assets/img/carl_sagan.jpg";
 import srcImg4 from "../../assets/img/jon_lomberg.jpg";
 import srcImg5 from "../../assets/img/frank_drake.jpg";
+import notFound from "../../assets/img/pola_thumbnail.jpg";
 
 import srcVid1 from "../../assets/video/ann-vid.mp4";
 import srcVid2 from "../../assets/video/ann-vid.mp4";
@@ -56,6 +57,8 @@ import Polaroid from "../../components/Polaroid__Desktop.vue";
 import Icons from "../../components/Icons";
 import BaseIcon from "../../components/BaseIcon";
 import Title from "../../components/Title";
+
+import { url } from "@/constants.js";
 
 export default {
   name: "Team",
@@ -69,66 +72,104 @@ export default {
       imgs: [
         {
           isFocused: false,
-          imgUrl: srcImg1,
-          vidUrl: srcVid1,
-          caption: "Ann druyan",
+          vidUrl: null,
+          imgUrl: notFound,
+          title: "Loading",
+          caption: "Loading",
           style: {},
-          title: "The pen of the project",
-          description: [
-            "Ann Druyan is an American journalist, writer, lecturer, director and producer, the late wife and widow of astronomer and writer Carl Sagan.",
-            "She is also involved in science popularization projects. In particular, she is co-author of the Cosmos series. /The chances of aliens finding the Voyagers in the vast emptiness of space are small—some say infinitesimal—but we took our jobs seriously, recalls team member Ann Druyan. /From the moment when Carl first broached the project to Tim Ferris and me, it felt mythic./",
-          ],
+          description: [null, null],
         },
         {
           isFocused: false,
-          imgUrl: srcImg2,
-          vidUrl: srcVid2,
-          caption: "Eward C Stone",
-          title: "Inside the science",
-          description: [
-            "Edward Carroll Stone (born January 23, 1936) is an American space scientist, professor of physics at the California Institute of Technology, and former director of the NASA Jet Propulsion Laboratory (JPL).",
-            "As project scientist for the unmanned Voyager spacecraft missions to the outer Solar System since 1972, and a major spokesman for the Voyager science team, he became especially well known to the public in the 1980s. He has since been principal investigator on nine NASA spacecraft missions and coinvestigator on five more.",
-          ],
+          vidUrl: null,
+          imgUrl: notFound,
+          title: "Loading",
+          caption: "Loading",
           style: {},
+          description: [null, null],
         },
         {
           isFocused: false,
-          vidUrl: srcVid3,
-          imgUrl: srcImg3,
-          caption: "Carl Sagan",
+          vidUrl: null,
+          imgUrl: notFound,
+          title: "Loading",
+          caption: "Loading",
           style: {},
-          title: "Chairman of the comittee",
-          description: [
-            "He was an American astronomer, planetary scientist, cosmologist, astrophysicist, astrobiologist, author, science popularizer, and science communicator. He is best known as a science popularizer and communicator.",
-            "His best known scientific contribution is research on extraterrestrial life, including experimental demonstration of the production of amino acids from basic chemicals by radiation. Sagan assembled the first physical messages sent into space: the Pioneer plaque and the Voyager Golden Record, universal messages that could potentially be understood by any extraterrestrial intelligence that might find them.",
-          ],
+          description: [null, null],
         },
         {
           isFocused: false,
-          vidUrl: srcVid4,
-          imgUrl: srcImg4,
-          caption: "Jon Lomberg",
+          vidUrl: null,
+          imgUrl: notFound,
+          title: "Loading",
+          caption: "Loading",
           style: {},
-          title: "The artist",
-          description: [
-            "Jon Lomberg (born 1948) is an American space artist and science journalist. He was Carl Sagan's principal artistic collaborator for more than twenty years on many projects from 1972 through 1996. In 1998, the International Astronomical Union officially named an asteroid (6446 Lomberg) in recognition of his achievements in science communication.",
-            "In 1972, Lomberg showed some of his paintings to astronomer Carl Sagan, who then asked him to illustrate The Cosmic Connection. This was the beginning of their quarter century of collaboration on many projects, including the NASA's interstellar Voyager Golden Record",
-          ],
+          description: [null, null],
         },
         {
           isFocused: false,
-          vidUrl: srcVid5,
-          imgUrl: srcImg5,
-          caption: "Frank Drake",
+          vidUrl: null,
+          imgUrl: notFound,
+          title: "Loading",
+          caption: "Loading",
           style: {},
-          title: "DJsigner Frank",
-          description: [
-            "Frank Drake (born May 28, 1930 in Chicago) is an American astronomer. Founder of the SETI (Search for Extra-Terrestrial Intelligence) project, he is the author of the famous Drake equation. Drake co-designed the Pioneer plaque with Carl Sagan in 1972, the first physical message sent into space. The plaque was designed to be understandable by extraterrestrials should they encounter it.",
-            "He later supervised the creation of the Voyager Golden Record. He was elected to the American Academy of Arts and Sciences in 1974.",
-          ],
+          description: [null, null],
         },
       ],
     };
+  },
+  beforeCreate() {
+    let staticData = {
+      annDruyan: {
+        vidSrc: srcVid1,
+        imgSrc: srcImg1,
+        caption: "Ann Druyan",
+        order: 0,
+      },
+      carlSagan: {
+        vidSrc: srcVid3,
+        imgSrc: srcImg3,
+        caption: "Carl Sagan",
+        order: 2,
+      },
+      frankDrake: {
+        vidSrc: srcVid5,
+        imgSrc: srcImg5,
+        caption: "Frank Drake",
+        order: 4,
+      },
+      jonLomberg: {
+        vidSrc: srcVid4,
+        imgSrc: srcImg4,
+        caption: "Jon Lomberg",
+        order: 3,
+      },
+      ewardCStone: {
+        vidSrc: srcVid2,
+        imgSrc: srcImg2,
+        caption: "Eward C Stone",
+        order: 1,
+      },
+    };
+
+    fetch(`${url}/query/polaroids`, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        this.imgs = [];
+        data.forEach((el) => {
+          this.imgs[staticData[el.name].order] = {
+            isFocused: false,
+            vidUrl: staticData[el.name].vidSrc,
+            imgUrl: staticData[el.name].imgSrc,
+            title: el.title,
+            caption: staticData[el.name].caption,
+            style: {},
+            description: [el.text_1, el.text_2],
+          };
+        });
+      });
   },
   methods: {
     handleFocus: function(index) {
@@ -270,30 +311,68 @@ header.header {
   }
 }
 
+$hoverOffset: 5;
+
 figure {
   transition: transform 1s;
+  &.focusMode {
+    transition: transform 1s;
+  }
 
   box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
   &:nth-child(1) {
     z-index: 2;
-
     transform: scale(0.6) rotate(-21.93deg) translateX(50%) translateY(15%);
+
+    &:hover:not(.focusMode) {
+      transition: transform 0.5s ease;
+
+      transform: scale(0.6) rotate(-21.93deg) translateX(50%)
+        translateY(15% - $hoverOffset);
+    }
   }
   &:nth-child(2) {
     z-index: 3;
     transform: scale(0.6) rotate(7.36deg) translateY(30%) translateX(150%);
+
+    &:hover:not(.focusMode) {
+      transition: transform 0.5s ease;
+
+      transform: scale(0.6) rotate(7.36deg) translateY(30% - $hoverOffset)
+        translateX(150%);
+    }
   }
   &:nth-child(3) {
     z-index: 4;
     transform: scale(0.9) translateX(180%) translateY(-10%);
+
+    &:hover:not(.focusMode) {
+      transition: transform 0.5s ease;
+
+      transform: scale(0.9) translateX(180%) translateY(-10% - $hoverOffset);
+    }
   }
   &:nth-child(4) {
     z-index: 5;
     transform: scale(0.8) rotate(-12.6deg) translateY(100%) translateX(250%);
+
+    &:hover:not(.focusMode) {
+      transition: transform 0.5s ease;
+
+      transform: scale(0.8) rotate(-12.6deg) translateY(100% - $hoverOffset)
+        translateX(250%);
+    }
   }
   &:nth-child(5) {
     z-index: 1;
     transform: scale(0.6) rotate(4deg) translateY(-30%) translateX(450%);
+
+    &:hover:not(.focusMode) {
+      transition: transform 0.5s ease;
+
+      transform: scale(0.6) rotate(4deg) translateY(-30% - $hoverOffset)
+        translateX(450%);
+    }
   }
 }
 </style>
