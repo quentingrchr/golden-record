@@ -124,7 +124,7 @@ import AudioCategory from "../../components/AudioCategory.vue";
 
 export default {
   components: { 
-    Title, 
+    Header, 
     AudioPlayer, 
     AudioCategory, 
   },
