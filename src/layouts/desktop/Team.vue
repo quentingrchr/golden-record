@@ -274,7 +274,9 @@ section {
 }
 
 .polaroids {
-  margin: auto;
+  display: block;
+  width: 80vw;
+  margin: 0 10vw;
   margin-top: 14vh;
   flex-wrap: nowrap;
   position: relative;
@@ -331,6 +333,7 @@ figure {
         translateY(15% - $hoverOffset);
     }
   }
+
   &:nth-child(2) {
     z-index: 3;
     transform: scale(0.6) rotate(7.36deg) translateY(30%) translateX(150%);
