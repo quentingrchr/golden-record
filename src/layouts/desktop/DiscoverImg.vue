@@ -5,17 +5,30 @@
       class="visualContent__images"
       :class="imagesApparition ? 'isVisible' : null"
       :style="position"
+      ref="imageContainer"
     >
       <div
         v-for="(image, index) in imgs"
         :key="index"
         @click="isSelected(image)"
-        class="images"
       >
-        <img :src="image" alt="One of the golden record pictures" />
+        <img
+          :src="image"
+          alt="One of the golden record pictures"
+          ref="lazyImage"
+        />
       </div>
     </div>
     <div class="visualContent__overlays">
+      <div class="loading-overlay">
+        <div class="stars"></div>
+        <h3 class="overlay__title">
+          What does those strange creatures look likes ?
+        </h3>
+        <div class="loading-overlay__grid">
+          <div v-for="img in fakeImgNumber" :key="img"></div>
+        </div>
+      </div>
       <transition name="fade">
         <div class="overlay" v-if="selectedImage" @click="closeOverlay">
           <img :src="selectedImage" alt="One of the golden record pictures" />
@@ -90,6 +103,15 @@ export default {
       selectedImage: null,
     };
   },
+  computed: {
+    fakeImgNumber() {
+      let fakesImg = [];
+      for (let i = 0; i < 30; i++) {
+        fakesImg.push(i);
+      }
+      return fakesImg;
+    },
+  },
   beforeCreate() {
     fetch(`${url}/query/visual_content`, {
       method: 'GET',
@@ -97,6 +119,7 @@ export default {
       .then((response) => response.json())
       .then((data) => {
         data.forEach((element) => this.imgs.push(element.src));
+        this.$nextTick(() => {});
       });
   },
   components: {
@@ -105,18 +128,21 @@ export default {
   beforeUpdate() {
     this.imagesApparition = true;
   },
-  mounted() {
-    //this.loadImages();
-  },
   methods: {
-    loadImages() {
-      //console.log(document.querySelectorAll('.images'));
-      //passer src-set a src
-      //regarder si l'image est dans le viewport
-      //a apeler dans Mounted et setDirection
-    },
+    /* loadImages() {
+      const windowBottom = window.innerHeight;
+      const windowRight = window.innerWidth;
+      this.$refs.lazyImage.forEach((el) => {
+        let elementPosition = el.getBoundingClientRect();
+        let x = elementPosition.x;
+        let y = elementPosition.y;
+        if (x > 0 && x < windowRight && y > 0 && y < windowBottom) {
+          el.src = el.getAttribute('src-set');
+        }
+      });
+    }, */
     setDirection(value) {
-      const imgContainer = document.querySelector('.visualContent__images');
+      const imgContainer = this.$refs.imageContainer;
       if (value === 'down') {
         this.position.top = '100px';
       } else if (value === 'right') {
@@ -152,7 +178,7 @@ export default {
       }
     },
     cancelDirection() {
-      const imgContainer = document.querySelector('.visualContent__images');
+      const imgContainer = this.$refs.imageContainer;
       const top = imgContainer.offsetTop + 'px';
       const left = imgContainer.offsetLeft + 'px';
       this.position.top = top;
@@ -164,6 +190,9 @@ export default {
     closeOverlay() {
       this.selectedImage = null;
     },
+  },
+  beforeDestroy() {
+    console.log('cest fait');
   },
 };
 </script>
@@ -184,12 +213,12 @@ section {
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: repeat(auto, 1fr);
   grid-gap: 10px;
-  opacity: 0;
-  transition: all 2s ease-in, opacity linear 0.5s 3s;
+  //opacity: 0;
+  transition: all 2s ease-in;
 
-  &.isVisible {
+  /* &.isVisible {
     opacity: 1;
-  }
+  } */
 
   filter: contrast(120%);
 
@@ -205,6 +234,58 @@ section {
     &:hover {
       opacity: 1;
     }
+  }
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
+  & h3 {
+    z-index: 2;
+    margin-bottom: 50px;
+    max-width: 80%;
+    color: $primary-white;
+  }
+
+  & .loading-overlay__grid {
+    width: 70%;
+    height: 60%;
+    //background-color: red;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 20px;
+    margin-bottom: 50px;
+
+    @keyframes flashing {
+      to {
+        opacity: 0.4;
+      }
+    }
+    & div {
+      opacity: 1;
+      background-color: red;
+      animation: flashing 3s linear alternate infinite;
+
+      @for $i from 1 through 31 {
+        &:nth-child(#{$i}) {
+          animation-delay: $i * 1s;
+        }
+      }
+    }
+  }
+
+  .stars {
+    z-index: 0;
   }
 }
 
