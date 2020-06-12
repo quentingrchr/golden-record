@@ -21,6 +21,7 @@ body {
   margin: 0;
   width: 100vw;
 }
+
 #app {
   background-color: red;
   font-family: Avenir, Helvetica, Arial, sans-serif;
