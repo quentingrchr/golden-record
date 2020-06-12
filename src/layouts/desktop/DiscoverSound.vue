@@ -118,15 +118,15 @@
 </template>
 
 <script>
-import Header from "../../components/Header.vue";
-import AudioPlayer from "../../components/AudioPlayer.vue";
-import AudioCategory from "../../components/AudioCategory.vue";
+import Header from '../../components/Header.vue';
+import AudioPlayer from '../../components/AudioPlayer.vue';
+import AudioCategory from '../../components/AudioCategory.vue';
 
 export default {
-  components: { 
-    Title, 
-    AudioPlayer, 
-    AudioCategory, 
+  components: {
+    Header,
+    AudioPlayer,
+    AudioCategory,
   },
   data() {
     return {
