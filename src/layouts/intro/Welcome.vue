@@ -1,5 +1,5 @@
 <template>
-  <div class="intro" @click="$emit('clickWelcome', welcome)">
+  <div class="intro" @click="$emit('clickWelcome')">
     <h1 class="title-welcome">The Golden Record</h1>
     <img class="earth-bg" src="@/assets/earth-welcome.png" alt />
     <div class="stars"></div>
