@@ -6,7 +6,7 @@
     <header class="header">
       <Header text="Who did it ?" />
       <BaseIcon
-        href="sound"
+        href="arrow-top"
         class="icon-container"
         :class="focusMode ? 'focus-mode' : ''"
         @click="quitFocus"
@@ -24,13 +24,16 @@
         :style="img.style"
         :vidUrl="img.vidUrl"
         :isFocused="index === indexFocused"
+        :class="focusMode ? 'focusMode' : ''"
       />
       <div class="polaroids__text">
-        <h3 class="polaroids__title">{{ focusMode ? imgs[indexFocused].title : "" }}</h3>
-        <p
-          class="polaroids__description"
-          :class="focusMode ? 'visible' : ''"
-        >{{ focusMode ? imgs[indexFocused].description : "" }}</p>
+        <h3 class="polaroids__title">
+          {{ focusMode ? imgs[indexFocused].title : "" }}
+        </h3>
+        <div class="polaroids__description" :class="focusMode ? 'visible' : ''">
+          <p>{{ focusMode ? imgs[indexFocused].description[0] : "" }}</p>
+          <p>{{ focusMode ? imgs[indexFocused].description[1] : "" }}</p>
+        </div>
       </div>
     </div>
   </section>
@@ -71,8 +74,10 @@ export default {
           caption: "Ann druyan",
           style: {},
           title: "The pen of the project",
-          description:
-            "Ann Druyan is an American journalist, writer, lecturer, director and producer, the late wife and widow of astronomer and writer Carl Sagan. She is also involved in science popularization projects. In particular, she is co-author of the Cosmos series. /The chances of aliens finding the Voyagers in the vast emptiness of space are small—some say infinitesimal—but we took our jobs seriously, recalls team member Ann Druyan. /From the moment when Carl first broached the project to Tim Ferris and me, it felt mythic./"
+          description: [
+            "Ann Druyan is an American journalist, writer, lecturer, director and producer, the late wife and widow of astronomer and writer Carl Sagan.",
+            "She is also involved in science popularization projects. In particular, she is co-author of the Cosmos series. /The chances of aliens finding the Voyagers in the vast emptiness of space are small—some say infinitesimal—but we took our jobs seriously, recalls team member Ann Druyan. /From the moment when Carl first broached the project to Tim Ferris and me, it felt mythic./",
+          ],
         },
         {
           isFocused: false,
@@ -80,9 +85,11 @@ export default {
           vidUrl: srcVid2,
           caption: "Eward C Stone",
           title: "Inside the science",
-          description:
-            "Edward Carroll Stone (born January 23, 1936) is an American space scientist, professor of physics at the California Institute of Technology, and former director of the NASA Jet Propulsion Laboratory (JPL). As project scientist for the unmanned Voyager spacecraft missions to the outer Solar System since 1972, and a major spokesman for the Voyager science team, he became especially well known to the public in the 1980s. He has since been principal investigator on nine NASA spacecraft missions and coinvestigator on five more.",
-          style: {}
+          description: [
+            "Edward Carroll Stone (born January 23, 1936) is an American space scientist, professor of physics at the California Institute of Technology, and former director of the NASA Jet Propulsion Laboratory (JPL).",
+            "As project scientist for the unmanned Voyager spacecraft missions to the outer Solar System since 1972, and a major spokesman for the Voyager science team, he became especially well known to the public in the 1980s. He has since been principal investigator on nine NASA spacecraft missions and coinvestigator on five more.",
+          ],
+          style: {},
         },
         {
           isFocused: false,
@@ -91,8 +98,10 @@ export default {
           caption: "Carl Sagan",
           style: {},
           title: "Chairman of the comittee",
-          description:
-            "He was an American astronomer, planetary scientist, cosmologist, astrophysicist, astrobiologist, author, science popularizer, and science communicator. He is best known as a science popularizer and communicator. His best known scientific contribution is research on extraterrestrial life, including experimental demonstration of the production of amino acids from basic chemicals by radiation. Sagan assembled the first physical messages sent into space: the Pioneer plaque and the Voyager Golden Record, universal messages that could potentially be understood by any extraterrestrial intelligence that might find them."
+          description: [
+            "He was an American astronomer, planetary scientist, cosmologist, astrophysicist, astrobiologist, author, science popularizer, and science communicator. He is best known as a science popularizer and communicator.",
+            "His best known scientific contribution is research on extraterrestrial life, including experimental demonstration of the production of amino acids from basic chemicals by radiation. Sagan assembled the first physical messages sent into space: the Pioneer plaque and the Voyager Golden Record, universal messages that could potentially be understood by any extraterrestrial intelligence that might find them.",
+          ],
         },
         {
           isFocused: false,
@@ -101,8 +110,10 @@ export default {
           caption: "Jon Lomberg",
           style: {},
           title: "The artist",
-          description:
-            "Jon Lomberg (born 1948) is an American space artist and science journalist. He was Carl Sagan's principal artistic collaborator for more than twenty years on many projects from 1972 through 1996. In 1998, the International Astronomical Union officially named an asteroid (6446 Lomberg) in recognition of his achievements in science communication. In 1972, Lomberg showed some of his paintings to astronomer Carl Sagan, who then asked him to illustrate The Cosmic Connection. This was the beginning of their quarter century of collaboration on many projects, including the NASA's interstellar Voyager Golden Record"
+          description: [
+            "Jon Lomberg (born 1948) is an American space artist and science journalist. He was Carl Sagan's principal artistic collaborator for more than twenty years on many projects from 1972 through 1996. In 1998, the International Astronomical Union officially named an asteroid (6446 Lomberg) in recognition of his achievements in science communication.",
+            "In 1972, Lomberg showed some of his paintings to astronomer Carl Sagan, who then asked him to illustrate The Cosmic Connection. This was the beginning of their quarter century of collaboration on many projects, including the NASA's interstellar Voyager Golden Record",
+          ],
         },
         {
           isFocused: false,
@@ -111,10 +122,12 @@ export default {
           caption: "Frank Drake",
           style: {},
           title: "DJsigner Frank",
-          description:
-            "Frank Drake (born May 28, 1930 in Chicago) is an American astronomer. Founder of the SETI project, he is the author of the famous Drake equation. Drake co-designed the Pioneer plaque with Carl Sagan in 1972, the first physical message sent into space. The plaque was designed to be understandable by extraterrestrials should they encounter it. He later supervised the creation of the Voyager Golden Record. He was elected to the American Academy of Arts and Sciences in 1974."
-        }
-      ]
+          description: [
+            "Frank Drake (born May 28, 1930 in Chicago) is an American astronomer. Founder of the SETI (Search for Extra-Terrestrial Intelligence) project, he is the author of the famous Drake equation. Drake co-designed the Pioneer plaque with Carl Sagan in 1972, the first physical message sent into space. The plaque was designed to be understandable by extraterrestrials should they encounter it.",
+            "He later supervised the creation of the Voyager Golden Record. He was elected to the American Academy of Arts and Sciences in 1974.",
+          ],
+        },
+      ],
     };
   },
   methods: {
@@ -146,7 +159,7 @@ export default {
           img.style = {
             transform: `translate(${MARGIN_LEFT +
               POLA_WIDTH * SCALE}px, 0px) rotate(0deg)`,
-            zIndex: 11
+            zIndex: 11,
           };
         } else {
           // Code for unfocused polas
@@ -157,7 +170,7 @@ export default {
               POLA_WIDTH / 2 +
               MARGIN_LEFT -
               GAP_HORIZONTAL}px, ${incr * (SM_POLA_HEIGHT + GAP_VERTICAL) -
-              OFFSET}px) rotate(0deg) scale(${SCALE})`
+              OFFSET}px) rotate(0deg) scale(${SCALE})`,
           };
           incr++;
         }
@@ -166,12 +179,12 @@ export default {
     quitFocus: function() {
       this.focusMode = false;
       this.indexFocused = null;
-      this.imgs.forEach(img => {
+      this.imgs.forEach((img) => {
         img.isFocused = false;
         img.style = {};
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -200,17 +213,22 @@ section {
 }
 
 .icon-container {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   top: 50px;
   right: 50px;
   fill: white;
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.2s;
+  cursor: pointer;
+
   &.focus-mode {
     visibility: visible;
-    opacity: 1;
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 
@@ -244,6 +262,10 @@ section {
     &.visible {
       visibility: visible;
       opacity: 1;
+    }
+
+    p {
+      margin-bottom: 20px;
     }
   }
 }

@@ -1,7 +1,28 @@
 <template>
-  <div class="intro" @click="$emit('clickWelcome', welcome)">
+  <div class="intro" @click="$emit('clickWelcome')">
     <h1 class="title-welcome">The Golden Record</h1>
-    <img class="earth-bg" src="@/assets/earth-welcome.png" alt />
+    <h1 class="title-blur">
+      <em>T</em>
+      <em>h</em>
+      <em>e</em>
+      <em> </em>
+      <em>G</em>
+      <em>o</em>
+      <em>l</em>
+      <em>d</em>
+      <em>e</em>
+      <em>n</em>
+      <em> </em>
+      <em>R</em>
+      <em>e</em>
+      <em>c</em>
+      <em>o</em>
+      <em>r</em>
+      <em>d</em>
+    </h1>
+    <div class="earth-bg-container">
+      <img class="earth-bg" src="@/assets/earth-welcome.png" alt />
+    </div>
     <div class="stars"></div>
     <div class="twinkling"></div>
     <svg
@@ -21,7 +42,14 @@
         stroke="#F8F8F8"
         stroke-width="2.5"
       />
-      <rect x="13" y="10.7144" width="3.21429" height="8.57143" rx="1.60714" fill="#F8F8F8" />
+      <rect
+        x="13"
+        y="10.7144"
+        width="3.21429"
+        height="8.57143"
+        rx="1.60714"
+        fill="#F8F8F8"
+      />
       <path
         class="scroll-arrow"
         fill-rule="evenodd"
@@ -50,7 +78,7 @@
 
 <script>
 export default {
-  name: "Welcome"
+  name: "Welcome",
 };
 </script>
 

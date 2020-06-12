@@ -6,8 +6,14 @@
     <div class="voyager">
       <div class="voyager_image">
         <h4>Voyager probe</h4>
-        <img src="@/assets/img/voyager_journey.png" alt="voyager prob" />
-        <h4>The golden record</h4>
+        <img class="probe" src="@/assets/img/voyager_journey.png" alt="voyager prob" />
+        <img
+          class="golden-record"
+          :class="zoomedIn ? 'zoom-in-record' : ''"
+          src="@/assets/img/golden-record.png"
+          alt="voyager prob"
+          @click="zoomIn"
+        />
       </div>
       <div class="voyager_description">
         <p>
@@ -37,6 +43,16 @@ import TimeElapsed from "../../components/TimeElapsed.vue";
 export default {
   name: "TheJourney",
   components: { Header, TimeElapsed }
+  data() {
+    return {
+      zoomedIn: false
+    };
+  },
+  methods: {
+    zoomIn() {
+      this.zoomedIn = !this.zoomedIn;
+    }
+  }
 };
 </script>
 
@@ -69,9 +85,24 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    img {
+    .probe {
       width: 300px;
       margin-top: 16px;
+    }
+    .golden-record {
+      position: absolute;
+      top: 38px;
+      left: 5px;
+      transform: scale(0.06);
+      transition: transform 2s;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .zoom-in-record {
+      transform: scale(1);
+      transform: translateY(200px) translateX(20px);
     }
   }
   &_description {
@@ -91,6 +122,14 @@ export default {
   }
   .time {
     margin-top: 24px;
+  }
+}
+@keyframes scaling {
+  from {
+    transform: scale(0.06);
+  }
+  to {
+    transform: scale(0.1);
   }
 }
 </style>
