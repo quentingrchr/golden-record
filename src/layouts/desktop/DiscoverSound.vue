@@ -120,9 +120,10 @@
 </template>
 
 <script>
-import Title from '../../components/Title.vue';
-import AudioPlayer from '../../components/AudioPlayer.vue';
-import AudioCategory from '../../components/AudioCategory.vue';
+
+import Title from "../../components/Title.vue";
+import AudioPlayer from "../../components/AudioPlayer.vue";
+import AudioCategory from "../../components/AudioCategory.vue";
 
 export default {
   components: { Title, AudioPlayer, AudioCategory },

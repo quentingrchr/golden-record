@@ -48,12 +48,11 @@ export default {
   background-size: cover;
   width: 500px;
   height: 300px;
-  background: black;
+  background-image: url("https://66.media.tumblr.com/71d2be50c56e9bdefca1bc45db972ccf/tumblr_nu08b1P4G01rtynt1o3_r1_500.png");
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   border-radius: 12px;
-
   &_close {
     margin-top: 24px;
     margin-right: 24px;
@@ -69,7 +68,9 @@ export default {
     text-align: left;
     margin-top: 24px;
     background-color: rgba(0, 0, 0, 0.4);
-    text-align: center;
+    padding-left: 16px;
+    text-align: left;
+    width: 100%;
   }
 }
 .open {
