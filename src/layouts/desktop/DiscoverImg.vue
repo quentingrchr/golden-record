@@ -1,9 +1,11 @@
 <template>
   <section class="visualContent">
-    <div class="stars"></div>
-    <div class="twinkling"></div>
     <Title class="visualContent__title" text="Visual content" />
-    <div class="visualContent__images" :class="moveDirection" :style="position">
+    <div
+      class="visualContent__images"
+      :class="imagesApparition ? 'isVisible' : null"
+      :style="position"
+    >
       <div
         v-for="(image, index) in imgs"
         :key="index"
@@ -43,6 +45,30 @@
         @mouseleave="cancelDirection"
         @click="closeOverlay"
       ></div>
+      <div
+        class="borderEffect cornerTopRight"
+        @mouseenter="setDirection('cornerTopRight')"
+        @mouseleave="cancelDirection"
+        @click="closeOverlay"
+      ></div>
+      <div
+        class="borderEffect cornerTopLeft"
+        @mouseenter="setDirection('cornerTopLeft')"
+        @mouseleave="cancelDirection"
+        @click="closeOverlay"
+      ></div>
+      <div
+        class="borderEffect cornerBottomRight"
+        @mouseenter="setDirection('cornerBottomRight')"
+        @mouseleave="cancelDirection"
+        @click="closeOverlay"
+      ></div>
+      <div
+        class="borderEffect cornerBottomLeft"
+        @mouseenter="setDirection('cornerBottomLeft')"
+        @mouseleave="cancelDirection"
+        @click="closeOverlay"
+      ></div>
     </div>
   </section>
 </template>
@@ -54,6 +80,7 @@ export default {
     return {
       imgs: [],
       moveDirection: null,
+      imagesApparition: false,
       position: {
         top: '-20%',
         left: '-20%',
@@ -78,6 +105,9 @@ export default {
   components: {
     Title,
   },
+  beforeUpdate() {
+    this.imagesApparition = true;
+  },
   methods: {
     setDirection(value) {
       const imgContainer = document.querySelector('.visualContent__images');
@@ -93,6 +123,26 @@ export default {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
           'px';
+      } else if (value === 'cornerTopRight') {
+        this.position.top = '100px';
+        this.position.left =
+          (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
+          'px';
+      } else if (value === 'cornerTopLeft') {
+        this.position.left = '170px';
+        this.position.top = '100px';
+      } else if (value === 'cornerBottomRight') {
+        this.position.top =
+          (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
+          'px';
+        this.position.left =
+          (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
+          'px';
+      } else if (value === 'cornerBottomLeft') {
+        this.position.top =
+          (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
+          'px';
+        this.position.left = '170px';
       }
     },
     cancelDirection() {
@@ -113,12 +163,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.stars {
-  z-index: -1;
-}
-.twinkling {
-  z-index: 0;
-}
 section {
   position: relative;
   z-index: 1;
@@ -143,7 +187,12 @@ section {
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: repeat(auto, 1fr);
   grid-gap: 10px;
-  transition: all 2s ease-in;
+  opacity: 0;
+  transition: all 2s ease-in, opacity linear 0.5s 3s;
+
+  &.isVisible {
+    opacity: 1;
+  }
 
   filter: contrast(120%);
 
@@ -182,7 +231,6 @@ section {
 
 .borderEffect {
   position: absolute;
-
   filter: blur(10px);
 
   &.bottom {
@@ -223,6 +271,38 @@ section {
     top: 0;
     background: linear-gradient(to left, black, transparent);
     cursor: e-resize;
+  }
+  &.cornerTopRight {
+    z-index: 4;
+    height: 10vh;
+    width: 10vw;
+    top: 0;
+    right: 0;
+    cursor: ne-resize;
+  }
+  &.cornerTopLeft {
+    z-index: 4;
+    height: 10vh;
+    width: 20vw;
+    top: 0;
+    left: 0;
+    cursor: nw-resize;
+  }
+  &.cornerBottomRight {
+    z-index: 2;
+    height: 10vh;
+    width: 10vw;
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+  }
+  &.cornerBottomLeft {
+    z-index: 2;
+    height: 10vh;
+    width: 20vw;
+    bottom: 0;
+    left: 0;
+    cursor: sw-resize;
   }
 }
 
