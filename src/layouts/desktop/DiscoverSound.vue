@@ -3,13 +3,7 @@
     <svg style="position: absolute; width: 0; height: 0; overflow: hidden">
       <defs>
         <symbol id="previous" viewBox="0 0 32 32" fill="none">
-          <circle
-            cx="16"
-            cy="16"
-            r="16"
-            transform="rotate(180 16 16)"
-            fill="#14131C"
-          />
+          <circle cx="16" cy="16" r="16" transform="rotate(180 16 16)" fill="#14131C" />
           <path
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -32,13 +26,7 @@
           />
         </symbol>
         <symbol id="next" viewBox="0 0 32 32" fill="none">
-          <circle
-            cx="16"
-            cy="16"
-            r="16"
-            transform="rotate(180 16 16)"
-            fill="#14131C"
-          />
+          <circle cx="16" cy="16" r="16" transform="rotate(180 16 16)" fill="#14131C" />
           <path
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -118,9 +106,9 @@
 </template>
 
 <script>
-import Header from "../../components/Header.vue";
-import AudioPlayer from "../../components/AudioPlayer.vue";
-import AudioCategory from "../../components/AudioCategory.vue";
+import Header from '../../components/Header.vue';
+import AudioPlayer from '../../components/AudioPlayer.vue';
+import AudioCategory from '../../components/AudioCategory.vue';
 
 export default {
   components: {
