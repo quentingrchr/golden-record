@@ -123,42 +123,42 @@ import AudioPlayer from "../../components/AudioPlayer.vue";
 import AudioCategory from "../../components/AudioCategory.vue";
 
 export default {
-  components: { 
-    Title, 
-    AudioPlayer, 
-    AudioCategory, 
+  components: {
+    Header,
+    AudioPlayer,
+    AudioCategory
   },
   data() {
     return {
-      title: 'Audio content',
+      title: "Audio content",
       audioSettings: {
         isPlaying: false,
         isMuted: false,
-        volume: 50,
+        volume: 50
       },
       selectedCategory: 0,
       categories: [
         {
           categoryId: 1,
-          categoryName: 'Songs',
-          categoryInstruction: 'Press play button to play a song random',
-          isSelected: false,
+          categoryName: "Songs",
+          categoryInstruction: "Press play button to play a song random",
+          isSelected: false
         },
         {
           categoryId: 2,
-          categoryName: 'Hellos',
+          categoryName: "Hellos",
           categoryInstruction:
-            'Press play button to hear someone say hello in a random language',
-          isSelected: false,
+            "Press play button to hear someone say hello in a random language",
+          isSelected: false
         },
         {
           categoryId: 3,
-          categoryName: 'Noises',
+          categoryName: "Noises",
           categoryInstruction:
-            'Press play button to play a noise random you can hear on earth',
-          isSelected: false,
-        },
-      ],
+            "Press play button to play a noise random you can hear on earth",
+          isSelected: false
+        }
+      ]
     };
   },
   methods: {
@@ -186,8 +186,8 @@ export default {
 
     updateCategory(index) {
       this.selectedCategory = index;
-    },
-  },
+    }
+  }
 };
 </script>
 
