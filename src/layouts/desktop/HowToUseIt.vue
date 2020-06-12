@@ -116,15 +116,13 @@ export default {
   height: 100vh;
   background-color: $primary-darkblue;
   position: relative;
-  // border: 1px solid red;
 
   &__mainTitle {
     display: flex;
     align-items: flex-start;
-    // border: 1px solid blue;
     margin-left: 10%;
     padding-top: 20px;
-    width: 85%;
+    width: 80%;
     height: 20%;
   }
 
@@ -132,10 +130,11 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 85%;
+    width: 90%;
     height: 100%;
     padding-bottom: 5vh;
     transition: opacity 0.3s ease;
+
   }
 
   &__content {
@@ -143,7 +142,6 @@ export default {
     height: 90%;
     width: 25%;
     flex-direction: column;
-    // border: 1px solid blue;
   }
 
   &__ellipse {
@@ -152,6 +150,12 @@ export default {
     width: 350px;
     border-radius: 50%;
     background: linear-gradient(#d7c37f, #a67a3b);
+
+    
+    @include media_tablet {
+      width: 32%;
+      height: 40%;
+    }
   }
 
   &__pulsar {
@@ -162,6 +166,11 @@ export default {
     height: 150px;
     stroke: $primary-darkblue;
     fill: none;
+
+    @include media_tablet {
+      width: 120px;
+      height: 120px;
+    }
   }
 
   &__waveForm {
@@ -172,6 +181,11 @@ export default {
     height: 80px;
     stroke: $primary-darkblue;
     fill: none;
+
+    @include media_tablet {
+      width: 90px;
+      height: 70px;
+    }
   }
 
   &__hydrogen {
@@ -182,6 +196,11 @@ export default {
     height: 80px;
     stroke: $primary-darkblue;
     fill: none;
+
+    @include media_tablet {
+      width: 50px;
+      height: 50px;
+    }
   }
 
   &__frames {
@@ -192,6 +211,11 @@ export default {
     height: 80px;
     stroke: $primary-darkblue;
     fill: none;
+
+    @include media_tablet {
+      width: 60px;
+      height: 60px;
+    }
   }
 
   &__elevation {
@@ -202,6 +226,11 @@ export default {
     height: 80px;
     stroke: $primary-darkblue;
     fill: none;
+
+    @include media_tablet {
+      width: 60px;
+      height: 60px;
+    }
   }
 
   &__record {
@@ -212,6 +241,11 @@ export default {
     height: 80px;
     stroke: $primary-darkblue;
     fill: none;
+
+    @include media_tablet {
+      width: 60px;
+      height: 60px;
+    }
 
     &--hovering {
       stroke: $primary-white;

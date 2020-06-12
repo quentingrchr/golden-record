@@ -56,6 +56,10 @@ export default {
     opacity: 0.3;
     cursor: pointer;
 
+    @include media_tablet{
+      height: 40%;
+    }
+
     &:hover {
       opacity: 1;
       filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.8));
@@ -67,11 +71,15 @@ export default {
     font-family: 'Product Sans Regular';
     font-size: 20px;
     color: $primary-white;
+
+    @include media_tablet {
+      font-size: 16px;
+    }
   }
 
     &__plus {
-    width: 20px;
-    height: 20px;
+      width: 20px;
+      height: 20px;
 
     &--left {
       margin-left: 10px;
@@ -82,7 +90,13 @@ export default {
     width: 140px;
     height: 120px;
     stroke: $primary-white;
+    // border: 1px solid yellow;
     fill: none;
+
+    @include media_tablet {
+      width: 55%;
+      height: 50%;
+    }
   }
 }
 </style>

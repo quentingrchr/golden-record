@@ -123,7 +123,11 @@ import AudioPlayer from "../../components/AudioPlayer.vue";
 import AudioCategory from "../../components/AudioCategory.vue";
 
 export default {
-  components: { Header, AudioPlayer, AudioCategory },
+  components: { 
+    Title, 
+    AudioPlayer, 
+    AudioCategory, 
+  },
   data() {
     return {
       title: 'Audio content',
