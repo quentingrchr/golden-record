@@ -213,17 +213,22 @@ header.header {
 }
 
 .icon-container {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   top: 50px;
   right: 50px;
   fill: white;
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.2s;
+  cursor: pointer;
+
   &.focus-mode {
     visibility: visible;
-    opacity: 1;
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 
