@@ -114,7 +114,7 @@ export default {
   components: {
     Header,
     AudioPlayer,
-    AudioCategory,
+    AudioCategory
   },
   data() {
     return {
