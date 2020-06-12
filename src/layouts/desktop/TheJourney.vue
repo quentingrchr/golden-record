@@ -42,7 +42,7 @@ import TimeElapsed from "../../components/TimeElapsed.vue";
 
 export default {
   name: "TheJourney",
-  components: { Header, TimeElapsed }
+  components: { Header, TimeElapsed },
   data() {
     return {
       zoomedIn: false
