@@ -55,16 +55,22 @@ export default {
     right: 0;
     bottom: 0;
     left: 10%;
-    background-color: rgba(#494949,1);
-    transition: opacity .3s;
+    transition: all .3s ease;
     display: flex;
-    width: 80vw;
+    width: 73vw;
     height: 80vh;
     justify-content: center;
     align-items: center;
 
-    &-enter,
-    &-leave-to {
+    @include media_tablet {
+      width: 75vw;
+    }
+
+    &-enter {
+      transform: translateX(100%);
+    }
+
+    &-leave-to{
       opacity: 0;
     }
   }
