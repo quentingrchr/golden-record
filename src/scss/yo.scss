@@ -1,3 +1,33 @@
+.intro {
+  overflow: hidden;
+  width: 100vw;
+  height: 1000vh;
+  position: relative;
+  display: flex;
+  background-color: black;
+}
+
+@keyframes earth-leaving {
+  from {
+    top: 0px;
+  }
+
+  to {
+    top: -8000px;
+  }
+}
+
+@keyframes title-closing {
+  from {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  to {
+    opacity: 0;
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+  }
+}
+
 @keyframes blur-moving {
   0% {
     top: 0px;
@@ -19,15 +49,6 @@
   }
 }
 
-.intro {
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
 .title-blur {
   left: 50%;
   transform: translateX(-50%);
@@ -40,7 +61,7 @@
   top: 200px;
   color: $primary-white;
   filter: blur(40px);
-  transition: opacity 2s;
+  transition: opacity 2s 1s;
 
   &.scrolled {
     opacity: 0;
@@ -55,12 +76,7 @@
     padding: 0;
     @for $i from 1 through 40 {
       &:nth-child(#{$i}) {
-        animation: blur-moving
-          #{($i * 0.5) +
-          2.5}s
-          ease
-          infinite
-          alternate-reverse;
+        animation: blur-moving #{($i * 0.2) + 2}s ease infinite;
       }
     }
   }
@@ -97,7 +113,10 @@
   right: 50%;
   width: 775px;
   transition: top 1s ease;
-  top: 50vh;
+
+  &.scrolled {
+    animation: earth-leaving 3s ease-in forwards;
+  }
 }
 
 .earth-bg {
@@ -108,13 +127,6 @@
   animation: earth-rotation 140s infinite forwards;
   opacity: 1;
 }
-
-@media screen and (max-width: 300px) {
-  .earth-bg {
-    width: 400px;
-  }
-}
-
 @media screen and (max-width: 300px) {
   .earth-bg {
     width: 400px;
@@ -183,10 +195,10 @@
 }
 @keyframes earth-rotation {
   from {
-    transform: rotateZ(0deg);
+    transform: translateY(80%) rotate(0deg) scale(1.5);
   }
   to {
-    transform: rotateZ(360deg);
+    transform: translateY(80%) rotateZ(360deg) scale(1.5);
   }
 }
 @keyframes move-twink-back {
@@ -232,6 +244,11 @@
   width: 100%;
   height: 100%;
   display: block;
+  transition: opacity 0.3s 2s ease;
+
+  &.scrolled {
+    opacity: 0;
+  }
 }
 
 .stars {
@@ -245,7 +262,7 @@
   background: transparent
     url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat
     top center;
-  z-index: 0;
+  z-index: 1;
 
   -moz-animation: move-twink-back 200s linear infinite;
   -ms-animation: move-twink-back 200s linear infinite;
