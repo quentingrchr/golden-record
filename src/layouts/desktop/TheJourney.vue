@@ -85,13 +85,9 @@ export default {
       left: 20px;
       transform: scale(0.06);
       transition: all 2s;
-
-      &:hover {
-        cursor: pointer;
-      }
     }
     .zoom-in-record {
-      animation: zooming 2s 2s ease-in forwards;
+      animation: zooming 1.5s 1.5s ease-in-out forwards;
     }
   }
   &_description {
