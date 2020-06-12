@@ -31,6 +31,12 @@
         </div>
       </nav>
     </div>
+    <audio
+      class="experience__song"
+      ref="audio"
+      loop
+      src="../assets/music/interstellar-main-theme-extra-ex.mp3"
+    ></audio>
   </div>
 </template>
 
@@ -44,10 +50,14 @@ export default {
   methods: {
     toggleMute() {
       this.isMute = !this.isMute;
+      this.$refs.audio.muted = !this.$refs.audio.muted;
     },
     jumpToOtherChapter(value) {
       this.$emit("jumpToOtherChapter", value);
-    },
+    }
+  },
+  mounted() {
+    this.$refs.audio.volume = 0.2;
   },
   props: {
     page: {
@@ -87,6 +97,7 @@ export default {
         left: 10px;
         top: -10px;
         width: 150px;
+        user-select: none;
       }
       &.isSelected p {
         font-size: 1.02rem;
@@ -158,6 +169,7 @@ export default {
   cursor: pointer;
   transition: transform 0.1s;
   opacity: 0.7;
+  user-select: none;
 
   &:hover {
     transform: scale(1.2);
@@ -174,6 +186,7 @@ export default {
   height: 20px;
   cursor: pointer;
   opacity: 0.9;
+  user-select: none;
 
   & img {
     width: 100%;
@@ -192,7 +205,7 @@ export default {
     width: 30px;
     height: 2px;
     background-color: $primary-white;
-    border: 0.2px solid $primary-darkblue;
+    border: 0.1px solid $primary-darkblue;
     transform: translateY(-12px) translatex(-7px) rotate(-45deg);
   }
 }
