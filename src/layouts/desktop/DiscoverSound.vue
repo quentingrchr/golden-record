@@ -134,15 +134,13 @@
 </template>
 
 <script>
-import Header from '../../components/Header.vue';
-import AudioPlayer from '../../components/AudioPlayer.vue';
-import AudioCategory from '../../components/AudioCategory.vue';
+import Header from "../../components/Header.vue";
+import AudioPlayer from "../../components/AudioPlayer.vue";
 
 export default {
   components: {
     Header,
-    AudioPlayer,
-    AudioCategory
+    AudioPlayer
   },
   data() {
     return {
