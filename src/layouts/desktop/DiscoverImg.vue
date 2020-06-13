@@ -1,21 +1,29 @@
 <template>
   <section class="visualContent">
     <Header class="visualContent__title" text="Visual content" />
-    <div
-      class="visualContent__images"
-      :class="imagesApparition ? 'isVisible' : null"
-      :style="position"
-    >
+    <div class="visualContent__images" :style="position" ref="imageContainer">
       <div
         v-for="(image, index) in imgs"
         :key="index"
         @click="isSelected(image)"
-        class="images"
       >
-        <img :src="image" alt="One of the golden record pictures" />
+        <img
+          :src="image"
+          alt="One of the golden record pictures"
+          ref="lazyImage"
+        />
       </div>
     </div>
     <div class="visualContent__overlays">
+      <transition name="scale">
+        <div class="loading-overlay" v-show="isLoading">
+          <div class="stars"></div>
+          <h3>What does those cretaures look like?</h3>
+          <div class="loading-overlay__grid">
+            <div v-for="img in fakeImgNumber" :key="img"></div>
+          </div>
+        </div>
+      </transition>
       <transition name="fade">
         <div class="overlay" v-if="selectedImage" @click="closeOverlay">
           <img :src="selectedImage" alt="One of the golden record pictures" />
@@ -82,13 +90,22 @@ export default {
     return {
       imgs: [],
       moveDirection: null,
-      imagesApparition: false,
+      isLoading: true,
       position: {
         top: '-20%',
         left: '-20%',
       },
       selectedImage: null,
     };
+  },
+  computed: {
+    fakeImgNumber() {
+      let fakesImg = [];
+      for (let i = 0; i < 72; i++) {
+        fakesImg.push(i);
+      }
+      return fakesImg;
+    },
   },
   beforeCreate() {
     fetch(`${url}/query/visual_content`, {
@@ -103,20 +120,25 @@ export default {
     Header,
   },
   beforeUpdate() {
-    this.imagesApparition = true;
-  },
-  mounted() {
-    //this.loadImages();
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 6000);
   },
   methods: {
-    loadImages() {
-      //console.log(document.querySelectorAll('.images'));
-      //passer src-set a src
-      //regarder si l'image est dans le viewport
-      //a apeler dans Mounted et setDirection
-    },
+    /* loadImages() {
+      const windowBottom = window.innerHeight;
+      const windowRight = window.innerWidth;
+      this.$refs.lazyImage.forEach((el) => {
+        let elementPosition = el.getBoundingClientRect();
+        let x = elementPosition.x;
+        let y = elementPosition.y;
+        if (x > 0 && x < windowRight && y > 0 && y < windowBottom) {
+          el.src = el.getAttribute('src-set');
+        }
+      });
+    }, */
     setDirection(value) {
-      const imgContainer = document.querySelector('.visualContent__images');
+      const imgContainer = this.$refs.imageContainer;
       if (value === 'down') {
         this.position.top = '100px';
       } else if (value === 'right') {
@@ -152,7 +174,7 @@ export default {
       }
     },
     cancelDirection() {
-      const imgContainer = document.querySelector('.visualContent__images');
+      const imgContainer = this.$refs.imageContainer;
       const top = imgContainer.offsetTop + 'px';
       const left = imgContainer.offsetLeft + 'px';
       this.position.top = top;
@@ -164,6 +186,9 @@ export default {
     closeOverlay() {
       this.selectedImage = null;
     },
+  },
+  beforeDestroy() {
+    console.log('cest fait');
   },
 };
 </script>
@@ -184,12 +209,7 @@ section {
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: repeat(auto, 1fr);
   grid-gap: 10px;
-  opacity: 0;
-  transition: all 2s ease-in, opacity linear 0.5s 3s;
-
-  &.isVisible {
-    opacity: 1;
-  }
+  transition: all 2s ease-in;
 
   filter: contrast(120%);
 
@@ -205,6 +225,60 @@ section {
     &:hover {
       opacity: 1;
     }
+  }
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
+  & h3 {
+    z-index: 2;
+    margin-bottom: 50px;
+    max-width: 80%;
+    color: $primary-white;
+  }
+
+  & .loading-overlay__grid {
+    width: 100%;
+    height: 70%;
+    //background-color: red;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    background-image: url('./../../assets/img/patchwork.png');
+    background-size: 100%;
+    background-position-x: top;
+    background-position-y: left;
+
+    @keyframes flashing {
+      to {
+        opacity: 0;
+      }
+    }
+    & div {
+      opacity: 1;
+      background-color: $primary-darkblue;
+      animation: flashing 1.5s forwards;
+
+      @for $i from 1 through 72 {
+        &:nth-child(#{$i}) {
+          animation-delay: $i * 0.1s;
+        }
+      }
+    }
+  }
+
+  .stars {
+    z-index: 0;
   }
 }
 
@@ -307,7 +381,18 @@ section {
 .fade-leave-active {
   transition: all 0.5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.scale-enter-active,
+.scale-leave-active {
+  transition: all 1s;
+}
+.scale-enter,
+.scale-leave-to {
+  transform: scale(10);
   opacity: 0;
 }
 </style>
