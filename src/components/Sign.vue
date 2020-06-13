@@ -10,7 +10,7 @@
       :href="nameIcon"
     />
     <slot name="right"></slot>
-    <Icon/>
+    <Icon />
   </div>
 </template>
 
@@ -21,8 +21,8 @@ import Icon from '@/components/Icons.vue';
 import { url } from "@/constants.js";
 
 export default {
-  props:{
-    nameIcon:{
+  props: {
+    nameIcon: {
       type: String,
       required: true,
     },
@@ -32,7 +32,7 @@ export default {
       default: 0,
     }
   },
-  components:{
+  components: {
     BaseIcon,
     Icon
   },
@@ -73,7 +73,7 @@ export default {
 </script>
 
 <style lang='scss'>
-.Use{
+.Use {
   &__symbol {
     display: flex;
     justify-content: center;
@@ -83,7 +83,7 @@ export default {
     opacity: 0.3;
     cursor: pointer;
 
-    @include media_tablet{
+    @include media_tablet {
       height: 40%;
     }
 
@@ -93,9 +93,8 @@ export default {
     }
   }
 
-
-    &__title {
-    font-family: 'Product Sans Regular';
+  &__title {
+    font-family: Product Sans;
     font-size: 20px;
     color: $primary-white;
 
@@ -104,9 +103,9 @@ export default {
     }
   }
 
-    &__plus {
-      width: 20px;
-      height: 20px;
+  &__plus {
+    width: 20px;
+    height: 20px;
 
     &--left {
       margin-left: 10px;

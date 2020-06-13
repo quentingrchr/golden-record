@@ -12,7 +12,6 @@
           class="golden-record zoom-in-record"
           src="@/assets/img/golden-record.png"
           alt="voyager prob"
-          @click="zoomIn"
         />
       </div>
       <div class="voyager_description">
@@ -85,13 +84,9 @@ export default {
       left: 20px;
       transform: scale(0.06);
       transition: all 2s;
-
-      &:hover {
-        cursor: pointer;
-      }
     }
     .zoom-in-record {
-      animation: zooming 2s 2s ease-in forwards;
+      animation: zooming 1.5s 1.5s ease-in-out forwards;
     }
   }
   &_description {
@@ -101,12 +96,6 @@ export default {
   p {
     width: 500px;
     margin-top: 28px;
-    font-family: Product Sans;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 150%;
-    color: #f8f8f8;
     text-align: left;
   }
   .time {

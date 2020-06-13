@@ -28,19 +28,23 @@
   justify-content: center;
 }
 
+.infos__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .title-blur {
   left: 50%;
   transform: translateX(-50%);
   position: absolute;
   z-index: 3;
-  font-family: Lato;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 60px;
-  top: 200px;
+  top: 280px;
   color: $primary-white;
   filter: blur(40px);
   transition: opacity 2s;
+  opacity: 0.8;
 
   &.scrolled {
     opacity: 0;
@@ -67,15 +71,8 @@
 }
 
 .title-welcome {
-  left: 50%;
-  transform: translateX(-50%);
-  position: absolute;
+  margin-bottom: 30px;
   z-index: 3;
-  font-family: Lato;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 60px;
-  top: 200px;
 
   &.scrolled {
     animation: title-closing 0.3s 2s ease-out forwards;
@@ -95,9 +92,9 @@
 .earth-bg-container {
   position: absolute;
   right: 50%;
-  width: 775px;
+  width: 1000px;
   transition: top 1s ease;
-  top: 60vh;
+  top: 70vh;
   &:hover {
     .earth-bg {
       opacity: 0;
@@ -108,7 +105,7 @@
   }
   .earth-bg {
     z-index: 2;
-    width: 775px;
+    width: 1000px;
     height: auto;
     position: absolute;
     animation: earth-rotation 140s infinite forwards;
@@ -117,7 +114,7 @@
   }
   .song-bg {
     z-index: 1;
-    width: 775px;
+    width: 1000px;
     height: auto;
     position: absolute;
     animation: earth-rotation 140s infinite forwards;
@@ -132,24 +129,31 @@
   }
 }
 
-@media screen and (max-width: 300px) {
-  .earth-bg {
-    width: 400px;
+@media screen and (max-width: 400px) {
+  .title-welcome {
+    font-size: 30px;
+  }
+}
+@media (min-width: 401px) and (max-width: 500px) {
+  .title-welcome {
+    font-size: 40px;
+  }
+}
+@media (min-width: 501px) and (max-width: 600px) {
+  .title-welcome {
+    font-size: 50px;
   }
 }
 
 .icone-scroll__desktop {
-  position: absolute;
   z-index: 10;
-  right: 50%;
-  top: 90vh;
   width: 20px;
   height: 60px;
   display: flex;
   justify-content: center;
+  /*filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 1));*/
 }
 .icone-scroll__mobile {
-  position: absolute;
   z-index: 10;
   bottom: 40px;
   right: 50%;
@@ -159,15 +163,14 @@
   display: none;
   p {
     margin-bottom: 10px;
-    font-family: Product Sans;
-    font-style: normal;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 12px;
     line-height: 12px;
     display: flex;
     align-items: center;
     text-align: center;
     color: #f8f8f8;
+    opacity: 0.8;
   }
   svg {
     animation: scroll-mouse 2s infinite;
