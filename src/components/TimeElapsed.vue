@@ -1,10 +1,10 @@
 <template>
   <div class="infos">
-    <h3 class="infos__title">🌍 Time elapsed</h3>
+    <h3 class="infos__title">🌍 Time elapsed since launch</h3>
     <div class="infos__content">
-      <Counter title="🛰 ️Voyager 1" />
+      <Counter date="05/09/1977 12:56:00" title="🛰 ️Voyager 1 " />
       <hr />
-      <Counter title="🛰 ️Voyager 2" />
+      <Counter date="20/08/1977 14:29:00" title="🛰 ️Voyager 2 " />
     </div>
   </div>
 </template>
@@ -13,18 +13,19 @@
 import Counter from "./Counter.vue";
 export default {
   name: "TimeElapsed",
-  components: { Counter }
+  components: { Counter },
 };
 </script>
 
 <style lang="scss" scoped>
 .infos {
-  display: inline-block;
+  display: block;
   font-family: Product Sans;
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 19px;
+  margin-top: 20px;
 
   @media (max-width: 740px) {
     font-size: 12px;
@@ -34,14 +35,17 @@ export default {
   }
   &__title {
     margin-bottom: 16px;
+    font-weight: 500;
     color: $primary-white;
   }
   &__content {
     border-radius: 5px;
     background-color: $primary-white;
     padding: 4px 0px;
+    width: 500px;
     @media (max-width: 740px) {
       padding: 8px 0px;
+      width: 400px;
     }
 
     div {

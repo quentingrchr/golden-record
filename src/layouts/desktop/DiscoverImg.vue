@@ -1,21 +1,38 @@
 <template>
   <section class="visualContent">
     <Header class="visualContent__title" text="Visual content" />
-    <div
-      class="visualContent__images"
-      :class="imagesApparition ? 'isVisible' : null"
-      :style="position"
-    >
+    <div class="visualContent__images" :style="position" ref="imageContainer">
       <div
         v-for="(image, index) in imgs"
         :key="index"
         @click="isSelected(image)"
-        class="images"
       >
-        <img :src="image" alt="One of the golden record pictures" />
+        <img
+          :src="image"
+          alt="One of the golden record pictures"
+          ref="lazyImage"
+        />
       </div>
     </div>
     <div class="visualContent__overlays">
+      <transition name="scale">
+        <div class="loading-overlay" v-if="isLoading">
+          <div class="stars"></div>
+          <div class="loading-overlay__grid">
+            <div v-for="img in fakeImgNumber" :key="img"></div>
+          </div>
+          <div
+            class="loading-overlay__infos"
+            :class="hideInfos ? 'isInvisible' : null"
+          >
+            <h3>
+              The Golden Records disk contains 116 images representing humanity
+              and earth
+            </h3>
+            <img src="./../../assets/logo/arrows.svg" />
+          </div>
+        </div>
+      </transition>
       <transition name="fade">
         <div class="overlay" v-if="selectedImage" @click="closeOverlay">
           <img :src="selectedImage" alt="One of the golden record pictures" />
@@ -75,48 +92,55 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-import { url } from '@/constants.js';
+import Header from "@/components/Header.vue";
+import { url } from "@/constants.js";
 export default {
   data() {
     return {
       imgs: [],
+      loadingDuration: 6500,
       moveDirection: null,
-      imagesApparition: false,
+      isLoading: true,
+      hideInfos: false,
       position: {
-        top: '-20%',
-        left: '-20%',
+        top: "-20%",
+        left: "-20%"
       },
-      selectedImage: null,
+      selectedImage: null
     };
+  },
+  computed: {
+    fakeImgNumber() {
+      let fakesImg = [];
+      for (let i = 0; i < 72; i++) {
+        fakesImg.push(i);
+      }
+      return fakesImg;
+    },
   },
   beforeCreate() {
     fetch(`${url}/query/visual_content`, {
-      method: 'GET',
+      method: "GET"
     })
-      .then((response) => response.json())
-      .then((data) => {
-        data.forEach((element) => this.imgs.push(element.src));
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(element => this.imgs.push(element.src));
       });
   },
   components: {
-    Header,
+    Header
   },
-  beforeUpdate() {
-    this.imagesApparition = true;
-  },
-  mounted() {
-    //this.loadImages();
+  created() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, this.loadingDuration);
+    setTimeout(() => {
+      this.hideInfos = true;
+    }, this.loadingDuration - 100);
   },
   methods: {
-    loadImages() {
-      //console.log(document.querySelectorAll('.images'));
-      //passer src-set a src
-      //regarder si l'image est dans le viewport
-      //a apeler dans Mounted et setDirection
-    },
     setDirection(value) {
-      const imgContainer = document.querySelector('.visualContent__images');
+      const imgContainer = this.$refs.imageContainer;
       if (value === 'down') {
         this.position.top = '100px';
       } else if (value === 'right') {
@@ -124,35 +148,35 @@ export default {
       } else if (value === 'left') {
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          'px';
-      } else if (value === 'up') {
+          "px";
+      } else if (value === "up") {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          'px';
-      } else if (value === 'cornerTopRight') {
-        this.position.top = '100px';
+          "px";
+      } else if (value === "cornerTopRight") {
+        this.position.top = "100px";
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          'px';
-      } else if (value === 'cornerTopLeft') {
-        this.position.left = '170px';
-        this.position.top = '100px';
-      } else if (value === 'cornerBottomRight') {
+          "px";
+      } else if (value === "cornerTopLeft") {
+        this.position.left = "170px";
+        this.position.top = "100px";
+      } else if (value === "cornerBottomRight") {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          'px';
+          "px";
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          'px';
-      } else if (value === 'cornerBottomLeft') {
+          "px";
+      } else if (value === "cornerBottomLeft") {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          'px';
-        this.position.left = '170px';
+          "px";
+        this.position.left = "170px";
       }
     },
     cancelDirection() {
-      const imgContainer = document.querySelector('.visualContent__images');
+      const imgContainer = this.$refs.imageContainer;
       const top = imgContainer.offsetTop + 'px';
       const left = imgContainer.offsetLeft + 'px';
       this.position.top = top;
@@ -164,6 +188,9 @@ export default {
     closeOverlay() {
       this.selectedImage = null;
     },
+  },
+  beforeDestroy() {
+    console.log('cest fait');
   },
 };
 </script>
@@ -184,12 +211,7 @@ section {
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: repeat(auto, 1fr);
   grid-gap: 10px;
-  opacity: 0;
-  transition: all 2s ease-in, opacity linear 0.5s 3s;
-
-  &.isVisible {
-    opacity: 1;
-  }
+  transition: all 2s ease-in;
 
   filter: contrast(120%);
 
@@ -205,6 +227,75 @@ section {
     &:hover {
       opacity: 1;
     }
+  }
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin-left: 30px;
+
+  & .loading-overlay__infos {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &.isInvisible {
+      display: none;
+    }
+    & h3 {
+      color: $primary-white;
+      width: 50%;
+      line-height: 2rem;
+      font-weight: bold;
+      letter-spacing: 0.1rem;
+    }
+
+    & img {
+      margin-top: 70px;
+      width: 20%;
+    }
+  }
+
+  & .loading-overlay__grid {
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    background-image: url('./../../assets/img/patchwork.png');
+    background-size: 100%;
+    opacity: 0.2;
+
+    @keyframes flashing {
+      to {
+        opacity: 0;
+      }
+    }
+    & div {
+      opacity: 1;
+      background-color: $primary-darkblue;
+      animation: flashing 1s forwards;
+
+      @for $i from 1 through 72 {
+        &:nth-child(#{$i}) {
+          animation-delay: $i * 0.1s;
+        }
+      }
+    }
+  }
+
+  .stars {
+    z-index: 0;
   }
 }
 
@@ -228,7 +319,6 @@ section {
 
 .borderEffect {
   position: absolute;
-  filter: blur(10px);
 
   &.bottom {
     width: 100%;
@@ -307,7 +397,18 @@ section {
 .fade-leave-active {
   transition: all 0.5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.scale-enter-active,
+.scale-leave-active {
+  transition: all 0.5s;
+}
+.scale-enter,
+.scale-leave-to {
+  transform: scale(5);
   opacity: 0;
 }
 </style>

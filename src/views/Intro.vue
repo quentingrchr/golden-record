@@ -1,8 +1,8 @@
 <template>
   <!--- Contient la vidéo responsive (mobile / desktop) -->
-  <div @wheel="isScrolled">
-    <Welcome v-if="scrollRate < 100" v-on:clickWelcome="clickWelcome" />
-    <Video v-show="scrollRate > 100" />
+  <div @wheel="isScrolled" @click="goToVideo">
+    <Welcome v-show="scrollRate < 50" />
+    <Video v-show="scrollRate >= 50" :startVideo="launchVideo" />
   </div>
 </template>
 
@@ -11,28 +11,29 @@ import Welcome from '@/layouts/intro/Welcome.vue';
 import Video from '@/layouts/intro/Video.vue';
 
 export default {
-  computed: {},
   components: {
     Welcome,
     Video,
   },
-
   data() {
     return {
       scrollRate: 0,
+      launchVideo: false,
     };
   },
   methods: {
+    goToVideo() {
+      this.scrollRate = 100;
+      this.launchVideo = true;
+    },
     isScrolled(e) {
       e.preventDefault();
       if (e.deltaY > 0) {
         this.scrollRate++;
       }
-
-      console.log(this.scrollRate);
-    },
-    clickWelcome() {
-      this.scrollRate = 200;
+      if (this.scrollRate >= 50) {
+        this.launchVideo = true;
+      }
     },
   },
 };

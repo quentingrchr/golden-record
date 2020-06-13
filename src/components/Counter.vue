@@ -14,24 +14,41 @@
 </template>
 
 <script>
+import moment from "moment";
 export default {
   name: "Counter",
   props: {
-    title: String
+    title: String,
+    date: String,
   },
   mounted() {
+    var now = `${moment().format("DD/MM/YYYY HH:mm:ss")}`;
+    var then = this.date;
+
+    var ms = moment(now, "DD/MM/YYYY HH:mm:ss").diff(
+      moment(then, "DD/MM/YYYY HH:mm:ss")
+    );
+    var d = moment.duration(ms);
+    this.counter.years = d.years();
+    this.counter.months = d.months();
+    this.counter.days = d.months();
+    this.counter.hours = d.hours();
+    this.counter.mins = d.minutes();
+    this.counter.secs = d.seconds();
+    console.log(d);
+
     this.startCounter();
   },
   data: function() {
     return {
       counter: {
-        years: 2020,
-        months: 2,
-        days: 25,
-        hours: 12,
-        mins: 35,
-        secs: 56
-      }
+        years: 0,
+        months: 0,
+        days: 0,
+        hours: 0,
+        mins: 0,
+        secs: 0,
+      },
     };
   },
 
@@ -100,8 +117,8 @@ export default {
       } else {
         return value;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -115,6 +132,7 @@ div {
     font-weight: 700;
     font-family: Product Sans;
     color: $primary-darkblue;
+    margin-right: 15px;
   }
 
   @media (max-width: 580px) {

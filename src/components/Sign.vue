@@ -1,15 +1,16 @@
 <template>
-  <div 
+  <div
+    :index="index"
     @click="openModal"
     v-on="$listeners"
     class="Use__symbol"
   >
     <slot name="left"></slot>
-    <BaseIcon class="Use__svg" 
+    <BaseIcon class="Use__svg"
       :href="nameIcon"
     />
     <slot name="right"></slot>
-    <Icon/>
+    <Icon />
   </div>
 </template>
 
@@ -17,35 +18,62 @@
 import EventBus from '@/EventBus';
 import BaseIcon from '@/components/BaseIcon.vue';
 import Icon from '@/components/Icons.vue';
+import { url } from "@/constants.js";
 
 export default {
-  props:{
-    nameIcon:{
+  props: {
+    nameIcon: {
       type: String,
       required: true,
     },
-  },  
-  components:{
+    index: {
+      type: Number,
+      required: true,
+      default: 0,
+    }
+  },
+  components: {
     BaseIcon,
     Icon
   },
+  data:() => ({
+    modalContent:{
+    text1 : "",
+    text2 : "",
+    Title : "",
+    symbol: "nameIcon",
+    },
+    index: 'index'
+  }),
   methods: {
     openModal() {
       EventBus.$emit("open", {
         component: "BaseModal",
-        content: {
-          icon: this.nameIcon,
-          description: "Hello i am description i waiting for data ok so don't forget bro",
-          title: "Hello I a waiting for Title"
-        }
+        content:
+          this.modalContent
       });
     },
   },
+  created(){
+    fetch(`${url}/query/how_use`, {
+      method: "GET",
+    })
+    .then(Response => Response.json())
+    .then(data => {
+      this.modalContent = {
+        text1 : data[this.index].text_1,
+        text2 : data[this.index].text_2,
+        title : data[this.index].title,
+        symbol: data[this.index].symbol
+      }
+    })
+    .catch(error => console.log(error))
+    }
 }
 </script>
 
-<style lang='scss'>
-.Use{
+<style lang="scss">
+.Use {
   &__symbol {
     display: flex;
     justify-content: center;
@@ -53,22 +81,20 @@ export default {
     position: relative;
     // border: 1px solid red;
     height: 40%;
-    opacity: 0.3;
+    opacity: 0.4;
     cursor: pointer;
 
-    @include media_tablet{
+    @include media_tablet {
       height: 40%;
     }
 
     &:hover {
       opacity: 1;
-      filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.8));
     }
   }
 
-
-    &__title {
-    font-family: 'Product Sans Regular';
+  &__title {
+    font-family: Product Sans;
     font-size: 20px;
     color: $primary-white;
 
@@ -77,9 +103,9 @@ export default {
     }
   }
 
-    &__plus {
-      width: 20px;
-      height: 20px;
+  &__plus {
+    width: 20px;
+    height: 20px;
 
     &--left {
       margin-left: 10px;

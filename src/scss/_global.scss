@@ -7,7 +7,6 @@ body,
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: Lato, Helvetica, Arial, sans-serif;
 }
 
 #app {
@@ -24,12 +23,6 @@ img {
   box-sizing: border-box;
 }
 
-// firefox fix 'shaking font inside button'
-input[type='button'],
-button {
-  padding: 0;
-}
-
 //.page {
 //  height: 100%;
 //  width: 100%;
@@ -40,12 +33,6 @@ button {
   display: table;
   clear: both;
   content: '';
-}
-
-.is-active {
-  //border-radius: 5px;
-  //border: 3px solid #bebebe;
-  //padding: 5px 15px;
 }
 
 .wrapper {
@@ -85,22 +72,25 @@ button {
 h1 {
   font-family: Product Sans;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 60px;
+  color: $primary-white;
 }
 
 h2 {
   font-family: Product Sans;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 45px;
+  color: $primary-white;
 }
 
 h3 {
   font-family: Product Sans;
   font-style: normal;
-  font-weight: normal;
-  font-size: 25px;
+  font-weight: 600;
+  font-size: 30px;
+  color: $primary-white;
 }
 
 h4 {
@@ -108,12 +98,13 @@ h4 {
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
+  color: $primary-white;
 }
 
 p {
-  font-family: Product Sans Light;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
+  font-family: Product Sans;
+  font-weight: 200;
+  font-size: 18px;
   line-height: 150%;
+  color: $primary-white;
 }

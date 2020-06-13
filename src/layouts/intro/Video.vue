@@ -1,12 +1,16 @@
 <template>
-  <div id="app">
+  <div class="video">
     <div class="fullscreen-bg">
-      <video autoplay preload="auto" loop class="fullscreen-bg__video video" id="video">
-        <source src="@/assets/video/video_intro.mp4" type="video/mp4" />Sorry, your browser doesn't support embedded videos,
-        but don't worry, you can
-        <a
-          href="@/assets/video/video.mp4"
-        >download it</a>
+      <video
+        preload="auto"
+        class="fullscreen-bg__video video"
+        id="video"
+        ref="video"
+      >
+        <source src="@/assets/video/video_intro.mp4" type="video/mp4" />
+        Sorry, your browser doesn't support embedded videos, but don't worry,
+        you can
+        <a href="@/assets/video/video.mp4">download it</a>
         and watch it with your favorite video player!
       </video>
     </div>
@@ -16,15 +20,16 @@
       </div>
       <div class="next">
         <router-link to="/golden-record">
-          <svg
-            width="12"
-            height="38"
-            viewBox="0 0 28 51"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M1 50L26 25.5L1 1" stroke="#E5E5E5" stroke-width="2" />
-          </svg>
+          <div class="next__content">
+            <p>Skip</p>
+            <svg
+              viewBox="0 0 28 51"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M1 50L26 25.5L1 1" stroke="#E5E5E5" stroke-width="5" />
+            </svg>
+          </div>
         </router-link>
       </div>
     </div>
@@ -33,29 +38,44 @@
 
 <script>
 export default {
-  name: "App"
+  methods: {
+    launchVideo() {
+      this.$refs.video.play();
+    },
+  },
+  props: {
+    startVideo: {
+      type: Boolean,
+      required: true,
+    },
+  },
+  watch: {
+    startVideo: function(newProps, oldProps) {
+      if (newProps) {
+        this.launchVideo();
+      }
+    },
+  },
 };
 </script>
 
-<style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<style lang="scss" scoped>
 .next:hover {
   cursor: pointer;
 }
-.next svg {
-  margin-right: 80px;
+.next {
+  margin-right: 10vh;
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+  & p {
+    font-size: 15px;
+    margin-right: 10px;
+  }
+  & svg {
+    width: 8px;
+  }
 }
 .pulsar {
   margin-left: 8px;

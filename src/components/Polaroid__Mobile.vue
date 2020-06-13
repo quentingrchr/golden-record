@@ -14,13 +14,13 @@
 
 <script>
 export default {
-  name: "Polaroid",
+  name: 'Polaroid',
 
   components: {},
 
   methods: {
     handleClick(index) {
-      this.$emit("focused", index);
+      this.$emit('focused', index);
     },
   },
   data: function() {

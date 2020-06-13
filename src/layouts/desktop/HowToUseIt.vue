@@ -6,6 +6,7 @@
     <div class="Use__container">
       <div class="Use__content">
         <Sign
+          :index="0"
           @mouseover="hovering = 1"
           @mouseleave="hovering = 0"
           nameIcon="#record"
@@ -19,6 +20,7 @@
           </template>
         </Sign>
         <Sign
+          :index="1"
           @mouseover="hovering = 2"
           @mouseleave="hovering = 0"
           nameIcon="#elevation"
@@ -28,6 +30,7 @@
           </template>
         </Sign>
         <Sign
+          :index="2"
           @mouseover="hovering = 3"
           @mouseleave="hovering = 0"
           nameIcon="#pulsar"
@@ -38,26 +41,50 @@
         </Sign>
       </div>
       <div class="Use__ellipse">
-
-        <BaseIcon :class="{ hovering: hovering === 3 }" class="Use__pulsar" href="#pulsar" />
-        <BaseIcon :class="{ hovering: hovering === 4 }" class="Use__waveForm" href="#waveForm" />
-        <BaseIcon :class="{ hovering: hovering === 6 }" class="Use__hydrogen" href="#hydrogen" />
-        <BaseIcon :class="{ hovering: hovering === 5 }" class="Use__frames" href="#frames" />
-        <BaseIcon :class="{ hovering: hovering === 2 }" class="Use__elevation" href="#elevation" />
-        <BaseIcon :class="{ hovering: hovering === 1 }" class="Use__record" href="#record" />
-
+        <BaseIcon
+          :class="{ hovering: hovering === 3 }"
+          class="Use__pulsar"
+          href="#pulsar"
+        />
+        <BaseIcon
+          :class="{ hovering: hovering === 4 }"
+          class="Use__waveForm"
+          href="#waves"
+        />
+        <BaseIcon
+          :class="{ hovering: hovering === 6 }"
+          class="Use__hydrogen"
+          href="#hydrogen"
+        />
+        <BaseIcon
+          :class="{ hovering: hovering === 5 }"
+          class="Use__frames"
+          href="#frames"
+        />
+        <BaseIcon
+          :class="{ hovering: hovering === 2 }"
+          class="Use__elevation"
+          href="#elevation"
+        />
+        <BaseIcon
+          :class="{ hovering: hovering === 1 }"
+          class="Use__record"
+          href="#record"
+        />
       </div>
       <div class="Use__content">
         <Sign
+          :index="4"
           @mouseover="hovering = 4"
           @mouseleave="hovering = 0"
-          nameIcon="#waveForm"
+          nameIcon="#waves"
         >
           <template v-slot:left>
             <ContentSign :contentRight="true" title="The waves" />
           </template>
         </Sign>
         <Sign
+          :index="3"
           @mouseover="hovering = 5"
           @mouseleave="hovering = 0"
           nameIcon="#frames"
@@ -67,6 +94,7 @@
           </template>
         </Sign>
         <Sign
+          :index="5"
           @mouseover="hovering = 6"
           @mouseleave="hovering = 0"
           nameIcon="#hydrogen"
@@ -86,8 +114,9 @@ import Sign from "@/components/Sign.vue";
 import ContentSign from "@/components/ContentSign.vue";
 import Header from "@/components/Header.vue";
 
+
 export default {
-  name: 'UseIt',
+  name: "UseIt",
   data: () => ({
     hovering: 0,
     isClosed: false,
@@ -96,8 +125,8 @@ export default {
     BaseIcon,
     Sign,
     ContentSign,
-    Header
-  }
+    Header,
+  },
 };
 </script>
 
@@ -134,7 +163,6 @@ export default {
     height: 100%;
     padding-bottom: 5vh;
     transition: opacity 0.3s ease;
-
   }
 
   &__content {
@@ -151,7 +179,6 @@ export default {
     border-radius: 50%;
     background: linear-gradient(#d7c37f, #a67a3b);
 
-    
     @include media_tablet {
       width: 32%;
       height: 40%;
@@ -183,7 +210,7 @@ export default {
     fill: none;
 
     @include media_tablet {
-      width: 90px;
+      width: 80px;
       height: 70px;
     }
   }
