@@ -9,10 +9,14 @@
       :href="content.icon"
     />
     <div class="modal__content">
-      <h1>{{ content.title }}</h1>
-      <p>{{ content.description }}</p>
+      <h2 class="modal__title">{{ content.title }}</h2>
+      <p class="modal__text">{{ content.description }}</p>
     </div>
-    <p class="modal__close" @click="closeModal">X</p>
+    <BaseIcon
+    class="modal__close"
+    href="#close"
+    @click="closeModal"
+    />
   </div>
 </template>
 
@@ -41,45 +45,99 @@ export default {
 
 <style lang="scss">
   .modal{
-    width: 100%;
-    height: 95%;
+    width: 78%;
+    height: 70%;
     position: relative;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
+    background-color: rgba(#494949,1);
     color: $primary-white;
     // border: 1px solid red;
+
+
+      @include media_tablet {
+        width: 60%;
+        height: 33%;
+      }
 
     &__icon{
       stroke: $primary-white;
       fill: none;
-      width: 300px;
+      width: 30%;
       height: 40%;
+      margin-left: 10%;
     }
 
     &__aroundIcon{
       position: absolute;
       stroke: $primary-white;
       height: 100%;
-      width: 100%;
-      left: -5%;
+      width: 80%;
       top: -2%;
+
+      @include media_desktop{
+        width: 90%;
+      }
+
+      @include media_tablet {
+        width: 80%;
+        height: 100%;
+        top: -3%;
+      }
     }
 
     &__content{
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      width: 50%;
+      width: 40%;
       height: 50%;
+      margin-left: 15%;
+      // border: 1px solid red;
+
+      @include media_tablet {
+        width: 40%;
+        height: 70%;
+      }
+    }
+
+    &__title{
+      @include media_desktop{
+        font-size: 35px;
+      }
+
+      @include media_tablet {
+        font-size: 18px;
+      }
+    }
+
+    &__text{
+      
+      @include media_desktop{
+        font-size: 18px;
+      }
+
+      @include media_tablet {
+        font-size: 12px;
+      }
     }
 
     &__close{
       cursor: pointer;
       position: absolute;
+      width: 30px;
+      height: 30px;
+      fill: $primary-white;
       right: 30px;
-      top: 10px;
-      font-size: 48px;
+      top: 25px;
+
+    @include media_tablet {
+        width: 20px;
+        height: 20px;
+        top: 10px;
+        right: 20px;
+      }
     }
   }
 

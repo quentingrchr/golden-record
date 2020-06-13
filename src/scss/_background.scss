@@ -97,16 +97,33 @@
   right: 50%;
   width: 775px;
   transition: top 1s ease;
-  top: 50vh;
-}
-
-.earth-bg {
-  z-index: 2;
-  width: 775px;
-  height: auto;
-  position: absolute;
-  animation: earth-rotation 140s infinite forwards;
-  opacity: 1;
+  top: 60vh;
+  &:hover {
+    .earth-bg {
+      opacity: 0;
+    }
+    .song-bg {
+      opacity: 1;
+    }
+  }
+  .earth-bg {
+    z-index: 2;
+    width: 775px;
+    height: auto;
+    position: absolute;
+    animation: earth-rotation 140s infinite forwards;
+    opacity: 1;
+    transition: opacity 1s ease-in;
+  }
+  .song-bg {
+    z-index: 1;
+    width: 775px;
+    height: auto;
+    position: absolute;
+    animation: earth-rotation 140s infinite forwards;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+  }
 }
 
 @media screen and (max-width: 300px) {

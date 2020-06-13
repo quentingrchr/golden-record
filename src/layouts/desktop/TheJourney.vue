@@ -3,13 +3,13 @@
     <Header class="thejourney_title" text="The journey" />
     <div class="stars"></div>
     <div class="twinkling"></div>
+
     <div class="voyager">
       <div class="voyager_image">
-        <h4>Voyager probe</h4>
+        <h4>Voyager probe and the Golden Record</h4>
         <img class="probe" src="@/assets/img/voyager_journey.png" alt="voyager prob" />
         <img
-          class="golden-record"
-          :class="zoomedIn ? 'zoom-in-record' : ''"
+          class="golden-record zoom-in-record"
           src="@/assets/img/golden-record.png"
           alt="voyager prob"
           @click="zoomIn"
@@ -42,17 +42,7 @@ import TimeElapsed from "../../components/TimeElapsed.vue";
 
 export default {
   name: "TheJourney",
-  components: { Header, TimeElapsed },
-  data() {
-    return {
-      zoomedIn: false
-    };
-  },
-  methods: {
-    zoomIn() {
-      this.zoomedIn = !this.zoomedIn;
-    }
-  }
+  components: { Header, TimeElapsed }
 };
 </script>
 
@@ -92,17 +82,12 @@ export default {
     .golden-record {
       position: absolute;
       top: 38px;
-      left: 5px;
+      left: 20px;
       transform: scale(0.06);
-      transition: transform 2s;
-
-      &:hover {
-        cursor: pointer;
-      }
+      transition: all 2s;
     }
     .zoom-in-record {
-      transform: scale(1);
-      transform: translateY(200px) translateX(20px);
+      animation: zooming 1.5s 1.5s ease-in-out forwards;
     }
   }
   &_description {
@@ -124,6 +109,15 @@ export default {
     margin-top: 24px;
   }
 }
+@keyframes zooming {
+  from {
+    transform: scale(0.06);
+  }
+  to {
+    transform: scale(1) rotateZ(0deg) translateY(200px) translateX(20px);
+  }
+}
+
 @keyframes scaling {
   from {
     transform: scale(0.06);
@@ -131,5 +125,18 @@ export default {
   to {
     transform: scale(0.1);
   }
+}
+
+.voyager3d {
+  position: absolute;
+  top: 240px;
+  left: 0px;
+  z-index: 100;
+  border-radius: 12px;
+  width: 500px;
+  transform-origin: left;
+  height: 400px;
+  transform: scale(0.1);
+  transition: transform 2s ease-in;
 }
 </style>

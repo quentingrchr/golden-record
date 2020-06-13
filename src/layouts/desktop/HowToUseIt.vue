@@ -183,7 +183,7 @@ export default {
     fill: none;
 
     @include media_tablet {
-      width: 90px;
+      width: 80px;
       height: 70px;
     }
   }

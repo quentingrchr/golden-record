@@ -25,7 +25,7 @@ img {
 }
 
 // firefox fix 'shaking font inside button'
-input[type='button'],
+input[type="button"],
 button {
   padding: 0;
 }
@@ -39,7 +39,7 @@ button {
 .clearfix::after {
   display: table;
   clear: both;
-  content: '';
+  content: "";
 }
 
 .is-active {
@@ -111,7 +111,7 @@ h4 {
 }
 
 p {
-  font-family: Product Sans Regular;
+  font-family: Product Sans;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
