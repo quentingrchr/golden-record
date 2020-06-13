@@ -16,11 +16,13 @@
         />
       </div>
     </div>
+    <Cta nextChapter="Audio content" @goNextChapter="goNextChapter" />
   </section>
 </template>
 
 <script>
 import Header from '@/components/Header.vue';
+import Cta from '@/components/MobileCta.vue';
 import { url } from '@/constants.js';
 
 export default {
@@ -34,6 +36,7 @@ export default {
   },
   components: {
     Header,
+    Cta,
   },
   beforeCreate() {
     fetch(`${url}/query/visual_content`, {
@@ -50,6 +53,9 @@ export default {
       );
   },
   created() {
+    window.scrollTo({
+      top: 0,
+    });
     document.addEventListener('scroll', this.isScrolling);
   },
   destroyed() {
@@ -65,6 +71,9 @@ export default {
     },
   },
   methods: {
+    goNextChapter() {
+      this.$emit('changeChapter', 4);
+    },
     loadImages() {
       const images = this.$refs.imageOdd.concat(this.$refs.imageEven);
 
@@ -158,7 +167,6 @@ export default {
   width: 130%;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
-  padding-bottom: 100px;
 
   &.isScrolling {
     & .imagesContainer__image {

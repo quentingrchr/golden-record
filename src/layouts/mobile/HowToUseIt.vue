@@ -83,6 +83,7 @@
           <br />This means that each section takes 0.008 seconds to play.
         </p>
       </article>
+      <Cta nextChapter="Visual content" @goNextChapter="goNextChapter" />
     </section>
   </div>
 </template>
@@ -91,14 +92,18 @@
 import BaseIcon from '@/components/BaseIcon';
 import Icons from '@/components/Icons';
 import Header from '@/components/Header.vue';
+import Cta from '@/components/MobileCta.vue';
 export default {
-  components: { BaseIcon, Icons, Header },
+  components: { BaseIcon, Icons, Header, Cta },
   data: () => {
     return {
       step: 'step0',
     };
   },
   methods: {
+    goNextChapter() {
+      this.$emit('changeChapter', 3);
+    },
     isScrolling() {
       let isScrollingDown = window.scrollY > this.prevScrollY;
       let scrollPosition = window.innerHeight + window.scrollY;
@@ -110,11 +115,13 @@ export default {
           this.step = `step${i.toString()}`;
         }
       });
-      console.log(this.step);
       this.prevScrollY = window.scrollY;
     },
   },
   created() {
+    window.scrollTo({
+      top: 0,
+    });
     document.addEventListener('scroll', this.isScrolling);
   },
   destroyed() {

@@ -1,10 +1,10 @@
 <template>
   <main>
     <!-- <transition> -->
-    <Journey v-if="currentPage === 1" />
-    <HowToUse v-else-if="currentPage === 2" />
-    <Images v-else-if="currentPage === 3" />
-    <Sounds v-else-if="currentPage === 4" />
+    <Journey v-if="currentPage === 1" @changeChapter="changeChapter" />
+    <HowToUse v-else-if="currentPage === 2" @changeChapter="changeChapter" />
+    <Images v-else-if="currentPage === 3" @changeChapter="changeChapter" />
+    <Sounds v-else-if="currentPage === 4" @changeChapter="changeChapter" />
     <Team v-else-if="currentPage === 5" />
     <Icon />
     <!-- </transition> -->
@@ -58,6 +58,9 @@ export default {
     setSelectedPage(index) {
       this.currentPage = index + 1;
     },
+    changeChapter(value) {
+      this.currentPage = value;
+    },
   },
 };
 </script>
@@ -72,6 +75,7 @@ main {
   width: 100%;
   height: 15vh;
   position: fixed;
+  pointer-events: none;
 
   &--top {
     top: 0;
