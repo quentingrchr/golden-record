@@ -1,16 +1,24 @@
 <template>
-  <div @click="openModal" v-on="$listeners" class="Use__symbol">
+  <div
+    :index="index"
+    @click="openModal"
+    v-on="$listeners"
+    class="Use__symbol"
+  >
     <slot name="left"></slot>
-    <BaseIcon class="Use__svg" :href="nameIcon" />
+    <BaseIcon class="Use__svg"
+      :href="nameIcon"
+    />
     <slot name="right"></slot>
     <Icon />
   </div>
 </template>
 
 <script>
-import EventBus from "@/EventBus";
-import BaseIcon from "@/components/BaseIcon.vue";
-import Icon from "@/components/Icons.vue";
+import EventBus from '@/EventBus';
+import BaseIcon from '@/components/BaseIcon.vue';
+import Icon from '@/components/Icons.vue';
+import { url } from "@/constants.js";
 
 export default {
   props: {
@@ -18,25 +26,50 @@ export default {
       type: String,
       required: true,
     },
+    index: {
+      type: Number,
+      required: true,
+      default: 0,
+    }
   },
   components: {
     BaseIcon,
-    Icon,
+    Icon
   },
+  data:() => ({
+    modalContent:{
+    text1 : "",
+    text2 : "",
+    Title : "",
+    symbol: "nameIcon",
+    },
+    index: 'index'
+  }),
   methods: {
     openModal() {
       EventBus.$emit("open", {
         component: "BaseModal",
-        content: {
-          icon: this.nameIcon,
-          description:
-            "Hello i am description i waiting for data ok so don't forget bro",
-          title: "Hello I a waiting for Title",
-        },
+        content:
+          this.modalContent
       });
     },
   },
-};
+  created(){
+    fetch(`${url}/query/how_use`, {
+      method: "GET",
+    })
+    .then(Response => Response.json())
+    .then(data => {
+      this.modalContent = {
+        text1 : data[this.index].text_1,
+        text2 : data[this.index].text_2,
+        title : data[this.index].title,
+        symbol: data[this.index].symbol
+      }
+    })
+    .catch(error => console.log(error))
+    }
+}
 </script>
 
 <style lang="scss">

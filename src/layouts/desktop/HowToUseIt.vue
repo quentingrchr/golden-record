@@ -6,6 +6,7 @@
     <div class="Use__container">
       <div class="Use__content">
         <Sign
+          :index="0"
           @mouseover="hovering = 1"
           @mouseleave="hovering = 0"
           nameIcon="#record"
@@ -19,6 +20,7 @@
           </template>
         </Sign>
         <Sign
+          :index="1"
           @mouseover="hovering = 2"
           @mouseleave="hovering = 0"
           nameIcon="#elevation"
@@ -28,6 +30,7 @@
           </template>
         </Sign>
         <Sign
+          :index="2"
           @mouseover="hovering = 3"
           @mouseleave="hovering = 0"
           nameIcon="#pulsar"
@@ -71,15 +74,17 @@
       </div>
       <div class="Use__content">
         <Sign
+          :index="4"
           @mouseover="hovering = 4"
           @mouseleave="hovering = 0"
-          nameIcon="#waveForm"
+          nameIcon="#waves"
         >
           <template v-slot:left>
             <ContentSign :contentRight="true" title="The waves" />
           </template>
         </Sign>
         <Sign
+          :index="3"
           @mouseover="hovering = 5"
           @mouseleave="hovering = 0"
           nameIcon="#frames"
@@ -89,6 +94,7 @@
           </template>
         </Sign>
         <Sign
+          :index="5"
           @mouseover="hovering = 6"
           @mouseleave="hovering = 0"
           nameIcon="#hydrogen"
@@ -107,6 +113,7 @@ import BaseIcon from "@/components/BaseIcon.vue";
 import Sign from "@/components/Sign.vue";
 import ContentSign from "@/components/ContentSign.vue";
 import Header from "@/components/Header.vue";
+
 
 export default {
   name: "UseIt",

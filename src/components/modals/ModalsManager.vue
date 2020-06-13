@@ -66,12 +66,9 @@ export default {
       width: 75vw;
     }
 
-    &-enter {
-      transform: translateX(100%);
-    }
-
+    &-enter,
     &-leave-to{
-      opacity: 0;
+      transform: translateX(100%);
     }
   }
 </style>
