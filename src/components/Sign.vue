@@ -16,12 +16,12 @@ export default {
   props: {
     nameIcon: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   components: {
     BaseIcon,
-    Icon
+    Icon,
   },
   methods: {
     openModal() {
@@ -31,15 +31,15 @@ export default {
           icon: this.nameIcon,
           description:
             "Hello i am description i waiting for data ok so don't forget bro",
-          title: "Hello I a waiting for Title"
-        }
+          title: "Hello I a waiting for Title",
+        },
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 .Use {
   &__symbol {
     display: flex;
@@ -48,7 +48,7 @@ export default {
     position: relative;
     // border: 1px solid red;
     height: 40%;
-    opacity: 0.3;
+    opacity: 0.4;
     cursor: pointer;
 
     @include media_tablet {
@@ -57,7 +57,6 @@ export default {
 
     &:hover {
       opacity: 1;
-      filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.8));
     }
   }
 

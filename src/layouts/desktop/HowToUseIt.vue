@@ -38,14 +38,36 @@
         </Sign>
       </div>
       <div class="Use__ellipse">
-
-        <BaseIcon :class="{ hovering: hovering === 3 }" class="Use__pulsar" href="#pulsar" />
-        <BaseIcon :class="{ hovering: hovering === 4 }" class="Use__waveForm" href="#waveForm" />
-        <BaseIcon :class="{ hovering: hovering === 6 }" class="Use__hydrogen" href="#hydrogen" />
-        <BaseIcon :class="{ hovering: hovering === 5 }" class="Use__frames" href="#frames" />
-        <BaseIcon :class="{ hovering: hovering === 2 }" class="Use__elevation" href="#elevation" />
-        <BaseIcon :class="{ hovering: hovering === 1 }" class="Use__record" href="#record" />
-
+        <BaseIcon
+          :class="{ hovering: hovering === 3 }"
+          class="Use__pulsar"
+          href="#pulsar"
+        />
+        <BaseIcon
+          :class="{ hovering: hovering === 4 }"
+          class="Use__waveForm"
+          href="#waves"
+        />
+        <BaseIcon
+          :class="{ hovering: hovering === 6 }"
+          class="Use__hydrogen"
+          href="#hydrogen"
+        />
+        <BaseIcon
+          :class="{ hovering: hovering === 5 }"
+          class="Use__frames"
+          href="#frames"
+        />
+        <BaseIcon
+          :class="{ hovering: hovering === 2 }"
+          class="Use__elevation"
+          href="#elevation"
+        />
+        <BaseIcon
+          :class="{ hovering: hovering === 1 }"
+          class="Use__record"
+          href="#record"
+        />
       </div>
       <div class="Use__content">
         <Sign
@@ -87,7 +109,7 @@ import ContentSign from "@/components/ContentSign.vue";
 import Header from "@/components/Header.vue";
 
 export default {
-  name: 'UseIt',
+  name: "UseIt",
   data: () => ({
     hovering: 0,
     isClosed: false,
@@ -96,8 +118,8 @@ export default {
     BaseIcon,
     Sign,
     ContentSign,
-    Header
-  }
+    Header,
+  },
 };
 </script>
 
@@ -134,7 +156,6 @@ export default {
     height: 100%;
     padding-bottom: 5vh;
     transition: opacity 0.3s ease;
-
   }
 
   &__content {
@@ -151,7 +172,6 @@ export default {
     border-radius: 50%;
     background: linear-gradient(#d7c37f, #a67a3b);
 
-    
     @include media_tablet {
       width: 32%;
       height: 40%;
