@@ -7,11 +7,7 @@
     <div class="voyager">
       <div class="voyager_image">
         <h4>Voyager probe and the Golden Record</h4>
-        <img
-          class="probe"
-          src="@/assets/img/voyager_journey.png"
-          alt="voyager prob"
-        />
+        <img class="probe" src="@/assets/img/voyager_journey.png" alt="voyager prob" />
         <img
           class="golden-record zoom-in-record"
           src="@/assets/img/golden-record.png"
@@ -100,12 +96,6 @@ export default {
   p {
     width: 500px;
     margin-top: 28px;
-    font-family: Product Sans;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 150%;
-    color: #f8f8f8;
     text-align: left;
   }
   .time {
