@@ -1,6 +1,6 @@
 <template>
   <section class="imagesMobile">
-    <Title class=" title" text="Visual Content" />
+    <Header text="Visual Content" />
     <h4 class=" title title--sub" ref="test">Pictures</h4>
     <div class="imagesContainer" :class="scroll ? 'isScrolling' : null">
       <div
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Title from '@/components/Title.vue';
+import Header from '@/components/Header.vue';
 import { url } from '@/constants.js';
 
 export default {
@@ -31,6 +31,9 @@ export default {
       isScrollingStop: null,
       prevScrollY: null,
     };
+  },
+  components: {
+    Header,
   },
   beforeCreate() {
     fetch(`${url}/query/visual_content`, {
@@ -60,9 +63,6 @@ export default {
       }
       return odd;
     },
-  },
-  components: {
-    Title,
   },
   methods: {
     loadImages() {
