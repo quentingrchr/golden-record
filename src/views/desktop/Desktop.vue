@@ -1,6 +1,10 @@
 <template>
   <main @wheel="wheel" class="desktopViews-container">
-    <transition appear name="slide" mode="out-in">
+    <transition
+      :name="pageMoveNext ? 'slide-forward' : 'slide-backward'"
+      appear
+      mode="out-in"
+    >
       <TheJourney v-if="currentPage === 1" key="Journey" />
       <HowToUseIt v-else-if="currentPage === 2" key="How" />
       <DiscoverImg v-else-if="currentPage === 3" key="img" />
@@ -18,14 +22,14 @@
 </template>
 
 <script>
-import NavBar from "@/components/NavBar__Desktop.vue";
-import DiscoverImg from "@/layouts/desktop/DiscoverImg.vue";
-import DiscoverSound from "@/layouts/desktop/DiscoverSound.vue";
-import HowToUseIt from "@/layouts/desktop/HowToUseIt.vue";
-import Team from "@/layouts/desktop/Team.vue";
-import TheJourney from "@/layouts/desktop/TheJourney.vue";
-import Icon from "@/components/Icons.vue";
-import ModalsManager from "@/components/modals/ModalsManager.vue";
+import NavBar from '@/components/NavBar__Desktop.vue';
+import DiscoverImg from '@/layouts/desktop/DiscoverImg.vue';
+import DiscoverSound from '@/layouts/desktop/DiscoverSound.vue';
+import HowToUseIt from '@/layouts/desktop/HowToUseIt.vue';
+import Team from '@/layouts/desktop/Team.vue';
+import TheJourney from '@/layouts/desktop/TheJourney.vue';
+import Icon from '@/components/Icons.vue';
+import ModalsManager from '@/components/modals/ModalsManager.vue';
 
 export default {
   components: {
@@ -43,6 +47,8 @@ export default {
       wheelCount: 0,
       // You just have to change he value below to set the scroll' sensitive rate (the highest is less sensitive)
       scrollSpeed: 7,
+      goingNextPart: true,
+      pageMoveNext: true,
     };
   },
   computed: {
@@ -75,9 +81,11 @@ export default {
       if (this.wheelCount >= 0 && this.wheelCount <= this.scrollSpeed * 50) {
         if (e.deltaY < 0 || e.deltaX < 0) {
           this.wheelCount--;
+          this.pageMoveNext = false;
           return;
         } else {
           this.wheelCount++;
+          this.pageMoveNext = true;
           return;
         }
       } else if (this.wheelCount < 0) {
@@ -87,6 +95,9 @@ export default {
       }
     },
     changeChapter(value) {
+      value > this.wheelCount
+        ? (this.pageMoveNext = true)
+        : (this.pageMoveNext = false);
       this.wheelCount = value;
     },
   },
@@ -104,15 +115,19 @@ main {
   width: 100vw;
 }
 
-.slide-enter-active,
-.slide-leave-active {
+.slide-forward-enter-active,
+.slide-forward-leave-active,
+.slide-backward-enter-active,
+.slide-backward-leave-active {
   transition: all 0.5s;
 }
-.slide-enter {
+.slide-forward-enter,
+.slide-backward-leave-to {
   opacity: 0.3;
   transform: translateX(100%);
 }
-.slide-leave-to {
+.slide-forward-leave-to,
+.slide-backward-enter {
   opacity: 0.3;
   transform: translateX(-100%);
 }
