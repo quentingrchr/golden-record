@@ -275,7 +275,7 @@ section {
   display: block;
   width: 80vw;
   margin: 0 10vw;
-  margin-top: 14vh;
+  margin-top: 5vh;
   flex-wrap: nowrap;
   position: relative;
 

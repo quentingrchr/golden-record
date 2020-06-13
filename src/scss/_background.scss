@@ -33,14 +33,11 @@
   transform: translateX(-50%);
   position: absolute;
   z-index: 3;
-  font-family: Lato;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 60px;
-  top: 200px;
+  top: 250px;
   color: $primary-white;
   filter: blur(40px);
   transition: opacity 2s;
+  opacity: 0.5;
 
   &.scrolled {
     opacity: 0;
@@ -71,11 +68,7 @@
   transform: translateX(-50%);
   position: absolute;
   z-index: 3;
-  font-family: Lato;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 60px;
-  top: 200px;
+  top: 250px;
 
   &.scrolled {
     animation: title-closing 0.3s 2s ease-out forwards;
@@ -95,9 +88,9 @@
 .earth-bg-container {
   position: absolute;
   right: 50%;
-  width: 775px;
+  width: 1000px;
   transition: top 1s ease;
-  top: 60vh;
+  top: 70vh;
   &:hover {
     .earth-bg {
       opacity: 0;
@@ -108,7 +101,7 @@
   }
   .earth-bg {
     z-index: 2;
-    width: 775px;
+    width: 1000px;
     height: auto;
     position: absolute;
     animation: earth-rotation 140s infinite forwards;
@@ -117,7 +110,7 @@
   }
   .song-bg {
     z-index: 1;
-    width: 775px;
+    width: 1000px;
     height: auto;
     position: absolute;
     animation: earth-rotation 140s infinite forwards;
@@ -142,11 +135,12 @@
   position: absolute;
   z-index: 10;
   right: 50%;
-  top: 90vh;
+  top: 50vh;
   width: 20px;
   height: 60px;
   display: flex;
   justify-content: center;
+  /*filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 1));*/
 }
 .icone-scroll__mobile {
   position: absolute;
