@@ -20,17 +20,40 @@ export default {
     title: String
   },
   mounted() {
+    const year = new Date().getFullYear();
+    const bdayDate = new Date("04,11,2019").getTime(); //mmddyyyy
+
+    // countdown
+    // let timer = setInterval(() => {
+    // get today's date
+    const today = new Date().getTime();
+
+    // get the difference
+    const diff = -bdayDate + today;
+    console.log(diff);
+
+    // for (let index = 0; index < diff; index++) {
+    //   this.increaseCounter();
+    // }
+    // math
+    let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    // this.counter.years = Math.floor(days / 360);
+    // this.counter.days = Math.floor(days);
+    // }, 1000);
     this.startCounter();
   },
   data: function() {
     return {
       counter: {
-        years: 2020,
-        months: 2,
-        days: 25,
-        hours: 12,
-        mins: 35,
-        secs: 56
+        years: 0,
+        months: 0,
+        days: 0,
+        hours: 0,
+        mins: 0,
+        secs: 0
       }
     };
   },

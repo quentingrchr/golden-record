@@ -1,17 +1,16 @@
 <template>
   <section class="imagesMobile">
     <Title class=" title" text="Visual Content" />
-    <h4 class=" title title--sub" @click="test" ref="test">Pictures</h4>
+    <h4 class=" title title--sub" ref="test">Pictures</h4>
     <div class="imagesContainer" :class="scroll ? 'isScrolling' : null">
       <div
         class="imagesContainer__image"
         v-for="(image, index) in imgs"
         :key="index"
         :class="isInOddRow(index)"
-        :ref="`row${isInOddRow(index)}`"
       >
         <img
-          :src="image"
+          :src-set="image"
           alt="one of golden pictures content"
           :ref="`image${isInOddRow(index)}`"
         />
@@ -41,6 +40,9 @@ export default {
       .then((data) =>
         data.forEach((element) => {
           this.imgs.push(element.src);
+          this.$nextTick(() => {
+            this.loadImages();
+          });
         })
       );
   },
@@ -63,8 +65,17 @@ export default {
     Title,
   },
   methods: {
-    test() {
-      console.log(this.$refs.test.offsetLeft);
+    loadImages() {
+      const images = this.$refs.imageOdd.concat(this.$refs.imageEven);
+
+      images.forEach(($image) => {
+        if (
+          $image.parentNode.offsetTop <
+          window.innerHeight + window.scrollY + 300
+        ) {
+          $image.src = $image.getAttribute('src-set');
+        }
+      });
     },
     isInOddRow(Elindex) {
       let result = null;
@@ -78,16 +89,16 @@ export default {
         }
       });
       if (result % 2 === 0) {
-        return 'even';
+        return 'Even';
       } else {
-        return 'odd';
+        return 'Odd';
       }
     },
     isScrolling() {
       let isScrollingDown = window.scrollY > this.prevScrollY;
       let scrollPosition = window.innerHeight + window.scrollY;
 
-      document.querySelectorAll('.odd img').forEach((el) => {
+      this.$refs.imageOdd.forEach((el) => {
         let initPos = el.offsetLeft;
         if (
           scrollPosition > el.parentNode.offsetTop + 100 &&
@@ -102,7 +113,7 @@ export default {
           el.style.left = '0px';
         }
       });
-      document.querySelectorAll('.even img').forEach((el) => {
+      this.$refs.imageEven.forEach((el) => {
         let initPos = el.offsetLeft;
         if (
           scrollPosition > el.parentNode.offsetTop + 100 &&
@@ -118,6 +129,7 @@ export default {
         }
       });
       this.prevScrollY = window.scrollY;
+      this.loadImages();
     },
   },
 };

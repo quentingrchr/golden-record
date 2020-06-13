@@ -7,12 +7,15 @@
     <div class="voyager">
       <div class="voyager_image">
         <h4>Voyager probe and the Golden Record</h4>
-        <img class="probe" src="@/assets/img/voyager_journey.png" alt="voyager prob" />
+        <img
+          class="probe"
+          src="@/assets/img/voyager_journey.png"
+          alt="voyager prob"
+        />
         <img
           class="golden-record zoom-in-record"
           src="@/assets/img/golden-record.png"
           alt="voyager prob"
-          @click="zoomIn"
         />
       </div>
       <div class="voyager_description">
