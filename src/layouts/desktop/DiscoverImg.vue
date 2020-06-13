@@ -1,12 +1,7 @@
 <template>
   <section class="visualContent">
     <Header class="visualContent__title" text="Visual content" />
-    <div
-      class="visualContent__images"
-      :class="imagesApparition ? 'isVisible' : null"
-      :style="position"
-      ref="imageContainer"
-    >
+    <div class="visualContent__images" :style="position" ref="imageContainer">
       <div
         v-for="(image, index) in imgs"
         :key="index"
@@ -20,15 +15,15 @@
       </div>
     </div>
     <div class="visualContent__overlays">
-      <div class="loading-overlay">
-        <div class="stars"></div>
-        <h3 class="overlay__title">
-          What does those strange creatures look likes ?
-        </h3>
-        <div class="loading-overlay__grid">
-          <div v-for="img in fakeImgNumber" :key="img"></div>
+      <transition name="scale">
+        <div class="loading-overlay" v-show="isLoading">
+          <div class="stars"></div>
+          <h3>What does those cretaures look like?</h3>
+          <div class="loading-overlay__grid">
+            <div v-for="img in fakeImgNumber" :key="img"></div>
+          </div>
         </div>
-      </div>
+      </transition>
       <transition name="fade">
         <div class="overlay" v-if="selectedImage" @click="closeOverlay">
           <img :src="selectedImage" alt="One of the golden record pictures" />
@@ -95,7 +90,7 @@ export default {
     return {
       imgs: [],
       moveDirection: null,
-      imagesApparition: false,
+      isLoading: true,
       position: {
         top: '-20%',
         left: '-20%',
@@ -106,7 +101,7 @@ export default {
   computed: {
     fakeImgNumber() {
       let fakesImg = [];
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 72; i++) {
         fakesImg.push(i);
       }
       return fakesImg;
@@ -119,14 +114,15 @@ export default {
       .then((response) => response.json())
       .then((data) => {
         data.forEach((element) => this.imgs.push(element.src));
-        this.$nextTick(() => {});
       });
   },
   components: {
     Header,
   },
   beforeUpdate() {
-    this.imagesApparition = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 6000);
   },
   methods: {
     /* loadImages() {
@@ -213,12 +209,7 @@ section {
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: repeat(auto, 1fr);
   grid-gap: 10px;
-  //opacity: 0;
   transition: all 2s ease-in;
-
-  /* &.isVisible {
-    opacity: 1;
-  } */
 
   filter: contrast(120%);
 
@@ -257,28 +248,30 @@ section {
   }
 
   & .loading-overlay__grid {
-    width: 70%;
-    height: 60%;
+    width: 100%;
+    height: 70%;
     //background-color: red;
-    z-index: 2;
+    z-index: 5;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 20px;
-    margin-bottom: 50px;
+    grid-template-columns: repeat(8, 1fr);
+    background-image: url('./../../assets/img/patchwork.png');
+    background-size: 100%;
+    background-position-x: top;
+    background-position-y: left;
 
     @keyframes flashing {
       to {
-        opacity: 0.4;
+        opacity: 0;
       }
     }
     & div {
       opacity: 1;
-      background-color: red;
-      animation: flashing 3s linear alternate infinite;
+      background-color: $primary-darkblue;
+      animation: flashing 1.5s forwards;
 
-      @for $i from 1 through 31 {
+      @for $i from 1 through 72 {
         &:nth-child(#{$i}) {
-          animation-delay: $i * 1s;
+          animation-delay: $i * 0.1s;
         }
       }
     }
@@ -388,7 +381,18 @@ section {
 .fade-leave-active {
   transition: all 0.5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.scale-enter-active,
+.scale-leave-active {
+  transition: all 1s;
+}
+.scale-enter,
+.scale-leave-to {
+  transform: scale(10);
   opacity: 0;
 }
 </style>
