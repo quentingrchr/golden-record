@@ -16,11 +16,20 @@
     </div>
     <div class="visualContent__overlays">
       <transition name="scale">
-        <div class="loading-overlay" v-show="isLoading">
+        <div class="loading-overlay" v-if="isLoading">
           <div class="stars"></div>
-          <h3>What does those cretaures look like?</h3>
           <div class="loading-overlay__grid">
             <div v-for="img in fakeImgNumber" :key="img"></div>
+          </div>
+          <div
+            class="loading-overlay__infos"
+            :class="hideInfos ? 'isInvisible' : null"
+          >
+            <h3>
+              The Golden Records disk contains 116 images representing humanity
+              and earth
+            </h3>
+            <img src="./../../assets/logo/arrows.svg" />
           </div>
         </div>
       </transition>
@@ -89,8 +98,10 @@ export default {
   data() {
     return {
       imgs: [],
+      loadingDuration: 6500,
       moveDirection: null,
       isLoading: true,
+      hideInfos: false,
       position: {
         top: "-20%",
         left: "-20%"
@@ -122,7 +133,10 @@ export default {
   created() {
     setTimeout(() => {
       this.isLoading = false;
-    }, 6000);
+    }, this.loadingDuration);
+    setTimeout(() => {
+      this.hideInfos = true;
+    }, this.loadingDuration - 100);
   },
   methods: {
     setDirection(value) {
@@ -223,29 +237,44 @@ section {
   width: 100vw;
   height: 100vh;
   margin-left: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
 
-  & h3 {
-    z-index: 2;
-    margin-bottom: 50px;
-    max-width: 80%;
-    color: $primary-white;
+  & .loading-overlay__infos {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &.isInvisible {
+      display: none;
+    }
+    & h3 {
+      color: $primary-white;
+      width: 50%;
+      line-height: 2rem;
+      font-weight: bold;
+      letter-spacing: 0.1rem;
+    }
+
+    & img {
+      margin-top: 70px;
+      width: 20%;
+    }
   }
 
   & .loading-overlay__grid {
     width: 100%;
-    height: 70%;
-    //background-color: red;
+    height: 100%;
     z-index: 5;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     background-image: url('./../../assets/img/patchwork.png');
     background-size: 100%;
-    background-position-x: top;
-    background-position-y: left;
+    opacity: 0.2;
 
     @keyframes flashing {
       to {
@@ -375,11 +404,11 @@ section {
 
 .scale-enter-active,
 .scale-leave-active {
-  transition: all 1s;
+  transition: all 0.5s;
 }
 .scale-enter,
 .scale-leave-to {
-  transform: scale(10);
+  transform: scale(5);
   opacity: 0;
 }
 </style>
