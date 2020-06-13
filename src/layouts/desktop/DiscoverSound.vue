@@ -116,7 +116,7 @@
       src="../../assets/img/song_of_earth.png"
       alt="disc song of earth"
     />
-    <AudioPlayer v-if="isActive" />
+    <AudioPlayer v-if="isActive" :source="randomSongSelected" />
     <div
       class="audio__categoryContainer"
       :class="isActive ? 'audio__categoryContainer--isFocus' : ''"
@@ -134,21 +134,22 @@
 </template>
 
 <script>
-import Header from '../../components/Header.vue';
-import AudioPlayer from '../../components/AudioPlayer.vue';
-import AudioCategory from '../../components/AudioCategory.vue';
+import Header from "../../components/Header.vue";
+import AudioPlayer from "../../components/AudioPlayer.vue";
+import Playlist from "../../components/Playlist.vue";
 
 export default {
   components: {
     Header,
     AudioPlayer,
-    AudioCategory
+    Playlist
   },
   data() {
     return {
       title: "Audio content",
       isActive: false,
-      selectedPlaylist: 0,
+      indexOfSelectedPlaylist: 0,
+      randomSong: "",
       playlists: [
         {
           playlistId: 1,
@@ -157,7 +158,9 @@ export default {
             "Carl Sagan and his team decided to put 27 songs on the golden record.",
           playlistInfo2:
             "The style music who’s the most represented in the disc is the classic style.",
-          isSelected: false
+          playlistContent: [
+            "https://raw.githubusercontent.com/quentintrouve/the_song_of_earth/master/musics/20-bach-gavotte-en-rondo-a-grumiaux.mp3"
+          ]
         },
         {
           playlistId: 2,
@@ -165,7 +168,9 @@ export default {
           playlistInfo1:
             "People from the Earth took the opportunity to let a message in their own language.",
           playlistInfo2: "In this disc you can found 55 différents languages.",
-          isSelected: false
+          playlistContent: [
+            "https://raw.githubusercontent.com/quentintrouve/the_song_of_earth/master/musics/12-melancholy-blues-l-armstrong-%26-his-hot-seven.mp3"
+          ]
         },
         {
           playlistId: 3,
@@ -174,19 +179,33 @@ export default {
             "After human words, Sagan and his associates wanted to include sounds from the planet.",
           playlistInfo2:
             "you can hear sounds of animals, sounds of nature and sounds of city life.",
-          isSelected: false
+          playlistContent: [
+            "https://raw.githubusercontent.com/quentintrouve/the_song_of_earth/master/musics/06-papua-new-guinea-mens-house-song.mp3",
+            "https://raw.githubusercontent.com/quentintrouve/the_song_of_earth/master/musics/12-melancholy-blues-l-armstrong-%26-his-hot-seven.mp3",
+            "https://raw.githubusercontent.com/quentintrouve/the_song_of_earth/master/musics/20-bach-gavotte-en-rondo-a-grumiaux.mp3"
+          ]
         }
       ]
     };
   },
   computed: {
-    isSelected() {
-      return this.playlists[this.selectedPlaylist].isSelected;
+    playlistSelected() {
+      return this.playlists[this.indexOfSelectedPlaylist];
+    },
+    randomSongSelected() {
+      return this.randomSong;
     }
   },
   methods: {
     updatePlaylist(index) {
-      this.selectedPlaylist = index;
+      this.indexOfSelectedPlaylist = index;
+      this.selectRandomSong();
+      console.log(this.randomSongSelected);
+    },
+    selectRandomSong() {
+      this.randomSong = this.playlistSelected.playlistContent[
+        Math.floor(Math.random() * this.playlistSelected.playlistContent.length)
+      ];
     }
   }
 };

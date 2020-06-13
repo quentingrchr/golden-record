@@ -1,46 +1,49 @@
 <template>
   <div class="player">
-    <div class="player__controller">
-      <div class="player__titleContainer">
-        <p class="player__title">Title of Song</p>
-      </div>
-      <audio ref="audio">
-        <source src type="audio/mpeg" />
-      </audio>
-      <div class="player__mainSettings">
-        <svg>
-          <use href="#previous" />
-        </svg>
-        <svg @click="togglePlay">
-          <use :href="playing ? '#pause' : '#play'" />
-        </svg>
-        <svg>
-          <use href="#next" />
-        </svg>
-      </div>
-      <div class="player__soundSettings">
-        <svg @click="isMuted">
-          <use :href="muted ? '#soundoff' : '#soundon'" />
-        </svg>
-        <input
-          class="player__soundSlider"
-          ref="slider"
-          type="range"
-          min="0"
-          max="100"
-          step="1"
-          value="50"
-          @input="updateVolume"
-        />
-      </div>
+    <div class="player__titleContainer">
+      <p class="player__title">Title of Song</p>
     </div>
-    <div id="waveform" class="player__waveForm"></div>
+    <audio ref="audio">
+      <source type="audio/mpeg" />
+    </audio>
+    <div class="player__mainSettings">
+      <svg>
+        <use href="#previous" />
+      </svg>
+      <svg @click="togglePlay">
+        <use :href="playing ? '#pause' : '#play'" />
+      </svg>
+      <svg>
+        <use href="#next" />
+      </svg>
+    </div>
+    <div class="player__soundSettings">
+      <svg @click="isMuted">
+        <use :href="muted ? '#soundoff' : '#soundon'" />
+      </svg>
+      <input
+        class="player__soundSlider"
+        ref="slider"
+        type="range"
+        min="0"
+        max="100"
+        step="1"
+        value="50"
+        @input="updateVolume"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "AudioPlayer",
+  props: {
+    source: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       playing: false,
@@ -83,6 +86,11 @@ export default {
         this.slider.value = volumeNow;
       }
     }
+  },
+  watch: {
+    source: function(newProps, oldProps) {
+      this.audio.src = newProps;
+    }
   }
 };
 </script>
@@ -106,23 +114,7 @@ input {
   width: 800px;
   height: 300px;
   border: 1px solid red;
-  position: relative;
   top: 270px;
-}
-
-.player__waveForm {
-  width: 100%;
-  height: 300px;
-  position: absolute;
-  border: 1px solid yellow;
-}
-
-.player__controller {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
