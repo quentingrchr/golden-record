@@ -6,11 +6,14 @@
     />
     <BaseIcon 
       class="modal__icon"
-      :href="content.icon"
+      :href="content.symbol"
     />
     <div class="modal__content">
       <h2 class="modal__title">{{ content.title }}</h2>
-      <p class="modal__text">{{ content.description }}</p>
+      <br>
+      <p class="modal__text">{{ content.text1 }}</p>
+      <br>
+      <p class="modal__text">{{ content.text2 }}</p>
     </div>
     <BaseIcon
     class="modal__close"
@@ -91,13 +94,13 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      width: 40%;
+      width: 50%;
       height: 50%;
-      margin-left: 15%;
+      margin-left: 8%;
       // border: 1px solid red;
 
       @include media_tablet {
-        width: 40%;
+        width: 45%;
         height: 70%;
       }
     }
@@ -113,13 +116,15 @@ export default {
     }
 
     &__text{
+
+      text-align: start;
       
       @include media_desktop{
-        font-size: 18px;
+        font-size: 14px;
       }
 
       @include media_tablet {
-        font-size: 12px;
+        font-size: 8.5px;
       }
     }
 
