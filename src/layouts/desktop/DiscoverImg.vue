@@ -119,24 +119,12 @@ export default {
   components: {
     Header,
   },
-  beforeUpdate() {
+  created() {
     setTimeout(() => {
       this.isLoading = false;
     }, 6000);
   },
   methods: {
-    /* loadImages() {
-      const windowBottom = window.innerHeight;
-      const windowRight = window.innerWidth;
-      this.$refs.lazyImage.forEach((el) => {
-        let elementPosition = el.getBoundingClientRect();
-        let x = elementPosition.x;
-        let y = elementPosition.y;
-        if (x > 0 && x < windowRight && y > 0 && y < windowBottom) {
-          el.src = el.getAttribute('src-set');
-        }
-      });
-    }, */
     setDirection(value) {
       const imgContainer = this.$refs.imageContainer;
       if (value === 'down') {
@@ -267,7 +255,7 @@ section {
     & div {
       opacity: 1;
       background-color: $primary-darkblue;
-      animation: flashing 1.5s forwards;
+      animation: flashing 1s forwards;
 
       @for $i from 1 through 72 {
         &:nth-child(#{$i}) {
