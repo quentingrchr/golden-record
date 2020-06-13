@@ -14,35 +14,29 @@
 </template>
 
 <script>
+import moment from "moment";
 export default {
   name: "Counter",
   props: {
-    title: String
+    title: String,
+    date: String
   },
   mounted() {
-    const year = new Date().getFullYear();
-    const bdayDate = new Date("04,11,2019").getTime(); //mmddyyyy
+    var now = `${moment().format("DD/MM/YYYY HH:mm:ss")}`;
+    var then = this.date;
 
-    // countdown
-    // let timer = setInterval(() => {
-    // get today's date
-    const today = new Date().getTime();
+    var ms = moment(now, "DD/MM/YYYY HH:mm:ss").diff(
+      moment(then, "DD/MM/YYYY HH:mm:ss")
+    );
+    var d = moment.duration(ms);
+    this.counter.years = d.years();
+    this.counter.months = d.months();
+    this.counter.days = d.months();
+    this.counter.hours = d.hours();
+    this.counter.mins = d.minutes();
+    this.counter.secs = d.seconds();
+    console.log(d);
 
-    // get the difference
-    const diff = -bdayDate + today;
-    console.log(diff);
-
-    // for (let index = 0; index < diff; index++) {
-    //   this.increaseCounter();
-    // }
-    // math
-    let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((diff % (1000 * 60)) / 1000);
-    // this.counter.years = Math.floor(days / 360);
-    // this.counter.days = Math.floor(days);
-    // }, 1000);
     this.startCounter();
   },
   data: function() {
