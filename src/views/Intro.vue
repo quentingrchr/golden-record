@@ -6,7 +6,6 @@
       <div class="fullscreen-bg">
         <video
           preload="auto"
-          loop
           class="fullscreen-bg__video video"
           id="video"
           ref="video"
@@ -24,15 +23,16 @@
         </div>
         <div class="next">
           <router-link to="/golden-record">
-            <svg
-              width="12"
-              height="38"
-              viewBox="0 0 28 51"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M1 50L26 25.5L1 1" stroke="#E5E5E5" stroke-width="2" />
-            </svg>
+            <div class="next__content">
+              <p>Skip</p>
+              <svg
+                viewBox="0 0 28 51"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M1 50L26 25.5L1 1" stroke="#E5E5E5" stroke-width="5" />
+              </svg>
+            </div>
           </router-link>
         </div>
       </div>
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import Welcome from '@/layouts/intro/Welcome.vue';
+import Welcome from "@/layouts/intro/Welcome.vue";
 
 export default {
   components: {
@@ -77,8 +77,19 @@ export default {
 .next:hover {
   cursor: pointer;
 }
-.next svg {
-  margin-right: 80px;
+.next {
+  margin-right: 10vh;
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+  & p {
+    font-size: 15px;
+    margin-right: 10px;
+  }
+  & svg {
+    width: 8px;
+  }
 }
 .pulsar {
   margin-left: 8px;

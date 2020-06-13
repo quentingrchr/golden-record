@@ -3,7 +3,11 @@
     <div class="navBar__timeLineContainer">
       <div>
         <router-link to="/">
-          <img src="../assets/logo/earth-logo.png" alt="earth-logo" class="navBar__earthLogo" />
+          <img
+            src="../assets/logo/earth-logo.png"
+            alt="earth-logo"
+            class="navBar__earthLogo"
+          />
         </router-link>
       </div>
       <div
@@ -11,22 +15,41 @@
         @click="toggleMute"
         :class="isMute ? 'isMute' : null"
       >
-        <img src="../assets/logo/volume-logo.png" alt="volume-logo" class="navBar__volumeLogo" />
+        <img
+          src="../assets/logo/volume-logo.png"
+          alt="volume-logo"
+          class="navBar__volumeLogo"
+        />
       </div>
       <nav class="navBar__timeLine">
-        <div @click="jumpToOtherChapter(scroll * 5)" :class="page === 1 ? 'isSelected' : null">
+        <div
+          @click="jumpToOtherChapter(scroll * 5)"
+          :class="page === 1 ? 'isSelected' : null"
+        >
           <p>The Journey</p>
         </div>
-        <div @click="jumpToOtherChapter(scroll * 15)" :class="page === 2 ? 'isSelected' : null">
+        <div
+          @click="jumpToOtherChapter(scroll * 15)"
+          :class="page === 2 ? 'isSelected' : null"
+        >
           <p>How to use it</p>
         </div>
-        <div @click="jumpToOtherChapter(scroll * 25)" :class="page === 3 ? 'isSelected' : null">
+        <div
+          @click="jumpToOtherChapter(scroll * 25)"
+          :class="page === 3 ? 'isSelected' : null"
+        >
           <p>Visual Content</p>
         </div>
-        <div @click="jumpToOtherChapter(scroll * 35)" :class="page === 4 ? 'isSelected' : null">
+        <div
+          @click="jumpToOtherChapter(scroll * 35)"
+          :class="page === 4 ? 'isSelected' : null"
+        >
           <p>Audio Content</p>
         </div>
-        <div @click="jumpToOtherChapter(scroll * 45)" :class="page === 5 ? 'isSelected' : null">
+        <div
+          @click="jumpToOtherChapter(scroll * 45)"
+          :class="page === 5 ? 'isSelected' : null"
+        >
           <p>Who did it ?</p>
         </div>
       </nav>
@@ -34,6 +57,7 @@
     <audio
       class="experience__song"
       ref="audio"
+      autoplay
       loop
       src="../assets/music/interstellar-main-theme-extra-ex.mp3"
     ></audio>
@@ -44,7 +68,7 @@
 export default {
   data() {
     return {
-      isMute: false
+      isMute: false,
     };
   },
   methods: {
@@ -54,19 +78,19 @@ export default {
     },
     jumpToOtherChapter(value) {
       this.$emit("jumpToOtherChapter", value);
-    }
+    },
   },
   mounted() {
     this.$refs.audio.volume = 0.2;
   },
   props: {
     page: {
-      type: Number
+      type: Number,
     },
     scroll: {
-      type: Number
-    }
-  }
+      type: Number,
+    },
+  },
 };
 </script>
 

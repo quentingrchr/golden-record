@@ -1,6 +1,6 @@
 <template>
   <div class="infos">
-    <h3 class="infos__title">🌍 Time elapsed</h3>
+    <h3 class="infos__title">🌍 Time elapsed since launch</h3>
     <div class="infos__content">
       <Counter date="05/09/1977 12:56:00" title="🛰 ️Voyager 1 " />
       <hr />
@@ -35,6 +35,7 @@ export default {
   }
   &__title {
     margin-bottom: 16px;
+    font-weight: 500;
     color: $primary-white;
   }
   &__content {
