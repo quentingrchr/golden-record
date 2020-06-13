@@ -1,11 +1,17 @@
 <template>
   <div>
-    <h1>Sound</h1>
+    <Header text="Audio content" />
   </div>
 </template>
 
 <script>
-export default {};
+import Header from '@/components/Header.vue';
+
+export default {
+  components: {
+    Header,
+  },
+};
 </script>
 
 <style lang="scss" scoped>

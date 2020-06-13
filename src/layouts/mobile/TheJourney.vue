@@ -1,21 +1,20 @@
 <template>
   <section class="thejourney">
-    <header>
-      <Title class="thejourney_title" text="The journey" />
-    </header>
+    <Header text="The Journey" />
     <div class="voyager">
       <div class="voyager_image">
         <img src="@/assets/img/voyager_journey_mobile.png" alt="voyager prob" />
       </div>
       <div class="voyager_description">
         <p>
-          NASA placed an amibitous message aboard Voyager 1 and 2,
-          a kind of time capsule, intended to communicate a story of our
-          world to extraterrestrials.
+          NASA placed an amibitous message aboard Voyager 1 and 2, a kind of
+          time capsule, intended to communicate a story of our world to
+          extraterrestrials.
         </p>
         <p>
-          It is carried by a phonograph record, a gold-plated copper disk called “The Golden Record“
-          containing what’s supposed to be the portray of the diversity of life and culture on Earth.
+          It is carried by a phonograph record, a gold-plated copper disk called
+          “The Golden Record“ containing what’s supposed to be the portray of
+          the diversity of life and culture on Earth.
         </p>
 
         <Time-elapsed class="time" />
@@ -25,12 +24,12 @@
 </template>
 
 <script>
-import Title from "../../components/Title";
-import TimeElapsed from "../../components/TimeElapsed.vue";
+import Header from '@/components/Header.vue';
+import TimeElapsed from '../../components/TimeElapsed.vue';
 
 export default {
-  name: "TheJourney",
-  components: { Title, TimeElapsed }
+  name: 'TheJourney',
+  components: { Header, TimeElapsed },
 };
 </script>
 
@@ -74,6 +73,3 @@ export default {
   }
 }
 </style>
-
-
-
