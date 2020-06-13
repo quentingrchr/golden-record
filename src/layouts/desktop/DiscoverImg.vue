@@ -6,12 +6,7 @@
       :class="imagesApparition ? 'isVisible' : null"
       :style="position"
     >
-      <div
-        v-for="(image, index) in imgs"
-        :key="index"
-        @click="isSelected(image)"
-        class="images"
-      >
+      <div v-for="(image, index) in imgs" :key="index" @click="isSelected(image)" class="images">
         <img :src="image" alt="One of the golden record pictures" />
       </div>
     </div>
@@ -75,8 +70,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-import { url } from '@/constants.js';
+import Header from "@/components/Header.vue";
+import { url } from "@/constants.js";
 export default {
   data() {
     return {
@@ -84,23 +79,23 @@ export default {
       moveDirection: null,
       imagesApparition: false,
       position: {
-        top: '-20%',
-        left: '-20%',
+        top: "-20%",
+        left: "-20%"
       },
-      selectedImage: null,
+      selectedImage: null
     };
   },
   beforeCreate() {
     fetch(`${url}/query/visual_content`, {
-      method: 'GET',
+      method: "GET"
     })
-      .then((response) => response.json())
-      .then((data) => {
-        data.forEach((element) => this.imgs.push(element.src));
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(element => this.imgs.push(element.src));
       });
   },
   components: {
-    Header,
+    Header
   },
   beforeUpdate() {
     this.imagesApparition = true;
@@ -116,45 +111,45 @@ export default {
       //a apeler dans Mounted et setDirection
     },
     setDirection(value) {
-      const imgContainer = document.querySelector('.visualContent__images');
-      if (value === 'down') {
-        this.position.top = '100px';
-      } else if (value === 'right') {
-        this.position.left = '170px';
-      } else if (value === 'left') {
+      const imgContainer = document.querySelector(".visualContent__images");
+      if (value === "down") {
+        this.position.top = "100px";
+      } else if (value === "right") {
+        this.position.left = "170px";
+      } else if (value === "left") {
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          'px';
-      } else if (value === 'up') {
+          "px";
+      } else if (value === "up") {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          'px';
-      } else if (value === 'cornerTopRight') {
-        this.position.top = '100px';
+          "px";
+      } else if (value === "cornerTopRight") {
+        this.position.top = "100px";
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          'px';
-      } else if (value === 'cornerTopLeft') {
-        this.position.left = '170px';
-        this.position.top = '100px';
-      } else if (value === 'cornerBottomRight') {
+          "px";
+      } else if (value === "cornerTopLeft") {
+        this.position.left = "170px";
+        this.position.top = "100px";
+      } else if (value === "cornerBottomRight") {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          'px';
+          "px";
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          'px';
-      } else if (value === 'cornerBottomLeft') {
+          "px";
+      } else if (value === "cornerBottomLeft") {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          'px';
-        this.position.left = '170px';
+          "px";
+        this.position.left = "170px";
       }
     },
     cancelDirection() {
-      const imgContainer = document.querySelector('.visualContent__images');
-      const top = imgContainer.offsetTop + 'px';
-      const left = imgContainer.offsetLeft + 'px';
+      const imgContainer = document.querySelector(".visualContent__images");
+      const top = imgContainer.offsetTop + "px";
+      const left = imgContainer.offsetLeft + "px";
       this.position.top = top;
       this.position.left = left;
     },
@@ -163,8 +158,8 @@ export default {
     },
     closeOverlay() {
       this.selectedImage = null;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -228,7 +223,6 @@ section {
 
 .borderEffect {
   position: absolute;
-  filter: blur(10px);
 
   &.bottom {
     width: 100%;
