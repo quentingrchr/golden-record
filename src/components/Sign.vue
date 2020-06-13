@@ -72,15 +72,16 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 .Use {
   &__symbol {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    // border: 1px solid red;
     height: 40%;
-    opacity: 0.3;
+    opacity: 0.4;
     cursor: pointer;
 
     @include media_tablet {
@@ -89,7 +90,6 @@ export default {
 
     &:hover {
       opacity: 1;
-      filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.8));
     }
   }
 
@@ -116,6 +116,7 @@ export default {
     width: 140px;
     height: 120px;
     stroke: $primary-white;
+    // border: 1px solid yellow;
     fill: none;
 
     @include media_tablet {

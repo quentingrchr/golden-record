@@ -2,9 +2,9 @@
   <div class="infos">
     <h3 class="infos__title">🌍 Time elapsed</h3>
     <div class="infos__content">
-      <Counter date="05/09/1977 12:56:00" title="🛰 ️Voyager 1" />
+      <Counter date="05/09/1977 12:56:00" title="🛰 ️Voyager 1 " />
       <hr />
-      <Counter date="20/08/1977 14:29:00" title="🛰 ️Voyager 2" />
+      <Counter date="20/08/1977 14:29:00" title="🛰 ️Voyager 2 " />
     </div>
   </div>
 </template>
@@ -13,7 +13,7 @@
 import Counter from "./Counter.vue";
 export default {
   name: "TimeElapsed",
-  components: { Counter }
+  components: { Counter },
 };
 </script>
 

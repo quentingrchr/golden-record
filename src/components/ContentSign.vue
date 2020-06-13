@@ -16,16 +16,16 @@ export default {
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     },
     contentRight: {
       type: Boolean,
-      required: true
-    }
+      required: true,
+    },
   },
   components: {
-    BaseIcon
-  }
+    BaseIcon,
+  },
 };
 </script>
 
@@ -45,6 +45,7 @@ export default {
     &--left {
       top: 65%;
       left: 55%;
+      background: radial-gradient(ellipse, #000000, transparent);
 
       @include media_tablet {
         top: 65%;
@@ -54,7 +55,8 @@ export default {
 
     &--right {
       top: 55%;
-      right: 55%;
+      right: 45%;
+      background: radial-gradient(ellipse, #000000, transparent);
 
       @include media_tablet {
         top: 65%;

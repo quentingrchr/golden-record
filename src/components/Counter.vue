@@ -19,7 +19,7 @@ export default {
   name: "Counter",
   props: {
     title: String,
-    date: String
+    date: String,
   },
   mounted() {
     var now = `${moment().format("DD/MM/YYYY HH:mm:ss")}`;
@@ -47,8 +47,8 @@ export default {
         days: 0,
         hours: 0,
         mins: 0,
-        secs: 0
-      }
+        secs: 0,
+      },
     };
   },
 
@@ -117,8 +117,8 @@ export default {
       } else {
         return value;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -132,6 +132,7 @@ div {
     font-weight: 700;
     font-family: Product Sans;
     color: $primary-darkblue;
+    margin-right: 15px;
   }
 
   @media (max-width: 580px) {

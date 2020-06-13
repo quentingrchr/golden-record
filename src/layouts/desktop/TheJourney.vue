@@ -7,7 +7,11 @@
     <div class="voyager">
       <div class="voyager_image">
         <h4>Voyager probe and the Golden Record</h4>
-        <img class="probe" src="@/assets/img/voyager_journey.png" alt="voyager prob" />
+        <img
+          class="probe"
+          src="@/assets/img/voyager_journey.png"
+          alt="voyager prob"
+        />
         <img
           class="golden-record zoom-in-record"
           src="@/assets/img/golden-record.png"
@@ -41,7 +45,7 @@ import TimeElapsed from "../../components/TimeElapsed.vue";
 
 export default {
   name: "TheJourney",
-  components: { Header, TimeElapsed }
+  components: { Header, TimeElapsed },
 };
 </script>
 
@@ -99,7 +103,7 @@ export default {
     text-align: left;
   }
   .time {
-    margin-top: 24px;
+    margin-top: 50px;
   }
 }
 @keyframes zooming {
