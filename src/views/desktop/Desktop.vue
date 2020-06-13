@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import EventBus from "@/EventBus";
 import NavBar from "@/components/NavBar__Desktop.vue";
 import DiscoverImg from "@/layouts/desktop/DiscoverImg.vue";
 import DiscoverSound from "@/layouts/desktop/DiscoverSound.vue";
@@ -26,6 +27,7 @@ import Team from "@/layouts/desktop/Team.vue";
 import TheJourney from "@/layouts/desktop/TheJourney.vue";
 import Icon from "@/components/Icons.vue";
 import ModalsManager from "@/components/modals/ModalsManager.vue";
+
 
 export default {
   components: {
@@ -72,6 +74,7 @@ export default {
   methods: {
     wheel(e) {
       e.preventDefault();
+      EventBus.$emit("close");
       if (this.wheelCount >= 0 && this.wheelCount <= this.scrollSpeed * 50) {
         if (e.deltaY < 0 || e.deltaX < 0) {
           this.wheelCount--;

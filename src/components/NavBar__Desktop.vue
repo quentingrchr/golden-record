@@ -1,5 +1,7 @@
 <template>
-  <div class="navBar">
+  <div class="navBar"
+    @click="closeOverlay"
+  >
     <div class="navBar__timeLineContainer">
       <div>
         <router-link to="/">
@@ -41,6 +43,8 @@
 </template>
 
 <script>
+import EventBus from "@/EventBus";
+
 export default {
   data() {
     return {
@@ -54,6 +58,9 @@ export default {
     },
     jumpToOtherChapter(value) {
       this.$emit("jumpToOtherChapter", value);
+    },
+    closeOverlay(){
+      EventBus.$emit("close");
     }
   },
   mounted() {
