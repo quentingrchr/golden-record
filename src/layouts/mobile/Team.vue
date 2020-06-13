@@ -127,10 +127,10 @@ export default {
 
 <style lang="scss" scoped>
 section {
-  height: 100vh;
   width: 100%;
   background-color: $primary-darkblue;
   color: $primary-white;
+  overflow: hidden;
 }
 
 header.header {
@@ -156,8 +156,8 @@ header.header {
 }
 
 .polaroids {
-  height: 80vh;
-  width: 100vw;
+  height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

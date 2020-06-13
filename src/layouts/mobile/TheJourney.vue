@@ -20,16 +20,28 @@
         <Time-elapsed class="time" />
       </div>
     </div>
+    <Cta nextChapter="How to use it?" @goNextChapter="goNextChapter" />
   </section>
 </template>
 
 <script>
 import Header from '@/components/Header.vue';
-import TimeElapsed from '../../components/TimeElapsed.vue';
+import TimeElapsed from '@/components/TimeElapsed.vue';
+import Cta from '@/components/MobileCta.vue';
 
 export default {
   name: 'TheJourney',
-  components: { Header, TimeElapsed },
+  components: { Header, TimeElapsed, Cta },
+  methods: {
+    goNextChapter() {
+      this.$emit('changeChapter', 2);
+    },
+  },
+  created() {
+    window.scrollTo({
+      top: 0,
+    });
+  },
 };
 </script>
 
@@ -37,7 +49,6 @@ export default {
 .thejourney {
   width: 80vw;
   margin: auto;
-  padding-bottom: 100px;
   color: $primary-white;
   &_title {
     display: flex;
@@ -59,10 +70,8 @@ export default {
   &_description {
     margin-top: 24px;
     p {
-      font-family: Product Sans Light;
-      font-style: normal;
-      font-weight: 300;
       font-size: 14px;
+      text-align: left;
       line-height: 150%;
       margin-top: 20px;
       text-align: left;
