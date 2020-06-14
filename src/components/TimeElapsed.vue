@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import Counter from "./Counter.vue";
+import Counter from './Counter.vue';
 export default {
-  name: "TimeElapsed",
+  name: 'TimeElapsed',
   components: { Counter },
 };
 </script>
@@ -37,15 +37,18 @@ export default {
     margin-bottom: 16px;
     font-weight: 500;
     color: $primary-white;
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
   }
   &__content {
     border-radius: 5px;
     background-color: $primary-white;
     padding: 4px 0px;
     width: 500px;
-    @media (max-width: 740px) {
+    @media (max-width: 768px) {
       padding: 8px 0px;
-      width: 400px;
+      width: 100%;
     }
 
     div {
@@ -60,7 +63,7 @@ export default {
     hr {
       display: block;
       margin: auto;
-      content: "";
+      content: '';
       background-color: $primary-darkblue;
       opacity: 0.5;
       height: 2px;

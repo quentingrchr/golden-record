@@ -26,7 +26,7 @@ export default {
   display: inline-block;
   padding: 10px;
   margin-top: 30px;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
