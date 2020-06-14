@@ -1,8 +1,8 @@
 <template>
   <!--- Contient la vidéo responsive (mobile / desktop) -->
   <div @wheel="isScrolled" @click="goToVideo">
-    <Welcome v-show="scrollRate < 50" />
-    <Video v-show="scrollRate >= 50" :startVideo="launchVideo" />
+    <Welcome v-if="scrollRate < changePageControll" />
+    <Video v-else />
   </div>
 </template>
 
@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       scrollRate: 0,
+      changePageControll: 50,
       launchVideo: false,
     };
   },
@@ -30,10 +31,10 @@ export default {
       e.preventDefault();
       if (e.deltaY > 0) {
         this.scrollRate++;
-      }
-      if (this.scrollRate >= 50) {
+      } else if (this.scrollRate >= this.changePageControll) {
         this.launchVideo = true;
       }
+      console.log(this.scrollRate);
     },
   },
 };

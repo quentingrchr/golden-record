@@ -87,7 +87,7 @@ export default {
     },
   },
   mounted() {
-    this.$refs.audio.volume = 1;
+    this.$refs.audio.volume = 0.2;
   },
   props: {
     page: {
@@ -101,8 +101,7 @@ export default {
     page: function(newProp, oldProp) {
       if (newProp === 4) {
         this.$refs.audio.muted = true;
-      } else {
-        this.$refs.audio.muted = false;
+        this.isMute = true;
       }
     },
   },

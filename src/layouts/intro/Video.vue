@@ -2,6 +2,7 @@
   <div class="video">
     <div class="fullscreen-bg">
       <video
+        autoplay
         preload="auto"
         class="fullscreen-bg__video video"
         id="video"
@@ -38,7 +39,7 @@
 
 <script>
 export default {
-  methods: {
+  /* methods: {
     launchVideo() {
       this.$refs.video.play();
     },
@@ -55,7 +56,7 @@ export default {
         this.launchVideo();
       }
     },
-  },
+  }, */
 };
 </script>
 
@@ -94,7 +95,8 @@ export default {
 .fullscreen-bg__video {
   position: absolute;
   z-index: 200;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   left: 0;
   display: block;
 
