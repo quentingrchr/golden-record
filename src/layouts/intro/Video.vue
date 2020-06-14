@@ -51,7 +51,7 @@ export default {
   },
   watch: {
     startVideo: function(newProps, oldProps) {
-      if (newProps) {
+      if (newProps === true) {
         this.launchVideo();
       }
     },
