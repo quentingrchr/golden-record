@@ -41,7 +41,7 @@ export default {
 <style lang="scss" scoped>
 .playlist {
   width: 270px;
-  padding: 16px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -49,20 +49,13 @@ export default {
   color: $primary-white;
 
   &--isFocus {
-    height: 200px;
-    overflow: hidden;
-    position: absolute;
-    left: 80%;
-  }
-
-  &--isFocusIndex {
-    position: absolute;
-    left: 50%;
+    box-shadow: inset 5px 5px 10px #0e0d14, inset -5px -5px 10px #1a1924;
+    border-radius: 50px;
   }
 }
 
 button {
-  min-height: 104px;
+  min-height: 116px;
   margin: 40px 0;
   border: none;
   outline: none;
@@ -107,21 +100,3 @@ p {
   }
 }
 </style>
-
-var wavesurfer = WaveSurfer.create({ container:
-document.querySelector('#waveform'), waveColor: '#D9DCFF', progressColor:
-'#4353FF', cursorColor: '#4353FF', barWidth: 3, barRadius: 3, cursorWidth: 1,
-height: 200, barGap: 3 });
-
-
-<!-- <AudioPlayer
-        class="audio__controller"
-        :isPlaying="audioSettings.isPlaying"
-        :isMuted="audioSettings.isMuted"
-        @click-play="togglePlay"
-        @click-mute="toggleMute"
-        @change-volume="updateVolume"
-      />-->
-
-      <div id="waveform"></div>
-
