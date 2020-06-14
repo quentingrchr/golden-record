@@ -8,7 +8,7 @@
       <BaseIcon class="disc__logo disc__pulsar" href="pulsar" />
       <BaseIcon class="disc__logo disc__hydrogen" href="hydrogen" />
       <BaseIcon class="disc__logo disc__frames" href="frames" />
-      <BaseIcon class="disc__logo disc__waveForm" href="waveForm" />
+      <BaseIcon class="disc__logo disc__waveForm" href="waves" />
     </div>
     <section class="useIt__explications">
       <article>
@@ -72,7 +72,7 @@
         </p>
       </article>
       <article>
-        <BaseIcon class="article__logo article__waveForm" href="waveForm" />
+        <BaseIcon class="article__logo article__waveForm" href="waves" />
         <h3>The Waves</h3>
         <p>
           This symbol shows when the waveform data should be broken down.
