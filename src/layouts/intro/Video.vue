@@ -8,6 +8,7 @@
         id="video"
         ref="video"
       >
+        <div class="hideBrandData"></div>
         <source src="@/assets/video/video_intro.mp4" type="video/mp4" />
         Sorry, your browser doesn't support embedded videos, but don't worry,
         you can
@@ -61,6 +62,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.hideBrandData {
+  z-index: 11;
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  background-color: white;
+  top: 50%;
+  transform: translateY(-50%);
+}
 .next:hover {
   cursor: pointer;
 }
@@ -93,13 +103,13 @@ export default {
 }
 
 .fullscreen-bg__video {
-  position: absolute;
-  z-index: 200;
+  position: relative;
+  z-index: 10;
   top: 50%;
   transform: translateY(-50%);
   left: 0;
   display: block;
-
+  height: 110%;
   object-fit: fill;
 }
 
