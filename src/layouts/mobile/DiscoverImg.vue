@@ -23,6 +23,7 @@
         class="close"
         src="./../../assets/logo/controller/close.svg"
         @click="closeOverlay"
+        alt="close"
       />
     </div>
     <Cta nextChapter="Audio content" @goNextChapter="goNextChapter" />

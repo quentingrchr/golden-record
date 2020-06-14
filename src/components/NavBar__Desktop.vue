@@ -1,7 +1,5 @@
 <template>
-  <div class="navBar"
-    @click="closeOverlay"
-  >
+  <div class="navBar" @click="closeOverlay">
     <div class="navBar__timeLineContainer">
       <div>
         <router-link to="/">
@@ -16,6 +14,7 @@
         class="navBar__containerVolumeLogo"
         @click="toggleMute"
         :class="isMute ? 'isMute' : null"
+        v-show="page !== 4"
       >
         <img
           src="../assets/logo/volume-logo.png"
@@ -67,7 +66,7 @@
 </template>
 
 <script>
-import EventBus from "@/EventBus";
+import EventBus from '@/EventBus';
 
 export default {
   data() {
@@ -81,14 +80,14 @@ export default {
       this.$refs.audio.muted = !this.$refs.audio.muted;
     },
     jumpToOtherChapter(value) {
-      this.$emit("jumpToOtherChapter", value);
+      this.$emit('jumpToOtherChapter', value);
     },
-    closeOverlay(){
-      EventBus.$emit("close");
-    }
+    closeOverlay() {
+      EventBus.$emit('close');
+    },
   },
   mounted() {
-    this.$refs.audio.volume = 0.2;
+    this.$refs.audio.volume = 1;
   },
   props: {
     page: {
@@ -96,6 +95,15 @@ export default {
     },
     scroll: {
       type: Number,
+    },
+  },
+  watch: {
+    page: function(newProp, oldProp) {
+      if (newProp === 4) {
+        this.$refs.audio.muted = true;
+      } else {
+        this.$refs.audio.muted = false;
+      }
     },
   },
 };
@@ -234,7 +242,7 @@ export default {
   }
 
   &.isMute::after {
-    content: "";
+    content: '';
     position: absolute;
     display: block;
     width: 30px;

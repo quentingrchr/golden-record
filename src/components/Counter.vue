@@ -14,19 +14,19 @@
 </template>
 
 <script>
-import moment from "moment";
+import moment from 'moment';
 export default {
-  name: "Counter",
+  name: 'Counter',
   props: {
     title: String,
     date: String,
   },
   mounted() {
-    var now = `${moment().format("DD/MM/YYYY HH:mm:ss")}`;
+    var now = `${moment().format('DD/MM/YYYY HH:mm:ss')}`;
     var then = this.date;
 
-    var ms = moment(now, "DD/MM/YYYY HH:mm:ss").diff(
-      moment(then, "DD/MM/YYYY HH:mm:ss")
+    var ms = moment(now, 'DD/MM/YYYY HH:mm:ss').diff(
+      moment(then, 'DD/MM/YYYY HH:mm:ss')
     );
     var d = moment.duration(ms);
     this.counter.years = d.years();
@@ -125,12 +125,18 @@ export default {
 <style scoped lang="scss">
 div {
   display: flex;
+  flex-direction: column;
   padding: 8px 32px;
   position: relative;
   font-size: 16px;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+
   p {
     font-weight: 700;
-    font-family: Product Sans;
     color: $primary-darkblue;
     margin-right: 15px;
   }
@@ -153,7 +159,6 @@ div {
 
     em {
       font-size: 1.2em;
-
       color: $primary-darkblue;
     }
   }
