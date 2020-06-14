@@ -1,9 +1,9 @@
 <template>
   <div class="player">
     <div class="player__titleContainer">
-      <p class="player__title">Title of Song</p>
+      <p class="player__title">{{ name }}</p>
     </div>
-    <audio ref="audio">
+    <audio ref="audio" autoplay>
       <source type="audio/mpeg" />
     </audio>
     <div class="player__mainSettings">
@@ -41,14 +41,18 @@ export default {
   props: {
     source: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
       playing: false,
       muted: false,
-      volume: 0
+      volume: 0,
     };
   },
   computed: {
@@ -57,16 +61,16 @@ export default {
     },
     slider() {
       return this.$refs["slider"];
-    }
+    },
   },
   methods: {
     togglePlay() {
       if (!this.audio.paused && !this.audio.ended) {
         this.audio.pause();
-        this.playing = !this.playing;
+        this.playing = false;
       } else {
         this.audio.play();
-        this.playing = !this.playing;
+        this.playing = true;
       }
     },
     updateVolume: function(e) {
@@ -85,13 +89,14 @@ export default {
         this.audio.muted = false;
         this.slider.value = volumeNow;
       }
-    }
+    },
   },
   watch: {
     source: function(newProps, oldProps) {
       this.audio.src = newProps;
-    }
-  }
+      this.togglePlay();
+    },
+  },
 };
 </script>
 
@@ -103,10 +108,10 @@ input {
 
 @keyframes slide {
   from {
-    transform: translateX(-100%);
+    transform: translateX(100%);
   }
   to {
-    transform: translateX(105%);
+    transform: translateX(-100%);
   }
 }
 

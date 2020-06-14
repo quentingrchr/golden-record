@@ -2,7 +2,13 @@
   <div class="audio">
     <svg style="position: absolute; width: 0; height: 0; overflow: hidden">
       <defs>
-        <symbol id="Noises" width="104" height="104" viewBox="0 0 104 104" fill="none">
+        <symbol
+          id="Noises"
+          width="104"
+          height="104"
+          viewBox="0 0 104 104"
+          fill="none"
+        >
           <circle cx="52" cy="52" r="52" fill="#F8F8F8" />
           <path
             d="M52.0003 23.8687C46.4365 23.8687 40.9976 25.5185 36.3715 28.6096C31.7453 31.7007 28.1397 36.0942 26.0105 41.2345C23.8813 46.3748 23.3242 52.031 24.4097 57.4879C25.4951 62.9448 28.1744 67.9573 32.1086 71.8915C36.0428 75.8257 41.0553 78.505 46.5122 79.5904C51.9691 80.6759 57.6253 80.1188 62.7656 77.9896C67.9059 75.8604 72.2994 72.2548 75.3905 67.6286C78.4816 63.0025 80.1314 57.5636 80.1314 51.9998C80.1314 44.539 77.1676 37.3837 71.892 32.1081C66.6164 26.8325 59.4611 23.8687 52.0003 23.8687ZM52.0003 25.6268C56.8109 25.6288 61.5293 26.9466 65.6449 29.4374C69.7604 31.9283 73.1162 35.4974 75.3491 39.7584C74.6063 39.7188 73.8591 39.6924 73.0987 39.6924C65.3274 39.6924 58.4485 41.7407 54.198 44.8879C57.0366 45.8246 59.6742 47.2857 61.9737 49.1955C62.0728 49.2671 62.1558 49.3586 62.2176 49.4641C62.2793 49.5696 62.3184 49.6869 62.3322 49.8084C62.3461 49.9299 62.3345 50.0529 62.2981 50.1696C62.2617 50.2864 62.2014 50.3942 62.121 50.4863C62.0405 50.5784 61.9418 50.6527 61.831 50.7045C61.7202 50.7562 61.5999 50.7843 61.4776 50.7869C61.3554 50.7895 61.234 50.7666 61.1211 50.7197C61.0082 50.6727 60.9063 50.6027 60.8221 50.5141C58.4001 48.4043 54.998 46.7736 51.0465 45.7494H51.0069C50.5967 45.6439 50.1806 45.5443 49.7586 45.4505L49.6531 45.4066C49.2487 45.3187 48.8399 45.2381 48.4268 45.1648L48.2861 45.1384C47.0114 44.9099 45.6928 44.7472 44.3302 44.6417C43.9609 44.6154 43.5917 44.5934 43.2181 44.5714L42.6819 44.545C42.1368 44.5275 41.5786 44.5275 41.0116 44.5275C35.2974 44.5275 30.0756 45.6351 26.0229 47.4724C27.0961 41.3593 30.2878 35.8193 35.0381 31.8246C39.7883 27.8299 45.7937 25.6356 52.0003 25.6268ZM39.1083 74.9926C44.4796 69.5818 36.6688 62.2149 36.6688 62.2149C44.8269 65.7313 44.8269 72.1224 44.8269 72.1224C47.7411 67.4587 41.9126 54.6371 41.9126 54.6371C47.7411 61.6303 48.3257 72.7026 48.3257 72.7026C52.4047 68.039 48.3257 59.2963 48.3257 59.2963C55.8815 63.9467 52.6464 74.5663 52.6289 74.6234C55.0332 71.2345 57.2046 65.2522 55.3233 55.2173C55.3233 55.2173 59.4023 59.8809 56.4881 73.2828C56.4881 73.2828 65.2307 65.7049 64.0659 56.9623C64.0659 56.9623 65.4681 64.4566 63.2396 70.6279C64.5846 68.0829 67.4548 64.1401 72.224 64.5357C72.224 64.5357 64.2417 67.9598 65.1912 74.808C61.2344 77.1057 56.7463 78.3306 52.1709 78.3614C47.5955 78.3922 43.0913 77.228 39.1039 74.9838L39.1083 74.9926Z"
@@ -44,7 +50,13 @@
           />
         </symbol>
         <symbol id="previous" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="16" transform="rotate(180 16 16)" fill="#ae8908" />
+          <circle
+            cx="16"
+            cy="16"
+            r="16"
+            transform="rotate(180 16 16)"
+            fill="#ae8908"
+          />
           <path
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -67,7 +79,13 @@
           />
         </symbol>
         <symbol id="next" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="16" transform="rotate(180 16 16)" fill="#ae8908" />
+          <circle
+            cx="16"
+            cy="16"
+            r="16"
+            transform="rotate(180 16 16)"
+            fill="#ae8908"
+          />
           <path
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -116,7 +134,11 @@
       src="../../assets/img/song_of_earth.png"
       alt="disc song of earth"
     />
-    <AudioPlayer v-if="isActive" :source="randomSongSelected" />
+    <AudioPlayer
+      v-if="isActive"
+      :source="songSrcSelected"
+      :name="songNameSelected"
+    />
     <div
       class="audio__categoryContainer"
       :class="isActive ? 'audio__categoryContainer--isFocus' : ''"
@@ -134,22 +156,24 @@
 </template>
 
 <script>
-import Header from "../../components/Header.vue";
-import AudioPlayer from "../../components/AudioPlayer.vue";
-import Playlist from "../../components/Playlist.vue";
+import Header from "@/components/Header.vue";
+import AudioPlayer from "@/components/AudioPlayer.vue";
+import Playlist from "@/components/Playlist.vue";
+import { url } from "@/constants.js";
 
 export default {
   components: {
     Header,
     AudioPlayer,
-    Playlist
+    Playlist,
   },
   data() {
     return {
       title: "Audio content",
-      isActive: false,
+      isActive: true,
       indexOfSelectedPlaylist: 0,
-      randomSong: "",
+      randomSongName: "",
+      randomSongSrc: "",
       playlists: [
         {
           playlistId: 1,
@@ -158,9 +182,7 @@ export default {
             "Carl Sagan and his team decided to put 27 songs on the golden record.",
           playlistInfo2:
             "The style music who’s the most represented in the disc is the classic style.",
-          playlistContent: [
-            "https://raw.githubusercontent.com/quentintrouve/the_song_of_earth/master/musics/20-bach-gavotte-en-rondo-a-grumiaux.mp3"
-          ]
+          playlistContent: [],
         },
         {
           playlistId: 2,
@@ -168,9 +190,7 @@ export default {
           playlistInfo1:
             "People from the Earth took the opportunity to let a message in their own language.",
           playlistInfo2: "In this disc you can found 55 différents languages.",
-          playlistContent: [
-            "https://raw.githubusercontent.com/quentintrouve/the_song_of_earth/master/musics/12-melancholy-blues-l-armstrong-%26-his-hot-seven.mp3"
-          ]
+          playlistContent: [],
         },
         {
           playlistId: 3,
@@ -179,35 +199,72 @@ export default {
             "After human words, Sagan and his associates wanted to include sounds from the planet.",
           playlistInfo2:
             "you can hear sounds of animals, sounds of nature and sounds of city life.",
-          playlistContent: [
-            "https://raw.githubusercontent.com/quentintrouve/the_song_of_earth/master/musics/06-papua-new-guinea-mens-house-song.mp3",
-            "https://raw.githubusercontent.com/quentintrouve/the_song_of_earth/master/musics/12-melancholy-blues-l-armstrong-%26-his-hot-seven.mp3",
-            "https://raw.githubusercontent.com/quentintrouve/the_song_of_earth/master/musics/20-bach-gavotte-en-rondo-a-grumiaux.mp3"
-          ]
-        }
-      ]
+          playlistContent: [],
+        },
+      ],
     };
   },
   computed: {
     playlistSelected() {
       return this.playlists[this.indexOfSelectedPlaylist];
     },
-    randomSongSelected() {
-      return this.randomSong;
-    }
+    songSrcSelected() {
+      return this.randomSongSrc;
+    },
+    songNameSelected() {
+      return this.randomSongName;
+    },
   },
   methods: {
     updatePlaylist(index) {
       this.indexOfSelectedPlaylist = index;
       this.selectRandomSong();
-      console.log(this.randomSongSelected);
     },
     selectRandomSong() {
-      this.randomSong = this.playlistSelected.playlistContent[
-        Math.floor(Math.random() * this.playlistSelected.playlistContent.length)
-      ];
-    }
-  }
+      let randomIndex = Math.floor(
+        Math.random() * this.playlistSelected.playlistContent.length
+      );
+      this.randomSongSrc = this.playlistSelected.playlistContent[
+        randomIndex
+      ].src_audio;
+      this.randomSongName = this.playlistSelected.playlistContent[
+        randomIndex
+      ].name_audio;
+      console.log(this.randomSongSrc, this.randomSongName);
+    },
+  },
+  beforeCreate() {
+    const setInfos = (index, nameSong, srcSong) => {
+      let infos = {
+        name_audio: nameSong,
+        src_audio: srcSong,
+      };
+      this.playlists[index].playlistContent.push(infos);
+    };
+
+    fetch(`${url}/query/audio_content`, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((songs) => {
+        songs.forEach((song) => {
+          switch (song.name_playlist) {
+            case "music":
+              setInfos(0, song.name_audio, song.src_audio);
+              break;
+            case "greetings":
+              setInfos(1, song.name_audio, song.src_audio);
+              break;
+            case "noises":
+              setInfos(2, song.name_audio, song.src_audio);
+              break;
+            default:
+              console.log("Not found playlist's category");
+          }
+        });
+      })
+      .catch((error) => console.log(error));
+  },
 };
 </script>
 
