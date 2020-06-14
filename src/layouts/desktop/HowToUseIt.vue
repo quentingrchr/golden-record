@@ -4,6 +4,11 @@
     <div class="twinkling"></div>
     <Header class="Use__mainTitle" text="How To Use It" />
     <div class="Use__container">
+    <div :class="{'none' : disappear}" class="Use__instruction">
+      <div class="Use__intructionText">
+        <h2>le symboles que vous voyaient sont réels</h2>
+      </div>
+    </div>
       <div class="Use__content">
         <Sign
           :index="0"
@@ -120,6 +125,7 @@ export default {
   data: () => ({
     hovering: 0,
     isClosed: false,
+    disappear: false,
   }),
   components: {
     BaseIcon,
@@ -127,6 +133,11 @@ export default {
     ContentSign,
     Header,
   },
+  created(){
+    setTimeout(() => { 
+      this.disappear = true
+    },2000);
+  }
 };
 </script>
 
@@ -145,6 +156,19 @@ export default {
   height: 100vh;
   background-color: $primary-darkblue;
   position: relative;
+
+  &__instruction{
+    position: fixed;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba($primary-darkblue, 0.5);
+    top: 0;
+    left: 4%;
+    width: 100vw;
+    height: 100vh;
+  }
 
   &__mainTitle {
     display: flex;
@@ -287,6 +311,10 @@ export default {
   .home {
     color: white;
     z-index: 100000;
+  }
+
+  .none{
+    display: none;
   }
 }
 </style>
