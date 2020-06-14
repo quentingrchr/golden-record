@@ -1,14 +1,10 @@
 <template>
   <div class="audio">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
     <svg style="position: absolute; width: 0; height: 0; overflow: hidden">
       <defs>
-        <symbol
-          id="Noises"
-          width="104"
-          height="104"
-          viewBox="0 0 104 104"
-          fill="none"
-        >
+        <symbol id="Noises" width="104" height="104" viewBox="0 0 104 104" fill="none">
           <circle cx="52" cy="52" r="52" fill="#F8F8F8" />
           <path
             d="M52.0003 23.8687C46.4365 23.8687 40.9976 25.5185 36.3715 28.6096C31.7453 31.7007 28.1397 36.0942 26.0105 41.2345C23.8813 46.3748 23.3242 52.031 24.4097 57.4879C25.4951 62.9448 28.1744 67.9573 32.1086 71.8915C36.0428 75.8257 41.0553 78.505 46.5122 79.5904C51.9691 80.6759 57.6253 80.1188 62.7656 77.9896C67.9059 75.8604 72.2994 72.2548 75.3905 67.6286C78.4816 63.0025 80.1314 57.5636 80.1314 51.9998C80.1314 44.539 77.1676 37.3837 71.892 32.1081C66.6164 26.8325 59.4611 23.8687 52.0003 23.8687ZM52.0003 25.6268C56.8109 25.6288 61.5293 26.9466 65.6449 29.4374C69.7604 31.9283 73.1162 35.4974 75.3491 39.7584C74.6063 39.7188 73.8591 39.6924 73.0987 39.6924C65.3274 39.6924 58.4485 41.7407 54.198 44.8879C57.0366 45.8246 59.6742 47.2857 61.9737 49.1955C62.0728 49.2671 62.1558 49.3586 62.2176 49.4641C62.2793 49.5696 62.3184 49.6869 62.3322 49.8084C62.3461 49.9299 62.3345 50.0529 62.2981 50.1696C62.2617 50.2864 62.2014 50.3942 62.121 50.4863C62.0405 50.5784 61.9418 50.6527 61.831 50.7045C61.7202 50.7562 61.5999 50.7843 61.4776 50.7869C61.3554 50.7895 61.234 50.7666 61.1211 50.7197C61.0082 50.6727 60.9063 50.6027 60.8221 50.5141C58.4001 48.4043 54.998 46.7736 51.0465 45.7494H51.0069C50.5967 45.6439 50.1806 45.5443 49.7586 45.4505L49.6531 45.4066C49.2487 45.3187 48.8399 45.2381 48.4268 45.1648L48.2861 45.1384C47.0114 44.9099 45.6928 44.7472 44.3302 44.6417C43.9609 44.6154 43.5917 44.5934 43.2181 44.5714L42.6819 44.545C42.1368 44.5275 41.5786 44.5275 41.0116 44.5275C35.2974 44.5275 30.0756 45.6351 26.0229 47.4724C27.0961 41.3593 30.2878 35.8193 35.0381 31.8246C39.7883 27.8299 45.7937 25.6356 52.0003 25.6268ZM39.1083 74.9926C44.4796 69.5818 36.6688 62.2149 36.6688 62.2149C44.8269 65.7313 44.8269 72.1224 44.8269 72.1224C47.7411 67.4587 41.9126 54.6371 41.9126 54.6371C47.7411 61.6303 48.3257 72.7026 48.3257 72.7026C52.4047 68.039 48.3257 59.2963 48.3257 59.2963C55.8815 63.9467 52.6464 74.5663 52.6289 74.6234C55.0332 71.2345 57.2046 65.2522 55.3233 55.2173C55.3233 55.2173 59.4023 59.8809 56.4881 73.2828C56.4881 73.2828 65.2307 65.7049 64.0659 56.9623C64.0659 56.9623 65.4681 64.4566 63.2396 70.6279C64.5846 68.0829 67.4548 64.1401 72.224 64.5357C72.224 64.5357 64.2417 67.9598 65.1912 74.808C61.2344 77.1057 56.7463 78.3306 52.1709 78.3614C47.5955 78.3922 43.0913 77.228 39.1039 74.9838L39.1083 74.9926Z"
@@ -42,26 +38,11 @@
             fill="#14131C"
           />
         </symbol>
-        <symbol id="Songs" viewBox="0 0 104 104" fill="none">
+        <symbol id="Musics" viewBox="0 0 104 104" fill="none">
           <circle cx="52" cy="52" r="52" fill="#F8F8F8" />
           <path
             d="M71.8917 28.5661C71.5289 28.2456 71.0484 28.0916 70.5669 28.1416L39.8784 31.5514C39.0146 31.647 38.361 32.377 38.3611 33.246V63.6295C36.8159 62.7048 35.0471 62.2207 33.2463 62.2297C28.5459 62.2298 24.7217 65.2883 24.7217 69.0494C24.7217 72.8104 28.5459 75.8691 33.2462 75.8691C37.9466 75.8691 41.7708 72.8121 41.7708 69.0494V43.3052L69.0495 40.267V60.2146C67.5038 59.2917 65.735 58.8094 63.9347 58.8199C59.2343 58.8199 55.4102 61.8785 55.4102 65.6396C55.4102 69.4006 59.2344 72.4593 63.9347 72.4593C68.6351 72.4593 72.4593 69.4023 72.4593 65.6396V29.8363C72.4593 29.3514 72.2529 28.8895 71.8917 28.5661Z"
             fill="#14131C"
-          />
-        </symbol>
-        <symbol id="previous" viewBox="0 0 32 32" fill="none">
-          <circle
-            cx="16"
-            cy="16"
-            r="16"
-            transform="rotate(180 16 16)"
-            fill="#ae8908"
-          />
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M21.8997 12.0717L17.5 15.374L17.5 12.8715C17.5 12.0473 16.5589 11.577 15.8997 12.0717L11.0656 15.7C11.0428 15.7171 11.0209 15.735 11 15.7536L11 11.9998L9 11.9998L9 20.9998L11 20.9998L11 17.246C11.0209 17.2646 11.0428 17.2824 11.0656 17.2996L15.8997 20.9279C16.5589 21.4226 17.5 20.9523 17.5 20.1281L17.5 17.6256L21.8997 20.9279C22.5589 21.4226 23.5 20.9523 23.5 20.1281L23.5 12.8715C23.5 12.0473 22.5589 11.577 21.8997 12.0717Z"
-            fill="#F8F8F8"
           />
         </symbol>
         <symbol id="play" viewBox="0 0 32 32" fill="none">
@@ -71,26 +52,11 @@
             cy="16"
             r="16"
             transform="rotate(180 16 16)"
-            fill="#F8F8F8"
+            fill="#ae8908"
           />
           <path
             d="M21.4526 14.9082C22.0492 15.3037 22.0492 16.1797 21.4526 16.5752L13.8109 21.6408C13.1461 22.0814 12.2583 21.6048 12.2583 20.8073L12.2583 10.6761C12.2583 9.87863 13.1461 9.402 13.8109 9.84263L21.4526 14.9082Z"
             fill="#14131C"
-          />
-        </symbol>
-        <symbol id="next" viewBox="0 0 32 32" fill="none">
-          <circle
-            cx="16"
-            cy="16"
-            r="16"
-            transform="rotate(180 16 16)"
-            fill="#ae8908"
-          />
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M10.1003 19.9283L14.5 16.626V19.1285C14.5 19.9527 15.4411 20.423 16.1003 19.9283L20.9344 16.3C20.9572 16.2829 20.9791 16.265 21 16.2464V20.0002H23V11.0002H21V14.754C20.9791 14.7354 20.9572 14.7176 20.9344 14.7004L16.1003 11.0721C15.4411 10.5774 14.5 11.0477 14.5 11.8719V14.3744L10.1003 11.0721C9.44109 10.5774 8.5 11.0477 8.5 11.8719V19.1285C8.5 19.9527 9.44109 20.423 10.1003 19.9283Z"
-            fill="#F8F8F8"
           />
         </symbol>
         <symbol id="soundon" viewBox="0 0 16 16" fill="none">
@@ -113,7 +79,7 @@
           />
         </symbol>
         <symbol id="pause" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="16" fill="#F8F8F8" />
+          <circle cx="16" cy="16" r="16" fill="#ae8908" />
           <path
             d="M14.2906 21.05C14.2906 22.1269 13.4175 23 12.3406 23C11.2637 23 10.3906 22.1269 10.3906 21.05V10.95C10.3906 9.87311 11.2637 9 12.3406 9C13.4175 9 14.2906 9.87311 14.2906 10.95V21.05Z"
             fill="#14131C"
@@ -134,15 +100,7 @@
       src="../../assets/img/song_of_earth.png"
       alt="disc song of earth"
     />
-    <AudioPlayer
-      v-if="isActive"
-      :source="songSrcSelected"
-      :name="songNameSelected"
-    />
-    <div
-      class="audio__categoryContainer"
-      :class="isActive ? 'audio__categoryContainer--isFocus' : ''"
-    >
+    <div class="audio__categoryContainer">
       <Playlist
         v-for="(playlist, index) in playlists"
         :key="playlist.playlistId"
@@ -150,8 +108,14 @@
         :playlistInfo1="playlist.playlistInfo1"
         :playlistInfo2="playlist.playlistInfo2"
         @select-playlist="updatePlaylist(index)"
+        :class="indexOfSelectedPlaylist == index ? 'playlist--isFocus' : ''"
       />
     </div>
+    <AudioPlayer
+      :class="isActive ? 'player--isFocus' : ''"
+      :source="songSrcSelected"
+      :name="songNameSelected"
+    />
   </div>
 </template>
 
@@ -165,24 +129,24 @@ export default {
   components: {
     Header,
     AudioPlayer,
-    Playlist,
+    Playlist
   },
   data() {
     return {
       title: "Audio content",
-      isActive: true,
-      indexOfSelectedPlaylist: 0,
+      isActive: false,
+      indexOfSelectedPlaylist: null,
       randomSongName: "",
       randomSongSrc: "",
       playlists: [
         {
           playlistId: 1,
-          playlistName: "Songs",
+          playlistName: "Musics",
           playlistInfo1:
             "Carl Sagan and his team decided to put 27 songs on the golden record.",
           playlistInfo2:
             "The style music who’s the most represented in the disc is the classic style.",
-          playlistContent: [],
+          playlistContent: []
         },
         {
           playlistId: 2,
@@ -190,7 +154,7 @@ export default {
           playlistInfo1:
             "People from the Earth took the opportunity to let a message in their own language.",
           playlistInfo2: "In this disc you can found 55 différents languages.",
-          playlistContent: [],
+          playlistContent: []
         },
         {
           playlistId: 3,
@@ -199,9 +163,9 @@ export default {
             "After human words, Sagan and his associates wanted to include sounds from the planet.",
           playlistInfo2:
             "you can hear sounds of animals, sounds of nature and sounds of city life.",
-          playlistContent: [],
-        },
-      ],
+          playlistContent: []
+        }
+      ]
     };
   },
   computed: {
@@ -214,11 +178,17 @@ export default {
     songNameSelected() {
       return this.randomSongName;
     },
+    audio() {
+      return this.$refs["audio"];
+    }
   },
   methods: {
     updatePlaylist(index) {
       this.indexOfSelectedPlaylist = index;
+      this.isActive = true;
       this.selectRandomSong();
+      this.audio.play();
+      console.log(this.randomSongSrc, this.randomSongName);
     },
     selectRandomSong() {
       let randomIndex = Math.floor(
@@ -231,23 +201,23 @@ export default {
         randomIndex
       ].name_audio;
       console.log(this.randomSongSrc, this.randomSongName);
-    },
+    }
   },
   beforeCreate() {
     const setInfos = (index, nameSong, srcSong) => {
       let infos = {
         name_audio: nameSong,
-        src_audio: srcSong,
+        src_audio: srcSong
       };
       this.playlists[index].playlistContent.push(infos);
     };
 
     fetch(`${url}/query/audio_content`, {
-      method: "GET",
+      method: "GET"
     })
-      .then((response) => response.json())
-      .then((songs) => {
-        songs.forEach((song) => {
+      .then(response => response.json())
+      .then(songs => {
+        songs.forEach(song => {
           switch (song.name_playlist) {
             case "music":
               setInfos(0, song.name_audio, song.src_audio);
@@ -263,8 +233,8 @@ export default {
           }
         });
       })
-      .catch((error) => console.log(error));
-  },
+      .catch(error => console.log(error));
+  }
 };
 </script>
 
@@ -288,25 +258,24 @@ header {
 }
 
 .audio {
-  background-color: $primary-darkblue;
   height: 100vh;
   width: 100vw;
   position: relative;
   overflow: hidden;
+  z-index: 10;
+
+  .stars {
+    z-index: -1;
+  }
+  .twinkling {
+    z-index: -1;
+  }
 }
 
 .audio__categoryContainer {
-  margin: 120px 80px 0px 80px;
+  margin: 80px 80px 0px 80px;
   display: flex;
   justify-content: space-around;
-
-  &--isFocus {
-    height: 400px;
-    display: block;
-    position: relative;
-    border: 1px solid red;
-    transform: translateY(10%);
-  }
 }
 
 .audio__imgDisc {
@@ -315,10 +284,21 @@ header {
   height: 700px;
   width: 700px;
   transition: top 1s linear;
+
+  @include media_tablet {
+    top: -60%;
+    height: 550px;
+    width: 550px;
+  }
 }
 
 .audio__imgDisc--isAnimate {
-  top: -50%;
+  top: -60%;
   animation: rotating 3.6s 1s linear infinite;
+
+  @include media_tablet {
+    top: -53%;
+    animation: rotating 3.6s 1s linear infinite;
+  }
 }
 </style>

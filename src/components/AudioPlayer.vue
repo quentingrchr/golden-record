@@ -1,21 +1,13 @@
 <template>
   <div class="player">
-    <div class="player__titleContainer">
-      <p class="player__title">{{ name }}</p>
-    </div>
     <audio ref="audio" autoplay>
       <source type="audio/mpeg" />
     </audio>
-    <div class="player__mainSettings">
-      <svg>
-        <use href="#previous" />
-      </svg>
-      <svg @click="togglePlay">
-        <use :href="playing ? '#pause' : '#play'" />
-      </svg>
-      <svg>
-        <use href="#next" />
-      </svg>
+    <svg class="svgPlay" @click="togglePlay">
+      <use :href="playing ? '#pause' : '#play'" />
+    </svg>
+    <div class="player__titleContainer">
+      <p class="player__title">{{ name }}</p>
     </div>
     <div class="player__soundSettings">
       <svg @click="isMuted">
@@ -41,18 +33,18 @@ export default {
   props: {
     source: {
       type: String,
-      required: true,
+      required: true
     },
     name: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
       playing: false,
       muted: false,
-      volume: 0,
+      volume: 0
     };
   },
   computed: {
@@ -61,7 +53,7 @@ export default {
     },
     slider() {
       return this.$refs["slider"];
-    },
+    }
   },
   methods: {
     togglePlay() {
@@ -89,14 +81,14 @@ export default {
         this.audio.muted = false;
         this.slider.value = volumeNow;
       }
-    },
+    }
   },
   watch: {
     source: function(newProps, oldProps) {
       this.audio.src = newProps;
       this.togglePlay();
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -108,51 +100,52 @@ input {
 
 @keyframes slide {
   from {
-    transform: translateX(100%);
+    transform: translateX(105%);
   }
   to {
-    transform: translateX(-100%);
+    transform: translateX(-105%);
   }
 }
 
 .player {
-  width: 800px;
-  height: 300px;
-  border: 1px solid red;
-  top: 270px;
+  margin: 0 20%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  transform: translateY(200%);
+  opacity: 0;
+  transition: transform 1s, opacity 1s;
+
+  @include media_tablet {
+    transform: translateY(130%);
+  }
+
+  &--isFocus {
+    transform: translateY(150%);
+    opacity: 1;
+
+    @include media_tablet {
+      transform: translateY(80%);
+      opacity: 1;
+    }
+  }
+}
+
+.svgPlay {
+  width: 50px;
+  height: 50px;
 }
 
 .player__titleContainer {
   overflow-x: hidden;
-  width: 80%;
-  margin-bottom: 16px;
+  width: 40%;
 }
 
 .player__title {
+  display: inline-block;
   color: $primary-white;
   animation: 10s linear 1s infinite running slide;
-}
-
-.player__mainSettings {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 24px;
-
-  svg {
-    width: 50px;
-    height: 50px;
-
-    &:nth-child(2) {
-      width: 70px;
-      height: 70px;
-      margin: 0px 24px;
-    }
-  }
+  white-space: nowrap;
 }
 
 .player__soundSettings {
