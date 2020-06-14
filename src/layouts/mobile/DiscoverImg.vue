@@ -1,6 +1,6 @@
 <template>
   <section class="imagesMobile">
-    <Header text="Visual Content" />
+    <Header text="Visual Content" :class="selectedImage ? 'opacity' : ''" />
     <h4 class=" title title--sub" ref="test">Pictures</h4>
     <div class="imagesContainer" :class="scroll ? 'isScrolling' : null">
       <div
@@ -8,6 +8,7 @@
         v-for="(image, index) in imgs"
         :key="index"
         :class="isInOddRow(index)"
+        @click="select(image)"
       >
         <img
           :src-set="image"
@@ -15,6 +16,14 @@
           :ref="`image${isInOddRow(index)}`"
         />
       </div>
+    </div>
+    <div class="overlay" v-show="selectedImage" ref="overlay">
+      <img :src="selectedImage" />
+      <img
+        class="close"
+        src="./../../assets/logo/controller/close.svg"
+        @click="closeOverlay"
+      />
     </div>
     <Cta nextChapter="Audio content" @goNextChapter="goNextChapter" />
   </section>
@@ -32,6 +41,7 @@ export default {
       scroll: false,
       isScrollingStop: null,
       prevScrollY: null,
+      selectedImage: null,
     };
   },
   components: {
@@ -71,6 +81,13 @@ export default {
     },
   },
   methods: {
+    select(image) {
+      this.selectedImage = image;
+      this.$refs.overlay.style.top = window.scrollY + 'px';
+    },
+    closeOverlay() {
+      this.selectedImage = null;
+    },
     goNextChapter() {
       this.$emit('changeChapter', 4);
     },
@@ -145,6 +162,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.header__container {
+  opacity: 0.3;
+}
+
 .imagesMobile {
   width: 100%;
   color: $primary-white;
@@ -205,6 +226,31 @@ export default {
     width: 100%;
     left: 0;
     max-height: 100%;
+  }
+}
+
+.overlay {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 60px;
+
+  & img {
+    width: 90%;
+  }
+
+  & img.close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 30px;
   }
 }
 </style>
