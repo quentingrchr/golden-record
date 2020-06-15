@@ -53,6 +53,12 @@
         >
           <p>Who did it ?</p>
         </div>
+        <div
+          @click="jumpToOtherChapter(scroll * 45)"
+          :class="page === 5 ? 'isSelected' : null"
+        >
+          <p>Controll voyager</p>
+        </div>
       </nav>
     </div>
     <audio

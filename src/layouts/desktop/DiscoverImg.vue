@@ -92,8 +92,8 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
-import { url } from "@/constants.js";
+import Header from '@/components/Header.vue';
+import { url } from '@/constants.js';
 export default {
   data() {
     return {
@@ -103,10 +103,10 @@ export default {
       isLoading: true,
       hideInfos: false,
       position: {
-        top: "-20%",
-        left: "-20%"
+        top: '-20%',
+        left: '-20%',
       },
-      selectedImage: null
+      selectedImage: null,
     };
   },
   computed: {
@@ -119,16 +119,17 @@ export default {
     },
   },
   beforeCreate() {
+    console.log(url);
     fetch(`${url}/query/visual_content`, {
-      method: "GET"
+      method: 'GET',
     })
-      .then(response => response.json())
-      .then(data => {
-        data.forEach(element => this.imgs.push(element.src));
+      .then((response) => response.json())
+      .then((data) => {
+        data.forEach((element) => this.imgs.push(element.src));
       });
   },
   components: {
-    Header
+    Header,
   },
   created() {
     setTimeout(() => {
@@ -148,31 +149,31 @@ export default {
       } else if (value === 'left') {
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          "px";
-      } else if (value === "up") {
+          'px';
+      } else if (value === 'up') {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          "px";
-      } else if (value === "cornerTopRight") {
-        this.position.top = "100px";
+          'px';
+      } else if (value === 'cornerTopRight') {
+        this.position.top = '100px';
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          "px";
-      } else if (value === "cornerTopLeft") {
-        this.position.left = "170px";
-        this.position.top = "100px";
-      } else if (value === "cornerBottomRight") {
+          'px';
+      } else if (value === 'cornerTopLeft') {
+        this.position.left = '170px';
+        this.position.top = '100px';
+      } else if (value === 'cornerBottomRight') {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          "px";
+          'px';
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          "px";
-      } else if (value === "cornerBottomLeft") {
+          'px';
+      } else if (value === 'cornerBottomLeft') {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          "px";
-        this.position.left = "170px";
+          'px';
+        this.position.left = '170px';
       }
     },
     cancelDirection() {
