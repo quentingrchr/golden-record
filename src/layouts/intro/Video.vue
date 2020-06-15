@@ -1,9 +1,20 @@
 <template>
   <div class="video">
     <div class="fullscreen-bg">
-      <video autoplay preload="auto" class="fullscreen-bg__video video" id="video" ref="video">
+
+      <video
+        @ended="onEnd()"
+        autoplay
+        preload="auto"
+        class="fullscreen-bg__video video"
+        id="video"
+        ref="video"
+      >
         <div class="hideBrandData"></div>
-        <source src="@/assets/video/video_intro.mp4" type="video/mp4" />Sorry, your browser doesn't support embedded videos, but don't worry,
+        <source src="@/assets/video/video_intro.mp4" type="video/mp4" />
+
+        Sorry, your browser doesn't support embedded videos, but don't worry,
+
         you can
         <a
           href="@/assets/video/video.mp4"
@@ -31,6 +42,11 @@
 
 <script>
 export default {
+  methods: {
+    onEnd() {
+      window.location += "golden-record";
+    }
+  }
   /* methods: {
     launchVideo() {
       this.$refs.video.play();
