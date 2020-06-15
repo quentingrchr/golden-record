@@ -43,7 +43,7 @@
       ref="audio"
       autoplay
       loop
-      src="../assets/music/interstellar-main-theme-extra-ex.mp3"
+      src="../assets/music/drone.mp3"
     ></audio>
   </div>
 </template>
@@ -67,7 +67,7 @@ export default {
     },
     closeOverlay() {
       EventBus.$emit("close");
-    }
+    },
   },
   mounted() {
     this.$refs.audio.volume = 0.2;
