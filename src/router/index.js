@@ -19,15 +19,14 @@ const routes = [
   {
     path: "/use",
     name: "Use",
-    component: Use,
+    component: Use
   },
   { path: "/quentint", name: "Quentint", component: Quentint },
-  { path: "/toto", name: "Toto", component: Toto },
+  { path: "/toto", name: "Toto", component: Toto }
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  routes,
+  routes
 });
 
 export default router;
