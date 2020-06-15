@@ -80,7 +80,7 @@ export default {
   &--isFocus {
     border-radius: 10px;
     background-color: $secondary-light-grey-blue;
-    transform: translateY(2vh);
+    transform: translate(1vw, 2vh);
   }
 
   &:hover {
