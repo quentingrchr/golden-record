@@ -1,7 +1,6 @@
 <template>
   <div
     class="playlist"
-    :class="hovering ? 'playlist--isHover' : ''"
     @mouseenter="showOverlay"
     @mouseleave="resetOverlay"
     @click="selectPlaylist"
@@ -9,7 +8,13 @@
     <h3>{{ playlistName }}</h3>
     <button @click="selectPlaylist">
       <svg>
-        <use :href="'#' + playlistName" />
+        <use
+          :href="
+            hovering || selected
+              ? '#' + playlistName + 'Reverse'
+              : '#' + playlistName
+          "
+        />
       </svg>
     </button>
     <div class="paylist__infoContainer">
@@ -18,7 +23,7 @@
       <h4 v-else class="playlist__textOverlay">
         <span>CLICK</span>
         <br />
-        on the logo to play a random song of {{ playlistName }}'s playlist
+        on the playlist to play a random song of {{ playlistName }}'s playlist.
       </h4>
     </div>
   </div>
@@ -38,6 +43,10 @@ export default {
     },
     playlistInfo2: {
       type: String,
+      Required: true,
+    },
+    selected: {
+      type: Boolean,
       Required: true,
     },
   },
@@ -77,15 +86,27 @@ export default {
   cursor: pointer;
   transition: all 0.2s;
 
-  &--isFocus {
-    border-radius: 10px;
-    background-color: $secondary-light-grey-blue;
-    transform: translate(1vw, 2vh);
+  &:hover {
+    border-radius: 3px;
+    background-color: $primary-white;
+    opacity: 0.6;
+
+    h3,
+    h4 {
+      color: $primary-darkblue;
+    }
   }
 
-  &:hover {
-    background-color: $secondary-light-grey-blue;
-    border-radius: 10px;
+  &--isFocus {
+    border-radius: 3px;
+    background-color: $primary-white;
+    opacity: 0.6;
+    transform: translate(1vw, 2vh);
+
+    h3,
+    p {
+      color: $primary-darkblue;
+    }
   }
 }
 
@@ -161,9 +182,11 @@ p {
 
 .playlist__textOverlay {
   line-height: 150%;
+  color: $primary-darkblue;
 
   span {
-    font-weight: bold;
+    font-weight: 900;
+    font-size: 24px;
   }
 }
 </style>
