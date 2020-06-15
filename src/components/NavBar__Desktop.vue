@@ -54,10 +54,10 @@
           <p>Who did it ?</p>
         </div>
         <div
-          @click="jumpToOtherChapter(scroll * 45)"
-          :class="page === 5 ? 'isSelected' : null"
+          @click="jumpToOtherChapter(scroll * 55)"
+          :class="page === 6 ? 'isSelected' : null"
         >
-          <p>Controll voyager</p>
+          <p>Game</p>
         </div>
       </nav>
     </div>
@@ -195,7 +195,7 @@ export default {
       color: $primary-white;
       font-weight: bold;
       font-size: 0.8rem;
-      background-color: #000000;
+      background-color: black;
       padding: 5px 0;
       width: 110px;
 
