@@ -1,18 +1,13 @@
 <template>
   <div class="video">
     <div class="fullscreen-bg">
-      <video
-        autoplay
-        preload="auto"
-        class="fullscreen-bg__video video"
-        id="video"
-        ref="video"
-      >
+      <video autoplay preload="auto" class="fullscreen-bg__video video" id="video" ref="video">
         <div class="hideBrandData"></div>
-        <source src="@/assets/video/video_intro.mp4" type="video/mp4" />
-        Sorry, your browser doesn't support embedded videos, but don't worry,
+        <source src="@/assets/video/video_intro.mp4" type="video/mp4" />Sorry, your browser doesn't support embedded videos, but don't worry,
         you can
-        <a href="@/assets/video/video.mp4">download it</a>
+        <a
+          href="@/assets/video/video.mp4"
+        >download it</a>
         and watch it with your favorite video player!
       </video>
     </div>
@@ -24,11 +19,7 @@
         <router-link to="/golden-record">
           <div class="next__content">
             <p>Skip</p>
-            <svg
-              viewBox="0 0 28 51"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <svg viewBox="0 0 28 51" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1 50L26 25.5L1 1" stroke="#E5E5E5" stroke-width="5" />
             </svg>
           </div>
@@ -63,7 +54,7 @@ export default {
 
 <style lang="scss" scoped>
 .hideBrandData {
-  z-index: 11;
+  z-index: 100;
   position: absolute;
   width: 100%;
   height: 20px;
