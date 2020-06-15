@@ -5,8 +5,7 @@
 </template>
 <script>
 import { url } from "@/constants.js";
-import EventBus from '@/EventBus';
-
+import EventBus from "@/EventBus";
 
 export default {
   name: "BaseIcon",
@@ -15,44 +14,42 @@ export default {
       type: String,
       required: true,
     },
-    i:{
+    i: {
       type: Number,
-      required: true,
-      default: 0
-    }
-  },
-  data:() => ({
-  modal:{
-    text1 : "",
-    text2 : "",
-    title : "",
-    symbol: "nameIcon",
+      default: 0,
     },
-    i: "i"
+  },
+  data: () => ({
+    modal: {
+      text1: "",
+      text2: "",
+      title: "",
+      symbol: "nameIcon",
+    },
+    i: "i",
   }),
-    methods: {
+  methods: {
     openModal() {
       EventBus.$emit("open", {
         component: "BaseModal",
-          content:
-          this.modal
+        content: this.modal,
       });
     },
   },
-  created(){
-        fetch(`${url}/query/how_use`, {
+  created() {
+    fetch(`${url}/query/how_use`, {
       method: "GET",
     })
-    .then(Response => Response.json())
-    .then(data => {
-      this.modal = {
-        text1 : data[this.i].text_1,
-        text2 : data[this.i].text_2,
-        title : data[this.i].title,
-        symbol: data[this.i].symbol
-      }
-    })
-    .catch(error => console.log(error))
+      .then((Response) => Response.json())
+      .then((data) => {
+        this.modal = {
+          text1: data[this.i].text_1,
+          text2: data[this.i].text_2,
+          title: data[this.i].title,
+          symbol: data[this.i].symbol,
+        };
+      })
+      .catch((error) => console.log(error));
   },
 };
 </script>
