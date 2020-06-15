@@ -4,9 +4,13 @@
     <div class="twinkling"></div>
     <Header class="Use__mainTitle" text="How To Use It" />
     <div class="Use__container">
-    <div :class="{'none' : disappear}" class="Use__instruction">
-      <div class="Use__intructionText">
-        <h2>le symboles que vous voyaient sont réels</h2>
+    <div @click="appear" :class="{'none' : disappear}" class="Use__instruction">
+      <div class="Use__intruction">
+        <h3 class="Use__intructionText">
+          On the disc are arranged six symbols allowing the individuals 
+          who will receive the disc to decipher it
+        </h3>
+        <p style="fontWeight : bold">Click anywhere to pass the instructions</p>
       </div>
     </div>
       <div class="Use__content">
@@ -50,7 +54,7 @@
       </div>
       <div class="Use__ellipse">
         <BaseIcon
-          @click="openModal"
+          :i="2"
           :class="{ hovering: hovering === 3 }"
           @mouseover="hovering = 3"
           @mouseleave="hovering = 0"
@@ -58,7 +62,7 @@
           href="#pulsar"
         />
         <BaseIcon
-          @click="openModal"
+          :i="4"
           :class="{ hovering: hovering === 4 }"
           @mouseover="hovering = 4"
           @mouseleave="hovering = 0"
@@ -66,7 +70,7 @@
           href="#waves"
         />
         <BaseIcon
-          @click="openModal"
+          :i="5"
           :class="{ hovering: hovering === 6 }"
           @mouseover="hovering = 6"
           @mouseleave="hovering = 0"
@@ -74,7 +78,7 @@
           href="#hydrogen"
         />
         <BaseIcon
-          @click="openModal"
+          :i="3"
           :class="{ hovering: hovering === 5 }"
           @mouseover="hovering = 5"
           @mouseleave="hovering = 0"
@@ -82,7 +86,7 @@
           href="#frames"
         />
         <BaseIcon
-          @click="openModal"
+          :i="1"
           :class="{ hovering: hovering === 2 }"
           @mouseover="hovering = 2"
           @mouseleave="hovering = 0"
@@ -90,7 +94,7 @@
           href="#elevation"
         />
         <BaseIcon
-          @click="openModal"
+          :i="0"
           :class="{ hovering: hovering === 1 }"
           @mouseover="hovering = 1"
           @mouseleave="hovering = 0"
@@ -138,12 +142,10 @@
 </template>
 
 <script>
-import EventBus from '@/EventBus';
 import BaseIcon from "@/components/BaseIcon.vue";
 import Sign from "@/components/Sign.vue";
 import ContentSign from "@/components/ContentSign.vue";
 import Header from "@/components/Header.vue";
-import { url } from "@/constants.js";
 
 
 export default {
@@ -152,13 +154,6 @@ export default {
     hovering: 0,
     isClosed: false,
     disappear: false,
-    modalContent:{
-    text1 : "",
-    text2 : "",
-    Title : "",
-    symbol: "nameIcon",
-    },
-    index: 'index'
   }),
   components: {
     BaseIcon,
@@ -166,35 +161,16 @@ export default {
     ContentSign,
     Header,
   },
-  methods: {
-    openModal() {
-      EventBus.$emit("open", {
-        component: "BaseModal",
-          content:
-          this.modalContent
-      });
-    },
-  },
-  beforeCreate(){
-        fetch(`${url}/query/how_use`, {
-      method: "GET",
-    })
-    .then(Response => Response.json())
-    .then(data => {
-      this.modalContent = {
-        text1 : data[this.index].text_1,
-        text2 : data[this.index].text_2,
-        title : data[this.index].title,
-        symbol: data[this.index].symbol
-      }
-    })
-    .catch(error => console.log(error))
-  },
-  created(){
-    setTimeout(() => { 
+  methods:{
+    appear(){
       this.disappear = true
-    },2000);
-  },
+    }
+  }
+  // created(){
+  //   // setTimeout(() => { 
+  //   //   this.disappear = true
+  //   // },2000);
+  // },
 }
 </script>
 
@@ -220,11 +196,16 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba($primary-darkblue, 0.5);
+    background: rgba(0, 0, 0, 0.75);
     top: 0;
-    left: 4%;
+    left: 0;
+    padding: 10vw;
     width: 100vw;
     height: 100vh;
+  }
+
+  &__intructionText{
+    margin-bottom: 10vh;
   }
 
   &__mainTitle {
