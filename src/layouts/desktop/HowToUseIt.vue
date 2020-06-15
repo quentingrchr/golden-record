@@ -12,6 +12,7 @@
       <div class="Use__content">
         <Sign
           :index="0"
+          :class="{ color: hovering === 1 }"
           @mouseover="hovering = 1"
           @mouseleave="hovering = 0"
           nameIcon="#record"
@@ -28,6 +29,7 @@
           :index="1"
           @mouseover="hovering = 2"
           @mouseleave="hovering = 0"
+          :class="{ color: hovering === 2 }"
           nameIcon="#elevation"
         >
           <template v-slot:right>
@@ -38,6 +40,7 @@
           :index="2"
           @mouseover="hovering = 3"
           @mouseleave="hovering = 0"
+          :class="{ color: hovering === 3 }"
           nameIcon="#pulsar"
         >
           <template v-slot:right>
@@ -48,32 +51,44 @@
       <div class="Use__ellipse">
         <BaseIcon
           :class="{ hovering: hovering === 3 }"
-          class="Use__pulsar"
+          @mouseover="hovering = 3"
+          @mouseleave="hovering = 0"
+          class="Use__pulsar Use__color"
           href="#pulsar"
         />
         <BaseIcon
           :class="{ hovering: hovering === 4 }"
-          class="Use__waveForm"
+          @mouseover="hovering = 4"
+          @mouseleave="hovering = 0"
+          class="Use__waveForm Use__color"
           href="#waves"
         />
         <BaseIcon
           :class="{ hovering: hovering === 6 }"
-          class="Use__hydrogen"
+          @mouseover="hovering = 6"
+          @mouseleave="hovering = 0"
+          class="Use__hydrogen Use__color"
           href="#hydrogen"
         />
         <BaseIcon
           :class="{ hovering: hovering === 5 }"
-          class="Use__frames"
+          @mouseover="hovering = 5"
+          @mouseleave="hovering = 0"
+          class="Use__frames Use__color"
           href="#frames"
         />
         <BaseIcon
           :class="{ hovering: hovering === 2 }"
-          class="Use__elevation"
+          @mouseover="hovering = 2"
+          @mouseleave="hovering = 0"
+          class="Use__elevation Use__color"
           href="#elevation"
         />
         <BaseIcon
           :class="{ hovering: hovering === 1 }"
-          class="Use__record"
+          @mouseover="hovering = 1"
+          @mouseleave="hovering = 0"
+          class="Use__record Use__color"
           href="#record"
         />
       </div>
@@ -82,6 +97,7 @@
           :index="4"
           @mouseover="hovering = 4"
           @mouseleave="hovering = 0"
+          :class="{ color: hovering === 4 }"
           nameIcon="#waves"
         >
           <template v-slot:left>
@@ -92,6 +108,7 @@
           :index="3"
           @mouseover="hovering = 5"
           @mouseleave="hovering = 0"
+          :class="{ color: hovering === 5 }"
           nameIcon="#frames"
         >
           <template v-slot:left>
@@ -102,6 +119,7 @@
           :index="5"
           @mouseover="hovering = 6"
           @mouseleave="hovering = 0"
+          :class="{ color: hovering === 6 }"
           nameIcon="#hydrogen"
         >
           <template v-slot:left>
@@ -209,6 +227,13 @@ export default {
     }
   }
 
+  &__color{
+    &:hover{
+      stroke: white;
+      filter: drop-shadow(0px 6px 2px rgba($primary-darkblue, 0.7));
+    }
+  }
+
   &__pulsar {
     position: absolute;
     top: 50%;
@@ -308,9 +333,9 @@ export default {
     stroke: white;
     filter: drop-shadow(0px 6px 2px rgba($primary-darkblue, 0.7));
   }
-  .home {
-    color: white;
-    z-index: 100000;
+
+  .color{
+    opacity: 1;
   }
 
   .none{

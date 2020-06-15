@@ -48,7 +48,7 @@ export default {
 
 <style lang="scss">
   .modal{
-    width: 78%;
+    width: 70%;
     height: 70%;
     position: relative;
     display: flex;
@@ -58,10 +58,9 @@ export default {
     color: $primary-white;
     // border: 1px solid red;
 
-
       @include media_tablet {
         width: 60%;
-        height: 33%;
+        height: 35%;
       }
 
     &__icon{
@@ -76,12 +75,9 @@ export default {
       position: absolute;
       stroke: $primary-white;
       height: 100%;
-      width: 80%;
+      width: 93%;
       top: -2%;
 
-      @include media_desktop{
-        width: 90%;
-      }
 
       @include media_tablet {
         width: 80%;
