@@ -67,7 +67,7 @@ export default {
     }
   }
 
-  &.focused {
+  &.is-focused {
     & .pola__caption {
       opacity: 1;
     }

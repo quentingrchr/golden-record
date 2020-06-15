@@ -33,25 +33,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .title-blur {
   left: 50%;
   transform: translateX(-50%);
-  position: absolute;
+  position: relative;
   z-index: 3;
-  top: 280px;
+  top: 40px;
   color: $primary-white;
   filter: blur(40px);
   transition: opacity 2s;
   opacity: 0.8;
-
-  &.scrolled {
-    opacity: 0;
-    em {
-      animation: none;
-    }
-  }
 
   em {
     position: relative;

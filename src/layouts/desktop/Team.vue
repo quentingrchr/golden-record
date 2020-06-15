@@ -27,9 +27,13 @@
         :class="focusMode ? 'focusMode' : ''"
       />
       <div class="polaroids__text">
-        <h3 class="polaroids__title">{{ focusMode ? imgs[indexFocused].title : "" }}</h3>
+        <h3 class="polaroids__title">
+          {{ focusMode ? imgs[indexFocused].title : "" }}
+        </h3>
         <div class="polaroids__description" :class="focusMode ? 'visible' : ''">
-          <p>{{ focusMode ? imgs[indexFocused].description[0] : "" }}</p>
+          <p>
+            {{ focusMode ? imgs[indexFocused].description[0] : "" }}
+          </p>
           <p>{{ focusMode ? imgs[indexFocused].description[1] : "" }}</p>
         </div>
       </div>
@@ -64,6 +68,9 @@ export default {
   props: {},
   data: () => {
     return {
+      uiValue: {
+        MARGIN_LEFT: 30,
+      },
       isTrue: false,
       focusMode: false,
       indexFocused: null,
@@ -75,7 +82,7 @@ export default {
           title: "Loading",
           caption: "Loading",
           style: {},
-          description: [null, null]
+          description: [null, null],
         },
         {
           isFocused: false,
@@ -84,7 +91,7 @@ export default {
           title: "Loading",
           caption: "Loading",
           style: {},
-          description: [null, null]
+          description: [null, null],
         },
         {
           isFocused: false,
@@ -93,7 +100,7 @@ export default {
           title: "Loading",
           caption: "Loading",
           style: {},
-          description: [null, null]
+          description: [null, null],
         },
         {
           isFocused: false,
@@ -102,7 +109,7 @@ export default {
           title: "Loading",
           caption: "Loading",
           style: {},
-          description: [null, null]
+          description: [null, null],
         },
         {
           isFocused: false,
@@ -111,10 +118,13 @@ export default {
           title: "Loading",
           caption: "Loading",
           style: {},
-          description: [null, null]
-        }
-      ]
+          description: [null, null],
+        },
+      ],
     };
+  },
+  created() {
+    window.addEventListener("resize", this.resizeHandler);
   },
   beforeCreate() {
     let staticData = {
@@ -122,41 +132,41 @@ export default {
         vidSrc: srcVid1,
         imgSrc: srcImg1,
         caption: "Ann Druyan",
-        order: 0
+        order: 0,
       },
       carlSagan: {
         vidSrc: srcVid3,
         imgSrc: srcImg3,
         caption: "Carl Sagan",
-        order: 2
+        order: 2,
       },
       frankDrake: {
         vidSrc: srcVid5,
         imgSrc: srcImg5,
         caption: "Frank Drake",
-        order: 4
+        order: 4,
       },
       jonLomberg: {
         vidSrc: srcVid4,
         imgSrc: srcImg4,
         caption: "Jon Lomberg",
-        order: 3
+        order: 3,
       },
       ewardCStone: {
         vidSrc: srcVid2,
         imgSrc: srcImg2,
         caption: "Eward C Stone",
-        order: 1
-      }
+        order: 1,
+      },
     };
 
     fetch(`${url}/query/polaroids`, {
-      method: "GET"
+      method: "GET",
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         this.imgs = [];
-        data.forEach(el => {
+        data.forEach((el) => {
           this.imgs[staticData[el.name].order] = {
             isFocused: false,
             vidUrl: staticData[el.name].vidSrc,
@@ -164,7 +174,7 @@ export default {
             title: el.title,
             caption: staticData[el.name].caption,
             style: {},
-            description: [el.text_1, el.text_2]
+            description: [el.text_1, el.text_2],
           };
         });
       });
@@ -178,14 +188,10 @@ export default {
       const SCALE = 0.2;
       const SM_POLA_HEIGHT = POLA_HEIGHT * SCALE;
       const OFFSET = POLA_HEIGHT / 2 - SM_POLA_HEIGHT / 2;
-      const MARGIN_LEFT = 150;
       const GAP_VERTICAL = (POLA_HEIGHT - 4 * SM_POLA_HEIGHT) / 3;
       const GAP_HORIZONTAL = 40;
       let incr = 0;
 
-      console.log(GAP_VERTICAL);
-
-      console.log("index of focused element is", index);
       this.imgs[index].isFocused = true;
       this.focusMode = true;
       this.indexFocused = index;
@@ -196,34 +202,42 @@ export default {
           // Code for focused pola
 
           img.style = {
-            transform: `translate(${MARGIN_LEFT +
+            transform: `translate(${this.uiValue.MARGIN_LEFT +
               POLA_WIDTH * SCALE}px, 0px) rotate(0deg)`,
-            zIndex: 11
+            zIndex: 11,
           };
         } else {
           // Code for unfocused polas
 
-          console.log(incr * 100);
           img.style = {
             transform: `translate(${SCALE * (POLA_WIDTH / 2) -
               POLA_WIDTH / 2 +
-              MARGIN_LEFT -
+              this.uiValue.MARGIN_LEFT -
               GAP_HORIZONTAL}px, ${incr * (SM_POLA_HEIGHT + GAP_VERTICAL) -
-              OFFSET}px) rotate(0deg) scale(${SCALE})`
+              OFFSET}px) rotate(0deg) scale(${SCALE})`,
           };
           incr++;
         }
       });
     },
+    resizeHandler: function(e) {
+      let width = document.body.clientWidth;
+      if (width < 801) {
+        this.uiValue.MARGIN_LEFT = 10;
+        this.handleFocus(this.indexFocused);
+      } else {
+        this.uiValue.MARGIN_LEFT = 30;
+      }
+    },
     quitFocus: function() {
       this.focusMode = false;
       this.indexFocused = null;
-      this.imgs.forEach(img => {
+      this.imgs.forEach((img) => {
         img.isFocused = false;
         img.style = {};
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -273,18 +287,32 @@ section {
 
 .polaroids {
   display: block;
-  width: 80vw;
+  width: 80%;
   margin: 0 10vw;
   margin-top: 5vh;
   flex-wrap: nowrap;
   position: relative;
-
+  transition: left 0.2s ease;
   &__text {
     position: absolute;
     display: flex;
     flex-direction: column;
     left: 50%;
     width: 40%;
+
+    @media (max-width: 1100px) {
+      left: 60%;
+    }
+    @media (max-width: 1000px) {
+      left: 70%;
+    }
+    @media (max-width: 1000px) {
+      width: 30%;
+    }
+
+    p {
+      width: 100%;
+    }
   }
 
   &__title {
@@ -300,6 +328,7 @@ section {
     opacity: 0;
     color: $primary-white;
     transition: opacity 0.3s ease;
+
     &.visible {
       visibility: visible;
       opacity: 1;
@@ -312,6 +341,7 @@ section {
 }
 
 $hoverOffset: 5;
+$bp-lg: 1150px;
 
 figure {
   transition: transform 1s;
@@ -326,9 +356,16 @@ figure {
 
     &:hover:not(.focusMode) {
       transition: transform 0.5s ease;
-
       transform: scale(0.6) rotate(-21.93deg) translateX(50%)
         translateY(15% - $hoverOffset);
+    }
+
+    @media (max-width: $bp-lg) {
+      transform: scale(0.4) rotate(-21.93deg) translateX(50%) translateY(15%);
+      &:hover:not(.focusMode) {
+        transform: scale(0.4) rotate(-21.93deg) translateX(50%)
+          translateY(15% - $hoverOffset);
+      }
     }
   }
 
@@ -342,6 +379,14 @@ figure {
       transform: scale(0.6) rotate(7.36deg) translateY(30% - $hoverOffset)
         translateX(150%);
     }
+
+    @media (max-width: $bp-lg) {
+      transform: scale(0.4) rotate(7.36deg) translateY(30%) translateX(150%);
+      &:hover:not(.focusMode) {
+        transform: scale(0.4) rotate(7.36deg) translateY(30% - $hoverOffset)
+          translateX(150%);
+      }
+    }
   }
   &:nth-child(3) {
     z-index: 4;
@@ -351,6 +396,13 @@ figure {
       transition: transform 0.5s ease;
 
       transform: scale(0.9) translateX(180%) translateY(-10% - $hoverOffset);
+    }
+
+    @media (max-width: $bp-lg) {
+      transform: scale(0.6) translateX(180%) translateY(-10%);
+      &:hover:not(.focusMode) {
+        transform: scale(0.6) translateX(180%) translateY(-10% - $hoverOffset);
+      }
     }
   }
   &:nth-child(4) {
@@ -363,16 +415,33 @@ figure {
       transform: scale(0.8) rotate(-12.6deg) translateY(100% - $hoverOffset)
         translateX(250%);
     }
+
+    @media (max-width: $bp-lg) {
+      transform: scale(0.5) rotate(-12.6deg) translateY(100%) translateX(250%);
+      &:hover:not(.focusMode) {
+        transition: transform 0.5s ease;
+        transform: scale(0.5) rotate(-12.6deg) translateY(100% - $hoverOffset)
+          translateX(250%);
+      }
+    }
   }
   &:nth-child(5) {
     z-index: 1;
     transform: scale(0.6) rotate(4deg) translateY(-30%) translateX(450%);
 
     &:hover:not(.focusMode) {
-      transition: transform 0.5s ease;
-
       transform: scale(0.6) rotate(4deg) translateY(-30% - $hoverOffset)
         translateX(450%);
+    }
+
+    @media (max-width: $bp-lg) {
+      transform: scale(0.4) rotate(4deg) translateY(-30%) translateX(420%);
+      &:hover:not(.focusMode) {
+        transition: transform 0.5s ease;
+
+        transform: scale(0.4) rotate(4deg) translateY(-30% - $hoverOffset)
+          translateX(420%);
+      }
     }
   }
 }
