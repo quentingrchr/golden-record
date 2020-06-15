@@ -6,14 +6,10 @@
     @click="selectPlaylist"
   >
     <h3>{{ playlistName }}</h3>
-    <button @click="selectPlaylist">
+    <button>
       <svg>
         <use
-          :href="
-            hovering || selected
-              ? '#' + playlistName + 'Reverse'
-              : '#' + playlistName
-          "
+          :href="hovering ? '#' + playlistName + 'Reverse' : '#' + playlistName"
         />
       </svg>
     </button>
@@ -43,10 +39,6 @@ export default {
     },
     playlistInfo2: {
       type: String,
-      Required: true,
-    },
-    selected: {
-      type: Boolean,
       Required: true,
     },
   },

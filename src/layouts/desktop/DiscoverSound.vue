@@ -158,7 +158,6 @@
         :playlistInfo1="playlist.playlistInfo1"
         :playlistInfo2="playlist.playlistInfo2"
         :class="indexOfSelectedPlaylist == index ? 'playlist--isFocus' : ''"
-        :selected="playlist.playlistIsSelect"
         @select-playlist="updatePlaylist(index)"
       />
     </div>
@@ -199,7 +198,6 @@ export default {
           playlistInfo2:
             "The style music who’s the most represented in the disc is the classic style.",
           playlistContent: [],
-          playlistIsSelect: false,
         },
         {
           playlistId: 2,
@@ -208,7 +206,6 @@ export default {
             "People from the Earth took the opportunity to let a message in their own language.",
           playlistInfo2: "In this disc you can found 55 différents languages.",
           playlistContent: [],
-          playlistIsSelect: false,
         },
         {
           playlistId: 3,
@@ -218,7 +215,6 @@ export default {
           playlistInfo2:
             "you can hear sounds of animals, sounds of nature and sounds of city life.",
           playlistContent: [],
-          playlistIsSelect: false,
         },
       ],
     };
@@ -241,7 +237,6 @@ export default {
     updatePlaylist(index) {
       this.indexOfSelectedPlaylist = index;
       this.isActive = true;
-      this.playlistSelected.playlistIsSelect = true;
       this.selectRandomSong();
     },
     selectRandomSong() {
