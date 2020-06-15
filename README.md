@@ -6,7 +6,7 @@ This site has been created for educational purposes as part of the Bachelor's cu
 
 ## Project Overview
 <p align="center">
-  <img width="460" height="300" src="http://www.fillmurray.com/460/300">
+  <img width="460" height="300" src="screenshot.gif">
 </p>
 
 ![Screen shot of the website](screenshot.gif)
