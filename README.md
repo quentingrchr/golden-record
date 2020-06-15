@@ -65,41 +65,6 @@ Vue Moment - [documentation](https://github.com/brockpetrie/vue-moment)
 Vue Router - [documentation](https://router.vuejs.org/)  
 Animate On Scroll - [documentation](https://michalsnik.github.io/aos/)
 
-## 🚚 Routes
-
-```mermaid
-graph LR
-A((/)) -- Video --> B((/golden-record))
-B --> C[The journey]
-B --> D[How to use it]
-B --> E[Audio Content]
-B --> F[Who Did it]
-B --> G[Game]
-G --> A
-```
-
-## 🔧 Folder strucutre
-
-```
-my-app
-├── README.md
-├── node_modules
-├── package.json
-├── .gitignore
-├── public
-│   ├── favicon.ico
-│   ├── index.html
-│   └── manifest.json
-└── src
-    ├── App.css
-    ├── App.js
-    ├── App.test.js
-    ├── index.css
-    ├── index.js
-    ├── logo.svg
-    └── serviceWorker.js
-    └── setupTests.js
-```
 
 ## 👥 Contributers
 
