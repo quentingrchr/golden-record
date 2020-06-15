@@ -89,21 +89,15 @@
   width: 1000px;
   transition: top 1s ease;
   top: 70vh;
-  &:hover {
-    .earth-bg {
-      opacity: 0;
-    }
-    .song-bg {
-      opacity: 1;
-    }
-  }
+
   .earth-bg {
     z-index: 2;
     width: 1000px;
     height: auto;
     position: absolute;
-    animation: earth-rotation 140s infinite forwards;
-    opacity: 1;
+    animation: earth-rotation 140s infinite forwards,
+      earthSwitching 3s infinite alternate-reverse;
+
     transition: opacity 1s ease-in;
   }
   .song-bg {
@@ -111,12 +105,28 @@
     width: 1000px;
     height: auto;
     position: absolute;
-    animation: earth-rotation 140s infinite forwards;
-    opacity: 0;
+    animation: earth-rotation 140s infinite forwards,
+      goldenSwitching 3s infinite alternate-reverse;
+
     transition: opacity 1s ease-in;
   }
 }
-
+@keyframes earthSwitching {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes goldenSwitching {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 @media screen and (max-width: 300px) {
   .earth-bg {
     width: 400px;
