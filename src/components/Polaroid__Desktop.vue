@@ -23,11 +23,11 @@ export default {
   methods: {
     handleClick(index) {
       this.$emit("focused", index);
+      this.$emit("play-click", index);
     },
   },
   data: function() {
     return {
-      isClicked: false,
       zIndex: {
         zIndex: 11,
       },

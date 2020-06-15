@@ -1,5 +1,6 @@
 <template>
   <section>
+    <audio :src="audioSrc.click1"></audio>
     <div class="stars"></div>
     <div class="twinkling"></div>
     <Icons />
@@ -17,6 +18,7 @@
       <Polaroid
         v-for="(img, index) in imgs"
         :key="index"
+        @play-click="handleClickSound"
         @focused="handleFocus"
         :caption="img.caption"
         :imgUrl="img.imgUrl"
@@ -55,6 +57,9 @@ import srcVid3 from "../../assets/video/carl-vid.mp4";
 import srcVid4 from "../../assets/video/jon-vid.mp4";
 import srcVid5 from "../../assets/video/frank-vid.mp4";
 
+import click1 from "../../assets/sounds/click_1.mp3";
+import click2 from "../../assets/sounds/click_2.mp3";
+
 import Polaroid from "../../components/Polaroid__Desktop.vue";
 import Icons from "../../components/Icons";
 import BaseIcon from "../../components/BaseIcon";
@@ -68,6 +73,10 @@ export default {
   props: {},
   data: () => {
     return {
+      audioSrc: {
+        click1,
+        click2,
+      },
       uiValue: {
         MARGIN_LEFT: 30,
       },
@@ -78,7 +87,7 @@ export default {
         {
           isFocused: false,
           vidUrl: null,
-          imgUrl: notFound,
+          imgUrl: srcImg1,
           title: "Loading",
           caption: "Loading",
           style: {},
@@ -122,9 +131,6 @@ export default {
         },
       ],
     };
-  },
-  created() {
-    window.addEventListener("resize", this.resizeHandler);
   },
   beforeCreate() {
     let staticData = {
@@ -180,6 +186,26 @@ export default {
       });
   },
   methods: {
+    handleClickSound: function(i) {
+      console.log(i);
+      if (this.focusMode) {
+        this.playSound();
+      }
+    },
+
+    playSound: function() {
+      let random = Math.random();
+      let audio1 = new Audio(this.audioSrc.click1);
+      let audio2 = new Audio(this.audioSrc.click2);
+
+      if (random < 0.5) {
+        audio1.volume = 0.1;
+        audio1.play();
+      } else {
+        audio2.volume = 0.1;
+        audio2.play();
+      }
+    },
     handleFocus: function(index) {
       //------------------------------------------------------------
       const POLA_HEIGHT = 420; // Height in polaroid composant

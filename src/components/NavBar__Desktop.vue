@@ -60,13 +60,13 @@
       ref="audio"
       autoplay
       loop
-      src="../assets/music/interstellar-main-theme-extra-ex.mp3"
+      src="../assets/music/drone.mp3"
     ></audio>
   </div>
 </template>
 
 <script>
-import EventBus from '@/EventBus';
+import EventBus from "@/EventBus";
 
 export default {
   data() {
@@ -80,10 +80,10 @@ export default {
       this.$refs.audio.muted = !this.$refs.audio.muted;
     },
     jumpToOtherChapter(value) {
-      this.$emit('jumpToOtherChapter', value);
+      this.$emit("jumpToOtherChapter", value);
     },
     closeOverlay() {
-      EventBus.$emit('close');
+      EventBus.$emit("close");
     },
   },
   mounted() {
@@ -241,7 +241,7 @@ export default {
   }
 
   &.isMute::after {
-    content: '';
+    content: "";
     position: absolute;
     display: block;
     width: 30px;
