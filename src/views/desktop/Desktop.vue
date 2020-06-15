@@ -10,6 +10,7 @@
       <DiscoverImg v-else-if="currentPage === 3" key="img" />
       <DiscoverSound v-else-if="currentPage === 4" key="sound" />
       <Team v-else-if="currentPage === 5" key="team" />
+      <Game v-else-if="currentPage === 6" key="game" />
     </transition>
     <NavBar
       :page="currentPage"
@@ -22,16 +23,16 @@
 </template>
 
 <script>
-import EventBus from "@/EventBus";
-import NavBar from "@/components/NavBar__Desktop.vue";
-import DiscoverImg from "@/layouts/desktop/DiscoverImg.vue";
-import DiscoverSound from "@/layouts/desktop/DiscoverSound.vue";
-import HowToUseIt from "@/layouts/desktop/HowToUseIt.vue";
-import Team from "@/layouts/desktop/Team.vue";
-import TheJourney from "@/layouts/desktop/TheJourney.vue";
-import Icon from "@/components/Icons.vue";
-import ModalsManager from "@/components/modals/ModalsManager.vue";
-
+import EventBus from '@/EventBus';
+import NavBar from '@/components/NavBar__Desktop.vue';
+import DiscoverImg from '@/layouts/desktop/DiscoverImg.vue';
+import DiscoverSound from '@/layouts/desktop/DiscoverSound.vue';
+import HowToUseIt from '@/layouts/desktop/HowToUseIt.vue';
+import Team from '@/layouts/desktop/Team.vue';
+import TheJourney from '@/layouts/desktop/TheJourney.vue';
+import Game from '@/layouts/desktop/Game.vue';
+import Icon from '@/components/Icons.vue';
+import ModalsManager from '@/components/modals/ModalsManager.vue';
 
 export default {
   components: {
@@ -43,12 +44,13 @@ export default {
     TheJourney,
     Icon,
     ModalsManager,
+    Game,
   },
   data() {
     return {
       wheelCount: 0,
       // You just have to change he value below to set the scroll' sensitive rate (the highest is less sensitive)
-      scrollSpeed: 7,
+      scrollSpeed: 6,
       goingNextPart: true,
       pageMoveNext: true,
     };
@@ -72,15 +74,20 @@ export default {
         this.wheelCount < this.scrollSpeed * 40
       ) {
         return 4;
-      } else {
+      } else if (
+        this.wheelCount >= this.scrollSpeed * 40 &&
+        this.wheelCount < this.scrollSpeed * 50
+      ) {
         return 5;
+      } else {
+        return 6;
       }
     },
   },
   methods: {
     wheel(e) {
       e.preventDefault();
-      EventBus.$emit("close");
+      EventBus.$emit('close');
       if (this.wheelCount >= 0 && this.wheelCount <= this.scrollSpeed * 50) {
         if (e.deltaY < 0 || e.deltaX < 0) {
           this.wheelCount--;
@@ -94,7 +101,7 @@ export default {
       } else if (this.wheelCount < 0) {
         this.wheelCount = 0;
       } else {
-        this.wheelCount = this.scrollSpeed * 50;
+        this.wheelCount = this.scrollSpeed * 60;
       }
     },
     changeChapter(value) {
