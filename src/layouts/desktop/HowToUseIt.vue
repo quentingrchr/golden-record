@@ -58,56 +58,10 @@
           </template>
         </Sign>
       </div>
-      <div class="Use__ellipse">
-        <BaseIcon
-          :i="2"
-          :class="{ hovering: hovering === 3 }"
-          @mouseover="hovering = 3"
-          @mouseleave="hovering = 0"
-          class="Use__pulsar Use__color"
-          href="#pulsar"
-        />
-        <BaseIcon
-          :i="4"
-          :class="{ hovering: hovering === 4 }"
-          @mouseover="hovering = 4"
-          @mouseleave="hovering = 0"
-          class="Use__waveForm Use__color"
-          href="#waves"
-        />
-        <BaseIcon
-          :i="5"
-          :class="{ hovering: hovering === 6 }"
-          @mouseover="hovering = 6"
-          @mouseleave="hovering = 0"
-          class="Use__hydrogen Use__color"
-          href="#hydrogen"
-        />
-        <BaseIcon
-          :i="3"
-          :class="{ hovering: hovering === 5 }"
-          @mouseover="hovering = 5"
-          @mouseleave="hovering = 0"
-          class="Use__frames Use__color"
-          href="#frames"
-        />
-        <BaseIcon
-          :i="1"
-          :class="{ hovering: hovering === 2 }"
-          @mouseover="hovering = 2"
-          @mouseleave="hovering = 0"
-          class="Use__elevation Use__color"
-          href="#elevation"
-        />
-        <BaseIcon
-          :i="0"
-          :class="{ hovering: hovering === 1 }"
-          @mouseover="hovering = 1"
-          @mouseleave="hovering = 0"
-          class="Use__record Use__color"
-          href="#record"
-        />
-      </div>
+      <CircleIcon 
+        :hoveringItem="hovering" 
+        @hover="createHover"
+      />
       <div class="Use__content">
         <Sign
           :index="4"
@@ -148,10 +102,10 @@
 </template>
 
 <script>
-import BaseIcon from "@/components/BaseIcon.vue";
 import Sign from "@/components/Sign.vue";
 import ContentSign from "@/components/ContentSign.vue";
 import Header from "@/components/Header.vue";
+import CircleIcon from "@/components/CircleIcon.vue"
 
 export default {
   name: "UseIt",
@@ -161,8 +115,8 @@ export default {
     disappear: false,
   }),
   components: {
-    BaseIcon,
     Sign,
+    CircleIcon,
     ContentSign,
     Header,
   },
@@ -170,12 +124,10 @@ export default {
     appear() {
       this.disappear = true;
     },
+    createHover(e){
+      this.hovering = e
+    }
   },
-  // created(){
-  //   // setTimeout(() => {
-  //   //   this.disappear = true
-  //   // },2000);
-  // },
 };
 </script>
 
@@ -237,121 +189,6 @@ export default {
     height: 90%;
     width: 25%;
     flex-direction: column;
-  }
-
-  &__ellipse {
-    position: relative;
-    height: 350px;
-    width: 350px;
-    border-radius: 50%;
-    background: linear-gradient(#d7c37f, #a67a3b);
-
-    @include media_tablet {
-      width: 32%;
-      height: 40%;
-    }
-  }
-
-  &__color {
-    &:hover {
-      stroke: white;
-      filter: drop-shadow(0px 6px 2px rgba($primary-darkblue, 0.7));
-    }
-  }
-
-  &__pulsar {
-    position: absolute;
-    top: 50%;
-    left: 15%;
-    width: 150px;
-    height: 150px;
-    stroke: $primary-darkblue;
-    fill: none;
-
-    @include media_tablet {
-      width: 120px;
-      height: 120px;
-    }
-  }
-
-  &__waveForm {
-    position: absolute;
-    top: 15%;
-    right: 20%;
-    width: 120px;
-    height: 80px;
-    stroke: $primary-darkblue;
-    fill: none;
-
-    @include media_tablet {
-      width: 80px;
-      height: 70px;
-    }
-  }
-
-  &__hydrogen {
-    position: absolute;
-    top: 70%;
-    right: 20%;
-    width: 80px;
-    height: 80px;
-    stroke: $primary-darkblue;
-    fill: none;
-
-    @include media_tablet {
-      width: 50px;
-      height: 50px;
-    }
-  }
-
-  &__frames {
-    position: absolute;
-    top: 40%;
-    right: 20%;
-    width: 80px;
-    height: 80px;
-    stroke: $primary-darkblue;
-    fill: none;
-
-    @include media_tablet {
-      width: 60px;
-      height: 60px;
-    }
-  }
-
-  &__elevation {
-    position: absolute;
-    top: 35%;
-    left: 15%;
-    width: 80px;
-    height: 80px;
-    stroke: $primary-darkblue;
-    fill: none;
-
-    @include media_tablet {
-      width: 60px;
-      height: 60px;
-    }
-  }
-
-  &__record {
-    position: absolute;
-    top: 15%;
-    left: 15%;
-    width: 80px;
-    height: 80px;
-    stroke: $primary-darkblue;
-    fill: none;
-
-    @include media_tablet {
-      width: 60px;
-      height: 60px;
-    }
-
-    &--hovering {
-      stroke: $primary-white;
-      filter: drop-shadow(12px 12px 6px rgba(0, 0, 0, 1));
-    }
   }
 
   .hovering {

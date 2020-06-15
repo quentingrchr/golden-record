@@ -36,7 +36,6 @@ export default {
       Title: "",
       symbol: "nameIcon",
     },
-    index: "index",
   }),
   methods: {
     openModal() {
