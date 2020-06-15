@@ -1,23 +1,16 @@
 <template>
-  <div
-    :index="index"
-    @click="openModal"
-    v-on="$listeners"
-    class="Use__symbol"
-  >
+  <div :index="index" @click="openModal" v-on="$listeners" class="Use__symbol">
     <slot name="left"></slot>
-    <BaseIcon class="Use__svg"
-      :href="nameIcon"
-    />
+    <BaseIcon class="Use__svg" :href="nameIcon" />
     <slot name="right"></slot>
     <Icon />
   </div>
 </template>
 
 <script>
-import EventBus from '@/EventBus';
-import BaseIcon from '@/components/BaseIcon.vue';
-import Icon from '@/components/Icons.vue';
+import EventBus from "@/EventBus";
+import BaseIcon from "@/components/BaseIcon.vue";
+import Icon from "@/components/Icons.vue";
 import { url } from "@/constants.js";
 
 export default {
@@ -30,46 +23,45 @@ export default {
       type: Number,
       required: true,
       default: 0,
-    }
+    },
   },
   components: {
     BaseIcon,
-    Icon
+    Icon,
   },
-  data:() => ({
-    modalContent:{
-    text1 : "",
-    text2 : "",
-    Title : "",
-    symbol: "nameIcon",
+  data: () => ({
+    modalContent: {
+      text1: "",
+      text2: "",
+      Title: "",
+      symbol: "nameIcon",
     },
-    index: 'index'
+    index: "index",
   }),
   methods: {
     openModal() {
       EventBus.$emit("open", {
         component: "BaseModal",
-        content:
-          this.modalContent
+        content: this.modalContent,
       });
     },
   },
-  created(){
+  created() {
     fetch(`${url}/query/how_use`, {
       method: "GET",
     })
-    .then(Response => Response.json())
-    .then(data => {
-      this.modalContent = {
-        text1 : data[this.index].text_1,
-        text2 : data[this.index].text_2,
-        title : data[this.index].title,
-        symbol: data[this.index].symbol
-      }
-    })
-    .catch(error => console.log(error))
-  }
-}
+      .then((Response) => Response.json())
+      .then((data) => {
+        this.modalContent = {
+          text1: data[this.index].text_1,
+          text2: data[this.index].text_2,
+          title: data[this.index].title,
+          symbol: data[this.index].symbol,
+        };
+      })
+      .catch((error) => console.log(error));
+  },
+};
 </script>
 
 <style lang="scss">
