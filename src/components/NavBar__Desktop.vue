@@ -3,11 +3,7 @@
     <div class="navBar__timeLineContainer">
       <div>
         <router-link to="/">
-          <img
-            src="../assets/logo/earth-logo.png"
-            alt="earth-logo"
-            class="navBar__earthLogo"
-          />
+          <img src="../assets/logo/earth-logo.png" alt="earth-logo" class="navBar__earthLogo" />
         </router-link>
       </div>
       <div
@@ -16,42 +12,29 @@
         :class="isMute ? 'isMute' : null"
         v-show="page !== 4"
       >
-        <img
-          src="../assets/logo/volume-logo.png"
-          alt="volume-logo"
-          class="navBar__volumeLogo"
-        />
+        <img src="../assets/logo/volume-logo.png" alt="volume-logo" class="navBar__volumeLogo" />
       </div>
       <nav class="navBar__timeLine">
-        <div
-          @click="jumpToOtherChapter(scroll * 5)"
-          :class="page === 1 ? 'isSelected' : null"
-        >
-          <p>The Journey</p>
+        <div @click="jumpToOtherChapter(scroll * 5)" :class="page === 1 ? 'isSelected' : null">
+          <p>The journey</p>
         </div>
-        <div
-          @click="jumpToOtherChapter(scroll * 15)"
-          :class="page === 2 ? 'isSelected' : null"
-        >
+        <div @click="jumpToOtherChapter(scroll * 15)" :class="page === 2 ? 'isSelected' : null">
           <p>How to use it</p>
         </div>
-        <div
-          @click="jumpToOtherChapter(scroll * 25)"
-          :class="page === 3 ? 'isSelected' : null"
-        >
+        <div @click="jumpToOtherChapter(scroll * 25)" :class="page === 3 ? 'isSelected' : null">
           <p>Visual Content</p>
         </div>
-        <div
-          @click="jumpToOtherChapter(scroll * 35)"
-          :class="page === 4 ? 'isSelected' : null"
-        >
+        <div @click="jumpToOtherChapter(scroll * 35)" :class="page === 4 ? 'isSelected' : null">
           <p>Audio Content</p>
         </div>
-        <div
-          @click="jumpToOtherChapter(scroll * 45)"
-          :class="page === 5 ? 'isSelected' : null"
-        >
+        <div @click="jumpToOtherChapter(scroll * 45)" :class="page === 5 ? 'isSelected' : null">
           <p>Who did it ?</p>
+        </div>
+        <div
+          @click="jumpToOtherChapter(scroll * 55)"
+          :class="page === 6 ? 'isSelected' : null"
+        >
+          <p>Game</p>
         </div>
       </nav>
     </div>
@@ -71,7 +54,7 @@ import EventBus from "@/EventBus";
 export default {
   data() {
     return {
-      isMute: false,
+      isMute: false
     };
   },
   methods: {
@@ -91,11 +74,11 @@ export default {
   },
   props: {
     page: {
-      type: Number,
+      type: Number
     },
     scroll: {
-      type: Number,
-    },
+      type: Number
+    }
   },
   watch: {
     page: function(newProp, oldProp) {
@@ -103,8 +86,8 @@ export default {
         this.$refs.audio.muted = true;
         this.isMute = true;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -118,10 +101,11 @@ export default {
   left: 0;
   height: 100vh;
   width: 60px;
-  background-color: rgba($color: #000000, $alpha: 0.9);
+  background-color: rgba($color: #000000, $alpha: 1);
   transition: width 0.3s;
   overflow: hidden;
   border-right: 0.5px solid $primary-white;
+  box-shadow: 10px 0px 15px $primary-darkblue;
 
   &:hover {
     transform: none;
@@ -189,7 +173,7 @@ export default {
       color: $primary-white;
       font-weight: bold;
       font-size: 0.8rem;
-      background-color: #000000;
+      background-color: black;
       padding: 5px 0;
       width: 110px;
 
