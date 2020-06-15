@@ -1,25 +1,36 @@
 <template>
   <section class="thejourney">
-    <div class="explaination" @click="closeInstruction()" :class=" overlayIsOpen ? '' : 'none' ">
-      <h2 class="explaination__title">HOW TO NAVIGATE</h2>
+    <div
+      class="explaination"
+      @click="closeInstruction()"
+      :class="overlayIsOpen ? '' : 'none'"
+    >
+      <h2 class="explaination__title">Hi Stranger ! 👋🏼</h2>
       <p class="explaination__text">
         To navigate between the different pages :
         <em>scroll</em>
         <span>
-          <img class="icon-scroll-down" src="@/assets/img/icon-scroll-down.png" />
-        </span> or
+          <img
+            class="icon-scroll-down"
+            src="@/assets/img/icon-scroll-down.png"
+          />
+        </span>
+        or
         <em>use keyboard arrows</em>
         <span>
           <img class="key-arrows" src="@/assets/img/key-arrows.png" />
-        </span> or
-        <em>click on the parts in the navbar</em> on the left
+        </span>
+        or <em>click on the parts in the navbar</em> on the left
       </p>
       <p class="explaination__pass">Click anywhere to pass the instructions</p>
       <div class="disclaimer">
         <p class="disclaimer__title">Disclaimer</p>
-        <p
-          class="disclaimer__text"
-        >This site has been created for educational purposes as part of the Bachelor's curriculum of the HETIC school. The contents presented have not been the subject of a request for right of use. This site will in no case be used for commercial purposes and will not be published.</p>
+        <p class="disclaimer__text">
+          This site has been created for educational purposes as part of the
+          Bachelor's curriculum of the HETIC school. The contents presented have
+          not been the subject of a request for right of use. This site will in
+          no case be used for commercial purposes and will not be published.
+        </p>
       </div>
     </div>
     <Header class="thejourney_title" text="The journey" />
@@ -28,10 +39,14 @@
     <div class="voyager">
       <div class="voyager_image">
         <h4>Voyager probe and the Golden Record</h4>
-        <img class="probe" src="@/assets/img/voyager_journey.png" alt="voyager prob" />
+        <img
+          class="probe"
+          src="@/assets/img/voyager_journey.png"
+          alt="voyager prob"
+        />
         <img
           class="golden-record"
-          :class=" overlayIsOpen ? '' : 'zoom-in-record' "
+          :class="overlayIsOpen ? '' : 'zoom-in-record'"
           src="@/assets/img/golden-record.png"
           alt="voyager prob"
         />
@@ -66,14 +81,14 @@ export default {
   components: { Header, TimeElapsed },
   data() {
     return {
-      overlayIsOpen: true
+      overlayIsOpen: true,
     };
   },
   methods: {
     closeInstruction() {
       this.overlayIsOpen = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
