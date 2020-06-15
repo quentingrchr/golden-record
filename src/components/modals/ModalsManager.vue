@@ -50,21 +50,18 @@ export default {
 <style lang="scss">
   .modalsManager {
     position: fixed;
-    z-index: 1000;
-    top: 15%;
+    z-index: 50;
+    top: 0%;
     right: 0;
     bottom: 0;
-    left: 10%;
+    left: 0%;
     transition: all .3s ease;
     display: flex;
-    width: 73vw;
-    height: 80vh;
+    width: 100vw;
+    height: 100vh;
     justify-content: center;
     align-items: center;
-
-    @include media_tablet {
-      width: 75vw;
-    }
+    background-color: rgba($primary-darkblue,0.8);
 
     &-enter,
     &-leave-to{
