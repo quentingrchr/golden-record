@@ -50,6 +50,7 @@
       </div>
       <div class="Use__ellipse">
         <BaseIcon
+          @click="openModal"
           :class="{ hovering: hovering === 3 }"
           @mouseover="hovering = 3"
           @mouseleave="hovering = 0"
@@ -57,6 +58,7 @@
           href="#pulsar"
         />
         <BaseIcon
+          @click="openModal"
           :class="{ hovering: hovering === 4 }"
           @mouseover="hovering = 4"
           @mouseleave="hovering = 0"
@@ -64,6 +66,7 @@
           href="#waves"
         />
         <BaseIcon
+          @click="openModal"
           :class="{ hovering: hovering === 6 }"
           @mouseover="hovering = 6"
           @mouseleave="hovering = 0"
@@ -71,6 +74,7 @@
           href="#hydrogen"
         />
         <BaseIcon
+          @click="openModal"
           :class="{ hovering: hovering === 5 }"
           @mouseover="hovering = 5"
           @mouseleave="hovering = 0"
@@ -78,6 +82,7 @@
           href="#frames"
         />
         <BaseIcon
+          @click="openModal"
           :class="{ hovering: hovering === 2 }"
           @mouseover="hovering = 2"
           @mouseleave="hovering = 0"
@@ -85,6 +90,7 @@
           href="#elevation"
         />
         <BaseIcon
+          @click="openModal"
           :class="{ hovering: hovering === 1 }"
           @mouseover="hovering = 1"
           @mouseleave="hovering = 0"
@@ -132,10 +138,12 @@
 </template>
 
 <script>
+import EventBus from '@/EventBus';
 import BaseIcon from "@/components/BaseIcon.vue";
 import Sign from "@/components/Sign.vue";
 import ContentSign from "@/components/ContentSign.vue";
 import Header from "@/components/Header.vue";
+import { url } from "@/constants.js";
 
 
 export default {
@@ -144,6 +152,13 @@ export default {
     hovering: 0,
     isClosed: false,
     disappear: false,
+    modalContent:{
+    text1 : "",
+    text2 : "",
+    Title : "",
+    symbol: "nameIcon",
+    },
+    index: 'index'
   }),
   components: {
     BaseIcon,
@@ -151,12 +166,36 @@ export default {
     ContentSign,
     Header,
   },
+  methods: {
+    openModal() {
+      EventBus.$emit("open", {
+        component: "BaseModal",
+          content:
+          this.modalContent
+      });
+    },
+  },
+  beforeCreate(){
+        fetch(`${url}/query/how_use`, {
+      method: "GET",
+    })
+    .then(Response => Response.json())
+    .then(data => {
+      this.modalContent = {
+        text1 : data[this.index].text_1,
+        text2 : data[this.index].text_2,
+        title : data[this.index].title,
+        symbol: data[this.index].symbol
+      }
+    })
+    .catch(error => console.log(error))
+  },
   created(){
     setTimeout(() => { 
       this.disappear = true
     },2000);
-  }
-};
+  },
+}
 </script>
 
 <style lang="scss">
