@@ -163,10 +163,15 @@ export default {
         top: -10px;
         width: 150px;
         user-select: none;
+        font-weight: 400;
+        text-align: left;
+        transform: translateX(30px);
       }
       &.isSelected p {
-        font-size: 1.02rem;
+        font-size: 1.2rem;
+        font-weight: 800;
         opacity: 1;
+        transform: translateX(20px) translateY(-8px);
         &:hover {
           text-decoration: none;
           cursor: default;
@@ -200,8 +205,10 @@ export default {
     height: 10px;
     border-radius: 50%;
     border: 2px solid $primary-white;
+    cursor: pointer;
     &.isSelected {
       background-color: $primary-white;
+      cursor: initial;
       & p {
         animation: chapterTitleShowUp 1.5s forwards;
       }
