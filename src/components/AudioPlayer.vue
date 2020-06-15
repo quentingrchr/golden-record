@@ -1,6 +1,6 @@
 <template>
   <div class="player">
-    <audio ref="audio" autoplay>
+    <audio ref="audio" autoplay @playing="isPlaying" @ended="isFinish">
       <source type="audio/mpeg" />
     </audio>
     <svg class="svgPlay" @click="togglePlay">
@@ -10,7 +10,7 @@
       <p class="player__title">{{ name }}</p>
     </div>
     <div class="player__soundSettings">
-      <svg @click="isMuted">
+      <svg @click="toggleMuted">
         <use :href="muted ? '#soundoff' : '#soundon'" />
       </svg>
       <input
@@ -42,7 +42,7 @@ export default {
   },
   data() {
     return {
-      playing: false,
+      playing: true,
       muted: false,
       volume: 0
     };
@@ -67,11 +67,10 @@ export default {
     },
     updateVolume: function(e) {
       this.volume = e.target.value;
-      console.log(this.volume, this.audio.volume);
       this.audio.volume = this.volume / 100;
       this.volume == 0 ? (this.muted = true) : (this.muted = false);
     },
-    isMuted() {
+    toggleMuted() {
       this.muted = !this.muted;
       let volumeNow = this.audio.volume * 100;
       if (this.audio.muted != true) {
@@ -81,12 +80,17 @@ export default {
         this.audio.muted = false;
         this.slider.value = volumeNow;
       }
+    },
+    isFinish() {
+      return (this.playing = false);
+    },
+    isPlaying() {
+      return (this.playing = true);
     }
   },
   watch: {
     source: function(newProps, oldProps) {
       this.audio.src = newProps;
-      this.togglePlay();
     }
   }
 };
@@ -109,25 +113,17 @@ input {
 
 .player {
   margin: 0 20%;
+  padding-top: 2vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transform: translateY(200%);
+  transform: translateY(4vh);
   opacity: 0;
   transition: transform 1s, opacity 1s;
 
-  @include media_tablet {
-    transform: translateY(130%);
-  }
-
   &--isFocus {
-    transform: translateY(150%);
+    transform: translateY(-4vh);
     opacity: 1;
-
-    @include media_tablet {
-      transform: translateY(80%);
-      opacity: 1;
-    }
   }
 }
 
@@ -137,11 +133,16 @@ input {
 }
 
 .player__titleContainer {
+  width: 55%;
+  margin: 0 2vw;
+  padding: 0.5vh 0;
+  border: 1px solid #ae8908;
+  border-radius: 3px;
   overflow-x: hidden;
-  width: 40%;
 }
 
 .player__title {
+  width: 100%;
   display: inline-block;
   color: $primary-white;
   animation: 10s linear 1s infinite running slide;
