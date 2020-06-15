@@ -100,11 +100,11 @@ export default {
     },
     handleEnterNav() {
       let audio = new Audio(glitch1);
-      this.playSound(audio, 0.05);
+      this.playSound(audio, 0.01);
     },
     handleLeaveNav() {
       let audio = new Audio(glitch2);
-      this.playSound(audio, 0.05);
+      this.playSound(audio, 0.01);
     },
     playSound(audio, volume) {
       audio.volume = volume;

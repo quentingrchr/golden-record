@@ -368,6 +368,7 @@ section {
 
 $hoverOffset: 5;
 $bp-lg: 1150px;
+$offsetX: 40%;
 
 figure {
   transition: transform 1s;
@@ -378,18 +379,20 @@ figure {
   box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
   &:nth-child(1) {
     z-index: 2;
-    transform: scale(0.6) rotate(-21.93deg) translateX(50%) translateY(15%);
+    transform: scale(0.6) rotate(-21.93deg) translateX(50% - $offsetX)
+      translateY(15%);
 
     &:hover:not(.focusMode) {
       transition: transform 0.5s ease;
-      transform: scale(0.6) rotate(-21.93deg) translateX(50%)
+      transform: scale(0.6) rotate(-21.93deg) translateX(50% - $offsetX)
         translateY(15% - $hoverOffset);
     }
 
     @media (max-width: $bp-lg) {
-      transform: scale(0.4) rotate(-21.93deg) translateX(50%) translateY(15%);
+      transform: scale(0.4) rotate(-21.93deg) translateX(50% - $offsetX)
+        translateY(15%);
       &:hover:not(.focusMode) {
-        transform: scale(0.4) rotate(-21.93deg) translateX(50%)
+        transform: scale(0.4) rotate(-21.93deg) translateX(50% - $offsetX)
           translateY(15% - $hoverOffset);
       }
     }
@@ -397,76 +400,84 @@ figure {
 
   &:nth-child(2) {
     z-index: 3;
-    transform: scale(0.6) rotate(7.36deg) translateY(30%) translateX(150%);
+    transform: scale(0.6) rotate(7.36deg) translateY(30%)
+      translateX(150% - $offsetX);
 
     &:hover:not(.focusMode) {
       transition: transform 0.5s ease;
 
       transform: scale(0.6) rotate(7.36deg) translateY(30% - $hoverOffset)
-        translateX(150%);
+        translateX(150% - $offsetX);
     }
 
     @media (max-width: $bp-lg) {
-      transform: scale(0.4) rotate(7.36deg) translateY(30%) translateX(150%);
+      transform: scale(0.4) rotate(7.36deg) translateY(30%)
+        translateX(150% - $offsetX);
       &:hover:not(.focusMode) {
         transform: scale(0.4) rotate(7.36deg) translateY(30% - $hoverOffset)
-          translateX(150%);
+          translateX(150% - $offsetX);
       }
     }
   }
   &:nth-child(3) {
     z-index: 4;
-    transform: scale(0.9) translateX(180%) translateY(-10%);
+    transform: scale(0.9) translateX(180% - $offsetX) translateY(-10%);
 
     &:hover:not(.focusMode) {
       transition: transform 0.5s ease;
 
-      transform: scale(0.9) translateX(180%) translateY(-10% - $hoverOffset);
+      transform: scale(0.9) translateX(180% - $offsetX)
+        translateY(-10% - $hoverOffset);
     }
 
     @media (max-width: $bp-lg) {
-      transform: scale(0.6) translateX(180%) translateY(-10%);
+      transform: scale(0.6) translateX(180% - $offsetX) translateY(-10%);
       &:hover:not(.focusMode) {
-        transform: scale(0.6) translateX(180%) translateY(-10% - $hoverOffset);
+        transform: scale(0.6) translateX(180% - $offsetX)
+          translateY(-10% - $hoverOffset);
       }
     }
   }
   &:nth-child(4) {
     z-index: 5;
-    transform: scale(0.8) rotate(-12.6deg) translateY(100%) translateX(250%);
+    transform: scale(0.8) rotate(-12.6deg) translateY(100%)
+      translateX(250% - $offsetX);
 
     &:hover:not(.focusMode) {
       transition: transform 0.5s ease;
 
       transform: scale(0.8) rotate(-12.6deg) translateY(100% - $hoverOffset)
-        translateX(250%);
+        translateX(250% - $offsetX);
     }
 
     @media (max-width: $bp-lg) {
-      transform: scale(0.5) rotate(-12.6deg) translateY(100%) translateX(250%);
+      transform: scale(0.5) rotate(-12.6deg) translateY(100%)
+        translateX(250% - $offsetX);
       &:hover:not(.focusMode) {
         transition: transform 0.5s ease;
         transform: scale(0.5) rotate(-12.6deg) translateY(100% - $hoverOffset)
-          translateX(250%);
+          translateX(250% - $offsetX);
       }
     }
   }
   &:nth-child(5) {
     z-index: 1;
-    transform: scale(0.6) rotate(4deg) translateY(-30%) translateX(450%);
+    transform: scale(0.6) rotate(4deg) translateY(-30%)
+      translateX(450% - $offsetX);
 
     &:hover:not(.focusMode) {
       transform: scale(0.6) rotate(4deg) translateY(-30% - $hoverOffset)
-        translateX(450%);
+        translateX(450% - $offsetX);
     }
 
     @media (max-width: $bp-lg) {
-      transform: scale(0.4) rotate(4deg) translateY(-30%) translateX(420%);
+      transform: scale(0.4) rotate(4deg) translateY(-30%)
+        translateX(420% - $offsetX);
       &:hover:not(.focusMode) {
         transition: transform 0.5s ease;
 
         transform: scale(0.4) rotate(4deg) translateY(-30% - $hoverOffset)
-          translateX(420%);
+          translateX(420% - $offsetX);
       }
     }
   }
