@@ -8,23 +8,38 @@
 
 <script>
 export default {
+  data() {
+    return {
+      rightLimit: window.innerWidth - 100,
+      leftLimit: 65,
+      moveSpeed: 10,
+    };
+  },
   methods: {
-    test(e) {
+    moveVoyager(e) {
       let voyagerPosition = this.$refs.voyager.offsetLeft;
-      if (e.key === 'ArrowLeft') {
-        let move = voyagerPosition - 10;
-        this.$refs.voyager.style.left = move.toString() + 'px';
-      } else if (e.key === 'ArrowRight') {
-        let move = voyagerPosition + 10;
-        this.$refs.voyager.style.left = move.toString() + 'px';
+      if (e.key === 'q') {
+        let nextPosition = voyagerPosition - this.moveSpeed;
+        if (nextPosition > this.leftLimit) {
+          this.$refs.voyager.style.left = nextPosition.toString() + 'px';
+        } else {
+          this.$refs.voyager.style.left = this.leftLimit + 'px';
+        }
+      } else if (e.key === 'd') {
+        let nextPosition = voyagerPosition + this.moveSpeed;
+        if (nextPosition < this.rightLimit) {
+          this.$refs.voyager.style.left = nextPosition.toString() + 'px';
+        } else {
+          this.$refs.voyager.style.left = this.rightLimit + "'px";
+        }
       }
     },
   },
   created() {
-    window.addEventListener('keydown', this.test);
+    window.addEventListener('keydown', this.moveVoyager);
   },
   destroyed() {
-    window.removeEventListener('keydown', this.test);
+    window.removeEventListener('keydown', this.moveVoyager);
   },
 };
 </script>

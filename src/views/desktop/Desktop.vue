@@ -110,6 +110,66 @@ export default {
         : (this.pageMoveNext = false);
       this.wheelCount = value;
     },
+    changeChapterWithKeyboard(e) {
+      if (e.key === 'ArrowRight') {
+        if (this.wheelCount < this.scrollSpeed * 10) {
+          this.changeChapter(this.scrollSpeed * 15);
+        } else if (
+          this.wheelCount >= this.scrollSpeed * 10 &&
+          this.wheelCount < this.scrollSpeed * 20
+        ) {
+          this.changeChapter(this.scrollSpeed * 25);
+        } else if (
+          this.wheelCount >= this.scrollSpeed * 20 &&
+          this.wheelCount < this.scrollSpeed * 30
+        ) {
+          this.changeChapter(this.scrollSpeed * 35);
+        } else if (
+          this.wheelCount >= this.scrollSpeed * 30 &&
+          this.wheelCount < this.scrollSpeed * 40
+        ) {
+          this.changeChapter(this.scrollSpeed * 45);
+        } else if (
+          this.wheelCount >= this.scrollSpeed * 40 &&
+          this.wheelCount < this.scrollSpeed * 50
+        ) {
+          this.changeChapter(this.scrollSpeed * 55);
+        }
+      } else if (e.key === 'ArrowLeft') {
+        if (
+          this.wheelCount >= this.scrollSpeed * 50 &&
+          this.wheelCount < this.scrollSpeed * 60
+        ) {
+          this.changeChapter(this.scrollSpeed * 45);
+        } else if (
+          this.wheelCount >= this.scrollSpeed * 40 &&
+          this.wheelCount < this.scrollSpeed * 50
+        ) {
+          this.changeChapter(this.scrollSpeed * 35);
+        } else if (
+          this.wheelCount >= this.scrollSpeed * 30 &&
+          this.wheelCount < this.scrollSpeed * 40
+        ) {
+          this.changeChapter(this.scrollSpeed * 25);
+        } else if (
+          this.wheelCount >= this.scrollSpeed * 20 &&
+          this.wheelCount < this.scrollSpeed * 30
+        ) {
+          this.changeChapter(this.scrollSpeed * 15);
+        } else if (
+          this.wheelCount >= this.scrollSpeed * 10 &&
+          this.wheelCount < this.scrollSpeed * 20
+        ) {
+          this.changeChapter(this.scrollSpeed * 5);
+        }
+      }
+    },
+  },
+  created() {
+    window.addEventListener('keydown', this.changeChapterWithKeyboard);
+  },
+  destroyed() {
+    window.removeEventListener('keydown', this.changeChapterWithKeyboard);
   },
 };
 </script>
