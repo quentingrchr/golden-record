@@ -2,7 +2,6 @@
   <div class="video">
     <div class="fullscreen-bg">
       <video
-        controls
         @ended="onEnd()"
         autoplay
         preload="auto"
