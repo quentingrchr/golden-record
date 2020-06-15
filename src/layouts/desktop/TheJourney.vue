@@ -152,6 +152,7 @@ export default {
   &__text {
     font-size: 12px;
     text-align: left;
+    margin: auto;
   }
 }
 
