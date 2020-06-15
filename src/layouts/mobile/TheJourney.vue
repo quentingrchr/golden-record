@@ -25,23 +25,23 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-import TimeElapsed from '@/components/TimeElapsed.vue';
-import Cta from '@/components/MobileCta.vue';
+import Header from "@/components/Header.vue";
+import TimeElapsed from "@/components/TimeElapsed.vue";
+import Cta from "@/components/MobileCta.vue";
 
 export default {
-  name: 'TheJourney',
+  name: "TheJourney",
   components: { Header, TimeElapsed, Cta },
   methods: {
     goNextChapter() {
-      this.$emit('changeChapter', 2);
-    },
+      this.$emit("changeChapter", 2);
+    }
   },
   created() {
     window.scrollTo({
-      top: 0,
+      top: 0
     });
-  },
+  }
 };
 </script>
 
