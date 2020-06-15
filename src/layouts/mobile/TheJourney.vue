@@ -35,13 +35,13 @@ export default {
   methods: {
     goNextChapter() {
       this.$emit("changeChapter", 2);
-    }
+    },
   },
   created() {
     window.scrollTo({
-      top: 0
+      top: 0,
     });
-  }
+  },
 };
 </script>
 

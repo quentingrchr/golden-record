@@ -4,16 +4,16 @@
     <div class="infos__content">
       <Counter date="05/09/1977 12:56:00" title="🛰 ️Voyager 1 " />
       <hr />
-      <Counter date="20/08/1977 14:29:00" title="🛰 ️Voyager 2 " />
+      <Counter date="20/09/1977 14:29:00" title="🛰 ️Voyager 2 " />
     </div>
   </div>
 </template>
 
 <script>
-import Counter from './Counter.vue';
+import Counter from "./Counter.vue";
 export default {
-  name: 'TimeElapsed',
-  components: { Counter },
+  name: "TimeElapsed",
+  components: { Counter }
 };
 </script>
 
@@ -63,7 +63,7 @@ export default {
     hr {
       display: block;
       margin: auto;
-      content: '';
+      content: "";
       background-color: $primary-darkblue;
       opacity: 0.5;
       height: 2px;

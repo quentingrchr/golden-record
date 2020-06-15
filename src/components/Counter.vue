@@ -19,7 +19,7 @@ export default {
   name: "Counter",
   props: {
     title: String,
-    date: String,
+    date: String
   },
   mounted() {
     var now = `${moment().format("DD/MM/YYYY HH:mm:ss")}`;
@@ -31,10 +31,11 @@ export default {
     var d = moment.duration(ms);
     this.counter.years = d.years();
     this.counter.months = d.months();
-    this.counter.days = d.months();
+    this.counter.days = d.days();
     this.counter.hours = d.hours();
     this.counter.mins = d.minutes();
     this.counter.secs = d.seconds();
+
     console.log(d);
 
     this.startCounter();
@@ -47,8 +48,8 @@ export default {
         days: 0,
         hours: 0,
         mins: 0,
-        secs: 0,
-      },
+        secs: 0
+      }
     };
   },
 
@@ -117,8 +118,8 @@ export default {
       } else {
         return value;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
