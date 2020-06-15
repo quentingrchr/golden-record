@@ -190,9 +190,6 @@ export default {
       this.selectedImage = null;
     },
   },
-  beforeDestroy() {
-    console.log('cest fait');
-  },
 };
 </script>
 
