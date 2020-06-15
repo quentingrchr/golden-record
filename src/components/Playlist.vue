@@ -4,6 +4,7 @@
     :class="hovering ? 'playlist--isHover' : ''"
     @mouseenter="showOverlay"
     @mouseleave="resetOverlay"
+    @click="selectPlaylist"
   >
     <h3>{{ playlistName }}</h3>
     <button @click="selectPlaylist">
@@ -14,8 +15,8 @@
     <div class="paylist__infoContainer">
       <p v-if="!hovering">{{ playlistInfo1 }}</p>
       <p v-if="!hovering">{{ playlistInfo2 }}</p>
-      <h4 v-else>
-        <b>CLICK</b>
+      <h4 v-else class="playlist__textOverlay">
+        <span>CLICK</span>
         <br />
         on the logo to play a random song of {{ playlistName }}'s playlist
       </h4>
@@ -29,26 +30,26 @@ export default {
   props: {
     playlistName: {
       type: String,
-      Required: true
+      Required: true,
     },
     playlistInfo1: {
       type: String,
-      Required: true
+      Required: true,
     },
     playlistInfo2: {
       type: String,
-      Required: true
-    }
+      Required: true,
+    },
   },
   data() {
     return {
-      isHover: false
+      isHover: false,
     };
   },
   computed: {
     hovering() {
       return this.isHover;
-    }
+    },
   },
   methods: {
     selectPlaylist() {
@@ -59,8 +60,8 @@ export default {
     },
     resetOverlay() {
       this.isHover = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -73,17 +74,18 @@ export default {
   justify-content: flex-start;
   align-items: center;
   color: $primary-white;
+  cursor: pointer;
+  transition: all 0.2s;
 
   &--isFocus {
-    box-shadow: inset 5px 5px 10px #0e0d14, inset -5px -5px 10px #1a1924;
     border-radius: 10px;
+    background-color: $secondary-light-grey-blue;
+    transform: translate(1vw, 2vh);
   }
 
-  &--isHover {
-    background-color: #ae8908;
-    box-shadow: inset 5px 5px 10px #0e0d14, inset -5px -5px 10px #1a1924;
+  &:hover {
+    background-color: $secondary-light-grey-blue;
     border-radius: 10px;
-    height: 340px;
   }
 }
 
@@ -103,6 +105,7 @@ button {
   justify-content: center;
   align-items: center;
   position: relative;
+  background-color: transparent;
   overflow: hidden;
   cursor: pointer;
 
@@ -153,6 +156,14 @@ p {
 
   @include media_mobile {
     min-width: 20vw;
+  }
+}
+
+.playlist__textOverlay {
+  line-height: 150%;
+
+  span {
+    font-weight: bold;
   }
 }
 </style>
