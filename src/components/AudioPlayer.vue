@@ -3,12 +3,12 @@
     <audio ref="audio" autoplay @playing="isPlaying" @ended="isFinish">
       <source type="audio/mpeg" />
     </audio>
-    <svg class="svgPlay" @click="togglePlay">
+    <svg class="svgSettings" @click="togglePlay">
       <use :href="playing ? '#pause' : '#play'" />
     </svg>
-    <div class="player__titleContainer">
-      <p class="player__title">{{ name }}</p>
-    </div>
+    <svg class="svgSettings" @click="nextMusic">
+      <use href="#next" />
+    </svg>
     <div class="player__soundSettings">
       <svg @click="toggleMuted">
         <use :href="muted ? '#soundoff' : '#soundon'" />
@@ -23,6 +23,9 @@
         value="50"
         @input="updateVolume"
       />
+    </div>
+    <div class="player__titleContainer">
+      <p class="player__title" :class="playing ? 'player__title--isAppear' : ''">{{ name }}</p>
     </div>
   </div>
 </template>
@@ -81,6 +84,9 @@ export default {
         this.slider.value = volumeNow;
       }
     },
+    nextMusic() {
+      this.$emit("next-music");
+    },
     isFinish() {
       return (this.playing = false);
     },
@@ -102,20 +108,11 @@ input {
   cursor: pointer;
 }
 
-@keyframes slide {
-  from {
-    transform: translateX(105%);
-  }
-  to {
-    transform: translateX(-105%);
-  }
-}
-
 .player {
-  margin: 0 20%;
+  margin: 0 2vh 0 25vh;
   padding-top: 2vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   transform: translateY(4vh);
   opacity: 0;
@@ -125,18 +122,23 @@ input {
     transform: translateY(-4vh);
     opacity: 1;
   }
+
+  @include media_tablet {
+    margin: 0 2vh 0 20vh;
+  }
 }
 
-.svgPlay {
+.svgSettings {
   width: 50px;
   height: 50px;
+
+  &:nth-child(2) {
+    margin: 0 3vh;
+  }
 }
 
 .player__titleContainer {
-  width: 55%;
-  margin: 0 2vw;
   padding: 0.5vh 0;
-  border: 1px solid #ae8908;
   border-radius: 3px;
   overflow-x: hidden;
 }
@@ -145,11 +147,16 @@ input {
   width: 100%;
   display: inline-block;
   color: $primary-white;
-  animation: 10s linear 1s infinite running slide;
-  white-space: nowrap;
+  font-size: 1rem;
+  text-align: initial;
+
+  @include media_tablet {
+    font-size: 0.8rem;
+  }
 }
 
 .player__soundSettings {
+  margin: 0 4vw 0 2vw;
   display: flex;
   align-items: center;
 

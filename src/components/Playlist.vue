@@ -1,5 +1,10 @@
 <template>
-  <div class="playlist">
+  <div
+    class="playlist"
+    :class="hovering ? 'playlist--isHover' : ''"
+    @mouseenter="showOverlay"
+    @mouseleave="resetOverlay"
+  >
     <h3>{{ playlistName }}</h3>
     <button @click="selectPlaylist">
       <svg>
@@ -7,8 +12,13 @@
       </svg>
     </button>
     <div class="paylist__infoContainer">
-      <p>{{ playlistInfo1 }}</p>
-      <p>{{ playlistInfo2 }}</p>
+      <p v-if="!hovering">{{ playlistInfo1 }}</p>
+      <p v-if="!hovering">{{ playlistInfo2 }}</p>
+      <h4 v-else>
+        <b>CLICK</b>
+        <br />
+        on the logo to play a random song of {{ playlistName }}'s playlist
+      </h4>
     </div>
   </div>
 </template>
@@ -30,9 +40,25 @@ export default {
       Required: true
     }
   },
+  data() {
+    return {
+      isHover: false
+    };
+  },
+  computed: {
+    hovering() {
+      return this.isHover;
+    }
+  },
   methods: {
     selectPlaylist() {
       this.$emit("select-playlist");
+    },
+    showOverlay() {
+      this.isHover = true;
+    },
+    resetOverlay() {
+      this.isHover = false;
     }
   }
 };
@@ -40,7 +66,7 @@ export default {
 
 <style lang="scss" scoped>
 .playlist {
-  width: 18vw;
+  width: 20vw;
   padding: 3vh;
   display: flex;
   flex-direction: column;
@@ -51,6 +77,13 @@ export default {
   &--isFocus {
     box-shadow: inset 5px 5px 10px #0e0d14, inset -5px -5px 10px #1a1924;
     border-radius: 10px;
+  }
+
+  &--isHover {
+    background-color: #ae8908;
+    box-shadow: inset 5px 5px 10px #0e0d14, inset -5px -5px 10px #1a1924;
+    border-radius: 10px;
+    height: 340px;
   }
 }
 
