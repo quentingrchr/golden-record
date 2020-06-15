@@ -2,26 +2,27 @@
   <div class="intro" @click="$emit('clickWelcome')">
     <div class="stars"></div>
     <div class="twinkling"></div>
-    <h1 class="title-blur">
-      <em>T</em>
-      <em>h</em>
-      <em>e</em>
-      <em></em>
-      <em>G</em>
-      <em>o</em>
-      <em>l</em>
-      <em>d</em>
-      <em>e</em>
-      <em>n</em>
-      <em></em>
-      <em>R</em>
-      <em>e</em>
-      <em>c</em>
-      <em>o</em>
-      <em>r</em>
-      <em>d</em>
-    </h1>
+
     <div class="infos__container">
+      <h1 class="title-blur">
+        <em>T</em>
+        <em>h</em>
+        <em>e</em>
+        <em></em>
+        <em>G</em>
+        <em>o</em>
+        <em>l</em>
+        <em>d</em>
+        <em>e</em>
+        <em>n</em>
+        <em></em>
+        <em>R</em>
+        <em>e</em>
+        <em>c</em>
+        <em>o</em>
+        <em>r</em>
+        <em>d</em>
+      </h1>
       <h1 class="title-welcome">The Golden Record</h1>
       <svg
         class="icone-scroll__desktop"
