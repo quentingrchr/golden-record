@@ -139,7 +139,7 @@ export default {
   components: {
     Header,
     AudioPlayer,
-    Playlist
+    Playlist,
   },
   data() {
     return {
@@ -156,7 +156,7 @@ export default {
             "Carl Sagan and his team decided to put 27 songs on the golden record.",
           playlistInfo2:
             "The style music who’s the most represented in the disc is the classic style.",
-          playlistContent: []
+          playlistContent: [],
         },
         {
           playlistId: 2,
@@ -164,7 +164,7 @@ export default {
           playlistInfo1:
             "People from the Earth took the opportunity to let a message in their own language.",
           playlistInfo2: "In this disc you can found 55 différents languages.",
-          playlistContent: []
+          playlistContent: [],
         },
         {
           playlistId: 3,
@@ -173,9 +173,9 @@ export default {
             "After human words, Sagan and his associates wanted to include sounds from the planet.",
           playlistInfo2:
             "you can hear sounds of animals, sounds of nature and sounds of city life.",
-          playlistContent: []
-        }
-      ]
+          playlistContent: [],
+        },
+      ],
     };
   },
   computed: {
@@ -190,7 +190,7 @@ export default {
     },
     audio() {
       return this.$refs["audio"];
-    }
+    },
   },
   methods: {
     updatePlaylist(index) {
@@ -208,23 +208,23 @@ export default {
       this.randomSongName = this.playlistSelected.playlistContent[
         randomIndex
       ].name_audio;
-    }
+    },
   },
   beforeCreate() {
     const setInfos = (index, nameSong, srcSong) => {
       let infos = {
         name_audio: nameSong,
-        src_audio: srcSong
+        src_audio: srcSong,
       };
       this.playlists[index].playlistContent.push(infos);
     };
 
     fetch(`${url}/query/audio_content`, {
-      method: "GET"
+      method: "GET",
     })
-      .then(response => response.json())
-      .then(songs => {
-        songs.forEach(song => {
+      .then((response) => response.json())
+      .then((songs) => {
+        songs.forEach((song) => {
           switch (song.name_playlist) {
             case "music":
               setInfos(0, song.name_audio, song.src_audio);
@@ -240,8 +240,8 @@ export default {
           }
         });
       })
-      .catch(error => console.log(error));
-  }
+      .catch((error) => console.log(error));
+  },
 };
 </script>
 
@@ -271,6 +271,7 @@ export default {
 }
 
 .audio__categoryContainer {
+  height: 435px;
   margin: 10vh 5vw;
   display: flex;
   justify-content: space-around;
