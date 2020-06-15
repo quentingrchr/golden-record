@@ -146,7 +146,7 @@ export default {
       rightLimit: window.innerWidth - 200,
       leftLimit: 65,
       voyagerMoveSpeed: 10,
-      gameSpeed: 1,
+      gameSpeed: 6,
       template: null,
       failed: false,
       start: false,
@@ -441,6 +441,9 @@ export default {
   font-size: 1.5rem;
   margin-top: 50px;
   cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 .play--again {
