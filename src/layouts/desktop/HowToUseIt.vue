@@ -4,15 +4,21 @@
     <div class="twinkling"></div>
     <Header class="Use__mainTitle" text="How To Use It" />
     <div class="Use__container">
-    <div @click="appear" :class="{'none' : disappear}" class="Use__instruction">
-      <div class="Use__intruction">
-        <h3 class="Use__intructionText">
-          On the disc are arranged six symbols allowing the individuals 
-          who will receive the disc to decipher it
-        </h3>
-        <p style="fontWeight : bold">Click anywhere to pass the instructions</p>
+      <div
+        @click="appear"
+        :class="{ none: disappear }"
+        class="Use__instruction"
+      >
+        <div class="Use__intruction">
+          <h3 class="Use__intructionText">
+            On the disc are arranged six symbols allowing the individuals who
+            will receive the disc to decipher it
+          </h3>
+          <p style="fontWeight : bold">
+            Click anywhere to pass the instructions
+          </p>
+        </div>
       </div>
-    </div>
       <div class="Use__content">
         <Sign
           :index="0"
@@ -147,7 +153,6 @@ import Sign from "@/components/Sign.vue";
 import ContentSign from "@/components/ContentSign.vue";
 import Header from "@/components/Header.vue";
 
-
 export default {
   name: "UseIt",
   data: () => ({
@@ -161,17 +166,17 @@ export default {
     ContentSign,
     Header,
   },
-  methods:{
-    appear(){
-      this.disappear = true
-    }
-  }
+  methods: {
+    appear() {
+      this.disappear = true;
+    },
+  },
   // created(){
-  //   // setTimeout(() => { 
+  //   // setTimeout(() => {
   //   //   this.disappear = true
   //   // },2000);
   // },
-}
+};
 </script>
 
 <style lang="scss">
@@ -190,7 +195,7 @@ export default {
   background-color: $primary-darkblue;
   position: relative;
 
-  &__instruction{
+  &__instruction {
     position: fixed;
     z-index: 50;
     display: flex;
@@ -204,7 +209,7 @@ export default {
     height: 100vh;
   }
 
-  &__intructionText{
+  &__intructionText {
     margin-bottom: 10vh;
   }
 
@@ -247,8 +252,8 @@ export default {
     }
   }
 
-  &__color{
-    &:hover{
+  &__color {
+    &:hover {
       stroke: white;
       filter: drop-shadow(0px 6px 2px rgba($primary-darkblue, 0.7));
     }
@@ -352,13 +357,14 @@ export default {
   .hovering {
     stroke: white;
     filter: drop-shadow(0px 6px 2px rgba($primary-darkblue, 0.7));
+    cursor: pointer;
   }
 
-  .color{
+  .color {
     opacity: 1;
   }
 
-  .none{
+  .none {
     display: none;
   }
 }
