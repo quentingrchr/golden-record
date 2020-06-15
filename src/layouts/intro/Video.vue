@@ -2,6 +2,7 @@
   <div class="video">
     <div class="fullscreen-bg">
       <video
+        @ended="onEnd()"
         autoplay
         preload="auto"
         class="fullscreen-bg__video video"
@@ -10,6 +11,7 @@
       >
         <div class="hideBrandData"></div>
         <source src="@/assets/video/video_intro.mp4" type="video/mp4" />
+
         Sorry, your browser doesn't support embedded videos, but don't worry,
         you can
         <a href="@/assets/video/video.mp4">download it</a>
@@ -40,6 +42,11 @@
 
 <script>
 export default {
+  methods: {
+    onEnd() {
+      window.location += "golden-record";
+    }
+  }
   /* methods: {
     launchVideo() {
       this.$refs.video.play();
