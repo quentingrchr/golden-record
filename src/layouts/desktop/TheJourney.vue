@@ -64,7 +64,7 @@
         </p>
         <p>
           How inteligent life would be able to use this disk ? Scroll down to
-          discover how scientifcs tried to answer that question
+          discover how scientifics tried to answer that question
         </p>
         <Time-elapsed class="time" />
       </div>

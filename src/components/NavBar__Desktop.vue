@@ -1,5 +1,10 @@
 <template>
-  <div class="navBar" @click="closeOverlay">
+  <div
+    class="navBar"
+    @click="closeOverlay"
+    @mouseenter="handleEnterNav"
+    @mouseleave="handleLeaveNav"
+  >
     <div class="navBar__timeLineContainer">
       <div>
         <router-link to="/">
@@ -24,36 +29,42 @@
       </div>
       <nav class="navBar__timeLine">
         <div
+          @mouseenter="handleHoverNavItem(1)"
           @click="jumpToOtherChapter(scroll * 5)"
           :class="page === 1 ? 'isSelected' : null"
         >
           <p>The journey</p>
         </div>
         <div
+          @mouseenter="handleHoverNavItem(2)"
           @click="jumpToOtherChapter(scroll * 15)"
           :class="page === 2 ? 'isSelected' : null"
         >
           <p>How to use it</p>
         </div>
         <div
+          @mouseenter="handleHoverNavItem(3)"
           @click="jumpToOtherChapter(scroll * 25)"
           :class="page === 3 ? 'isSelected' : null"
         >
           <p>Visual Content</p>
         </div>
         <div
+          @mouseenter="handleHoverNavItem(4)"
           @click="jumpToOtherChapter(scroll * 35)"
           :class="page === 4 ? 'isSelected' : null"
         >
           <p>Audio Content</p>
         </div>
         <div
+          @mouseenter="handleHoverNavItem(5)"
           @click="jumpToOtherChapter(scroll * 45)"
           :class="page === 5 ? 'isSelected' : null"
         >
           <p>Who did it ?</p>
         </div>
         <div
+          @mouseenter="handleHoverNavItem(6)"
           @click="jumpToOtherChapter(scroll * 55)"
           :class="page === 6 ? 'isSelected' : null"
         >
@@ -72,7 +83,12 @@
 </template>
 
 <script>
-import EventBus from '@/EventBus';
+import EventBus from "@/EventBus";
+import glitch1 from "../assets/sounds/glitch_1.mp3";
+import glitch2 from "../assets/sounds/glitch_2.mp3";
+import tic1 from "../assets/sounds/nav_sound_1.mp3";
+import tic2 from "../assets/sounds/nav_sound_2.mp3";
+import tic3 from "../assets/sounds/nav_sound_3.mp3";
 
 export default {
   data() {
@@ -86,10 +102,29 @@ export default {
       this.$refs.audio.muted = !this.$refs.audio.muted;
     },
     jumpToOtherChapter(value) {
-      this.$emit('jumpToOtherChapter', value);
+      this.$emit("jumpToOtherChapter", value);
     },
     closeOverlay() {
-      EventBus.$emit('close');
+      EventBus.$emit("close");
+    },
+    handleEnterNav() {
+      let audio = new Audio(glitch1);
+      this.playSound(audio, 0.05);
+    },
+    handleLeaveNav() {
+      let audio = new Audio(glitch2);
+      this.playSound(audio, 0.05);
+    },
+    playSound(audio, volume) {
+      audio.volume = volume;
+      audio.play();
+    },
+    handleHoverNavItem(pageNumber) {
+      if (this.page === pageNumber) return;
+
+      let audios = [tic1, tic2, tic3];
+      let audio = new Audio(audios[Math.floor(Math.random() * 2)]);
+      this.playSound(audio, 0.3);
     },
   },
   mounted() {
@@ -104,7 +139,7 @@ export default {
     },
   },
   watch: {
-    page: function(newProp, oldProp) {
+    page: function(newProp) {
       if (newProp === 4) {
         this.$refs.audio.muted = true;
         this.isMute = true;
@@ -248,7 +283,7 @@ export default {
   }
 
   &.isMute::after {
-    content: '';
+    content: "";
     position: absolute;
     display: block;
     width: 30px;

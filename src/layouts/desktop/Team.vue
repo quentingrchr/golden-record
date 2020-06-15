@@ -246,7 +246,7 @@ export default {
         }
       });
     },
-    resizeHandler: function(e) {
+    resizeHandler: function() {
       let width = document.body.clientWidth;
       if (width < 801) {
         this.uiValue.MARGIN_LEFT = 10;
