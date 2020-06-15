@@ -1,17 +1,17 @@
 # The Golden Record - Web Documentary
 
-## Disclaimer
+## 🎓Disclaimer
 
 This site has been created for educational purposes as part of the Bachelor's curriculum of the HETIC school. The contents presented have not been the subject of a request for right of use. **This site will and should in no case be used for commercial purposes and will not be published.**
 
-## Project Overview
+## 🛰️ Project Overview
 <p align="center">
   <img src="screenshot.gif">
 </p>
 
 **The Golden Record - Web Documentary** is a web experience on the most ambitious message sent into space. A gold-platted disk supposed to gives a better chance for future extraterrestrial intelligence life visitors to find out that we exist or once existed.
 
-## Getting Started
+## 📄 Getting Started
 
 ### Live demo
 
@@ -58,14 +58,14 @@ Your app is ready to be deployed.
 npm run lint
 ```
 
-## Built with
+## 🔨 Built with
 
 VueJS - [documentation](https://vuejs.org/)  
 Vue Moment - [documentation](https://github.com/brockpetrie/vue-moment)  
 Vue Router - [documentation](https://router.vuejs.org/)  
 Animate On Scroll - [documentation](https://michalsnik.github.io/aos/)
 
-## Routes
+## 🚚 Routes
 
 ```mermaid
 graph LR
@@ -78,7 +78,7 @@ B --> G[Game]
 G --> A
 ```
 
-## Folder strucutre
+## 🔧 Folder strucutre
 
 ```
 my-app
@@ -101,7 +101,7 @@ my-app
     └── setupTests.js
 ```
 
-## Contributers
+## 👥 Contributers
 
 Bastien Paquier - [bastien17-dev](https://github.com/bastien17-dev)  
 Quentin Grancher - [quentingrchr](https://github.com/quentingrchr)  
