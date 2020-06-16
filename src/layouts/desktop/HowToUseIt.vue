@@ -15,7 +15,7 @@
             will receive the disc to decipher it
           </h3>
           <p style="fontWeight : bold">
-            Click anywhere to pass the instructions
+            Click anywhere to close this window
           </p>
         </div>
       </div>

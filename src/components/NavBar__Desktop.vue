@@ -113,6 +113,8 @@ export default {
   },
   mounted() {
     this.$refs.audio.volume = 0.2;
+
+    console.log("mounted");
   },
   props: {
     page: {
