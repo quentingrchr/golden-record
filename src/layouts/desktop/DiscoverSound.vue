@@ -143,13 +143,15 @@
     </svg>
 
     <Header :text="title" />
-
-    <img
-      class="audio__imgDisc"
-      :class="isActive ? 'audio__imgDisc--isAnimate' : ''"
-      src="../../assets/img/song_of_earth.png"
-      alt="disc song of earth"
-    />
+    <div class="audio__imgContainer" :class="discIsActive ? 'audio__imgContainer--isActivate' : ''">
+      <img
+        ref="Disc"
+        class="audio__imgDisc"
+        :class="songIsActive ? 'audio__imgDisc--isAnimate' : ''"
+        src="../../assets/img/song_of_earth.png"
+        alt="disc song of earth"
+      />
+    </div>
     <div class="audio__categoryContainer">
       <Playlist
         v-for="(playlist, index) in playlists"
@@ -162,7 +164,7 @@
       />
     </div>
     <AudioPlayer
-      :class="isActive ? 'player--isFocus' : ''"
+      :class="songIsActive ? 'player--isFocus' : ''"
       :source="songSrcSelected"
       :name="songNameSelected"
       @next-music="selectRandomSong"
@@ -185,7 +187,8 @@ export default {
   data() {
     return {
       title: "Audio content",
-      isActive: false,
+      songIsActive: false,
+      discIsActive: false,
       indexOfSelectedPlaylist: null,
       randomSongName: "",
       randomSongSrc: "",
@@ -236,7 +239,8 @@ export default {
   methods: {
     updatePlaylist(index) {
       this.indexOfSelectedPlaylist = index;
-      this.isActive = true;
+      this.songIsActive = true;
+      this.discIsActive = true;
       this.selectRandomSong();
     },
     selectRandomSong() {
@@ -311,22 +315,32 @@ export default {
   }
 }
 
+.audio__imgContainer {
+  position: absolute;
+  top: -70vh;
+  left: 50vw;
+  height: 90vh;
+  border-radius: 50%;
+  transition: top 1s linear;
+}
+
+.audio__imgDisc {
+  height: 90vh;
+  border-radius: 50%;
+}
+
+.audio__imgContainer--isActivate {
+  top: -60vh;
+}
+
+.audio__imgDisc--isAnimate {
+  animation: rotating 3.6s 1s linear infinite;
+}
+
 .audio__categoryContainer {
   height: 435px;
   margin: 10vh 5vw;
   display: flex;
   justify-content: space-around;
-}
-
-.audio__imgDisc {
-  position: absolute;
-  top: -70vh;
-  height: 90vh;
-  transition: top 1s linear;
-}
-
-.audio__imgDisc--isAnimate {
-  top: -60vh;
-  animation: rotating 3.6s 1s linear infinite;
 }
 </style>

@@ -12,9 +12,9 @@
       </svg>
     </button>
     <div class="paylist__infoContainer">
-      <!-- <p v-if="!hovering">{{ playlistInfo1 }}</p>
-      <p v-if="!hovering">{{ playlistInfo2 }}</p>-->
-      <h4 class="playlist__textOverlay">
+      <p v-if="!hovering">{{ playlistInfo1 }}</p>
+      <p v-if="!hovering">{{ playlistInfo2 }}</p>
+      <h4 v-else class="playlist__textOverlay">
         <span>CLICK</span>
         <br />
         to play a random song of {{ playlistName }}'s playlist.
