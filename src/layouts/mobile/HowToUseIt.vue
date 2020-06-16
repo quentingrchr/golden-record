@@ -1,6 +1,6 @@
 <template>
   <div class="useIt__container">
-    <Header text="How to use it?" />
+    <Header text="Decrypt it" />
     <div class="disc" :class="step">
       <Icons />
       <BaseIcon class="disc__logo disc__record" href="record" />

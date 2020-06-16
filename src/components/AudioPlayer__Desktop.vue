@@ -25,9 +25,7 @@
       />
     </div>
     <div class="player__titleContainer">
-      <p class="player__title">
-        {{ name }}
-      </p>
+      <p class="player__title">{{ name }}</p>
     </div>
   </div>
 </template>
@@ -63,10 +61,16 @@ export default {
   methods: {
     togglePlay() {
       if (!this.audio.paused && !this.audio.ended) {
+        ///
+        this.$emit("pause-event");
+        ///
         this.audio.pause();
         this.playing = false;
       } else {
         this.audio.play();
+        //
+        this.$emit("play-event");
+        //
         this.playing = true;
       }
     },
@@ -90,6 +94,7 @@ export default {
       this.$emit("next-music");
     },
     isFinish() {
+      this.$emit("pause-event");
       return (this.playing = false);
     },
     isPlaying() {
@@ -183,7 +188,6 @@ input {
   border: none;
   border-radius: 10px;
   background-color: $primary-white;
-  opacity: 0.6;
 }
 
 /* slider for mozz */
@@ -192,7 +196,6 @@ input {
   border: none;
   border-radius: 10px;
   background-color: $primary-white;
-  opacity: 0.6;
 }
 
 /* cursor for chrome*/

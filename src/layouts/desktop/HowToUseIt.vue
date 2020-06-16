@@ -6,11 +6,12 @@
     <div class="Use__container">
       <div @click="appear" :class="{ none: disappear }" class="Use__instruction">
         <div class="Use__intruction">
+          <img class="allsigns" src="@/assets/img/allsigns.png" />
           <h3 class="Use__intructionText">
-            On the disc are arranged six symbols allowing the individuals who
-            will receive the disc to decipher it
+            This is an entire message saying where we are, and how to use this disc 📀.
+            <br />Click on one item to discover his signification !
           </h3>
-          <p style="fontWeight : bold">Click anywhere to close this window</p>
+          <p class="pass-instructions">Click anywhere to close this window</p>
         </div>
       </div>
       <div class="Use__content">
@@ -140,20 +141,30 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.9);
     top: 0;
     left: 0;
     padding: 10vw;
     width: 100vw;
     height: 100vh;
+    & .allsigns {
+      width: 60vw;
+      margin-bottom: 10vh;
+    }
   }
 
   &__intruction {
     width: 70vw;
+    & .pass-instructions {
+      font-size: 20px;
+      font-weight: bold;
+    }
   }
 
   &__intructionText {
-    line-height: 150%;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 250%;
     margin-bottom: 10vh;
   }
 
@@ -184,7 +195,7 @@ export default {
   }
 
   .hovering {
-    stroke: white;
+    stroke: $primary-white;
     filter: drop-shadow(0px 6px 2px rgba($primary-darkblue, 0.7));
     cursor: pointer;
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="audio">
-    <div class="stars"></div>
+    <div class="stars" :class="songIsPlaying ? 'red' : ''"></div>
     <div class="twinkling"></div>
     <svg style="position: absolute; width: 0; height: 0; overflow: hidden">
       <defs>
@@ -93,7 +93,7 @@
             cy="16"
             r="16"
             transform="rotate(180 16 16)"
-            fill="#ae8908"
+            fill="#F8F8F8"
           />
           <path
             d="M21.4526 14.9082C22.0492 15.3037 22.0492 16.1797 21.4526 16.5752L13.8109 21.6408C13.1461 22.0814 12.2583 21.6048 12.2583 20.8073L12.2583 10.6761C12.2583 9.87863 13.1461 9.402 13.8109 9.84263L21.4526 14.9082Z"
@@ -120,7 +120,7 @@
           />
         </symbol>
         <symbol id="pause" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="16" fill="#ae8908" />
+          <circle cx="16" cy="16" r="16" fill="#F8F8F8" />
           <path
             d="M14.2906 21.05C14.2906 22.1269 13.4175 23 12.3406 23C11.2637 23 10.3906 22.1269 10.3906 21.05V10.95C10.3906 9.87311 11.2637 9 12.3406 9C13.4175 9 14.2906 9.87311 14.2906 10.95V21.05Z"
             fill="#14131C"
@@ -131,7 +131,7 @@
           />
         </symbol>
         <symbol id="next" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="16" fill="#ae8908" />
+          <circle cx="16" cy="16" r="16" fill="#F8F8F8" />
           <path
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -143,13 +143,19 @@
     </svg>
 
     <Header :text="title" />
-
-    <img
-      class="audio__imgDisc"
-      :class="isActive ? 'audio__imgDisc--isAnimate' : ''"
-      src="../../assets/img/song_of_earth.png"
-      alt="disc song of earth"
-    />
+    <div
+      class="audio__imgContainer"
+      :class="discIsActive ? 'audio__imgContainer--isActivate' : ''"
+    >
+      <img
+        ref="Disc"
+        class="audio__imgDisc"
+        :class="songIsPlaying ? 'audio__imgDisc--isAnimate' : ''"
+        src="../../assets/img/song_of_earth.png"
+        alt="disc song of earth"
+        @click="songIsPlaying ? playScratch() : null"
+      />
+    </div>
     <div class="audio__categoryContainer">
       <Playlist
         v-for="(playlist, index) in playlists"
@@ -162,7 +168,9 @@
       />
     </div>
     <AudioPlayer
-      :class="isActive ? 'player--isFocus' : ''"
+      @play-event="handlePlay"
+      @pause-event="handlePause"
+      :class="songIsActive ? 'player--isFocus' : ''"
       :source="songSrcSelected"
       :name="songNameSelected"
       @next-music="selectRandomSong"
@@ -171,10 +179,14 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-import AudioPlayer from '@/components/AudioPlayer__Desktop.vue';
-import Playlist from '@/components/Playlist__Desktop.vue';
-import { url } from '@/constants.js';
+
+import Header from "@/components/Header.vue";
+import AudioPlayer from "@/components/AudioPlayer__Desktop.vue";
+import Playlist from "@/components/Playlist__Desktop.vue";
+import scratchSound from "@/assets/sounds/scratch.wav";
+
+import { url } from "@/constants.js";
+
 
 export default {
   components: {
@@ -184,11 +196,15 @@ export default {
   },
   data() {
     return {
-      title: 'Audio content',
-      isActive: false,
+
+      title: "Audio content",
+      songIsActive: false,
+      discIsActive: false,
       indexOfSelectedPlaylist: null,
-      randomSongName: '',
-      randomSongSrc: '',
+      randomSongName: "",
+      randomSongSrc: "",
+      songIsPlaying: false,
+
       playlists: [
         {
           playlistId: 1,
@@ -234,12 +250,29 @@ export default {
     },
   },
   methods: {
+    playScratch() {
+      let audio = new Audio(scratchSound);
+      audio.volume = 1;
+      audio.play();
+    },
+    handlePlay() {
+      this.songIsPlaying = true;
+    },
+    handlePause() {
+      this.songIsPlaying = false;
+    },
     updatePlaylist(index) {
       this.indexOfSelectedPlaylist = index;
-      this.isActive = true;
+      this.songIsActive = true;
+      this.songIsPlaying = true;
+      this.discIsActive = true;
       this.selectRandomSong();
     },
     selectRandomSong() {
+      // Run with emit "next-song"
+      if (!this.songIsPlaying) {
+        this.songIsPlaying = true;
+      }
       let randomIndex = Math.floor(
         Math.random() * this.playlistSelected.playlistContent.length
       );
@@ -311,6 +344,7 @@ export default {
   }
 }
 
+
 .audio__categoryContainer {
   height: 435px;
   margin: 10vh 0;
@@ -320,14 +354,22 @@ export default {
 }
 
 .audio__imgDisc {
-  position: absolute;
-  top: -70vh;
   height: 90vh;
-  transition: top 1s linear;
+  border-radius: 50%;
+}
+
+.audio__imgContainer--isActivate {
+  top: -60vh;
 }
 
 .audio__imgDisc--isAnimate {
-  top: -60vh;
-  animation: rotating 3.6s 1s linear infinite;
+  animation: rotating 3.6s linear infinite;
+}
+
+.audio__categoryContainer {
+  height: 435px;
+  margin: 10vh 5vw;
+  display: flex;
+  justify-content: space-around;
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
-  <div
+  <a
+    href="#"
     class="playlist"
     @mouseenter="showOverlay"
     @mouseleave="resetOverlay"
@@ -19,10 +20,10 @@
       <h4 v-else class="playlist__textOverlay">
         <span>CLICK</span>
         <br />
-        on the playlist to play a random song of {{ playlistName }}'s playlist.
+        to play a random song of {{ playlistName }}'s playlist.
       </h4>
     </div>
-  </div>
+  </a>
 </template>
 
 <script>
@@ -53,8 +54,15 @@ export default {
     },
   },
   methods: {
+
     selectPlaylist() {
       this.$emit('select-playlist');
+
+    selectPlaylist(e) {
+      e.preventDefault();
+      console.log("ok");
+      this.$emit("select-playlist");
+
     },
     showOverlay() {
       this.isHover = true;
@@ -68,6 +76,7 @@ export default {
 
 <style lang="scss" scoped>
 .playlist {
+  text-decoration: none;
   width: 20vw;
   padding: 3vh;
   display: flex;
@@ -81,7 +90,7 @@ export default {
   &:hover {
     border-radius: 8px;
     background-color: $primary-white;
-    opacity: 0.6;
+    opacity: 0.9;
 
     h3,
     h4 {
@@ -108,6 +117,7 @@ h3 {
   }
 }
 
+
 button {
   width: 100%;
   height: 100%;
@@ -120,26 +130,27 @@ button {
   align-items: center;
   position: relative;
   background-color: transparent;
-  //overflow: hidden;
   cursor: pointer;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    padding: 50%;
-    border-radius: 50%;
-    background-color: $primary-white;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1);
-    transition: transform 1s, opacity 1s;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      padding: 50%;
+      border-radius: 50%;
+      background-color: $primary-white;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 1s, opacity 1s;
+    }
   }
-
-  &:active::before {
-    transition: 0s;
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(0);
+  &:active {
+    button::before {
+      transition: 0s;
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(0);
+    }
   }
 
   @include media_mobile {
@@ -180,7 +191,7 @@ p {
 
   span {
     font-weight: 900;
-    font-size: 24px;
+    font-size: 28px;
   }
 }
 </style>
