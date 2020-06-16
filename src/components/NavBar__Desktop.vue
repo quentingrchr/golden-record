@@ -187,7 +187,7 @@ export default {
   width: 2px;
   background-color: $primary-white;
   margin-left: 27px;
-  margin-bottom: 40px;
+  margin-bottom: 8vh;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
