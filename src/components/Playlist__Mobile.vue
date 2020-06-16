@@ -15,14 +15,14 @@ export default {
   props: {
     playlistName: {
       type: String,
-      Required: true,
-    },
+      Required: true
+    }
   },
   methods: {
     selectPlaylist() {
       this.$emit("select-playlist");
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -47,7 +47,7 @@ export default {
   transition: border-radius 1s, opacity 0.2s;
 
   &--isFocus {
-    border-radius: 6px;
+    border-radius: 5px;
     background-color: $primary-white;
     opacity: 0.6;
 
@@ -103,6 +103,7 @@ button {
   }
 
   &:active::before {
+    outline: none;
     transition: 0s;
     opacity: 1;
     transform: translate(-50%, -50%) scale(0);
