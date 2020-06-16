@@ -179,15 +179,11 @@
 </template>
 
 <script>
-
-import Header from "@/components/Header.vue";
-import AudioPlayer from "@/components/AudioPlayer__Desktop.vue";
-import Playlist from "@/components/Playlist__Desktop.vue";
-import scratchSound from "@/assets/sounds/scratch.wav";
-
-import { url } from "@/constants.js";
-
-
+import Header from '@/components/Header.vue';
+import AudioPlayer from '@/components/AudioPlayer__Desktop.vue';
+import Playlist from '@/components/Playlist__Desktop.vue';
+import scratchSound from '@/assets/sounds/scratch.wav';
+import { url } from '@/constants.js';
 export default {
   components: {
     Header,
@@ -196,15 +192,13 @@ export default {
   },
   data() {
     return {
-
-      title: "Audio content",
+      title: 'Audio content',
       songIsActive: false,
       discIsActive: false,
       indexOfSelectedPlaylist: null,
-      randomSongName: "",
-      randomSongSrc: "",
+      randomSongName: '',
+      randomSongSrc: '',
       songIsPlaying: false,
-
       playlists: [
         {
           playlistId: 1,
@@ -292,7 +286,6 @@ export default {
       };
       this.playlists[index].playlistContent.push(infos);
     };
-
     fetch(`${url}/query/audio_content`, {
       method: 'GET',
     })
@@ -328,14 +321,12 @@ export default {
     transform: rotate(360deg);
   }
 }
-
 .audio {
   height: 100vh;
   width: 100vw;
   position: relative;
   overflow: hidden;
   z-index: 10;
-
   .stars {
     z-index: -1;
   }
@@ -343,29 +334,24 @@ export default {
     z-index: -1;
   }
 }
-
-
-.audio__categoryContainer {
-  height: 435px;
-  margin: 10vh 0;
-  display: flex;
-  justify-content: space-around;
-  margin-left: $nav-width;
+.audio__imgContainer {
+  position: absolute;
+  top: -70vh;
+  left: 50vw;
+  height: 90vh;
+  border-radius: 50%;
+  transition: top 1s linear;
 }
-
 .audio__imgDisc {
   height: 90vh;
   border-radius: 50%;
 }
-
 .audio__imgContainer--isActivate {
   top: -60vh;
 }
-
 .audio__imgDisc--isAnimate {
   animation: rotating 3.6s linear infinite;
 }
-
 .audio__categoryContainer {
   height: 435px;
   margin: 10vh 5vw;

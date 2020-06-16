@@ -54,15 +54,10 @@ export default {
     },
   },
   methods: {
-
-    selectPlaylist() {
-      this.$emit('select-playlist');
-
     selectPlaylist(e) {
       e.preventDefault();
-      console.log("ok");
-      this.$emit("select-playlist");
-
+      console.log('ok');
+      this.$emit('select-playlist');
     },
     showOverlay() {
       this.isHover = true;
@@ -86,54 +81,47 @@ export default {
   color: $primary-white;
   cursor: pointer;
   transition: all 0.2s;
-
   &:hover {
     border-radius: 8px;
     background-color: $primary-white;
     opacity: 0.9;
-
     h3,
     h4 {
       color: $primary-darkblue;
     }
   }
-
   &--isFocus {
     border-radius: 8px;
     background-color: $primary-white;
     opacity: 0.6;
     transform: translate(1vw, 2vh);
-
     h3,
     p {
       color: $primary-darkblue;
     }
   }
 }
-
 h3 {
   @include media_tablet {
     font-size: 24px;
   }
 }
-
-
-button {
-  width: 100%;
-  height: 100%;
-  margin: 3vh 0;
-  border: none;
-  outline: none;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  background-color: transparent;
-  cursor: pointer;
-
+.playlist {
+  button {
+    height: 100px;
+    margin: 3vh 0;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: transparent;
+    overflow: hidden;
+    cursor: pointer;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
@@ -152,43 +140,34 @@ button {
       transform: translate(-50%, -50%) scale(0);
     }
   }
-
   @include media_mobile {
-    // height: 72px;
+    height: 72px;
   }
 }
-
 svg {
   width: 88px;
   height: 88px;
-
   @include media_mobile {
     height: 64px;
     width: 64px;
   }
 }
-
 p {
   font-size: 1rem;
   user-select: none;
-
   &:first-child {
     margin-bottom: 2vh;
   }
-
   @include media_tablet {
     font-size: 0.8rem;
   }
-
   @include media_mobile {
     min-width: 20vw;
   }
 }
-
 .playlist__textOverlay {
   line-height: 150%;
   color: $primary-darkblue;
-
   span {
     font-weight: 900;
     font-size: 28px;
