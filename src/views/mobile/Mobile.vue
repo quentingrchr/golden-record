@@ -19,27 +19,27 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar__Mobile.vue';
+import NavBar from "@/components/NavBar__Mobile.vue";
 
-import Images from '@/layouts/mobile/DiscoverImg.vue';
-import Sounds from '@/layouts/mobile/DiscoverSound.vue';
-import HowToUse from '@/layouts/mobile/HowToUseIt.vue';
-import Journey from '@/layouts/mobile/TheJourney.vue';
-import Team from '@/layouts/mobile/Team.vue';
-import Icon from '../../components/Icons';
+import Images from "@/layouts/mobile/DiscoverImg.vue";
+import Sounds from "@/layouts/mobile/DiscoverSound.vue";
+import HowToUse from "@/layouts/mobile/HowToUseIt.vue";
+import Journey from "@/layouts/mobile/TheJourney.vue";
+import Team from "@/layouts/mobile/Team.vue";
+import Icon from "../../components/Icons";
 
 export default {
-  name: 'Mobile',
+  name: "Mobile",
   data() {
     return {
       chaptersName: [
-        'The Journey',
-        'How to use it',
-        'Visual content',
-        'Audio content',
-        'Who did it?',
+        "The origin",
+        "Decrypt it",
+        "Visual content",
+        "Audio content",
+        "Who did it?"
       ],
-      currentPage: 1,
+      currentPage: 1
     };
   },
   components: {
@@ -49,7 +49,7 @@ export default {
     HowToUse,
     Journey,
     Team,
-    Icon,
+    Icon
   },
   methods: {
     check(e) {
@@ -60,8 +60,8 @@ export default {
     },
     changeChapter(value) {
       this.currentPage = value;
-    },
-  },
+    }
+  }
 };
 </script>
 
