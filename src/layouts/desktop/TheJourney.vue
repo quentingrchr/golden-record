@@ -10,7 +10,6 @@
         <iframe
           class="probe-model"
           src="https://solarsystem.nasa.gov/gltf_embed/2340"
-          width="100%"
           height="450px"
           frameborder="0"
           :class="probeModelOnScreen ? '' : 'probenotonscreen' "
@@ -80,11 +79,10 @@
 </template>
 
 <script>
-import Header from '../../components/Header';
-import TimeElapsed from '../../components/TimeElapsed.vue';
+import Header from "../../components/Header";
+import TimeElapsed from "../../components/TimeElapsed.vue";
 
 export default {
-
   name: "TheJourney",
   data() {
     return {
@@ -137,7 +135,7 @@ export default {
     .golden-record {
       position: absolute;
       top: 11vh;
-      left: 8vw;
+      left: 14vw;
       transform: scale(0.06);
       transition: all 2s;
     }
@@ -197,7 +195,8 @@ export default {
 
 .probe-model {
   position: absolute;
-  left: 2%;
+  width: 88%;
+  left: 6%;
   top: 1vh;
   z-index: 60;
   height: 500px;
@@ -209,11 +208,14 @@ export default {
 .close_probemodel {
   position: absolute;
   top: 5vh;
-  left: 77vw;
+  left: 85vw;
   width: 30px;
   cursor: pointer;
   z-index: 61;
   opacity: 0.5;
+  @media (max-width: 1100px) {
+    left: 80vw;
+  }
 
   &:hover {
     opacity: 1;
