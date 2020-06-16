@@ -27,6 +27,24 @@
           class="navBar__volumeLogo"
         />
       </div>
+      <div
+        class="navBar__containerFullscreen"
+        @click="toggleScreen"
+        ref="fullscreen"
+      >
+        <img
+          src="../assets/logo/notfullscreen.svg"
+          v-if="isFullScreen"
+          alt="fullscreen-logo"
+          class="navBar__Fullscreen"
+        />
+        <img
+          src="../assets/logo/fullscreen.svg"
+          v-else
+          alt="fullscreen-logo"
+          class="navBar__Fullscreen"
+        />
+      </div>
       <nav class="navBar__timeLine">
         <div
           @click="jumpToOtherChapter(scroll * 5)"
@@ -85,12 +103,22 @@ export default {
   data() {
     return {
       isMute: false,
+      isFullScreen: false,
     };
   },
   methods: {
     toggleMute() {
       this.isMute = !this.isMute;
       this.$refs.audio.muted = !this.$refs.audio.muted;
+    },
+
+    toggleScreen() {
+      this.isFullScreen = !this.isFullScreen;
+      if (this.isFullScreen) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
     },
     jumpToOtherChapter(value) {
       this.$emit("jumpToOtherChapter", value);
@@ -195,6 +223,8 @@ export default {
   width: 2px;
   background-color: $primary-white;
   margin-left: 27px;
+  margin-bottom: 40px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -285,6 +315,28 @@ export default {
     background-color: $primary-white;
     border: 0.1px solid $primary-darkblue;
     transform: translateY(-12px) translatex(-7px) rotate(-45deg);
+  }
+}
+
+.navBar__containerFullscreen {
+  position: fixed;
+  z-index: 2;
+  left: 17px;
+  bottom: 55px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  opacity: 0.9;
+  user-select: none;
+
+  & img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+    opacity: 1;
   }
 }
 </style>
