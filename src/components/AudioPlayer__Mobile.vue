@@ -9,11 +9,6 @@
     <svg class="player__svgNext" @click="nextMusic">
       <use href="#next" />
     </svg>
-    <div class="player__titleContainer">
-      <p class="player__title">
-        {{ name }}
-      </p>
-    </div>
   </div>
 </template>
 
@@ -23,22 +18,22 @@ export default {
   props: {
     source: {
       type: String,
-      required: true,
+      required: true
     },
     name: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
-      playing: true,
+      playing: true
     };
   },
   computed: {
     audio() {
       return this.$refs["audio"];
-    },
+    }
   },
   methods: {
     togglePlay() {
@@ -59,13 +54,13 @@ export default {
     },
     isPlaying() {
       return (this.playing = true);
-    },
+    }
   },
   watch: {
     source: function(newProps, oldProps) {
       this.audio.src = newProps;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -76,14 +71,17 @@ input {
 }
 
 .player {
-  width: 100%;
+  width: 50%;
   height: 60px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+  transform: translateY(-8vh);
   opacity: 0;
+  transition: all 2s;
 
   &--isFocus {
+    transform: translateY(0vh);
     opacity: 1;
   }
 
@@ -96,32 +94,6 @@ input {
     width: 40px;
     height: 40px;
     margin: 0 3vh;
-  }
-
-  &__titleContainer {
-    padding: 0.5vh 0;
-    overflow-x: hidden;
-  }
-
-  &__title {
-    width: 100%;
-    display: inline-block;
-    color: $primary-white;
-    font-size: 0.7rem;
-    user-select: none;
-    text-align: initial;
-  }
-
-  &__soundSettings {
-    margin: 0 4vw 0 2vw;
-    display: flex;
-    align-items: center;
-
-    svg {
-      width: 24px;
-      height: 24px;
-      fill: #ae8908;
-    }
   }
 }
 </style>
