@@ -210,6 +210,7 @@ section {
   grid-template-rows: repeat(auto, 1fr);
   grid-gap: 10px;
   transition: all 2s ease-in;
+  -moz-transition: all 2s ease-in;
 
   filter: contrast(120%);
 
@@ -320,7 +321,7 @@ section {
 
   &.bottom {
     width: 100%;
-    height: 10vh;
+    height: 20vh;
     bottom: 0;
     background: linear-gradient(to top, black, transparent);
     cursor: s-resize;
@@ -328,7 +329,7 @@ section {
 
   &.top {
     width: 100%;
-    height: 10vh;
+    height: 20vh;
     top: 0;
     background: linear-gradient(black, transparent);
   }
@@ -336,14 +337,14 @@ section {
   &.topOverlay {
     z-index: 3;
     width: 100%;
-    height: 10vh;
+    height: 20vh;
     top: 0;
     cursor: n-resize;
   }
 
   &.left {
     height: 100vh;
-    width: 10vw;
+    width: 20vw;
     left: 60px;
     top: 0;
     background: linear-gradient(to right, black, transparent);
@@ -351,7 +352,7 @@ section {
   }
   &.right {
     height: 100vh;
-    width: 10vw;
+    width: 20vw;
     right: 0;
     top: 0;
     background: linear-gradient(to left, black, transparent);
@@ -359,15 +360,15 @@ section {
   }
   &.cornerTopRight {
     z-index: 4;
-    height: 10vh;
-    width: 10vw;
+    height: 20vh;
+    width: 20vw;
     top: 0;
     right: 0;
     cursor: ne-resize;
   }
   &.cornerTopLeft {
     z-index: 4;
-    height: 10vh;
+    height: 20vh;
     width: 20vw;
     top: 0;
     left: 0;
@@ -375,15 +376,15 @@ section {
   }
   &.cornerBottomRight {
     z-index: 2;
-    height: 10vh;
-    width: 10vw;
+    height: 20vh;
+    width: 20vw;
     bottom: 0;
     right: 0;
     cursor: se-resize;
   }
   &.cornerBottomLeft {
     z-index: 2;
-    height: 10vh;
+    height: 20vh;
     width: 20vw;
     bottom: 0;
     left: 0;

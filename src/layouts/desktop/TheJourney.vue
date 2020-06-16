@@ -43,11 +43,11 @@
 </template>
 
 <script>
-import Header from "../../components/Header";
-import TimeElapsed from "../../components/TimeElapsed.vue";
+import Header from '../../components/Header';
+import TimeElapsed from '../../components/TimeElapsed.vue';
 
 export default {
-  name: "TheJourney",
+  name: 'TheJourney',
   components: { Header, TimeElapsed },
 };
 </script>
@@ -64,13 +64,13 @@ export default {
 }
 
 .voyager {
-  width: 80vw;
+  margin-left: $nav-width;
   height: 80vh;
-  margin: auto;
   display: flex;
   justify-content: space-around;
   position: relative;
   z-index: 10;
+  margin: 0 2%;
   h4 {
     color: white;
     margin-top: 18px;
@@ -78,18 +78,20 @@ export default {
     font-size: 20px;
   }
   &_image {
+    width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 8vh;
+    position: relative;
     .probe {
       width: 300px;
       margin-top: 1vh;
     }
     .golden-record {
       position: absolute;
-      top: 17%;
-      left: 9%;
+      top: 5%;
+      left: 21%;
       transform: scale(0.06);
       transition: all 2s;
     }
