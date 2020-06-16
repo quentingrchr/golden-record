@@ -35,10 +35,10 @@
       </div>
       <nav class="navBar__timeLine">
         <div @click="jumpToOtherChapter(scroll * 5)" :class="page === 1 ? 'isSelected' : null">
-          <p>The journey</p>
+          <p>The origin</p>
         </div>
         <div @click="jumpToOtherChapter(scroll * 15)" :class="page === 2 ? 'isSelected' : null">
-          <p>How to use it</p>
+          <p>Decrypt it</p>
         </div>
         <div @click="jumpToOtherChapter(scroll * 25)" :class="page === 3 ? 'isSelected' : null">
           <p>Visual Content</p>
@@ -47,7 +47,7 @@
           <p>Audio Content</p>
         </div>
         <div @click="jumpToOtherChapter(scroll * 45)" :class="page === 5 ? 'isSelected' : null">
-          <p>Who did it ?</p>
+          <p>The team</p>
         </div>
         <div @click="jumpToOtherChapter(scroll * 55)" :class="page === 6 ? 'isSelected' : null">
           <p>Game</p>
@@ -192,6 +192,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 67px;
 
   & div {
     position: relative;

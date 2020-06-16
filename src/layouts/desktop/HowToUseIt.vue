@@ -2,7 +2,7 @@
   <div class="Use">
     <div class="stars"></div>
     <div class="twinkling"></div>
-    <Header class="Use__mainTitle" text="How To Use It" />
+    <Header class="Use__mainTitle" text="Decrypt It" />
     <div class="Use__container">
       <div @click="appear" :class="{ none: disappear }" class="Use__instruction">
         <div class="Use__intruction">
@@ -10,10 +10,7 @@
             On the disc are arranged six symbols allowing the individuals who
             will receive the disc to decipher it
           </h3>
-          <p style="fontWeight : bold">
-            Click transform: translateY(-4vh);
-            anywhere to close this window
-          </p>
+          <p style="fontWeight : bold">Click anywhere to close this window</p>
         </div>
       </div>
       <div class="Use__content">
@@ -151,7 +148,12 @@ export default {
     height: 100vh;
   }
 
+  &__intruction {
+    width: 70vw;
+  }
+
   &__intructionText {
+    line-height: 150%;
     margin-bottom: 10vh;
   }
 
