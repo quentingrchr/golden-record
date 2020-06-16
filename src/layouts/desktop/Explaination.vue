@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="explaination"
-    @click="closeInstruction()"
-    :class="overlayIsOpen ? '' : 'none'"
-  >
+  <div class="explaination" @click="closeInstruction()" :class="overlayIsOpen ? '' : 'none'">
     <h2 class="explaination__title">Hi Stranger ! 👋🏼👽</h2>
     <p class="explaination__text">
       To navigate between the different pages :
@@ -11,11 +7,10 @@
       <span>
         <img class="key-arrows" src="@/assets/img/key-arrows.png" />
       </span>
-      <br />or <em>click on the parts in the navbar</em> on the left
+      <br />or
+      <em>click on the parts in the navbar</em> on the left
     </p>
-    <p class="explaination__headphones">
-      Use headphones for the best experience 🎧
-    </p>
+    <p class="explaination__headphones">Use headphones for the best experience 🎧</p>
     <p class="explaination__pass">Click anywhere to pass the instructions</p>
     <div class="disclaimer">
       <p class="disclaimer__title">Disclaimer</p>
@@ -35,14 +30,14 @@ export default {
   props: {},
   data() {
     return {
-      overlayIsOpen: true,
+      overlayIsOpen: true
     };
   },
   methods: {
     closeInstruction() {
       this.overlayIsOpen = false;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -65,15 +60,14 @@ export default {
   align-items: center;
   flex-direction: column;
   padding: 0px 20vw;
-  padding-top: 20vh;
   & h2 {
-    margin-bottom: 100px;
+    margin-top: 80px;
     font-weight: bold;
   }
   &__text {
     width: 60vw;
     font-size: 25px;
-    margin-bottom: 100px;
+    margin-top: 100px;
     & em {
       font-weight: bold;
     }
@@ -88,13 +82,14 @@ export default {
   }
   &__headphones {
     font-size: 26px;
-    margin-bottom: 70px;
+    margin-top: 60px;
   }
 
   &__pass {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10vh;
+    margin-top: 30px;
   }
 }
 
@@ -102,6 +97,7 @@ export default {
   height: 50px;
   width: 98vw;
   opacity: 0.5;
+  margin-bottom: 20px;
   justify-self: self-end;
 
   &__title {

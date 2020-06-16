@@ -2,16 +2,8 @@
   <section class="visualContent">
     <Header class="visualContent__title" text="Visual content" />
     <div class="visualContent__images" :style="position" ref="imageContainer">
-      <div
-        v-for="(image, index) in imgs"
-        :key="index"
-        @click="isSelected(image)"
-      >
-        <img
-          :src="image"
-          alt="One of the golden record pictures"
-          ref="lazyImage"
-        />
+      <div v-for="(image, index) in imgs" :key="index" @click="isSelected(image)">
+        <img :src="image" alt="One of the golden record pictures" ref="lazyImage" />
       </div>
     </div>
     <div class="visualContent__overlays">
@@ -21,14 +13,12 @@
           <div class="loading-overlay__grid">
             <div v-for="img in fakeImgNumber" :key="img"></div>
           </div>
-          <div
-            class="loading-overlay__infos"
-            :class="hideInfos ? 'isInvisible' : null"
-          >
+          <div class="loading-overlay__infos" :class="hideInfos ? 'isInvisible' : null">
             <h3>
               The Golden Records disk contains 116 images representing humanity
               and earth
             </h3>
+            <p class="loading-overlay__instruction">Click on an image to enlarge it</p>
             <img src="./../../assets/logo/arrows.svg" />
           </div>
         </div>
@@ -92,8 +82,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-import { url } from '@/constants.js';
+import Header from "@/components/Header.vue";
+import { url } from "@/constants.js";
 export default {
   data() {
     return {
@@ -103,10 +93,10 @@ export default {
       isLoading: true,
       hideInfos: false,
       position: {
-        top: '-20%',
-        left: '-20%',
+        top: "-20%",
+        left: "-20%"
       },
-      selectedImage: null,
+      selectedImage: null
     };
   },
   computed: {
@@ -116,20 +106,20 @@ export default {
         fakesImg.push(i);
       }
       return fakesImg;
-    },
+    }
   },
   beforeCreate() {
     console.log(url);
     fetch(`${url}/query/visual_content`, {
-      method: 'GET',
+      method: "GET"
     })
-      .then((response) => response.json())
-      .then((data) => {
-        data.forEach((element) => this.imgs.push(element.src));
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(element => this.imgs.push(element.src));
       });
   },
   components: {
-    Header,
+    Header
   },
   created() {
     setTimeout(() => {
@@ -142,44 +132,44 @@ export default {
   methods: {
     setDirection(value) {
       const imgContainer = this.$refs.imageContainer;
-      if (value === 'down') {
-        this.position.top = '100px';
-      } else if (value === 'right') {
-        this.position.left = '170px';
-      } else if (value === 'left') {
+      if (value === "down") {
+        this.position.top = "100px";
+      } else if (value === "right") {
+        this.position.left = "170px";
+      } else if (value === "left") {
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          'px';
-      } else if (value === 'up') {
+          "px";
+      } else if (value === "up") {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          'px';
-      } else if (value === 'cornerTopRight') {
-        this.position.top = '100px';
+          "px";
+      } else if (value === "cornerTopRight") {
+        this.position.top = "100px";
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          'px';
-      } else if (value === 'cornerTopLeft') {
-        this.position.left = '170px';
-        this.position.top = '100px';
-      } else if (value === 'cornerBottomRight') {
+          "px";
+      } else if (value === "cornerTopLeft") {
+        this.position.left = "170px";
+        this.position.top = "100px";
+      } else if (value === "cornerBottomRight") {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          'px';
+          "px";
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          'px';
-      } else if (value === 'cornerBottomLeft') {
+          "px";
+      } else if (value === "cornerBottomLeft") {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          'px';
-        this.position.left = '170px';
+          "px";
+        this.position.left = "170px";
       }
     },
     cancelDirection() {
       const imgContainer = this.$refs.imageContainer;
-      const top = imgContainer.offsetTop + 'px';
-      const left = imgContainer.offsetLeft + 'px';
+      const top = imgContainer.offsetTop + "px";
+      const left = imgContainer.offsetLeft + "px";
       this.position.top = top;
       this.position.left = left;
     },
@@ -188,8 +178,8 @@ export default {
     },
     closeOverlay() {
       this.selectedImage = null;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -210,6 +200,7 @@ section {
   grid-template-rows: repeat(auto, 1fr);
   grid-gap: 10px;
   transition: all 2s ease-in;
+  -moz-transition: all 2s ease-in;
 
   filter: contrast(120%);
 
@@ -251,11 +242,17 @@ section {
       display: none;
     }
     & h3 {
+      font-size: 25px;
       color: $primary-white;
       width: 50%;
       line-height: 2rem;
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+
+    & .loading-overlay__instruction {
+      font-size: 20px;
       font-weight: bold;
-      letter-spacing: 0.1rem;
     }
 
     & img {
@@ -270,7 +267,7 @@ section {
     z-index: 5;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    background-image: url('./../../assets/img/patchwork.png');
+    background-image: url("./../../assets/img/patchwork.png");
     background-size: 100%;
     opacity: 0.2;
 
@@ -320,7 +317,7 @@ section {
 
   &.bottom {
     width: 100%;
-    height: 10vh;
+    height: 20vh;
     bottom: 0;
     background: linear-gradient(to top, black, transparent);
     cursor: s-resize;
@@ -328,7 +325,7 @@ section {
 
   &.top {
     width: 100%;
-    height: 10vh;
+    height: 20vh;
     top: 0;
     background: linear-gradient(black, transparent);
   }
@@ -336,14 +333,14 @@ section {
   &.topOverlay {
     z-index: 3;
     width: 100%;
-    height: 10vh;
+    height: 20vh;
     top: 0;
     cursor: n-resize;
   }
 
   &.left {
     height: 100vh;
-    width: 10vw;
+    width: 20vw;
     left: 60px;
     top: 0;
     background: linear-gradient(to right, black, transparent);
@@ -351,7 +348,7 @@ section {
   }
   &.right {
     height: 100vh;
-    width: 10vw;
+    width: 20vw;
     right: 0;
     top: 0;
     background: linear-gradient(to left, black, transparent);
@@ -359,15 +356,15 @@ section {
   }
   &.cornerTopRight {
     z-index: 4;
-    height: 10vh;
-    width: 10vw;
+    height: 20vh;
+    width: 20vw;
     top: 0;
     right: 0;
     cursor: ne-resize;
   }
   &.cornerTopLeft {
     z-index: 4;
-    height: 10vh;
+    height: 20vh;
     width: 20vw;
     top: 0;
     left: 0;
@@ -375,15 +372,15 @@ section {
   }
   &.cornerBottomRight {
     z-index: 2;
-    height: 10vh;
-    width: 10vw;
+    height: 20vh;
+    width: 20vw;
     bottom: 0;
     right: 0;
     cursor: se-resize;
   }
   &.cornerBottomLeft {
     z-index: 2;
-    height: 10vh;
+    height: 20vh;
     width: 20vw;
     bottom: 0;
     left: 0;

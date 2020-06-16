@@ -176,13 +176,11 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
-import AudioPlayer from "@/components/AudioPlayer__Desktop.vue";
-import Playlist from "@/components/Playlist__Desktop.vue";
-import scratchSound from "@/assets/sounds/scratch.wav";
-
-import { url } from "@/constants.js";
-
+import Header from '@/components/Header.vue';
+import AudioPlayer from '@/components/AudioPlayer__Desktop.vue';
+import Playlist from '@/components/Playlist__Desktop.vue';
+import scratchSound from '@/assets/sounds/scratch.wav';
+import { url } from '@/constants.js';
 export default {
   components: {
     Header,
@@ -191,26 +189,26 @@ export default {
   },
   data() {
     return {
-      title: "Audio content",
+      title: 'Audio content',
       songIsActive: false,
       discIsActive: false,
       indexOfSelectedPlaylist: null,
-      randomSongName: "",
-      randomSongSrc: "",
+      randomSongName: '',
+      randomSongSrc: '',
       songIsPlaying: false,
       playlists: [
         {
           playlistId: 1,
-          playlistName: "Musics",
+          playlistName: 'Musics',
           playlistInfo1:
-            "Carl Sagan and his team decided to put 27 songs on the golden record.",
+            'Carl Sagan and his team decided to put 27 songs on the golden record.',
           playlistInfo2:
             "The style music who’s the most represented in the disc is the classic style.",
           playlistContent: []
         },
         {
           playlistId: 2,
-          playlistName: "Greetings",
+          playlistName: 'Greetings',
           playlistInfo1:
             "People from the Earth took the opportunity to let a message in their own language.",
           playlistInfo2: "In this disc you can found 55 différents languages.",
@@ -218,7 +216,7 @@ export default {
         },
         {
           playlistId: 3,
-          playlistName: "Noises",
+          playlistName: 'Noises',
           playlistInfo1:
             "After human words, Sagan's Team wanted to include sounds from the planet.",
           playlistInfo2:
@@ -285,7 +283,6 @@ export default {
       };
       this.playlists[index].playlistContent.push(infos);
     };
-
     fetch(`${url}/query/audio_content`, {
       method: "GET"
     })
@@ -293,13 +290,13 @@ export default {
       .then(songs => {
         songs.forEach(song => {
           switch (song.name_playlist) {
-            case "music":
+            case 'music':
               setInfos(0, song.name_audio, song.src_audio);
               break;
-            case "greetings":
+            case 'greetings':
               setInfos(1, song.name_audio, song.src_audio);
               break;
-            case "noises":
+            case 'noises':
               setInfos(2, song.name_audio, song.src_audio);
               break;
             default:
@@ -321,14 +318,12 @@ export default {
     transform: rotate(360deg);
   }
 }
-
 .audio {
   height: 100vh;
   width: 100vw;
   position: relative;
   overflow: hidden;
   z-index: 10;
-
   .stars {
     z-index: -1;
   }
@@ -336,7 +331,6 @@ export default {
     z-index: -1;
   }
 }
-
 .audio__imgContainer {
   position: absolute;
   top: -70vh;
@@ -345,20 +339,16 @@ export default {
   border-radius: 50%;
   transition: top 1s linear;
 }
-
 .audio__imgDisc {
   height: 90vh;
   border-radius: 50%;
 }
-
 .audio__imgContainer--isActivate {
   top: -60vh;
 }
-
 .audio__imgDisc--isAnimate {
   animation: rotating 3.6s linear infinite;
 }
-
 .audio__categoryContainer {
   height: 350px;
   margin: 10vh 5vw;

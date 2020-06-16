@@ -11,7 +11,7 @@
             This is an entire message saying where we are, and how to use this disc 📀.
             <br />Click on one item to discover his signification !
           </h3>
-          <p style="fontWeight : bold">Click anywhere to close this window</p>
+          <p class="pass-instructions">Click anywhere to close this window</p>
         </div>
       </div>
       <div class="Use__content">
@@ -155,9 +155,15 @@ export default {
 
   &__intruction {
     width: 70vw;
+    & .pass-instructions {
+      font-size: 20px;
+      font-weight: bold;
+    }
   }
 
   &__intructionText {
+    font-size: 25px;
+    font-weight: 400;
     line-height: 250%;
     margin-bottom: 10vh;
   }

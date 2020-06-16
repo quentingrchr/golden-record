@@ -1,6 +1,6 @@
 <template>
   <section class="thejourney">
-    <Header text="The Journey" />
+    <Header text="The origin" />
     <div class="voyager">
       <div class="voyager_image">
         <img src="@/assets/img/voyager_journey_mobile.png" alt="voyager prob" />
@@ -35,13 +35,13 @@ export default {
   methods: {
     goNextChapter() {
       this.$emit("changeChapter", 2);
-    },
+    }
   },
   created() {
     window.scrollTo({
-      top: 0,
+      top: 0
     });
-  },
+  }
 };
 </script>
 
