@@ -14,13 +14,13 @@
 
 <script>
 export default {
-  name: 'Polaroid',
+  name: "Polaroid",
 
   components: {},
 
   methods: {
     handleClick(index) {
-      this.$emit('focused', index);
+      this.$emit("focused", index);
     },
   },
   data: function() {
@@ -104,6 +104,7 @@ export default {
     overflow: hidden;
     font-size: 10px;
     transition: height 0.3s ease, width 0.3s ease;
+    color: $primary-darkblue;
   }
 
   &.is-focused {
