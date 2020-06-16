@@ -1,6 +1,6 @@
 <template>
   <div class="audio">
-    <div class="stars"></div>
+    <div class="stars" :class="songIsPlaying ? 'red' : ''"></div>
     <div class="twinkling"></div>
     <svg style="position: absolute; width: 0; height: 0; overflow: hidden">
       <defs>
@@ -143,13 +143,17 @@
     </svg>
 
     <Header :text="title" />
-    <div class="audio__imgContainer" :class="discIsActive ? 'audio__imgContainer--isActivate' : ''">
+    <div
+      class="audio__imgContainer"
+      :class="discIsActive ? 'audio__imgContainer--isActivate' : ''"
+    >
       <img
         ref="Disc"
         class="audio__imgDisc"
-        :class="songIsActive ? 'audio__imgDisc--isAnimate' : ''"
+        :class="songIsPlaying ? 'audio__imgDisc--isAnimate' : ''"
         src="../../assets/img/song_of_earth.png"
         alt="disc song of earth"
+        @click="songIsPlaying ? playScratch() : null"
       />
     </div>
     <div class="audio__categoryContainer">
@@ -164,6 +168,8 @@
       />
     </div>
     <AudioPlayer
+      @play-event="handlePlay"
+      @pause-event="handlePause"
       :class="songIsActive ? 'player--isFocus' : ''"
       :source="songSrcSelected"
       :name="songNameSelected"
@@ -176,13 +182,15 @@
 import Header from "@/components/Header.vue";
 import AudioPlayer from "@/components/AudioPlayer__Desktop.vue";
 import Playlist from "@/components/Playlist__Desktop.vue";
+import scratchSound from "@/assets/sounds/scratch.wav";
+
 import { url } from "@/constants.js";
 
 export default {
   components: {
     Header,
     AudioPlayer,
-    Playlist
+    Playlist,
   },
   data() {
     return {
@@ -192,6 +200,7 @@ export default {
       indexOfSelectedPlaylist: null,
       randomSongName: "",
       randomSongSrc: "",
+      songIsPlaying: false,
       playlists: [
         {
           playlistId: 1,
@@ -200,7 +209,7 @@ export default {
             "Carl Sagan and his team decided to put 27 songs on the golden record.",
           playlistInfo2:
             "The style music who’s the most represented in the disc is the classic style.",
-          playlistContent: []
+          playlistContent: [],
         },
         {
           playlistId: 2,
@@ -208,7 +217,7 @@ export default {
           playlistInfo1:
             "People from the Earth took the opportunity to let a message in their own language.",
           playlistInfo2: "In this disc you can found 55 différents languages.",
-          playlistContent: []
+          playlistContent: [],
         },
         {
           playlistId: 3,
@@ -217,9 +226,9 @@ export default {
             "After human words, Sagan and his associates wanted to include sounds from the planet.",
           playlistInfo2:
             "you can hear sounds of animals, sounds of nature and sounds of city life.",
-          playlistContent: []
-        }
-      ]
+          playlistContent: [],
+        },
+      ],
     };
   },
   computed: {
@@ -234,16 +243,32 @@ export default {
     },
     audio() {
       return this.$refs["audio"];
-    }
+    },
   },
   methods: {
+    playScratch() {
+      let audio = new Audio(scratchSound);
+      audio.volume = 1;
+      audio.play();
+    },
+    handlePlay() {
+      this.songIsPlaying = true;
+    },
+    handlePause() {
+      this.songIsPlaying = false;
+    },
     updatePlaylist(index) {
       this.indexOfSelectedPlaylist = index;
       this.songIsActive = true;
+      this.songIsPlaying = true;
       this.discIsActive = true;
       this.selectRandomSong();
     },
     selectRandomSong() {
+      // Run with emit "next-song"
+      if (!this.songIsPlaying) {
+        this.songIsPlaying = true;
+      }
       let randomIndex = Math.floor(
         Math.random() * this.playlistSelected.playlistContent.length
       );
@@ -253,23 +278,23 @@ export default {
       this.randomSongName = this.playlistSelected.playlistContent[
         randomIndex
       ].name_audio;
-    }
+    },
   },
   beforeCreate() {
     const setInfos = (index, nameSong, srcSong) => {
       let infos = {
         name_audio: nameSong,
-        src_audio: srcSong
+        src_audio: srcSong,
       };
       this.playlists[index].playlistContent.push(infos);
     };
 
     fetch(`${url}/query/audio_content`, {
-      method: "GET"
+      method: "GET",
     })
-      .then(response => response.json())
-      .then(songs => {
-        songs.forEach(song => {
+      .then((response) => response.json())
+      .then((songs) => {
+        songs.forEach((song) => {
           switch (song.name_playlist) {
             case "music":
               setInfos(0, song.name_audio, song.src_audio);
@@ -285,8 +310,8 @@ export default {
           }
         });
       })
-      .catch(error => console.log(error));
-  }
+      .catch((error) => console.log(error));
+  },
 };
 </script>
 
@@ -334,7 +359,7 @@ export default {
 }
 
 .audio__imgDisc--isAnimate {
-  animation: rotating 3.6s 1s linear infinite;
+  animation: rotating 3.6s linear infinite;
 }
 
 .audio__categoryContainer {
