@@ -1,5 +1,6 @@
 <template>
-  <div
+  <a
+    href="#"
     class="playlist"
     @mouseenter="showOverlay"
     @mouseleave="resetOverlay"
@@ -8,7 +9,9 @@
     <h3>{{ playlistName }}</h3>
     <button>
       <svg>
-        <use :href="hovering ? '#' + playlistName + 'Reverse' : '#' + playlistName" />
+        <use
+          :href="hovering ? '#' + playlistName + 'Reverse' : '#' + playlistName"
+        />
       </svg>
     </button>
     <div class="paylist__infoContainer">
@@ -20,7 +23,7 @@
         to play a random song of {{ playlistName }}'s playlist.
       </h4>
     </div>
-  </div>
+  </a>
 </template>
 
 <script>
@@ -29,29 +32,31 @@ export default {
   props: {
     playlistName: {
       type: String,
-      Required: true
+      Required: true,
     },
     playlistInfo1: {
       type: String,
-      Required: true
+      Required: true,
     },
     playlistInfo2: {
       type: String,
-      Required: true
-    }
+      Required: true,
+    },
   },
   data() {
     return {
-      isHover: false
+      isHover: false,
     };
   },
   computed: {
     hovering() {
       return this.isHover;
-    }
+    },
   },
   methods: {
-    selectPlaylist() {
+    selectPlaylist(e) {
+      e.preventDefault();
+      console.log("ok");
       this.$emit("select-playlist");
     },
     showOverlay() {
@@ -59,13 +64,14 @@ export default {
     },
     resetOverlay() {
       this.isHover = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .playlist {
+  text-decoration: none;
   width: 20vw;
   padding: 3vh;
   display: flex;
@@ -105,38 +111,40 @@ h3 {
     font-size: 24px;
   }
 }
-
-button {
-  height: 100px;
-  margin: 3vh 0;
-  border: none;
-  outline: none;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  background-color: transparent;
-  overflow: hidden;
-  cursor: pointer;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    padding: 50%;
+.playlist {
+  button {
+    height: 100px;
+    margin: 3vh 0;
+    border: none;
+    outline: none;
     border-radius: 50%;
-    background-color: $primary-white;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1);
-    transition: transform 1s, opacity 1s;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: transparent;
+    overflow: hidden;
+    cursor: pointer;
 
-  &:active::before {
-    transition: 0s;
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(0);
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      padding: 50%;
+      border-radius: 50%;
+      background-color: $primary-white;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 1s, opacity 1s;
+    }
+  }
+  &:active {
+    button::before {
+      transition: 0s;
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(0);
+    }
   }
 
   @include media_mobile {
