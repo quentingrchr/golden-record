@@ -1,33 +1,5 @@
 <template>
   <section class="thejourney">
-    <div
-      class="explaination"
-      @click="closeInstruction()"
-      :class="overlayIsOpen ? '' : 'none'"
-    >
-      <h2 class="explaination__title">Hi Stranger ! 👋🏼👽</h2>
-      <p class="explaination__text">
-        To navigate between the different pages :
-        <em>use keyboard arrows</em>
-        <span>
-          <img class="key-arrows" src="@/assets/img/key-arrows.png" />
-        </span>
-        <br />or <em>click on the parts in the navbar</em> on the left
-      </p>
-      <p class="explaination__headphones">
-        Use headphones for the best experience 🎧
-      </p>
-      <p class="explaination__pass">Click anywhere to pass the instructions</p>
-      <div class="disclaimer">
-        <p class="disclaimer__title">Disclaimer</p>
-        <p class="disclaimer__text">
-          This site has been created for educational purposes as part of the
-          Bachelor's curriculum of the HETIC school. The contents presented have
-          not been the subject of a request for right of use. This site will in
-          no case be used for commercial purposes and will not be published.
-        </p>
-      </div>
-    </div>
     <Header class="thejourney_title" text="The origin" />
     <div class="stars"></div>
     <div class="twinkling"></div>
@@ -77,16 +49,6 @@ import TimeElapsed from "../../components/TimeElapsed.vue";
 export default {
   name: "TheJourney",
   components: { Header, TimeElapsed },
-  data() {
-    return {
-      overlayIsOpen: true,
-    };
-  },
-  methods: {
-    closeInstruction() {
-      this.overlayIsOpen = false;
-    },
-  },
 };
 </script>
 
@@ -99,72 +61,6 @@ export default {
 .thejourney {
   height: 100vh;
   width: 100vw;
-}
-
-.explaination {
-  z-index: 100;
-  width: 100vw;
-  height: 100vh;
-  background: rgba($color: #000000, $alpha: 0.95);
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0px 20vw;
-  & h2 {
-    margin-bottom: 100px;
-    font-weight: bold;
-  }
-  &__text {
-    width: 60vw;
-    font-size: 25px;
-    margin-bottom: 100px;
-    & em {
-      font-weight: bold;
-    }
-    & span {
-      margin: 0px 10px;
-    }
-  }
-  & .key-arrows {
-    width: 50px;
-    height: auto;
-    transform: translateY(8px);
-  }
-  &__headphones {
-    font-size: 25px;
-    margin-bottom: 70px;
-  }
-
-  &__pass {
-    font-size: 15px;
-    font-weight: bold;
-  }
-}
-
-.disclaimer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: absolute;
-  width: 98vw;
-  top: 93vh;
-  left: 1%;
-  opacity: 0.5;
-  &__title {
-    font-size: 12px;
-    margin-bottom: 0px;
-    text-transform: uppercase;
-  }
-  &__text {
-    font-size: 12px;
-    text-align: left;
-    margin: auto;
-  }
-}
-
-.none {
-  display: none;
 }
 
 .voyager {
