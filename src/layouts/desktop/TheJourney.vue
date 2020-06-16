@@ -5,7 +5,7 @@
       @click="closeInstruction()"
       :class="overlayIsOpen ? '' : 'none'"
     >
-      <h2 class="explaination__title">Hi Stranger ! 👋🏼</h2>
+      <h2 class="explaination__title">Hi Stranger ! 👋🏼👽</h2>
       <p class="explaination__text">
         To navigate between the different pages :
         <em>scroll</em>
@@ -63,8 +63,8 @@
           the diversity of life and culture on Earth.
         </p>
         <p>
-          How inteligent life would be able to use this disk ? Scroll down to
-          discover how scientifics tried to answer that question
+          How inteligent life would be able to use this disk ? Press the right
+          arrow → to discover how scientifics tried to answer that question
         </p>
         <Time-elapsed class="time" />
       </div>
