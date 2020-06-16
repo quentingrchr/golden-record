@@ -108,7 +108,7 @@ export default {
 
   &__color {
     &:hover {
-      stroke: white;
+      stroke: $primary-white;
       filter: drop-shadow(0px 6px 2px rgba($primary-darkblue, 0.7));
     }
   }
@@ -201,15 +201,11 @@ export default {
       width: 60px;
       height: 60px;
     }
-
-    &--hovering {
-      stroke: $primary-white;
-      filter: drop-shadow(12px 12px 6px rgba(0, 0, 0, 1));
-    }
   }
 
   .ellipseHover{
-    stroke: white;
+    stroke: $primary-white;
+    filter: drop-shadow(0px 6px 2px rgba($primary-darkblue, 0.7));
     cursor: pointer;
   }
 } 
