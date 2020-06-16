@@ -2,21 +2,15 @@
   <div class="Use">
     <div class="stars"></div>
     <div class="twinkling"></div>
-    <Header class="Use__mainTitle" text="How To Use It" />
+    <Header class="Use__mainTitle" text="Decrypt It" />
     <div class="Use__container">
-      <div
-        @click="appear"
-        :class="{ none: disappear }"
-        class="Use__instruction"
-      >
+      <div @click="appear" :class="{ none: disappear }" class="Use__instruction">
         <div class="Use__intruction">
           <h3 class="Use__intructionText">
             On the disc are arranged six symbols allowing the individuals who
             will receive the disc to decipher it
           </h3>
-          <p style="fontWeight : bold">
-            Click anywhere to close this window
-          </p>
+          <p style="fontWeight : bold">Click anywhere to close this window</p>
         </div>
       </div>
       <div class="Use__content">
@@ -28,11 +22,7 @@
           nameIcon="#record"
         >
           <template v-slot:right>
-            <ContentSign
-              class="Use__text"
-              :contentRight="false"
-              title="Radial circle"
-            />
+            <ContentSign class="Use__text" :contentRight="false" title="Radial circle" />
           </template>
         </Sign>
         <Sign
@@ -58,10 +48,7 @@
           </template>
         </Sign>
       </div>
-      <CircleIcon 
-        :hoveringItem="hovering" 
-        @hover="createHover"
-      />
+      <CircleIcon :hoveringItem="hovering" @hover="createHover" />
       <div class="Use__content">
         <Sign
           :index="4"
@@ -105,29 +92,29 @@
 import Sign from "@/components/Sign.vue";
 import ContentSign from "@/components/ContentSign.vue";
 import Header from "@/components/Header.vue";
-import CircleIcon from "@/components/CircleIcon.vue"
+import CircleIcon from "@/components/CircleIcon.vue";
 
 export default {
   name: "UseIt",
   data: () => ({
     hovering: 0,
     isClosed: false,
-    disappear: false,
+    disappear: false
   }),
   components: {
     Sign,
     CircleIcon,
     ContentSign,
-    Header,
+    Header
   },
   methods: {
     appear() {
       this.disappear = true;
     },
-    createHover(e){
-      this.hovering = e
+    createHover(e) {
+      this.hovering = e;
     }
-  },
+  }
 };
 </script>
 
@@ -161,7 +148,12 @@ export default {
     height: 100vh;
   }
 
+  &__intruction {
+    width: 70vw;
+  }
+
   &__intructionText {
+    line-height: 150%;
     margin-bottom: 10vh;
   }
 
