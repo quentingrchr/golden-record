@@ -8,18 +8,16 @@
     <h3>{{ playlistName }}</h3>
     <button>
       <svg>
-        <use
-          :href="hovering ? '#' + playlistName + 'Reverse' : '#' + playlistName"
-        />
+        <use :href="hovering ? '#' + playlistName + 'Reverse' : '#' + playlistName" />
       </svg>
     </button>
     <div class="paylist__infoContainer">
-      <p v-if="!hovering">{{ playlistInfo1 }}</p>
-      <p v-if="!hovering">{{ playlistInfo2 }}</p>
-      <h4 v-else class="playlist__textOverlay">
+      <!-- <p v-if="!hovering">{{ playlistInfo1 }}</p>
+      <p v-if="!hovering">{{ playlistInfo2 }}</p>-->
+      <h4 class="playlist__textOverlay">
         <span>CLICK</span>
         <br />
-        on the playlist to play a random song of {{ playlistName }}'s playlist.
+        to play a random song of {{ playlistName }}'s playlist.
       </h4>
     </div>
   </div>
@@ -31,26 +29,26 @@ export default {
   props: {
     playlistName: {
       type: String,
-      Required: true,
+      Required: true
     },
     playlistInfo1: {
       type: String,
-      Required: true,
+      Required: true
     },
     playlistInfo2: {
       type: String,
-      Required: true,
-    },
+      Required: true
+    }
   },
   data() {
     return {
-      isHover: false,
+      isHover: false
     };
   },
   computed: {
     hovering() {
       return this.isHover;
-    },
+    }
   },
   methods: {
     selectPlaylist() {
@@ -61,8 +59,8 @@ export default {
     },
     resetOverlay() {
       this.isHover = false;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -81,7 +79,7 @@ export default {
   &:hover {
     border-radius: 8px;
     background-color: $primary-white;
-    opacity: 0.6;
+    opacity: 0.9;
 
     h3,
     h4 {
@@ -179,7 +177,7 @@ p {
 
   span {
     font-weight: 900;
-    font-size: 24px;
+    font-size: 28px;
   }
 }
 </style>
