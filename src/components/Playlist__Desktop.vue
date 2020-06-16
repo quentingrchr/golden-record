@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: "Playlist",
+  name: 'Playlist',
   props: {
     playlistName: {
       type: String,
@@ -54,10 +54,15 @@ export default {
     },
   },
   methods: {
+
+    selectPlaylist() {
+      this.$emit('select-playlist');
+
     selectPlaylist(e) {
       e.preventDefault();
       console.log("ok");
       this.$emit("select-playlist");
+
     },
     showOverlay() {
       this.isHover = true;
@@ -111,20 +116,21 @@ h3 {
     font-size: 24px;
   }
 }
-.playlist {
-  button {
-    height: 100px;
-    margin: 3vh 0;
-    border: none;
-    outline: none;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    background-color: transparent;
-    overflow: hidden;
-    cursor: pointer;
+
+
+button {
+  width: 100%;
+  height: 100%;
+  margin: 3vh 0;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
 
     &::before {
       content: "";
@@ -148,7 +154,7 @@ h3 {
   }
 
   @include media_mobile {
-    height: 72px;
+    // height: 72px;
   }
 }
 
