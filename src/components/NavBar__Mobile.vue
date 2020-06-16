@@ -85,7 +85,7 @@ export default {
   left: 0;
   background-color: $mobile-background;
   width: 100%;
-  height: 90vh;
+  height: 90%;
   transform: translateX(100%);
   transition: transform 0.3s;
 
