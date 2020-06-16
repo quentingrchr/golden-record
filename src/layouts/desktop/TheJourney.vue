@@ -80,10 +80,11 @@
 </template>
 
 <script>
-import Header from "../../components/Header";
-import TimeElapsed from "../../components/TimeElapsed.vue";
+import Header from '../../components/Header';
+import TimeElapsed from '../../components/TimeElapsed.vue';
 
 export default {
+
   name: "TheJourney",
   data() {
     return {
@@ -111,9 +112,8 @@ export default {
 }
 
 .voyager {
-  width: 80vw;
+  margin-left: $nav-width;
   height: 80vh;
-  margin: auto;
   display: flex;
   justify-content: space-around;
   position: relative;
@@ -125,6 +125,7 @@ export default {
     margin-bottom: 20px;
   }
   &_image {
+    width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
