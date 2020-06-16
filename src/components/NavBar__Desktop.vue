@@ -114,8 +114,12 @@ export default {
 
     toggleScreen() {
       this.isFullScreen = !this.isFullScreen;
+
       if (this.isFullScreen) {
-        document.documentElement.requestFullscreen();
+        document.documentElement.requestFullscreen() ||
+          document.documentElement.webkitRequestFullscreen() ||
+          document.documentElement.mozRequestFullScreen() ||
+          alert("Full screen is not supported on your browser");
       } else {
         document.exitFullscreen();
       }
@@ -134,6 +138,7 @@ export default {
       let audio = new Audio(glitch2);
       this.playSound(audio, 0.01);
     },
+
     playSound(audio, volume) {
       audio.volume = volume;
       audio.play();
@@ -141,8 +146,11 @@ export default {
   },
   mounted() {
     this.$refs.audio.volume = 0.2;
-
-    console.log("mounted");
+    // if (document.requestFullscreen !== undefined) {
+    //   this.isFullScreenSupported = true;
+    // } else {
+    //   this.isFullScreenSupported = false;
+    // }
   },
   props: {
     page: {
@@ -165,6 +173,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.d-none {
+  display: none !important;
+}
 .navBar__timeLineContainer {
   position: fixed;
   z-index: 70;
