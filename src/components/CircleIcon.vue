@@ -5,7 +5,7 @@
           @mouseover="addHovering(3)"
           @mouseleave="addHovering(0)"
           :class="{'ellipseHover' : hoveringItem === 3}"
-          class="ellipse__pulsar"
+          class="ellipse__pulsar ellipse__color"
           href="#pulsar"
         />
         <BaseIcon
@@ -13,7 +13,7 @@
           @mouseover="addHovering(4)"
           @mouseleave="addHovering(0)"
           :class="{'ellipseHover' : hoveringItem === 4}"
-          class="ellipse__waveForm"
+          class="ellipse__waveForm ellipse__color"
           href="#waves"
         />
         <BaseIcon
@@ -21,7 +21,7 @@
           @mouseover="addHovering(6)"
           @mouseleave="addHovering(0)"
           :class="{'ellipseHover' : hoveringItem === 6}"
-          class="ellipse__hydrogen Use__color"
+          class="ellipse__hydrogen ellipse__color"
           href="#hydrogen"
         />
         <BaseIcon
@@ -29,7 +29,7 @@
           @mouseover="addHovering(5)"
           @mouseleave="addHovering(0)"
           :class="{'ellipseHover' : hoveringItem === 5}"
-          class="ellipse__frames"
+          class="ellipse__frames ellipse__color"
           href="#frames"
         />
         <BaseIcon
@@ -37,7 +37,7 @@
           @mouseover="addHovering(2)"
           @mouseleave="addHovering(0)"
           :class="{'ellipseHover' : hoveringItem === 2}"
-          class="ellipse__elevation"
+          class="ellipse__elevation ellipse__color"
           href="#elevation"
         />
         <BaseIcon
@@ -45,7 +45,7 @@
           @mouseover="addHovering(1)"
           @mouseleave="addHovering(0)"
           :class="{'ellipseHover' : hoveringItem === 1}"
-          class="ellipse__record"
+          class="ellipse__record ellipse__color"
           href="#record"
         />
   </div>
