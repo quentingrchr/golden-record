@@ -210,6 +210,7 @@ export default {
 
   .ellipseHover{
     stroke: white;
+    cursor: pointer;
   }
 } 
 </style>
