@@ -7,9 +7,15 @@
 </template>
 
 <script>
+import { ascii } from "./constants";
 export default {
   computed: {},
   components: {},
+  mounted() {
+    let doc = document.querySelector("html");
+    let com = document.createComment(ascii);
+    doc.prepend(com);
+  },
 };
 </script>
 
