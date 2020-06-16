@@ -1,6 +1,10 @@
 <template>
   <section class="thejourney">
-    <div class="explaination" @click="closeInstruction()" :class="overlayIsOpen ? '' : 'none'">
+    <div
+      class="explaination"
+      @click="closeInstruction()"
+      :class="overlayIsOpen ? '' : 'none'"
+    >
       <h2 class="explaination__title">Hi Stranger ! 👋🏼👽</h2>
       <p class="explaination__text">
         To navigate between the different pages :
@@ -8,10 +12,11 @@
         <span>
           <img class="key-arrows" src="@/assets/img/key-arrows.png" />
         </span>
-        <br />or
-        <em>click on the parts in the navbar</em> on the left
+        <br />or <em>click on the parts in the navbar</em> on the left
       </p>
-      <p class="explaination__headphones">Use headphones for the best experience 🎧</p>
+      <p class="explaination__headphones">
+        Use headphones for the best experience 🎧
+      </p>
       <p class="explaination__pass">Click anywhere to pass the instructions</p>
       <div class="disclaimer">
         <p class="disclaimer__title">Disclaimer</p>
@@ -29,7 +34,11 @@
     <div class="voyager">
       <div class="voyager_image">
         <h4>Voyager probe and the Golden Record</h4>
-        <img class="probe" src="@/assets/img/voyager_journey.png" alt="voyager prob" />
+        <img
+          class="probe"
+          src="@/assets/img/voyager_journey.png"
+          alt="voyager prob"
+        />
         <img
           class="golden-record"
           :class="overlayIsOpen ? '' : 'zoom-in-record'"
@@ -45,13 +54,14 @@
             extraterrestrials.
           </p>
           <p>
-            It is carried by a phonograph record, a gold-plated copper disk called
-            “The Golden Record“ containing what’s supposed to be the portray of
-            the diversity of life and culture on Earth.
+            It is carried by a phonograph record, a gold-plated copper disk
+            called “The Golden Record“ containing what’s supposed to be the
+            portray of the diversity of life and culture on Earth.
           </p>
           <p>
-            How intelligent life would be able to use this disk ? Press the right
-            arrow → to discover how scientists tried to answer this question
+            How intelligent life would be able to use this disk ? Press the
+            right arrow → to discover how scientists tried to answer this
+            question
           </p>
         </div>
         <Time-elapsed class="time" />
@@ -69,14 +79,14 @@ export default {
   components: { Header, TimeElapsed },
   data() {
     return {
-      overlayIsOpen: true
+      overlayIsOpen: true,
     };
   },
   methods: {
     closeInstruction() {
       this.overlayIsOpen = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
