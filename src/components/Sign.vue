@@ -17,49 +17,49 @@ export default {
   props: {
     nameIcon: {
       type: String,
-      required: true,
+      required: true
     },
     index: {
       type: Number,
       required: true,
-      default: 0,
-    },
+      default: 0
+    }
   },
   components: {
     BaseIcon,
-    Icon,
+    Icon
   },
   data: () => ({
     modalContent: {
       text1: "",
       text2: "",
       Title: "",
-      symbol: "nameIcon",
-    },
+      symbol: "nameIcon"
+    }
   }),
   methods: {
     openModal() {
       EventBus.$emit("open", {
         component: "BaseModal",
-        content: this.modalContent,
+        content: this.modalContent
       });
-    },
+    }
   },
   created() {
     fetch(`${url}/query/how_use`, {
-      method: "GET",
+      method: "GET"
     })
-      .then((Response) => Response.json())
-      .then((data) => {
+      .then(Response => Response.json())
+      .then(data => {
         this.modalContent = {
           text1: data[this.index].text_1,
           text2: data[this.index].text_2,
           title: data[this.index].title,
-          symbol: data[this.index].symbol,
+          symbol: data[this.index].symbol
         };
       })
-      .catch((error) => console.log(error));
-  },
+      .catch(error => console.log(error));
+  }
 };
 </script>
 

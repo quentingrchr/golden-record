@@ -1,26 +1,20 @@
 <template>
   <section class="thejourney">
-    <div
-      class="explaination"
-      @click="closeInstruction()"
-      :class="overlayIsOpen ? '' : 'none'"
-    >
+    <div class="explaination" @click="closeInstruction()" :class="overlayIsOpen ? '' : 'none'">
       <h2 class="explaination__title">Hi Stranger ! 👋🏼👽</h2>
       <p class="explaination__text">
         To navigate between the different pages :
         <em>scroll</em>
         <span>
-          <img
-            class="icon-scroll-down"
-            src="@/assets/img/icon-scroll-down.png"
-          />
+          <img class="icon-scroll-down" src="@/assets/img/icon-scroll-down.png" />
         </span>
         or
         <em>use keyboard arrows</em>
         <span>
           <img class="key-arrows" src="@/assets/img/key-arrows.png" />
         </span>
-        or <em>click on the parts in the navbar</em> on the left
+        or
+        <em>click on the parts in the navbar</em> on the left
       </p>
       <p class="explaination__pass">Click anywhere to pass the instructions</p>
       <div class="disclaimer">
@@ -39,11 +33,7 @@
     <div class="voyager">
       <div class="voyager_image">
         <h4>Voyager probe and the Golden Record</h4>
-        <img
-          class="probe"
-          src="@/assets/img/voyager_journey.png"
-          alt="voyager prob"
-        />
+        <img class="probe" src="@/assets/img/voyager_journey.png" alt="voyager prob" />
         <img
           class="golden-record"
           :class="overlayIsOpen ? '' : 'zoom-in-record'"
@@ -52,20 +42,22 @@
         />
       </div>
       <div class="voyager_description">
-        <p>
-          NASA placed an amibitous message aboard Voyager 1 and 2, a kind of
-          time capsule, intended to communicate a story of our world to
-          extraterrestrials.
-        </p>
-        <p>
-          It is carried by a phonograph record, a gold-plated copper disk called
-          “The Golden Record“ containing what’s supposed to be the portray of
-          the diversity of life and culture on Earth.
-        </p>
-        <p>
-          How inteligent life would be able to use this disk ? Press the right
-          arrow → to discover how scientifics tried to answer that question
-        </p>
+        <div>
+          <p>
+            NASA placed an amibitous message aboard Voyager 1 and 2, a kind of
+            time capsule, intended to communicate a story of our world to
+            extraterrestrials.
+          </p>
+          <p>
+            It is carried by a phonograph record, a gold-plated copper disk called
+            “The Golden Record“ containing what’s supposed to be the portray of
+            the diversity of life and culture on Earth.
+          </p>
+          <p>
+            How inteligent life would be able to use this disk ? Press the right
+            arrow → to discover how scientifics tried to answer that question
+          </p>
+        </div>
         <Time-elapsed class="time" />
       </div>
     </div>
@@ -81,14 +73,14 @@ export default {
   components: { Header, TimeElapsed },
   data() {
     return {
-      overlayIsOpen: true,
+      overlayIsOpen: true
     };
   },
   methods: {
     closeInstruction() {
       this.overlayIsOpen = false;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -196,6 +188,8 @@ export default {
   &_description {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 100px;
   }
   p {
     width: 500px;

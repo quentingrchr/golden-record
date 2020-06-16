@@ -12,8 +12,8 @@
     </div>
     <section class="useIt__explications">
       <article>
-        <BaseIcon class="article__logo article__record" href="record" />
-        <h3>Radial Circle</h3>
+        <BaseIcon class="article__logo article__record" :href="symbol" />
+        <h3></h3>
         <p>
           This circle represents the disc. Around this circle is defined a
           number in binary = 100 110,000 110 ,010 ,000 ,000 ,000 ,000 ,000 ,000
@@ -89,26 +89,39 @@
 </template>
 
 <script>
-import BaseIcon from '@/components/BaseIcon';
-import Icons from '@/components/Icons';
-import Header from '@/components/Header.vue';
-import Cta from '@/components/MobileCta.vue';
+import EventBus from "@/EventBus";
+import BaseIcon from "@/components/BaseIcon";
+import Icons from "@/components/Icons";
+import Header from "@/components/Header.vue";
+import Cta from "@/components/MobileCta.vue";
+import { url } from "@/constants.js";
+
 export default {
+  props: {
+    nameIcon: {
+      type: String,
+      required: true
+    }
+  },
   components: { BaseIcon, Icons, Header, Cta },
   data: () => {
     return {
-      step: 'step0',
+      step: "step0",
+      symbol: "record",
+      title: "",
+      text1: "",
+      text2: ""
     };
   },
   methods: {
     goNextChapter() {
-      this.$emit('changeChapter', 3);
+      this.$emit("changeChapter", 3);
     },
     isScrolling() {
       let isScrollingDown = window.scrollY > this.prevScrollY;
       let scrollPosition = window.innerHeight + window.scrollY;
 
-      document.querySelectorAll('article').forEach((e, i) => {
+      document.querySelectorAll("article").forEach((e, i) => {
         let initPos = e.offsetTop;
         if (scrollPosition > e.offsetTop + 150) {
           scrollPosition > e.offsetTop + 150 && e.offsetTop > window.scrollY;
@@ -116,17 +129,30 @@ export default {
         }
       });
       this.prevScrollY = window.scrollY;
-    },
+    }
   },
   created() {
     window.scrollTo({
-      top: 0,
+      top: 0
     });
-    document.addEventListener('scroll', this.isScrolling);
+    document.addEventListener("scroll", this.isScrolling);
+    fetch(`${url}/query/how_use`, {
+      method: "GET"
+    })
+      .then(Response => Response.json())
+      .then(data => {
+        this.modalContent = {
+          text1: data[this.index].text_1,
+          text2: data[this.index].text_2,
+          title: data[this.index].title,
+          symbol: data[this.index].symbol
+        };
+      })
+      .catch(error => console.log(error));
   },
   destroyed() {
-    window.removeEventListener('scroll', this.isScrolling);
-  },
+    window.removeEventListener("scroll", this.isScrolling);
+  }
 };
 </script>
 
