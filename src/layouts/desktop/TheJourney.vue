@@ -6,7 +6,10 @@
     <div class="voyager">
       <div class="voyager_image">
         <h4>Voyager probe and the Golden Record</h4>
-        <h4 class="model-explaination">↓ Click on the probe image to see the 3d model ↓</h4>
+        <h4 class="model-explaination">
+          ↓ Click on the probe
+          <em>🛰</em> image to see the 3d model ↓
+        </h4>
         <div :class="probeModelOnScreen ? '' : 'probenotonscreen' ">
           <iframe
             title="A 3D model"
@@ -260,5 +263,8 @@ export default {
 .model-explaination {
   font-weight: bold;
   font-size: 14px;
+  & em {
+    font-size: 18px;
+  }
 }
 </style>
