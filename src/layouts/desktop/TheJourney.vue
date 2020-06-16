@@ -162,7 +162,7 @@ export default {
   height: 80vh;
   margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   position: relative;
   z-index: 10;
   h4 {
@@ -175,14 +175,15 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 8vh;
     .probe {
       width: 300px;
-      margin-top: 16px;
+      margin-top: 1vh;
     }
     .golden-record {
       position: absolute;
-      top: 38px;
-      left: 20px;
+      top: 17%;
+      left: 9%;
       transform: scale(0.06);
       transition: all 2s;
     }
@@ -194,7 +195,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin-bottom: 100px;
+    margin-bottom: 10vh;
   }
   p {
     width: 500px;
