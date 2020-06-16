@@ -6,11 +6,7 @@
     <div class="voyager">
       <div class="voyager_image">
         <h4>Voyager probe and the Golden Record</h4>
-        <img
-          class="probe"
-          src="@/assets/img/voyager_journey.png"
-          alt="voyager prob"
-        />
+        <img class="probe" src="@/assets/img/voyager_journey.png" alt="voyager prob" />
         <img
           class="golden-record"
           :class="overlayIsOpen ? '' : 'zoom-in-record'"
@@ -48,7 +44,7 @@ import TimeElapsed from "../../components/TimeElapsed.vue";
 
 export default {
   name: "TheJourney",
-  components: { Header, TimeElapsed },
+  components: { Header, TimeElapsed }
 };
 </script>
 
@@ -88,8 +84,8 @@ export default {
     }
     .golden-record {
       position: absolute;
-      top: 17%;
-      left: 9%;
+      top: 11.9vh;
+      left: 7.9vw;
       transform: scale(0.06);
       transition: all 2s;
     }
@@ -117,7 +113,7 @@ export default {
     transform: scale(0.06);
   }
   to {
-    transform: scale(1) rotateZ(0deg) translateY(200px) translateX(20px);
+    transform: scale(1) rotateZ(0deg) translateY(28vh) translateX(1vw);
   }
 }
 
