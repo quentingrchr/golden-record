@@ -1,5 +1,6 @@
 <template>
   <main @wheel="wheel" class="desktopViews-container">
+    <Explaination v-show="currentPage === 1" />
     <transition
       :name="pageMoveNext ? 'slide-forward' : 'slide-backward'"
       appear
@@ -23,16 +24,18 @@
 </template>
 
 <script>
-import EventBus from '@/EventBus';
-import NavBar from '@/components/NavBar__Desktop.vue';
-import DiscoverImg from '@/layouts/desktop/DiscoverImg.vue';
-import DiscoverSound from '@/layouts/desktop/DiscoverSound.vue';
-import HowToUseIt from '@/layouts/desktop/HowToUseIt.vue';
-import Team from '@/layouts/desktop/Team.vue';
-import TheJourney from '@/layouts/desktop/TheJourney.vue';
-import Game from '@/layouts/desktop/Game.vue';
-import Icon from '@/components/Icons.vue';
-import ModalsManager from '@/components/modals/ModalsManager.vue';
+import EventBus from "@/EventBus";
+import NavBar from "@/components/NavBar__Desktop.vue";
+import DiscoverImg from "@/layouts/desktop/DiscoverImg.vue";
+import DiscoverSound from "@/layouts/desktop/DiscoverSound.vue";
+import Explaination from "@/layouts/desktop/Explaination.vue";
+
+import HowToUseIt from "@/layouts/desktop/HowToUseIt.vue";
+import Team from "@/layouts/desktop/Team.vue";
+import TheJourney from "@/layouts/desktop/TheJourney.vue";
+import Game from "@/layouts/desktop/Game.vue";
+import Icon from "@/components/Icons.vue";
+import ModalsManager from "@/components/modals/ModalsManager.vue";
 
 export default {
   components: {
@@ -45,6 +48,7 @@ export default {
     Icon,
     ModalsManager,
     Game,
+    Explaination,
   },
   data() {
     return {
@@ -87,7 +91,7 @@ export default {
   methods: {
     wheel(e) {
       e.preventDefault();
-      EventBus.$emit('close');
+      EventBus.$emit("close");
       if (this.wheelCount >= 0 && this.wheelCount <= this.scrollSpeed * 50) {
         if (e.deltaY < 0 || e.deltaX < 0) {
           this.wheelCount--;
@@ -111,7 +115,7 @@ export default {
       this.wheelCount = value;
     },
     changeChapterWithKeyboard(e) {
-      if (e.key === 'ArrowRight') {
+      if (e.key === "ArrowRight") {
         if (this.wheelCount < this.scrollSpeed * 10) {
           this.changeChapter(this.scrollSpeed * 15);
         } else if (
@@ -135,7 +139,7 @@ export default {
         ) {
           this.changeChapter(this.scrollSpeed * 55);
         }
-      } else if (e.key === 'ArrowLeft') {
+      } else if (e.key === "ArrowLeft") {
         if (
           this.wheelCount >= this.scrollSpeed * 50 &&
           this.wheelCount < this.scrollSpeed * 60
@@ -166,10 +170,10 @@ export default {
     },
   },
   created() {
-    window.addEventListener('keydown', this.changeChapterWithKeyboard);
+    window.addEventListener("keydown", this.changeChapterWithKeyboard);
   },
   destroyed() {
-    window.removeEventListener('keydown', this.changeChapterWithKeyboard);
+    window.removeEventListener("keydown", this.changeChapterWithKeyboard);
   },
 };
 </script>
