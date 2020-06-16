@@ -36,18 +36,18 @@ export default {
   props: {
     source: {
       type: String,
-      required: true
+      required: true,
     },
     name: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       playing: true,
       muted: false,
-      volume: 0
+      volume: 0,
     };
   },
   computed: {
@@ -56,15 +56,21 @@ export default {
     },
     slider() {
       return this.$refs["slider"];
-    }
+    },
   },
   methods: {
     togglePlay() {
       if (!this.audio.paused && !this.audio.ended) {
+        ///
+        this.$emit("pause-event");
+        ///
         this.audio.pause();
         this.playing = false;
       } else {
         this.audio.play();
+        //
+        this.$emit("play-event");
+        //
         this.playing = true;
       }
     },
@@ -88,17 +94,18 @@ export default {
       this.$emit("next-music");
     },
     isFinish() {
+      this.$emit("pause-event");
       return (this.playing = false);
     },
     isPlaying() {
       return (this.playing = true);
-    }
+    },
   },
   watch: {
     source: function(newProps, oldProps) {
       this.audio.src = newProps;
-    }
-  }
+    },
+  },
 };
 </script>
 
