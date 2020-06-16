@@ -4,18 +4,14 @@
       <h2 class="explaination__title">Hi Stranger ! 👋🏼👽</h2>
       <p class="explaination__text">
         To navigate between the different pages :
-        <em>scroll</em>
-        <span>
-          <img class="icon-scroll-down" src="@/assets/img/icon-scroll-down.png" />
-        </span>
-        or
         <em>use keyboard arrows</em>
         <span>
           <img class="key-arrows" src="@/assets/img/key-arrows.png" />
         </span>
-        or
+        <br />or
         <em>click on the parts in the navbar</em> on the left
       </p>
+      <p class="explaination__headphones">Use headphones for the best experience 🎧</p>
       <p class="explaination__pass">Click anywhere to pass the instructions</p>
       <div class="disclaimer">
         <p class="disclaimer__title">Disclaimer</p>
@@ -27,7 +23,7 @@
         </p>
       </div>
     </div>
-    <Header class="thejourney_title" text="The journey" />
+    <Header class="thejourney_title" text="The origin" />
     <div class="stars"></div>
     <div class="twinkling"></div>
     <div class="voyager">
@@ -54,8 +50,8 @@
             the diversity of life and culture on Earth.
           </p>
           <p>
-            How inteligent life would be able to use this disk ? Press the right
-            arrow → to discover how scientifics tried to answer that question
+            How intelligent life would be able to use this disk ? Press the right
+            arrow → to discover how scientists tried to answer this question
           </p>
         </div>
         <Time-elapsed class="time" />
@@ -104,12 +100,14 @@ export default {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 0px 10vw;
+  padding: 0px 20vw;
   & h2 {
     margin-bottom: 100px;
     font-weight: bold;
   }
   &__text {
+    width: 60vw;
+    font-size: 25px;
     margin-bottom: 100px;
     & em {
       font-weight: bold;
@@ -121,8 +119,15 @@ export default {
   & .key-arrows {
     width: 50px;
     height: auto;
+    transform: translateY(8px);
   }
+  &__headphones {
+    font-size: 25px;
+    margin-bottom: 70px;
+  }
+
   &__pass {
+    font-size: 15px;
     font-weight: bold;
   }
 }
@@ -133,7 +138,7 @@ export default {
   justify-content: center;
   position: absolute;
   width: 98vw;
-  top: 90vh;
+  top: 93vh;
   left: 1%;
   opacity: 0.5;
   &__title {
