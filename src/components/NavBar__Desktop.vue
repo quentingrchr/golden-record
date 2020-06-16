@@ -8,11 +8,7 @@
     <div class="navBar__timeLineContainer">
       <div>
         <router-link to="/">
-          <img
-            src="../assets/logo/earth-logo.png"
-            alt="earth-logo"
-            class="navBar__earthLogo"
-          />
+          <img src="../assets/logo/earth-logo.png" alt="earth-logo" class="navBar__earthLogo" />
         </router-link>
       </div>
       <div
@@ -21,17 +17,9 @@
         :class="isMute ? 'isMute' : null"
         v-show="page !== 4"
       >
-        <img
-          src="../assets/logo/volume-logo.png"
-          alt="volume-logo"
-          class="navBar__volumeLogo"
-        />
+        <img src="../assets/logo/volume-logo.png" alt="volume-logo" class="navBar__volumeLogo" />
       </div>
-      <div
-        class="navBar__containerFullscreen"
-        @click="toggleScreen"
-        ref="fullscreen"
-      >
+      <div class="navBar__containerFullscreen" @click="toggleScreen" ref="fullscreen">
         <img
           src="../assets/logo/notfullscreen.svg"
           v-if="isFullScreen"
@@ -46,51 +34,27 @@
         />
       </div>
       <nav class="navBar__timeLine">
-        <div
-          @click="jumpToOtherChapter(scroll * 5)"
-          :class="page === 1 ? 'isSelected' : null"
-        >
+        <div @click="jumpToOtherChapter(scroll * 5)" :class="page === 1 ? 'isSelected' : null">
           <p>The journey</p>
         </div>
-        <div
-          @click="jumpToOtherChapter(scroll * 15)"
-          :class="page === 2 ? 'isSelected' : null"
-        >
+        <div @click="jumpToOtherChapter(scroll * 15)" :class="page === 2 ? 'isSelected' : null">
           <p>How to use it</p>
         </div>
-        <div
-          @click="jumpToOtherChapter(scroll * 25)"
-          :class="page === 3 ? 'isSelected' : null"
-        >
+        <div @click="jumpToOtherChapter(scroll * 25)" :class="page === 3 ? 'isSelected' : null">
           <p>Visual Content</p>
         </div>
-        <div
-          @click="jumpToOtherChapter(scroll * 35)"
-          :class="page === 4 ? 'isSelected' : null"
-        >
+        <div @click="jumpToOtherChapter(scroll * 35)" :class="page === 4 ? 'isSelected' : null">
           <p>Audio Content</p>
         </div>
-        <div
-          @click="jumpToOtherChapter(scroll * 45)"
-          :class="page === 5 ? 'isSelected' : null"
-        >
+        <div @click="jumpToOtherChapter(scroll * 45)" :class="page === 5 ? 'isSelected' : null">
           <p>Who did it ?</p>
         </div>
-        <div
-          @click="jumpToOtherChapter(scroll * 55)"
-          :class="page === 6 ? 'isSelected' : null"
-        >
+        <div @click="jumpToOtherChapter(scroll * 55)" :class="page === 6 ? 'isSelected' : null">
           <p>Game</p>
         </div>
       </nav>
     </div>
-    <audio
-      class="experience__song"
-      ref="audio"
-      autoplay
-      loop
-      src="../assets/music/drone.mp3"
-    ></audio>
+    <audio class="experience__song" ref="audio" autoplay loop src="../assets/music/drone.mp3"></audio>
   </div>
 </template>
 
@@ -103,7 +67,7 @@ export default {
   data() {
     return {
       isMute: false,
-      isFullScreen: false,
+      isFullScreen: false
     };
   },
   methods: {
@@ -137,7 +101,7 @@ export default {
     playSound(audio, volume) {
       audio.volume = volume;
       audio.play();
-    },
+    }
   },
   mounted() {
     this.$refs.audio.volume = 0.2;
@@ -146,11 +110,11 @@ export default {
   },
   props: {
     page: {
-      type: Number,
+      type: Number
     },
     scroll: {
-      type: Number,
-    },
+      type: Number
+    }
   },
   watch: {
     page: function(newProp) {
@@ -159,8 +123,8 @@ export default {
       } else {
         this.$refs.audio.volume = 0.2;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -223,7 +187,7 @@ export default {
   width: 2px;
   background-color: $primary-white;
   margin-left: 27px;
-  margin-bottom: 40px;
+  margin-bottom: 8vh;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
