@@ -172,8 +172,8 @@
 
 <script>
 import Header from "@/components/Header.vue";
-import AudioPlayer from "@/components/AudioPlayer.vue";
-import Playlist from "@/components/Playlist.vue";
+import AudioPlayer from "@/components/AudioPlayer__Desktop.vue";
+import Playlist from "@/components/Playlist__Desktop.vue";
 import { url } from "@/constants.js";
 
 export default {
