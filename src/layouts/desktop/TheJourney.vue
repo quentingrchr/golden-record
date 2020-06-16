@@ -69,9 +69,9 @@ export default {
   z-index: 10;
   h4 {
     color: white;
-    margin-top: 18px;
     text-align: left;
-    font-size: 20px;
+    font-size: 16px;
+    margin-bottom: 10px;
   }
   &_image {
     display: flex;
@@ -84,8 +84,8 @@ export default {
     }
     .golden-record {
       position: absolute;
-      top: 11.9vh;
-      left: 7.9vw;
+      top: 11vh;
+      left: 7vw;
       transform: scale(0.06);
       transition: all 2s;
     }

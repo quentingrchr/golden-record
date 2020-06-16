@@ -1,15 +1,10 @@
 <template>
-  <figure
-    @click="handleClick(index)"
-    :class="isFocused ? 'is-focused' : ''"
-    class="pola"
-  >
+  <figure @click="handleClick(index)" :class="isFocused ? 'is-focused' : ''" class="pola">
     <figcaption class="pola__caption">{{ caption }}</figcaption>
     <div class="pola__img">
       <img :src="imgUrl" alt="team member" />
       <video autoplay loop muted :src="vidUrl" type="video/mp4">
-        <source :src="vidUrl" type="video/mp4" />
-        Your browser doesn't support the video player
+        <source :src="vidUrl" type="video/mp4" />Your browser doesn't support the video player
       </video>
     </div>
   </figure>
@@ -24,33 +19,33 @@ export default {
     handleClick(index) {
       this.$emit("focused", index);
       this.$emit("play-click", index);
-    },
+    }
   },
   data: function() {
     return {
       zIndex: {
-        zIndex: 11,
-      },
+        zIndex: 11
+      }
     };
   },
   props: {
     isFocused: {
-      type: Boolean,
+      type: Boolean
     },
     imgUrl: {
       required: true,
-      type: String,
+      type: String
     },
     vidUrl: {
-      type: String,
+      type: String
     },
     caption: {
-      type: String,
+      type: String
     },
     index: {
-      type: Number,
-    },
-  },
+      type: Number
+    }
+  }
 };
 </script>
 
@@ -59,6 +54,7 @@ export default {
   &:not(:hover) {
     &:not(.focusMode) {
       & .pola__caption {
+        font-family: Product sans;
         opacity: 0.7;
       }
       img {
@@ -69,6 +65,7 @@ export default {
 
   &.is-focused {
     & .pola__caption {
+      font-family: Product sans;
       opacity: 1;
     }
     img {
@@ -106,6 +103,7 @@ export default {
     }
   }
   &__caption {
+    font-family: Product sans;
     margin-bottom: 24px;
     font-size: 18px;
     font-weight: 700;
