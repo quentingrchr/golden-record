@@ -12,10 +12,7 @@
     </div>
     <section class="useIt__explications">
       <article>
-        <BaseIcon
-          class="article__logo article__record"
-          :href="content[0].symbol"
-        />
+        <BaseIcon class="article__logo article__record" :href="content[0].symbol" />
         <h3>{{ content[0].title }}</h3>
         <p>
           {{ content[0].text_1 }}
@@ -25,62 +22,53 @@
         </p>
       </article>
       <article>
-        <BaseIcon class="article__logo article__elevation" href="elevation" />
-        <h3>Side View</h3>
+        <BaseIcon class="article__logo article__record" :href="content[1].symbol" />
+        <h3>{{ content[1].title }}</h3>
         <p>
-          This symbol is a representation of the disc in side view with the read
-          head placed on it. It is accompanied by another number in binary
-          which, converted to decimal, equal to 4 587 025 072 128.
+          {{ content[1].text_1 }}
           <br />
-          <br />This number multiplied by 0.7 nanoseconds gives the result of 3
-          229 seconds or 54.22 minutes: the total time of article__logoing.
+          <br />
+          {{ content[1].text_2 }}
         </p>
       </article>
       <article>
-        <BaseIcon class="article__logo article__pulsar" href="pulsar" />
-        <h3>Pulsar Map</h3>
+        <BaseIcon class="article__logo article__record" :href="content[2].symbol" />
+        <h3>{{ content[2].title }}</h3>
         <p>
-          This symbol represents a pulsar map.
+          {{ content[2].text_1 }}
           <br />
-          <br />This map helping to explain our position in the universe by
-          triangulating the distance from Earth to the 14 neutron stars closest
-          to it.
+          <br />
+          {{ content[2].text_2 }}
         </p>
       </article>
       <article>
-        <BaseIcon class="article__logo article__hydrogen" href="hydrogen" />
-        <h3>The Key</h3>
+        <BaseIcon class="article__logo article__record" :href="content[3].symbol" />
+        <h3>{{ content[3].title }}</h3>
         <p>
-          This shema represents the tilting of the spin and the nucleus of
-          hydrogen.
+          {{ content[3].text_1 }}
           <br />
-          <br />During this switchover, the hydrogen atom emits a wave of 0.7
-          nanoseconds.
           <br />
-          <br />This figure is the key to deciphering the rest of the schemes.
+          {{ content[3].text_2 }}
         </p>
       </article>
       <article>
-        <BaseIcon class="article__logo article__frames" href="frames" />
-        <h3>The Images</h3>
+        <BaseIcon class="article__logo article__record" :href="content[4].symbol" />
+        <h3>{{ content[4].title }}</h3>
         <p>
-          This symbol follows the wave symbol. It is accompanied by a binary
-          number: 512.
+          {{ content[4].text_1 }}
           <br />
-          <br />It should be understood that each section of data completes one
-          of the 512 scan lines which form a complete image.
+          <br />
+          {{ content[4].text_2 }}
         </p>
       </article>
       <article>
-        <BaseIcon class="article__logo article__waveForm" href="waves" />
-        <h3>The Waves</h3>
+        <BaseIcon class="article__logo article__record" :href="content[5].symbol" />
+        <h3>{{ content[5].title }}</h3>
         <p>
-          This symbol shows when the waveform data should be broken down.
-          Accompanied by a binary number : 11,845,632, if we multiply this
-          binary number with our key figure : 0.7 nanoseconds, this gives us
-          0.008 seconds.
+          {{ content[5].text_1 }}
           <br />
-          <br />This means that each section takes 0.008 seconds to play.
+          <br />
+          {{ content[5].text_2 }}
         </p>
       </article>
       <Cta nextChapter="Visual content" @goNextChapter="goNextChapter" />
@@ -100,55 +88,55 @@ export default {
   props: {
     nameIcon: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   components: { BaseIcon, Icons, Header, Cta },
   data: () => {
     return {
       content: [
         {
-          title: "",
-          symbol: "",
-          text_1: "",
-          text_2: "",
+          title: "Loading ...",
+          symbol: "...",
+          text_1: "...",
+          text_2: "..."
         },
         {
           title: "",
           symbole: "",
           text_1: "",
-          text_2: "",
+          text_2: ""
         },
         {
           title: "",
           symbole: "",
           text_1: "",
-          text_2: "",
+          text_2: ""
         },
         {
           title: "",
           symbole: "",
           text_1: "",
-          text_2: "",
+          text_2: ""
         },
         {
           title: "",
           symbole: "",
           text_1: "",
-          text_2: "",
+          text_2: ""
         },
         {
           title: "",
           symbole: "",
           text_1: "",
-          text_2: "",
-        },
+          text_2: ""
+        }
       ],
       step: "step0",
       symbol: "record",
       title: "",
       text1: "",
-      text2: "",
+      text2: ""
     };
   },
   methods: {
@@ -167,35 +155,35 @@ export default {
         }
       });
       this.prevScrollY = window.scrollY;
-    },
+    }
   },
   created() {
     window.scrollTo({
-      top: 0,
+      top: 0
     });
     document.addEventListener("scroll", this.isScrolling);
     fetch(`${url}/query/how_use`, {
-      method: "GET",
+      method: "GET"
     })
-      .then((Response) => Response.json())
-      .then((rawData) => {
+      .then(Response => Response.json())
+      .then(rawData => {
         this.content = [];
 
         console.log(rawData);
-        rawData.forEach((el) => {
+        rawData.forEach(el => {
           this.content.push({
             text_1: el.text_1,
             text_2: el.text_2,
             title: el.title,
-            symbol: el.symbol,
+            symbol: el.symbol
           });
         });
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   },
   destroyed() {
     window.removeEventListener("scroll", this.isScrolling);
-  },
+  }
 };
 </script>
 
