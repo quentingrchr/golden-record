@@ -1,6 +1,6 @@
 <template>
   <section class="thejourney">
-    <Header class="thejourney_title" text="The origin" />
+    <Header class="thejourney_title" :text="title" />
     <div class="stars"></div>
     <div class="twinkling"></div>
     <div class="voyager">
@@ -97,20 +97,21 @@
 <script>
 import Header from "../../components/Header";
 import TimeElapsed from "../../components/TimeElapsed.vue";
-
+import { titles } from "../../constants";
 export default {
   name: "TheJourney",
   data() {
     return {
-      probeModelOnScreen: false
+      title: titles.page1,
+      probeModelOnScreen: false,
     };
   },
   methods: {
     toggle3d() {
       this.probeModelOnScreen = !this.probeModelOnScreen;
-    }
+    },
   },
-  components: { Header, TimeElapsed }
+  components: { Header, TimeElapsed },
 };
 </script>
 

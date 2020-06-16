@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import { titles } from "../constants";
 import Icons from "@/components/Icons.vue";
 import BaseIcon from "@/components/BaseIcon.vue";
 export default {

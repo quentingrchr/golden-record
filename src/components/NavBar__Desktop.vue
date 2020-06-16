@@ -50,37 +50,37 @@
           @click="jumpToOtherChapter(scroll * 5)"
           :class="page === 1 ? 'isSelected' : null"
         >
-          <p>The origin</p>
+          <p>{{ titles.page1 }}</p>
         </div>
         <div
           @click="jumpToOtherChapter(scroll * 15)"
           :class="page === 2 ? 'isSelected' : null"
         >
-          <p>Decrypt it</p>
+          <p>{{ titles.page2 }}</p>
         </div>
         <div
           @click="jumpToOtherChapter(scroll * 25)"
           :class="page === 3 ? 'isSelected' : null"
         >
-          <p>Visual Content</p>
+          <p>{{ titles.page3 }}</p>
         </div>
         <div
           @click="jumpToOtherChapter(scroll * 35)"
           :class="page === 4 ? 'isSelected' : null"
         >
-          <p>Audio Content</p>
+          <p>{{ titles.page4 }}</p>
         </div>
         <div
           @click="jumpToOtherChapter(scroll * 45)"
           :class="page === 5 ? 'isSelected' : null"
         >
-          <p>The team</p>
+          <p>{{ titles.page5 }}</p>
         </div>
         <div
           @click="jumpToOtherChapter(scroll * 55)"
           :class="page === 6 ? 'isSelected' : null"
         >
-          <p>Game</p>
+          <p>{{ titles.page6 }}</p>
         </div>
       </nav>
     </div>
@@ -95,13 +95,15 @@
 </template>
 
 <script>
-import EventBus from '@/EventBus';
-import glitch1 from '../assets/sounds/glitch_1.mp3';
-import glitch2 from '../assets/sounds/glitch_2.mp3';
+import EventBus from "@/EventBus";
+import glitch1 from "../assets/sounds/glitch_1.mp3";
+import glitch2 from "../assets/sounds/glitch_2.mp3";
+import { titles } from "../constants";
 
 export default {
   data() {
     return {
+      titles: titles,
       isMute: false,
       isFullScreen: false,
     };
@@ -119,16 +121,16 @@ export default {
         document.documentElement.requestFullscreen() ||
           document.documentElement.webkitRequestFullscreen() ||
           document.documentElement.mozRequestFullScreen() ||
-          alert('Full screen is not supported on your browser');
+          alert("Full screen is not supported on your browser");
       } else {
         document.exitFullscreen();
       }
     },
     jumpToOtherChapter(value) {
-      this.$emit('jumpToOtherChapter', value);
+      this.$emit("jumpToOtherChapter", value);
     },
     closeOverlay() {
-      EventBus.$emit('close');
+      EventBus.$emit("close");
     },
     handleEnterNav() {
       let audio = new Audio(glitch1);
@@ -184,7 +186,7 @@ export default {
   top: 0;
   left: 0;
   height: 100vh;
-  width: $nav-width;
+  width: 60px;
   background-color: rgba($color: #000000, $alpha: 1);
   transition: width 0.3s;
   overflow: hidden;
@@ -283,7 +285,7 @@ export default {
   z-index: 700;
   position: fixed;
   top: 15px;
-  left: 14px;
+  left: 15px;
   width: 30px;
   height: 30px;
   cursor: pointer;
@@ -319,7 +321,7 @@ export default {
   }
 
   &.isMute::after {
-    content: '';
+    content: "";
     position: absolute;
     display: block;
     width: 30px;
