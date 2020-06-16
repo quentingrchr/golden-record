@@ -189,7 +189,7 @@ export default {
   }
 
   .hovering {
-    stroke: white;
+    stroke: $primary-white;
     filter: drop-shadow(0px 6px 2px rgba($primary-darkblue, 0.7));
     cursor: pointer;
   }
