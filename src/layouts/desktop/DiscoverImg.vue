@@ -1,9 +1,17 @@
 <template>
   <section class="visualContent">
-    <Header class="visualContent__title" text="Visual content" />
+    <Header class="visualContent__title" :text="title" />
     <div class="visualContent__images" :style="position" ref="imageContainer">
-      <div v-for="(image, index) in imgs" :key="index" @click="isSelected(image)">
-        <img :src="image" alt="One of the golden record pictures" ref="lazyImage" />
+      <div
+        v-for="(image, index) in imgs"
+        :key="index"
+        @click="isSelected(image)"
+      >
+        <img
+          :src="image"
+          alt="One of the golden record pictures"
+          ref="lazyImage"
+        />
       </div>
     </div>
     <div class="visualContent__overlays">
@@ -13,12 +21,17 @@
           <div class="loading-overlay__grid">
             <div v-for="img in fakeImgNumber" :key="img"></div>
           </div>
-          <div class="loading-overlay__infos" :class="hideInfos ? 'isInvisible' : null">
+          <div
+            class="loading-overlay__infos"
+            :class="hideInfos ? 'isInvisible' : null"
+          >
             <h3>
-              The Golden Records disk contains 116 images representing humanity
-              and earth
+              The Golden Records disk contains 116 images supposed to represent
+              the Humanity
             </h3>
-            <p class="loading-overlay__instruction">Click on an image to enlarge it</p>
+            <p class="loading-overlay__instruction">
+              Click on an image to enlarge it
+            </p>
             <img src="./../../assets/logo/arrows.svg" />
           </div>
         </div>
@@ -82,11 +95,13 @@
 </template>
 
 <script>
+import { titles } from "../../constants";
 import Header from "@/components/Header.vue";
 import { url } from "@/constants.js";
 export default {
   data() {
     return {
+      title: titles.page3,
       imgs: [],
       loadingDuration: 6500,
       moveDirection: null,
@@ -94,9 +109,9 @@ export default {
       hideInfos: false,
       position: {
         top: "-20%",
-        left: "-20%"
+        left: "-20%",
       },
-      selectedImage: null
+      selectedImage: null,
     };
   },
   computed: {
@@ -106,20 +121,20 @@ export default {
         fakesImg.push(i);
       }
       return fakesImg;
-    }
+    },
   },
   beforeCreate() {
     console.log(url);
     fetch(`${url}/query/visual_content`, {
-      method: "GET"
+      method: "GET",
     })
-      .then(response => response.json())
-      .then(data => {
-        data.forEach(element => this.imgs.push(element.src));
+      .then((response) => response.json())
+      .then((data) => {
+        data.forEach((element) => this.imgs.push(element.src));
       });
   },
   components: {
-    Header
+    Header,
   },
   created() {
     setTimeout(() => {
@@ -178,8 +193,8 @@ export default {
     },
     closeOverlay() {
       this.selectedImage = null;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -1,19 +1,21 @@
 <template>
   <section class="thejourney">
-    <Header class="thejourney_title" text="The origin" />
+    <Header class="thejourney_title" :text="title" />
     <div class="stars"></div>
     <div class="twinkling"></div>
     <div class="voyager">
       <div class="voyager_image">
         <h4>Voyager probe and the Golden Record</h4>
-        <h4 class="model-explaination">↓ Click on the probe image to see the 3d model ↓</h4>
+        <h4 class="model-explaination">
+          ↓ Click on the probe image to see the 3d model ↓
+        </h4>
         <iframe
           class="probe-model"
           src="https://solarsystem.nasa.gov/gltf_embed/2340"
           width="100%"
           height="450px"
           frameborder="0"
-          :class="probeModelOnScreen ? '' : 'probenotonscreen' "
+          :class="probeModelOnScreen ? '' : 'probenotonscreen'"
         />
         <svg
           viewBox="0 0 496 496"
@@ -22,7 +24,13 @@
           class="close_probemodel"
           @click="toggle3d"
         >
-          <circle cx="248" cy="248" r="229.5" stroke="#14131C" stroke-width="37" />
+          <circle
+            cx="248"
+            cy="248"
+            r="229.5"
+            stroke="#14131C"
+            stroke-width="37"
+          />
           <mask id="path-2-inside-1" fill="white">
             <path
               fill-rule="evenodd"
@@ -80,23 +88,24 @@
 </template>
 
 <script>
-import Header from '../../components/Header';
-import TimeElapsed from '../../components/TimeElapsed.vue';
+import Header from "../../components/Header";
+import TimeElapsed from "../../components/TimeElapsed.vue";
+import { titles } from "../../constants";
 
 export default {
-
   name: "TheJourney",
   data() {
     return {
-      probeModelOnScreen: false
+      title: titles.page1,
+      probeModelOnScreen: false,
     };
   },
   methods: {
     toggle3d() {
       this.probeModelOnScreen = !this.probeModelOnScreen;
-    }
+    },
   },
-  components: { Header, TimeElapsed }
+  components: { Header, TimeElapsed },
 };
 </script>
 
