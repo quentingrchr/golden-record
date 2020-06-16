@@ -144,7 +144,6 @@ header.header {
   widows: 100vw;
   background-color: rgba(0, 0, 0, 0.646);
   position: absolute;
-
   z-index: 10;
 
   &.active {

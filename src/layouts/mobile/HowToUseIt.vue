@@ -12,16 +12,16 @@
     </div>
     <section class="useIt__explications">
       <article>
-        <BaseIcon class="article__logo article__record" :href="symbol" />
-        <h3></h3>
+        <BaseIcon
+          class="article__logo article__record"
+          :href="content[0].symbol"
+        />
+        <h3>{{ content[0].title }}</h3>
         <p>
-          This circle represents the disc. Around this circle is defined a
-          number in binary = 100 110,000 110 ,010 ,000 ,000 ,000 ,000 ,000 ,000
-          ,000, which corresponds to 5,113,380,864 in decimal.
+          {{ content[0].text_1 }}
           <br />
-          <br />Multiplying this binary number by 0.7 nanoseconds gives 3.6
-          seconds as a result. 3.6 seconds is the rotation time of the disc on a
-          lap.
+          <br />
+          {{ content[0].text_2 }}
         </p>
       </article>
       <article>
@@ -100,17 +100,55 @@ export default {
   props: {
     nameIcon: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   components: { BaseIcon, Icons, Header, Cta },
   data: () => {
     return {
+      content: [
+        {
+          title: "",
+          symbol: "",
+          text_1: "",
+          text_2: "",
+        },
+        {
+          title: "",
+          symbole: "",
+          text_1: "",
+          text_2: "",
+        },
+        {
+          title: "",
+          symbole: "",
+          text_1: "",
+          text_2: "",
+        },
+        {
+          title: "",
+          symbole: "",
+          text_1: "",
+          text_2: "",
+        },
+        {
+          title: "",
+          symbole: "",
+          text_1: "",
+          text_2: "",
+        },
+        {
+          title: "",
+          symbole: "",
+          text_1: "",
+          text_2: "",
+        },
+      ],
       step: "step0",
       symbol: "record",
       title: "",
       text1: "",
-      text2: ""
+      text2: "",
     };
   },
   methods: {
@@ -129,30 +167,35 @@ export default {
         }
       });
       this.prevScrollY = window.scrollY;
-    }
+    },
   },
   created() {
     window.scrollTo({
-      top: 0
+      top: 0,
     });
     document.addEventListener("scroll", this.isScrolling);
     fetch(`${url}/query/how_use`, {
-      method: "GET"
+      method: "GET",
     })
-      .then(Response => Response.json())
-      .then(data => {
-        this.modalContent = {
-          text1: data[this.index].text_1,
-          text2: data[this.index].text_2,
-          title: data[this.index].title,
-          symbol: data[this.index].symbol
-        };
+      .then((Response) => Response.json())
+      .then((rawData) => {
+        this.content = [];
+
+        console.log(rawData);
+        rawData.forEach((el) => {
+          this.content.push({
+            text_1: el.text_1,
+            text_2: el.text_2,
+            title: el.title,
+            symbol: el.symbol,
+          });
+        });
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   },
   destroyed() {
     window.removeEventListener("scroll", this.isScrolling);
-  }
+  },
 };
 </script>
 
