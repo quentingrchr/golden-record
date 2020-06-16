@@ -79,7 +79,7 @@ export default {
   transition: all 0.2s;
 
   &:hover {
-    border-radius: 3px;
+    border-radius: 8px;
     background-color: $primary-white;
     opacity: 0.6;
 
@@ -90,7 +90,7 @@ export default {
   }
 
   &--isFocus {
-    border-radius: 3px;
+    border-radius: 8px;
     background-color: $primary-white;
     opacity: 0.6;
     transform: translate(1vw, 2vh);
@@ -110,7 +110,7 @@ h3 {
 
 button {
   height: 100px;
-  margin: 5vh 0;
+  margin: 3vh 0;
   border: none;
   outline: none;
   border-radius: 50%;
@@ -129,7 +129,7 @@ button {
     left: 50%;
     padding: 50%;
     border-radius: 50%;
-    background-color: $primary-darkblue;
+    background-color: $primary-white;
     opacity: 0;
     transform: translate(-50%, -50%) scale(1);
     transition: transform 1s, opacity 1s;
@@ -158,6 +158,7 @@ svg {
 
 p {
   font-size: 1rem;
+  user-select: none;
 
   &:first-child {
     margin-bottom: 2vh;

@@ -25,7 +25,9 @@
       />
     </div>
     <div class="player__titleContainer">
-      <p class="player__title" :class="playing ? 'player__title--isAppear' : ''">{{ name }}</p>
+      <p class="player__title">
+        {{ name }}
+      </p>
     </div>
   </div>
 </template>
@@ -36,18 +38,18 @@ export default {
   props: {
     source: {
       type: String,
-      required: true
+      required: true,
     },
     name: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       playing: true,
       muted: false,
-      volume: 0
+      volume: 0,
     };
   },
   computed: {
@@ -56,7 +58,7 @@ export default {
     },
     slider() {
       return this.$refs["slider"];
-    }
+    },
   },
   methods: {
     togglePlay() {
@@ -92,13 +94,13 @@ export default {
     },
     isPlaying() {
       return (this.playing = true);
-    }
+    },
   },
   watch: {
     source: function(newProps, oldProps) {
       this.audio.src = newProps;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -139,7 +141,6 @@ input {
 
 .player__titleContainer {
   padding: 0.5vh 0;
-  border-radius: 3px;
   overflow-x: hidden;
 }
 
@@ -148,6 +149,7 @@ input {
   display: inline-block;
   color: $primary-white;
   font-size: 1rem;
+  user-select: none;
   text-align: initial;
 
   @include media_tablet {
@@ -181,6 +183,7 @@ input {
   border: none;
   border-radius: 10px;
   background-color: $primary-white;
+  opacity: 0.6;
 }
 
 /* slider for mozz */
@@ -189,6 +192,7 @@ input {
   border: none;
   border-radius: 10px;
   background-color: $primary-white;
+  opacity: 0.6;
 }
 
 /* cursor for chrome*/
