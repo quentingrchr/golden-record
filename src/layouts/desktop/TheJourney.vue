@@ -1,5 +1,5 @@
 <template>
-  <section class="thejourney">
+  <section>
     <Header class="thejourney_title" :text="title" />
     <div class="stars"></div>
     <div class="twinkling"></div>
@@ -73,7 +73,7 @@
         />
         <img
           class="golden-record"
-          :class="overlayIsOpen ? '' : 'zoom-in-record'"
+          :class="!instructionIsClosed ? '' : 'zoom-in-record'"
           src="@/assets/img/golden-record.png"
           alt="voyager prob"
         />
@@ -97,18 +97,27 @@ import { titles } from "@/constants";
 import { url } from "@/constants.js";
 export default {
   name: "TheJourney",
+
+  props: {
+    instructionIsClosed: Boolean,
+  },
+
   data() {
     return {
       title: titles.page1,
       probeModelOnScreen: false,
       text_1: "loading",
       text_2: "loading",
-      text_3: "loading"
+
+      text_3: "loading",
+      overlayIsOpen: true,
     };
   },
   beforeCreate() {
     fetch(`${url}/query/journey`, {
+
       method: "GET"
+
     })
       .then(response => response.json())
       .then(data => {

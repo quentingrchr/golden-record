@@ -7,8 +7,9 @@
 </template>
 
 <script>
-import Welcome from '@/layouts/intro/Welcome.vue';
-import Video from '@/layouts/intro/Video.vue';
+import Welcome from "@/layouts/intro/Welcome.vue";
+import Video from "@/layouts/intro/Video.vue";
+import { appTitle } from "../constants";
 
 export default {
   components: {
@@ -34,8 +35,18 @@ export default {
       } else if (this.scrollRate >= this.changePageControll) {
         this.launchVideo = true;
       }
-      console.log(this.scrollRate);
     },
+  },
+  mounted() {
+    let $title = document.querySelector("title");
+
+    function titleScroller(text) {
+      $title.textContent = text;
+      setTimeout(function() {
+        titleScroller(text.substr(1) + text.substr(0, 1));
+      }, 500);
+    }
+    titleScroller(appTitle);
   },
 };
 </script>

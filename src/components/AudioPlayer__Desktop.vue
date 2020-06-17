@@ -36,18 +36,18 @@ export default {
   props: {
     source: {
       type: String,
-      required: true
+      required: true,
     },
     name: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       playing: true,
       muted: false,
-      volume: 0
+      volume: 0,
     };
   },
   computed: {
@@ -56,7 +56,7 @@ export default {
     },
     slider() {
       return this.$refs["slider"];
-    }
+    },
   },
   methods: {
     togglePlay() {
@@ -99,13 +99,13 @@ export default {
     },
     isPlaying() {
       return (this.playing = true);
-    }
+    },
   },
   watch: {
-    source: function(newProps, oldProps) {
+    source: function(newProps) {
       this.audio.src = newProps;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -128,10 +128,19 @@ input {
   &--isFocus {
     transform: translateY(-3vh);
     opacity: 1;
+
+    @include media_mobile {
+      transform: translateY(-1.5vh);
+      height: 200px;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      transform: translateY(-8.5vh);
+    }
   }
 
   @include media_tablet {
-    margin: 0 2vh 0 20vh;
+    margin: 0 2vh 0 10vh;
   }
 }
 
@@ -141,6 +150,11 @@ input {
 
   &:nth-child(2) {
     margin: 0 3vh;
+  }
+
+  @include media_mobile {
+    min-width: 25px;
+    min-height: 25px;
   }
 }
 
