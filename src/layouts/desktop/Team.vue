@@ -430,7 +430,6 @@ figure {
 
     &:hover:not(.focusMode) {
       transition: transform 0.5s ease;
-      z-index: 10;
 
       transform: scale(0.9) translateX(180% - $offsetX)
         translateY(-10% - $hoverOffset);
@@ -446,7 +445,7 @@ figure {
   }
   &:nth-child(4) {
     z-index: 5;
-    transform: scale(0.8) rotate(-12.6deg) translateY(80%)
+    transform: scale(0.8) rotate(-12.6deg) translateY(100%)
       translateX(250% - $offsetX);
 
     &:hover:not(.focusMode) {
