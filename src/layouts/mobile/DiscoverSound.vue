@@ -114,7 +114,7 @@
       </defs>
     </svg>
 
-    <Header class="audio__title" :text="title" />
+    <Header class="audio__title" text="Sounds" />
     <p class="audio__infos">
       Carl Sagan and this Team has selected 24 musics, 20 earth noises and
       greetings from 54 countries.
@@ -163,7 +163,6 @@ export default {
   },
   data() {
     return {
-      title: "Audio content",
       isActive: false,
       indexOfSelectedPlaylist: null,
       randomSongName: "",

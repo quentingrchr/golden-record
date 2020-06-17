@@ -1,7 +1,7 @@
 <template>
   <section class="imagesMobile">
-    <Header text="Visual Content" :class="selectedImage ? 'opacity' : ''" />
-    <h4 class=" title title--sub" ref="test">Pictures</h4>
+    <Header text="Gallery" :class="selectedImage ? 'opacity' : ''" />
+    <h4 class="title title--sub" ref="test">Pictures</h4>
     <div class="imagesContainer" :class="scroll ? 'isScrolling' : null">
       <div
         class="imagesContainer__image"
@@ -31,9 +31,9 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-import Cta from '@/components/MobileCta.vue';
-import { url } from '@/constants.js';
+import Header from "@/components/Header.vue";
+import Cta from "@/components/MobileCta.vue";
+import { url } from "@/constants.js";
 
 export default {
   data() {
@@ -42,20 +42,20 @@ export default {
       scroll: false,
       isScrollingStop: null,
       prevScrollY: null,
-      selectedImage: null,
+      selectedImage: null
     };
   },
   components: {
     Header,
-    Cta,
+    Cta
   },
   beforeCreate() {
     fetch(`${url}/query/visual_content`, {
-      method: 'GET',
+      method: "GET"
     })
-      .then((response) => response.json())
-      .then((data) =>
-        data.forEach((element) => {
+      .then(response => response.json())
+      .then(data =>
+        data.forEach(element => {
           this.imgs.push(element.src);
           this.$nextTick(() => {
             this.loadImages();
@@ -65,12 +65,12 @@ export default {
   },
   created() {
     window.scrollTo({
-      top: 0,
+      top: 0
     });
-    document.addEventListener('scroll', this.isScrolling);
+    document.addEventListener("scroll", this.isScrolling);
   },
   destroyed() {
-    window.removeEventListener('scroll', this.isScrolling);
+    window.removeEventListener("scroll", this.isScrolling);
   },
   computed: {
     dispachByRow() {
@@ -79,28 +79,28 @@ export default {
         odd.push(i);
       }
       return odd;
-    },
+    }
   },
   methods: {
     select(image) {
       this.selectedImage = image;
-      this.$refs.overlay.style.top = window.scrollY + 'px';
+      this.$refs.overlay.style.top = window.scrollY + "px";
     },
     closeOverlay() {
       this.selectedImage = null;
     },
     goNextChapter() {
-      this.$emit('changeChapter', 4);
+      this.$emit("changeChapter", 4);
     },
     loadImages() {
       const images = this.$refs.imageOdd.concat(this.$refs.imageEven);
 
-      images.forEach(($image) => {
+      images.forEach($image => {
         if (
           $image.parentNode.offsetTop <
           window.innerHeight + window.scrollY + 300
         ) {
-          $image.src = $image.getAttribute('src-set');
+          $image.src = $image.getAttribute("src-set");
         }
       });
     },
@@ -116,49 +116,49 @@ export default {
         }
       });
       if (result % 2 === 0) {
-        return 'Even';
+        return "Even";
       } else {
-        return 'Odd';
+        return "Odd";
       }
     },
     isScrolling() {
       let isScrollingDown = window.scrollY > this.prevScrollY;
       let scrollPosition = window.innerHeight + window.scrollY;
 
-      this.$refs.imageOdd.forEach((el) => {
+      this.$refs.imageOdd.forEach(el => {
         let initPos = el.offsetLeft;
         if (
           scrollPosition > el.parentNode.offsetTop + 100 &&
           el.parentNode.offsetTop > window.scrollY - 40
         ) {
           if (isScrollingDown) {
-            el.style.left = (initPos + 1).toString() + 'px';
+            el.style.left = (initPos + 1).toString() + "px";
           } else {
-            el.style.left = (initPos - 1).toString() + 'px';
+            el.style.left = (initPos - 1).toString() + "px";
           }
         } else {
-          el.style.left = '0px';
+          el.style.left = "0px";
         }
       });
-      this.$refs.imageEven.forEach((el) => {
+      this.$refs.imageEven.forEach(el => {
         let initPos = el.offsetLeft;
         if (
           scrollPosition > el.parentNode.offsetTop + 100 &&
           el.parentNode.offsetTop > window.scrollY - 40
         ) {
           if (isScrollingDown) {
-            el.style.left = (initPos - 1).toString() + 'px';
+            el.style.left = (initPos - 1).toString() + "px";
           } else {
-            el.style.left = (initPos + 0.2).toString() + 'px';
+            el.style.left = (initPos + 0.2).toString() + "px";
           }
         } else {
-          el.style.left = '0px';
+          el.style.left = "0px";
         }
       });
       this.prevScrollY = window.scrollY;
       this.loadImages();
-    },
-  },
+    }
+  }
 };
 </script>
 
