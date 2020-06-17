@@ -14,7 +14,7 @@
       />
     </header>
 
-    <div class="polaroids">
+    <div class="polaroids" :class="focusMode ? 'focusMode' : ''">
       <Polaroid
         v-for="(img, index) in imgs"
         :key="index"
@@ -192,7 +192,6 @@ export default {
         this.playSound();
       }
     },
-
     playSound: function() {
       let random = Math.random();
       let audio1 = new Audio(this.audioSrc.click1);
@@ -311,11 +310,22 @@ section {
   }
 }
 
+$hoverOffset: 5;
+$bp-lg: 1150px;
+$offsetX: -20%;
+$bp-xl: 1800px;
+
 .polaroids {
   display: block;
   width: 80%;
-  margin: 0 10vw;
-  margin-top: 5vh;
+
+  margin: auto;
+  margin-top: 15vh;
+  @media (max-width: $bp-xl) {
+    &:not(.focusMode) {
+      transform: translateX(-10%);
+    }
+  }
   flex-wrap: nowrap;
   position: relative;
   transition: left 0.2s ease;
@@ -365,10 +375,6 @@ section {
     }
   }
 }
-
-$hoverOffset: 5;
-$bp-lg: 1150px;
-$offsetX: 40%;
 
 figure {
   transition: transform 1s;
