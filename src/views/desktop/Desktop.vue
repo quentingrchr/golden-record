@@ -2,7 +2,7 @@
   <main class="desktopViews-container">
     <Explaination
       v-on:closeinstruction="closeInstruction"
-      v-show="currentPage === 1"
+      v-show="currentPage === 0"
     />
     <transition
       :name="pageMoveNext ? 'slide-forward' : 'slide-backward'"
@@ -60,7 +60,7 @@ export default {
       goingNextPart: true,
       pageMoveNext: true,
       speaking: false,
-      currentPage: 1,
+      currentPage: 0,
     };
   },
   methods: {
@@ -76,12 +76,12 @@ export default {
     changeChapterWithKeyboard(e) {
       if (e.key === 'ArrowRight') {
         this.pageMoveNext = true;
-        EventBus.$emit("close");
+        EventBus.$emit('close');
         this.currentPage >= 6 ? (this.currentPage = 6) : this.currentPage++;
       } else if (e.key === 'ArrowLeft') {
         this.pageMoveNext = false;
-        EventBus.$emit("close");
-        this.currentPage <= 1 ? (this.currentPage = 1) : this.currentPage--;
+        EventBus.$emit('close');
+        this.currentPage <= 0 ? (this.currentPage = 0) : this.currentPage--;
       }
     },
   },
