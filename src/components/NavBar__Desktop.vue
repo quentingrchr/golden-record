@@ -47,37 +47,37 @@
       </div>
       <nav class="navBar__timeLine">
         <div
-          @click="jumpToOtherChapter(scroll * 5)"
+          @click="jumpToOtherChapter(1)"
           :class="page === 1 ? 'isSelected' : null"
         >
           <p>{{ titles.page1 }}</p>
         </div>
         <div
-          @click="jumpToOtherChapter(scroll * 15)"
+          @click="jumpToOtherChapter(2)"
           :class="page === 2 ? 'isSelected' : null"
         >
           <p>{{ titles.page2 }}</p>
         </div>
         <div
-          @click="jumpToOtherChapter(scroll * 25)"
+          @click="jumpToOtherChapter(3)"
           :class="page === 3 ? 'isSelected' : null"
         >
           <p>{{ titles.page3 }}</p>
         </div>
         <div
-          @click="jumpToOtherChapter(scroll * 35)"
+          @click="jumpToOtherChapter(4)"
           :class="page === 4 ? 'isSelected' : null"
         >
           <p>{{ titles.page4 }}</p>
         </div>
         <div
-          @click="jumpToOtherChapter(scroll * 45)"
+          @click="jumpToOtherChapter(5)"
           :class="page === 5 ? 'isSelected' : null"
         >
           <p>{{ titles.page5 }}</p>
         </div>
         <div
-          @click="jumpToOtherChapter(scroll * 55)"
+          @click="jumpToOtherChapter(6)"
           :class="page === 6 ? 'isSelected' : null"
         >
           <p>{{ titles.page6 }}</p>
@@ -95,10 +95,10 @@
 </template>
 
 <script>
-import EventBus from "@/EventBus";
-import glitch1 from "../assets/sounds/glitch_1.mp3";
-import glitch2 from "../assets/sounds/glitch_2.mp3";
-import { titles } from "../constants";
+import EventBus from '@/EventBus';
+import glitch1 from '../assets/sounds/glitch_1.mp3';
+import glitch2 from '../assets/sounds/glitch_2.mp3';
+import { titles } from '../constants';
 
 export default {
   data() {
@@ -121,16 +121,16 @@ export default {
         document.documentElement.requestFullscreen() ||
           document.documentElement.webkitRequestFullscreen() ||
           document.documentElement.mozRequestFullScreen() ||
-          alert("Full screen is not supported on your browser");
+          alert('Full screen is not supported on your browser');
       } else {
         document.exitFullscreen();
       }
     },
     jumpToOtherChapter(value) {
-      this.$emit("jumpToOtherChapter", value);
+      this.$emit('jumpToOtherChapter', value);
     },
     closeOverlay() {
-      EventBus.$emit("close");
+      EventBus.$emit('close');
     },
     handleEnterNav() {
       let audio = new Audio(glitch1);
@@ -321,7 +321,7 @@ export default {
   }
 
   &.isMute::after {
-    content: "";
+    content: '';
     position: absolute;
     display: block;
     width: 30px;
