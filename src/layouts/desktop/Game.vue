@@ -329,7 +329,7 @@ export default {
   user-select: none;
 
   & .playground__item {
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -524,8 +524,8 @@ export default {
   font-family: Product Sans;
   cursor: pointer;
   opacity: 0.8;
-  &:hgameover {
-    transform: scale(1.05);
+  &:hover {
+    transform: scale(1.06);
     opacity: 1;
   }
 }
@@ -539,8 +539,8 @@ export default {
   opacity: 0.7;
   z-index: 10;
 
-  &:hgameover {
-    transform: scale(1.05);
+  &:hover {
+    transform: scale(1.06);
     opacity: 1;
   }
 }

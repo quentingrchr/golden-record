@@ -1,5 +1,6 @@
 <template>
   <div class="useIt__container">
+    <div class="stars"></div>
     <Header :text="titleChapter" />
     <div class="disc" :class="step">
       <Icons />
@@ -85,12 +86,6 @@ import { url } from "@/constants.js";
 import { titles } from "@/constants.js";
 
 export default {
-  props: {
-    nameIcon: {
-      type: String,
-      required: true
-    }
-  },
   components: { BaseIcon, Icons, Header, Cta },
   data: () => {
     return {
@@ -104,37 +99,37 @@ export default {
         },
         {
           title: "",
-          symbole: "",
+          symbol: "",
           text_1: "",
           text_2: ""
         },
         {
           title: "",
-          symbole: "",
+          symbol: "",
           text_1: "",
           text_2: ""
         },
         {
           title: "",
-          symbole: "",
+          symbol: "",
           text_1: "",
           text_2: ""
         },
         {
           title: "",
-          symbole: "",
+          symbol: "",
           text_1: "",
           text_2: ""
         },
         {
           title: "",
-          symbole: "",
+          symbol: "",
           text_1: "",
           text_2: ""
         }
       ],
       step: "step0",
-      symbol: "record",
+      symbol: "",
       title: "",
       text1: "",
       text2: ""
@@ -169,8 +164,6 @@ export default {
       .then(Response => Response.json())
       .then(rawData => {
         this.content = [];
-
-        console.log(rawData);
         rawData.forEach(el => {
           this.content.push({
             text_1: el.text_1,
@@ -195,8 +188,12 @@ export default {
   width: 100%;
   flex-direction: column;
   align-items: center;
-  background-color: $primary-darkblue;
   color: $primary-white;
+  position: relative;
+  z-index: 10;
+}
+.stars {
+  z-index: -1;
 }
 
 .useIt__title {

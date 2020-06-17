@@ -47,7 +47,6 @@ export default {
   background-color: rgba(#494949, 1);
   color: $primary-white;
   border-radius: 5px;
-  // border: 1px solid red;
 
   @include media_tablet {
     width: 60%;
@@ -83,7 +82,6 @@ export default {
     width: 50%;
     height: 50%;
     margin-left: 8%;
-    // border: 1px solid red;
 
     @include media_tablet {
       width: 45%;

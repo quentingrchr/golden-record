@@ -12,7 +12,6 @@ export default {
   },
   methods: {
     goNext() {
-      console.log('click');
       this.$emit('goNextChapter', '');
     },
   },
@@ -30,7 +29,7 @@ export default {
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-
+  
   & span {
     margin-left: 10px;
   }

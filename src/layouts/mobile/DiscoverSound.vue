@@ -1,5 +1,6 @@
 <template>
   <div class="audio">
+    <div class="stars"></div>
     <svg style="position: absolute; width: 0; height: 0; overflow: hidden">
       <defs>
         <symbol id="Noises" width="54px" height="54px" viewBox="0 0 54 54" fill="none">
@@ -275,15 +276,17 @@ export default {
     transform: translateY(0);
   }
 }
-
+.stars {
+  z-index: -1;
+}
 .audio {
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: $primary-darkblue;
   overflow: hidden;
-
+  position: relative;
+  z-index: 10;
   p {
     padding: 0 6vw;
   }

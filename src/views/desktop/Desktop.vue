@@ -74,9 +74,12 @@ export default {
       this.currentPage = value;
     },
     changeChapterWithKeyboard(e) {
+      EventBus.$emit("close");
       if (e.key === 'ArrowRight') {
+        this.pageMoveNext = true;
         this.currentPage >= 6 ? (this.currentPage = 6) : this.currentPage++;
       } else if (e.key === 'ArrowLeft') {
+        this.pageMoveNext = false;
         this.currentPage <= 1 ? (this.currentPage = 1) : this.currentPage--;
       }
     },

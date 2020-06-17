@@ -61,7 +61,6 @@ export default {
 
 <style lang="scss" scoped>
 main {
-  background-color: $primary-darkblue;
   width: 100%;
   min-height: 100vh;
 }
