@@ -83,10 +83,12 @@
           <p>
             NASA placed an amibitous message aboard Voyager 1 and 2, a kind of
             time capsule, intended to communicate a story of our world to
-            extraterrestrials. It is carried by a phonograph record, a
-            gold-plated copper disk called “The Golden Record“ containing what’s
-            supposed to be the portray of the diversity of life and culture on
-            Earth.
+            extraterrestrials.
+          </p>
+          <p>
+            It is carried by a phonograph record, a gold-plated copper disk
+            called “The Golden Record“ containing what’s supposed to be the
+            portray of the diversity of life and culture on Earth.
           </p>
           <p>
             How intelligent life would be able to use this disk ? Press the
@@ -158,8 +160,8 @@ export default {
     }
     .golden-record {
       position: absolute;
-      top: 7.5%;
-      left: 21%;
+      top: 52px;
+      left: 105px;
       transform: scale(0.06);
       transition: all 2s;
     }
@@ -187,7 +189,7 @@ export default {
     transform: scale(0.06);
   }
   to {
-    transform: scale(1) rotateZ(0deg) translateY(28vh) translateX(1vw);
+    transform: scale(0.9) rotateZ(0deg) translateY(32vh) translateX(1vw);
   }
 }
 
