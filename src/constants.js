@@ -11,7 +11,7 @@ export const constants = {
     page6: "Take Controls",
   },
 
-  appTitle: "The Golden Record - The Web Documentary ",
+  appTitle: "The Golden Record - The Web Documentary | ",
 };
 
 export const { url, ascii, titles, appTitle } = constants;
