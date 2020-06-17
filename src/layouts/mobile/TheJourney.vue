@@ -9,7 +9,7 @@
       <div class="voyager_description">
         <p>{{ text_1 }}</p>
         <p>{{ text_2 }}</p>
-
+        <p>{{ text_3 }}</p>
         <Time-elapsed class="time" />
       </div>
     </div>
@@ -30,30 +30,31 @@ export default {
     return {
       titleChapter: titles.page1,
       text_1: "loading",
-      text_2: "loading"
+      text_2: "loading",
     };
   },
   components: { Header, TimeElapsed, Cta },
   beforeCreate() {
     fetch(`${url}/query/journey`, {
-      method: "GET"
+      method: "GET",
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         this.text_1 = data[0].text_1;
         this.text_2 = data[0].text_2;
+        this.text_3 = data[0].text_3;
       });
   },
   methods: {
     goNextChapter() {
       this.$emit("changeChapter", 2);
-    }
+    },
   },
   created() {
     window.scrollTo({
-      top: 0
+      top: 0,
     });
-  }
+  },
 };
 </script>
 
