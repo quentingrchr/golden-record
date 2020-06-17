@@ -7,23 +7,34 @@
 </template>
 
 <script>
-import Desktop from '@/views/desktop/Desktop.vue';
-import Mobile from '@/views/mobile/Mobile.vue';
+import Desktop from "@/views/desktop/Desktop.vue";
+import Mobile from "@/views/mobile/Mobile.vue";
 
 export default {
-  computed: {
-    isBigScreen: function() {
-      if (window.matchMedia('(min-width: 1024px)').matches) {
-        return true;
-      } else {
-        return false;
-      }
-    },
+  data() {
+    return {
+      isBigScreen: true
+    };
   },
   components: {
     Desktop,
-    Mobile,
+    Mobile
   },
+  created() {
+    this.getSizeScreen();
+    window.addEventListener("resize", () => {
+      this.getSizeScreen();
+    });
+  },
+  methods: {
+    getSizeScreen() {
+      if (window.matchMedia("(min-width: 1024px)").matches) {
+        this.isBigScreen = true;
+      } else {
+        this.isBigScreen = false;
+      }
+    }
+  }
 };
 </script>
 
