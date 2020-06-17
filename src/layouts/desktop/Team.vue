@@ -29,9 +29,7 @@
         :class="focusMode ? 'focusMode' : ''"
       />
       <div class="polaroids__text">
-        <h3 class="polaroids__title">
-          {{ focusMode ? imgs[indexFocused].title : "" }}
-        </h3>
+        <h3 class="polaroids__title">{{ focusMode ? imgs[indexFocused].title : "" }}</h3>
         <div class="polaroids__description" :class="focusMode ? 'visible' : ''">
           <p>{{ focusMode ? imgs[indexFocused].description[0] : "" }}</p>
           <p>{{ focusMode ? imgs[indexFocused].description[1] : "" }}</p>
@@ -75,10 +73,10 @@ export default {
       title: titles.page5,
       audioSrc: {
         click1,
-        click2,
+        click2
       },
       uiValue: {
-        MARGIN_LEFT: 30,
+        MARGIN_LEFT: 30
       },
       isTrue: false,
       focusMode: false,
@@ -91,7 +89,7 @@ export default {
           title: "Loading",
           caption: "Loading",
           style: {},
-          description: [null, null],
+          description: [null, null]
         },
         {
           isFocused: false,
@@ -100,7 +98,7 @@ export default {
           title: "Loading",
           caption: "Loading",
           style: {},
-          description: [null, null],
+          description: [null, null]
         },
         {
           isFocused: false,
@@ -109,7 +107,7 @@ export default {
           title: "Loading",
           caption: "Loading",
           style: {},
-          description: [null, null],
+          description: [null, null]
         },
         {
           isFocused: false,
@@ -118,7 +116,7 @@ export default {
           title: "Loading",
           caption: "Loading",
           style: {},
-          description: [null, null],
+          description: [null, null]
         },
         {
           isFocused: false,
@@ -127,9 +125,9 @@ export default {
           title: "Loading",
           caption: "Loading",
           style: {},
-          description: [null, null],
-        },
-      ],
+          description: [null, null]
+        }
+      ]
     };
   },
   beforeCreate() {
@@ -138,41 +136,41 @@ export default {
         vidSrc: srcVid1,
         imgSrc: srcImg1,
         caption: "Ann Druyan",
-        order: 0,
+        order: 0
       },
       carlSagan: {
         vidSrc: srcVid3,
         imgSrc: srcImg3,
         caption: "Carl Sagan",
-        order: 2,
+        order: 2
       },
       frankDrake: {
         vidSrc: srcVid5,
         imgSrc: srcImg5,
         caption: "Frank Drake",
-        order: 4,
+        order: 4
       },
       jonLomberg: {
         vidSrc: srcVid4,
         imgSrc: srcImg4,
         caption: "Jon Lomberg",
-        order: 3,
+        order: 3
       },
       ewardCStone: {
         vidSrc: srcVid2,
         imgSrc: srcImg2,
         caption: "Eward C Stone",
-        order: 1,
-      },
+        order: 1
+      }
     };
 
     fetch(`${url}/query/polaroids`, {
-      method: "GET",
+      method: "GET"
     })
-      .then((response) => response.json())
-      .then((data) => {
+      .then(response => response.json())
+      .then(data => {
         this.imgs = [];
-        data.forEach((el) => {
+        data.forEach(el => {
           this.imgs[staticData[el.name].order] = {
             isFocused: false,
             vidUrl: staticData[el.name].vidSrc,
@@ -180,7 +178,7 @@ export default {
             title: el.title,
             caption: staticData[el.name].caption,
             style: {},
-            description: [el.text_1, el.text_2],
+            description: [el.text_1, el.text_2]
           };
         });
       });
@@ -228,7 +226,7 @@ export default {
           img.style = {
             transform: `translate(${this.uiValue.MARGIN_LEFT +
               POLA_WIDTH * SCALE}px, 0px) rotate(0deg)`,
-            zIndex: 11,
+            zIndex: 11
           };
         } else {
           // Code for unfocused polas
@@ -238,7 +236,7 @@ export default {
               POLA_WIDTH / 2 +
               this.uiValue.MARGIN_LEFT -
               GAP_HORIZONTAL}px, ${incr * (SM_POLA_HEIGHT + GAP_VERTICAL) -
-              OFFSET}px) rotate(0deg) scale(${SCALE})`,
+              OFFSET}px) rotate(0deg) scale(${SCALE})`
           };
           incr++;
         }
@@ -256,12 +254,12 @@ export default {
     quitFocus: function() {
       this.focusMode = false;
       this.indexFocused = null;
-      this.imgs.forEach((img) => {
+      this.imgs.forEach(img => {
         img.isFocused = false;
         img.style = {};
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -319,7 +317,7 @@ $bp-xl: 1800px;
   width: 80%;
 
   margin: auto;
-  margin-top: 15vh;
+  margin-top: 50px;
   @media (max-width: $bp-xl) {
     &:not(.focusMode) {
       transform: translateX(-10%);
@@ -344,7 +342,6 @@ $bp-xl: 1800px;
     @media (max-width: 1000px) {
       width: 30%;
     }
-
     p {
       width: 100%;
     }
@@ -352,7 +349,6 @@ $bp-xl: 1800px;
 
   &__title {
     left: 50%;
-    margin-bottom: 50px;
     text-align: justify;
     color: $primary-white;
   }
@@ -370,7 +366,7 @@ $bp-xl: 1800px;
     }
 
     p {
-      margin-bottom: 20px;
+      margin-top: 20px;
     }
   }
 }
@@ -445,7 +441,7 @@ figure {
   }
   &:nth-child(4) {
     z-index: 5;
-    transform: scale(0.8) rotate(-12.6deg) translateY(100%)
+    transform: scale(0.8) rotate(-12.6deg) translateY(80%)
       translateX(250% - $offsetX);
 
     &:hover:not(.focusMode) {
