@@ -1,6 +1,9 @@
 <template>
   <main @wheel="wheel" class="desktopViews-container">
-    <Explaination v-show="currentPage === 1" />
+    <Explaination
+      v-on:closeinstruction="closeInstruction"
+      v-show="currentPage === 1"
+    />
     <transition
       :name="pageMoveNext ? 'slide-forward' : 'slide-backward'"
       appear
@@ -89,6 +92,9 @@ export default {
     },
   },
   methods: {
+    closeInstruction() {
+      console.log("ok");
+    },
     wheel(e) {
       e.preventDefault();
       EventBus.$emit("close");

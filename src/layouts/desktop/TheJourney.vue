@@ -1,5 +1,5 @@
 <template>
-  <section class="thejourney">
+  <section>
     <Header class="thejourney_title" :text="title" />
     <div class="stars"></div>
     <div class="twinkling"></div>
@@ -106,24 +106,25 @@
 </template>
 
 <script>
-import Header from '@/components/Header';
-import TimeElapsed from '@/components/TimeElapsed.vue';
-import { titles } from '@/constants';
-import { url } from '@/constants.js';
+import Header from "@/components/Header";
+import TimeElapsed from "@/components/TimeElapsed.vue";
+import { titles } from "@/constants";
+import { url } from "@/constants.js";
 export default {
-  name: 'TheJourney',
+  name: "TheJourney",
   data() {
     return {
       title: titles.page1,
       probeModelOnScreen: false,
-      text_1: 'loading',
-      text_2: 'loading',
-      text_3: 'loading',
+      text_1: "loading",
+      text_2: "loading",
+      text_3: "loading",
+      overlayIsOpen: true,
     };
   },
   beforeCreate() {
     fetch(`${url}/query/journey`, {
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((data) => {
