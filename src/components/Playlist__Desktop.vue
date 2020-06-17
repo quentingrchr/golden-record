@@ -107,7 +107,7 @@ h3 {
 }
 
 button {
-  height: 100px;
+  min-height: 88px;
   margin: 3vh 0;
   border: none;
   outline: none;
