@@ -74,6 +74,7 @@ export default {
       this.currentPage = value;
     },
     changeChapterWithKeyboard(e) {
+      EventBus.$emit("close");
       if (e.key === 'ArrowRight') {
         this.pageMoveNext = true;
         this.currentPage >= 6 ? (this.currentPage = 6) : this.currentPage++;
