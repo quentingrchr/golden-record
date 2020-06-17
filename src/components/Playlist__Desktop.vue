@@ -9,7 +9,9 @@
     <h3>{{ playlistName }}</h3>
     <button>
       <svg>
-        <use :href="hovering ? '#' + playlistName + 'Reverse' : '#' + playlistName" />
+        <use
+          :href="hovering ? '#' + playlistName + 'Reverse' : '#' + playlistName"
+        />
       </svg>
     </button>
     <div class="paylist__infoContainer">
@@ -18,7 +20,7 @@
       <h4 v-else class="playlist__textOverlay">
         <span>CLICK</span>
         <br />
-        to play a random song of {{ playlistName }}'s playlist.
+        to play a random track of {{ playlistName }}'s playlist.
       </h4>
     </div>
   </a>
@@ -26,44 +28,44 @@
 
 <script>
 export default {
-  name: "Playlist",
+  name: 'Playlist',
   props: {
     playlistName: {
       type: String,
-      Required: true
+      Required: true,
     },
     playlistInfo1: {
       type: String,
-      Required: true
+      Required: true,
     },
     playlistInfo2: {
       type: String,
-      Required: true
-    }
+      Required: true,
+    },
   },
   data() {
     return {
-      isHover: false
+      isHover: false,
     };
   },
   computed: {
     hovering() {
       return this.isHover;
-    }
+    },
   },
   methods: {
     selectPlaylist(e) {
       e.preventDefault();
-      console.log("ok");
-      this.$emit("select-playlist");
+      console.log('ok');
+      this.$emit('select-playlist');
     },
     showOverlay() {
       this.isHover = true;
     },
     resetOverlay() {
       this.isHover = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -123,7 +125,7 @@ button {
   cursor: pointer;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 50%;
     left: 50%;
