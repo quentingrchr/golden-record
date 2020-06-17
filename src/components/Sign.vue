@@ -34,7 +34,6 @@ export default {
       text1: "",
       text2: "",
       title: "",
-      id: this.index,
       symbol: "nameIcon"
     }
   }),
