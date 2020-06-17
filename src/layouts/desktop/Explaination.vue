@@ -10,47 +10,16 @@
       <em>use keyboard arrows</em>
       <span>
         <div>
-          <svg
-            class="key-arrows key-arrows--right"
-            xmlns="http://www.w3.org/2000/svg"
-            width="512"
-            height="512"
-            viewBox="0 0 512 512"
-          >
-            <title>ionicons-v5-a</title>
-            <polyline
-              points="244 400 100 256 244 112"
-              style="stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"
-            />
-            <line
-              x1="120"
-              y1="256"
-              x2="412"
-              y2="256"
-              style="stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"
-            />
-          </svg>
-
-          <svg
+          <img
             class="key-arrows key-arrows--left"
-            xmlns="http://www.w3.org/2000/svg"
-            width="512"
-            height="512"
-            viewBox="0 0 512 512"
-          >
-            <title>ionicons-v5-a</title>
-            <polyline
-              points="268 112 412 256 268 400"
-              style="stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"
-            />
-            <line
-              x1="392"
-              y1="256"
-              x2="100"
-              y2="256"
-              style="stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"
-            />
-          </svg>
+            :src="leftArrowSrc"
+            alt="left arrow key"
+          />
+          <img
+            class="key-arrows key-arrows--right"
+            :src="rightArrowSrc"
+            alt="right arrow key"
+          />
         </div>
       </span>
       <br />or <em>click on the parts in the navbar</em> on the left
@@ -72,12 +41,17 @@
 </template>
 
 <script>
+import leftArrowSrc from "../../assets/img/left-arrow.png";
+import rightArrowSrc from "../../assets/img/right-arrow.png";
+
 export default {
   name: "Explaination",
   props: {},
   data() {
     return {
       overlayIsOpen: true,
+      leftArrowSrc,
+      rightArrowSrc,
     };
   },
   methods: {
@@ -142,11 +116,8 @@ export default {
     }
   }
   & .key-arrows {
-    line,
-    polyline {
-      stroke: $primary-white;
-    }
     width: 50px;
+    margin: 8px 20px;
     height: auto;
   }
 
