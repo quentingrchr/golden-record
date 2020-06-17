@@ -9,9 +9,7 @@
     <h3>{{ playlistName }}</h3>
     <button>
       <svg>
-        <use
-          :href="hovering ? '#' + playlistName + 'Reverse' : '#' + playlistName"
-        />
+        <use :href="hovering ? '#' + playlistName + 'Reverse' : '#' + playlistName" />
       </svg>
     </button>
     <div class="paylist__infoContainer">
@@ -28,44 +26,44 @@
 
 <script>
 export default {
-  name: 'Playlist',
+  name: "Playlist",
   props: {
     playlistName: {
       type: String,
-      Required: true,
+      Required: true
     },
     playlistInfo1: {
       type: String,
-      Required: true,
+      Required: true
     },
     playlistInfo2: {
       type: String,
-      Required: true,
-    },
+      Required: true
+    }
   },
   data() {
     return {
-      isHover: false,
+      isHover: false
     };
   },
   computed: {
     hovering() {
       return this.isHover;
-    },
+    }
   },
   methods: {
     selectPlaylist(e) {
       e.preventDefault();
-      console.log('ok');
-      this.$emit('select-playlist');
+      console.log("ok");
+      this.$emit("select-playlist");
     },
     showOverlay() {
       this.isHover = true;
     },
     resetOverlay() {
       this.isHover = false;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -109,32 +107,32 @@ h3 {
     font-size: 24px;
   }
 }
-.playlist {
-  button {
-    height: 100px;
-    margin: 3vh 0;
-    border: none;
-    outline: none;
+
+button {
+  min-height: 88px;
+  margin: 3vh 0;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: transparent;
+  overflow: hidden;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 50%;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    background-color: transparent;
-    overflow: hidden;
-    cursor: pointer;
-    &::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      padding: 50%;
-      border-radius: 50%;
-      background-color: $primary-white;
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(1);
-      transition: transform 1s, opacity 1s;
-    }
+    background-color: $primary-white;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 1s, opacity 1s;
   }
   &:active {
     button::before {

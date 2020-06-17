@@ -36,18 +36,18 @@ export default {
   props: {
     source: {
       type: String,
-      required: true,
+      required: true
     },
     name: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
       playing: true,
       muted: false,
-      volume: 0,
+      volume: 0
     };
   },
   computed: {
@@ -56,7 +56,7 @@ export default {
     },
     slider() {
       return this.$refs["slider"];
-    },
+    }
   },
   methods: {
     togglePlay() {
@@ -99,13 +99,13 @@ export default {
     },
     isPlaying() {
       return (this.playing = true);
-    },
+    }
   },
   watch: {
     source: function(newProps, oldProps) {
       this.audio.src = newProps;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -126,7 +126,7 @@ input {
   transition: transform 1s, opacity 1s;
 
   &--isFocus {
-    transform: translateY(-4vh);
+    transform: translateY(-3vh);
     opacity: 1;
   }
 
