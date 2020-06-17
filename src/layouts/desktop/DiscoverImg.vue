@@ -95,9 +95,9 @@
 </template>
 
 <script>
-import { titles } from "../../constants";
-import Header from "@/components/Header.vue";
-import { url } from "@/constants.js";
+import { titles } from '../../constants';
+import Header from '@/components/Header.vue';
+import { url } from '@/constants.js';
 export default {
   data() {
     return {
@@ -108,8 +108,8 @@ export default {
       isLoading: true,
       hideInfos: false,
       position: {
-        top: "-20%",
-        left: "-20%",
+        top: '-20%',
+        left: '-20%',
       },
       selectedImage: null,
     };
@@ -124,9 +124,8 @@ export default {
     },
   },
   beforeCreate() {
-    console.log(url);
     fetch(`${url}/query/visual_content`, {
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((data) => {
@@ -147,44 +146,44 @@ export default {
   methods: {
     setDirection(value) {
       const imgContainer = this.$refs.imageContainer;
-      if (value === "down") {
-        this.position.top = "100px";
-      } else if (value === "right") {
-        this.position.left = "170px";
-      } else if (value === "left") {
+      if (value === 'down') {
+        this.position.top = '100px';
+      } else if (value === 'right') {
+        this.position.left = '170px';
+      } else if (value === 'left') {
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          "px";
-      } else if (value === "up") {
+          'px';
+      } else if (value === 'up') {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          "px";
-      } else if (value === "cornerTopRight") {
-        this.position.top = "100px";
+          'px';
+      } else if (value === 'cornerTopRight') {
+        this.position.top = '100px';
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          "px";
-      } else if (value === "cornerTopLeft") {
-        this.position.left = "170px";
-        this.position.top = "100px";
-      } else if (value === "cornerBottomRight") {
+          'px';
+      } else if (value === 'cornerTopLeft') {
+        this.position.left = '170px';
+        this.position.top = '100px';
+      } else if (value === 'cornerBottomRight') {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          "px";
+          'px';
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          "px";
-      } else if (value === "cornerBottomLeft") {
+          'px';
+      } else if (value === 'cornerBottomLeft') {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          "px";
-        this.position.left = "170px";
+          'px';
+        this.position.left = '170px';
       }
     },
     cancelDirection() {
       const imgContainer = this.$refs.imageContainer;
-      const top = imgContainer.offsetTop + "px";
-      const left = imgContainer.offsetLeft + "px";
+      const top = imgContainer.offsetTop + 'px';
+      const left = imgContainer.offsetLeft + 'px';
       this.position.top = top;
       this.position.left = left;
     },
@@ -282,7 +281,7 @@ section {
     z-index: 5;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    background-image: url("./../../assets/img/patchwork.png");
+    background-image: url('./../../assets/img/patchwork.png');
     background-size: 100%;
     opacity: 0.2;
 
