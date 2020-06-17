@@ -36,8 +36,6 @@ export default {
     this.counter.mins = d.minutes();
     this.counter.secs = d.seconds();
 
-    console.log(d);
-
     this.startCounter();
   },
   data: function() {

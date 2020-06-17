@@ -33,7 +33,8 @@ export default {
     modalContent: {
       text1: "",
       text2: "",
-      Title: "",
+      title: "",
+      id: this.index,
       symbol: "nameIcon"
     }
   }),
