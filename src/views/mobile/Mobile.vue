@@ -20,7 +20,7 @@
 
 <script>
 import NavBar from "@/components/NavBar__Mobile.vue";
-
+import { titles } from "../../constants";
 import Images from "@/layouts/mobile/DiscoverImg.vue";
 import Sounds from "@/layouts/mobile/DiscoverSound.vue";
 import HowToUse from "@/layouts/mobile/HowToUseIt.vue";
@@ -32,14 +32,8 @@ export default {
   name: "Mobile",
   data() {
     return {
-      chaptersName: [
-        "The origin",
-        "Decrypt it",
-        "Visual content",
-        "Audio content",
-        "Who did it?"
-      ],
-      currentPage: 1
+      chaptersName: Object.values(titles),
+      currentPage: 1,
     };
   },
   components: {
@@ -49,7 +43,7 @@ export default {
     HowToUse,
     Journey,
     Team,
-    Icon
+    Icon,
   },
   methods: {
     check(e) {
@@ -60,8 +54,8 @@ export default {
     },
     changeChapter(value) {
       this.currentPage = value;
-    }
-  }
+    },
+  },
 };
 </script>
 

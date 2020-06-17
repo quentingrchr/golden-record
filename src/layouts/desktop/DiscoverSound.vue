@@ -204,7 +204,7 @@ export default {
           playlistId: 1,
           playlistName: "Musics",
           playlistInfo1:
-            "Carl Sagan and his team decided to put 27 songs on the golden record.",
+            "Sagan's team decided to put 27 songs on the golden record.",
           playlistInfo2:
             "The style music who’s the most represented in the disc is the classic style.",
           playlistContent: []
@@ -221,9 +221,9 @@ export default {
           playlistId: 3,
           playlistName: "Noises",
           playlistInfo1:
-            "After human words, Sagan and his associates wanted to include sounds from the planet.",
+            "After human words, Sagan's team wanted to include sounds from the planet.",
           playlistInfo2:
-            "you can hear sounds of animals, sounds of nature and sounds of city life.",
+            "you can hear sounds of animals, nature and city life.",
           playlistContent: []
         }
       ]
@@ -362,10 +362,21 @@ export default {
 
 .audio__categoryContainer {
   height: 355px;
-
   margin: 10vh 0;
   margin-left: $nav-width;
   display: flex;
   justify-content: space-around;
+
+  @media (max-width: 1160px) {
+    height: 415px;
+  }
+
+  @include media_tablet {
+    height: 355px;
+  }
+
+  @include media_mobile {
+    height: 375px;
+  }
 }
 </style>

@@ -185,7 +185,6 @@ export default {
   },
   methods: {
     handleClickSound: function(i) {
-      console.log(i);
       if (this.focusMode) {
         this.playSound();
       }

@@ -21,6 +21,7 @@ export default {
     Mobile
   },
   created() {
+
     this.getSizeScreen();
     window.addEventListener("resize", () => {
       this.getSizeScreen();

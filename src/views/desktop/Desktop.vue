@@ -1,23 +1,28 @@
 <template>
   <main @wheel="wheel" class="desktopViews-container">
-    <Explaination v-show="currentPage === 1" />
+
+    <Explaination
+      v-on:closeinstruction="closeInstruction"
+      v-show="currentPage === 1"
+    />
     <transition
       :name="pageMoveNext ? 'slide-forward' : 'slide-backward'"
       appear
       mode="out-in"
     >
-      <TheJourney v-if="currentPage === 1" key="Journey" />
+      <TheJourney
+        :instructionIsClosed="instructionIsClosed"
+        v-if="currentPage === 1"
+        key="Journey"
+      />
+
       <HowToUseIt v-else-if="currentPage === 2" key="How" />
       <DiscoverImg v-else-if="currentPage === 3" key="img" />
       <DiscoverSound v-else-if="currentPage === 4" key="sound" />
       <Team v-else-if="currentPage === 5" key="team" />
       <Game v-else-if="currentPage === 6" key="game" />
     </transition>
-    <NavBar
-      :page="currentPage"
-      :scroll="scrollSpeed"
-      @jumpToOtherChapter="changeChapter"
-    />
+    <NavBar :page="currentPage" :scroll="scrollSpeed" @jumpToOtherChapter="changeChapter" />
     <Icon />
     <ModalsManager />
   </main>
@@ -48,15 +53,17 @@ export default {
     Icon,
     ModalsManager,
     Game,
-    Explaination,
+    Explaination
   },
   data() {
     return {
+      instructionIsClosed: false,
       wheelCount: 0,
       // You just have to change he value below to set the scroll' sensitive rate (the highest is less sensitive)
       scrollSpeed: 6,
       goingNextPart: true,
       pageMoveNext: true,
+      speaking: false
     };
   },
   computed: {
@@ -86,9 +93,12 @@ export default {
       } else {
         return 6;
       }
-    },
+    }
   },
   methods: {
+    closeInstruction() {
+      this.instructionIsClosed = true;
+    },
     wheel(e) {
       e.preventDefault();
       EventBus.$emit("close");
@@ -167,14 +177,11 @@ export default {
           this.changeChapter(this.scrollSpeed * 5);
         }
       }
-    },
-  },
-  created() {
-    window.addEventListener("keydown", this.changeChapterWithKeyboard);
+    }
   },
   destroyed() {
     window.removeEventListener("keydown", this.changeChapterWithKeyboard);
-  },
+  }
 };
 </script>
 
