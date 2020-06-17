@@ -1,30 +1,46 @@
 <template>
-  <div class="game">
+  <div class="game" v-if="readyToStart">
     <div class="stars"></div>
     <div class="twinkling"></div>
-    <div class="game__playground playground" ref="playground" v-if="!failed && !isMissionCompleted">
+    <div class="game__fade top"></div>
+    <div class="game__fade bottom"></div>
+    <div class="game__playground playground" ref="playground" v-if="!gameOver">
       <div class="playgroung__item item item--end">
         <h1 class="final-message">
           We are approximativly in 2035, you have no more energy to continue...
           Let Voyager do the path it wants,
-          <br />and finally, maybe meet
-          someone... 🖖
+          <br />and finally, maybe meet someone... 🖖
         </h1>
       </div>
       <div class="playground__item item item--random">
-        <img src="./../../assets/img/planets/meteorite.png" class="item__obstacle meteorite3" />
+        <img
+          src="./../../assets/img/planets/meteorite.png"
+          class="item__obstacle meteorite3"
+        />
       </div>
       <div class="playground__item item item--random">
-        <img src="./../../assets/img/planets/black-hole.png" class="item__obstacle blackhole1" />
+        <img
+          src="./../../assets/img/planets/black-hole.png"
+          class="item__obstacle blackhole1"
+        />
       </div>
       <div class="playground__item item item--random">
-        <img src="./../../assets/img/planets/meteorite.png" class="item__obstacle meteorite2" />
+        <img
+          src="./../../assets/img/planets/meteorite.png"
+          class="item__obstacle meteorite2"
+        />
       </div>
       <div class="playground__item item item--random">
-        <img src="./../../assets/img/planets/black-hole.png" class="item__obstacle blackhole2" />
+        <img
+          src="./../../assets/img/planets/black-hole.png"
+          class="item__obstacle blackhole2"
+        />
       </div>
       <div class="playground__item item item--random">
-        <img src="./../../assets/img/planets/meteorite.png" class="item__obstacle meteorite1" />
+        <img
+          src="./../../assets/img/planets/meteorite.png"
+          class="item__obstacle meteorite1"
+        />
       </div>
       <div class="playground__item item">
         <p class="item__description">
@@ -36,13 +52,22 @@
           <br />
           <em class="planet">Neptune</em>
         </p>
-        <img src="./../../assets/img/planets/neptune.png" class="item__obstacle neptune" />
+        <img
+          src="./../../assets/img/planets/neptune.png"
+          class="item__obstacle neptune"
+        />
       </div>
       <div class="playground__item item item--random">
-        <img src="./../../assets/img/planets/satellite.png" class="item__obstacle satellite" />
+        <img
+          src="./../../assets/img/planets/satellite.png"
+          class="item__obstacle satellite"
+        />
       </div>
       <div class="playground__item item">
-        <img src="./../../assets/img/planets/uranus.png" class="item__obstacle uranus" />
+        <img
+          src="./../../assets/img/planets/uranus.png"
+          class="item__obstacle uranus"
+        />
         <p class="item__description">
           <em class="date">1986</em>
           <br />Voyager 2 was at
@@ -63,13 +88,22 @@
           <br />
           <em class="planet">Saturne</em>
         </p>
-        <img src="./../../assets/img/planets/saturne.png" class="item__obstacle saturne" />
+        <img
+          src="./../../assets/img/planets/saturne.png"
+          class="item__obstacle saturne"
+        />
       </div>
       <div class="playground__item item item--random">
-        <img src="./../../assets/img/planets/spoutnik.png" class="item__obstacle spoutnik" />
+        <img
+          src="./../../assets/img/planets/spoutnik.png"
+          class="item__obstacle spoutnik"
+        />
       </div>
       <div class="playground__item item">
-        <img src="./../../assets/img/planets/jupiter.png" class="item__obstacle jupiter" />
+        <img
+          src="./../../assets/img/planets/jupiter.png"
+          class="item__obstacle jupiter"
+        />
         <p class="item__description">
           <em class="date">1979</em>
           <br />Voyager 1 was at
@@ -86,27 +120,38 @@
       <div class="playground__item item info">
         <h1 class="item__start">You are in 1977, Let's Start</h1>
       </div>
-      <div class="playgroung__item item start--item" :class="start ? 'start' : null">
+      <div
+        class="playgroung__item item start--item"
+        :class="start ? 'start' : null"
+      >
         <h1>You are Voyager, try to do its journey from the beginning</h1>
         <h1>
           Press
-          <img class="keyboard" src="./../../assets/logo/Q.svg" /> to go
-          left and
-          <img class="keyboard" src="./../../assets/logo/D.svg" /> to
-          go right
-          <br />Press one of both to start
+          <img class="keyboard" src="./../../assets/logo/Q.svg" /> to go left
+          and <img class="keyboard" src="./../../assets/logo/D.svg" /> to go
+          right <br />Press one of both to start
         </h1>
       </div>
 
-      <img src="./../../assets/img/voyager_journey.png" ref="voyager" class="voyager" />
+      <img
+        src="./../../assets/img/voyager_journey.png"
+        ref="voyager"
+        class="voyager"
+      />
     </div>
     <transition name="fade">
-      <div class="overlay" v-if="failed">
+      <div class="gameOverlay" v-if="gameOver">
         <h3>... Voyager is destroyed 💥 ...</h3>
         <button @click="playAgain" class="play">Try again</button>
       </div>
     </transition>
-    <button @click="playAgain" v-if="restartButtonVisible" class="play play--again">Play again</button>
+    <button
+      @click="playAgain"
+      v-if="restartButtonVisible"
+      class="play play--again"
+    >
+      Play again
+    </button>
   </div>
 </template>
 
@@ -122,36 +167,37 @@ export default {
       voyagerMoveSpeed: 10,
       gameSpeed: 6,
       template: null,
-      failed: false,
+      gameOver: false,
       start: false,
       isMissionCompleted: false,
       isBackgroundVisible: true,
       restartButtonVisible: false,
+      readyToStart: true,
       imgExplosion: imgExplosion,
     };
   },
   methods: {
     moveVoyager(e) {
       let voyagerPosition = this.$refs.voyager.offsetLeft;
-      if (e.key === "q") {
+      if (e.key === 'q') {
         if (!this.start) {
           this.play();
           this.start = true;
         }
         let nextPosition = voyagerPosition - this.voyagerMoveSpeed;
         if (nextPosition > this.leftLimit) {
-          this.$refs.voyager.style.left = nextPosition.toString() + "px";
+          this.$refs.voyager.style.left = nextPosition.toString() + 'px';
         } else {
-          this.$refs.voyager.style.left = this.leftLimit + "px";
+          this.$refs.voyager.style.left = this.leftLimit + 'px';
         }
-      } else if (e.key === "d") {
+      } else if (e.key === 'd') {
         if (!this.start) {
           this.play();
           this.start = true;
         }
         let nextPosition = voyagerPosition + this.voyagerMoveSpeed;
         if (nextPosition < this.rightLimit) {
-          this.$refs.voyager.style.left = nextPosition.toString() + "px";
+          this.$refs.voyager.style.left = nextPosition.toString() + 'px';
         } else {
           this.$refs.voyager.style.left = this.rightLimit + "'px";
         }
@@ -159,14 +205,14 @@ export default {
     },
     backgroundMove() {
       this.$refs.playground.style.top =
-        (this.$refs.playground.offsetTop + 1).toString() + "px";
+        (this.$refs.playground.offsetTop + 1).toString() + 'px';
 
       if (this.$refs.playground.offsetTop === 0) {
         this.success();
       }
     },
     collision() {
-      document.querySelectorAll(".item__obstacle").forEach($el => {
+      document.querySelectorAll('.item__obstacle').forEach(($el) => {
         const elementTop = $el.offsetTop + this.$refs.playground.offsetTop;
         if (
           elementTop + 30 <
@@ -186,12 +232,13 @@ export default {
       this.$refs.voyager.src = this.imgExplosion;
       let audio = new Audio(soundExplosion);
       this.playSound(audio, 0.5);
+
       setTimeout(() => {
-        this.failed = true;
-        this.template = null;
+        this.gameOver = true;
       }, 1200);
     },
     play() {
+      this.gameOver = false;
       const gameTemplate = setInterval(() => {
         this.backgroundMove();
         this.collision();
@@ -204,12 +251,13 @@ export default {
       this.restartButtonVisible = true;
     },
     playAgain() {
-      this.isMissionCompleted = true;
+      this.readyToStart = false;
       setTimeout(() => {
-        this.failed = false;
-        this.isMissionCompleted = false;
+        this.readyToStart = true;
+        this.gameOver = false;
+        this.intro = true;
+        this.start = false;
         this.restartButtonVisible = false;
-        this.play();
       }, 100);
     },
 
@@ -219,15 +267,15 @@ export default {
     },
   },
   created() {
-    window.addEventListener("keydown", this.moveVoyager);
+    window.addEventListener('keydown', this.moveVoyager);
   },
   destroyed() {
-    window.removeEventListener("keydown", this.moveVoyager);
+    window.removeEventListener('keydown', this.moveVoyager);
   },
 
   beforeDestroy() {
     clearInterval(this.template);
-  }
+  },
 };
 </script>
 
@@ -237,7 +285,23 @@ export default {
   width: 100%;
   height: 100%;
   background-color: white;
-  overflow: hidden;
+  gameoverflow: hidden;
+}
+
+.game__fade {
+  position: fixed;
+  width: 100%;
+  height: 20vh;
+  z-index: 10;
+
+  &.top {
+    top: 0;
+    background: linear-gradient(black, transparent);
+  }
+  &.bottom {
+    bottom: 0;
+    background: linear-gradient(to top, black, transparent);
+  }
 }
 
 @keyframes moveVoyager {
@@ -438,7 +502,7 @@ export default {
   margin: 30vh 0;
 }
 
-.overlay {
+.gameOverlay {
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -460,7 +524,7 @@ export default {
   font-family: Product Sans;
   cursor: pointer;
   opacity: 0.8;
-  &:hover {
+  &:hgameover {
     transform: scale(1.05);
     opacity: 1;
   }
@@ -473,7 +537,7 @@ export default {
   transition: transform 0.2s;
   opacity: 0.7;
 
-  &:hover {
+  &:hgameover {
     transform: scale(1.05);
     opacity: 1;
   }
