@@ -10,7 +10,7 @@
           ↓ Click on the probe
           <em>🛰</em> image to see the 3d model ↓
         </h4>
-        <div :class="probeModelOnScreen ? '' : 'probenotonscreen' ">
+        <div :class="probeModelOnScreen ? '' : 'probenotonscreen'">
           <iframe
             title="A 3D model"
             width="640"
@@ -26,7 +26,7 @@
         <div
           class="close"
           @click="toggle3d"
-          :style="{display: probeModelOnScreen ? 'flex' : 'none'}"
+          :style="{ display: probeModelOnScreen ? 'flex' : 'none' }"
         >
           <h5 class="close__text">Close 3D</h5>
           <svg
@@ -35,7 +35,13 @@
             xmlns="http://www.w3.org/2000/svg"
             class="close_probemodel"
           >
-            <circle cx="248" cy="248" r="229.5" stroke="#14131C" stroke-width="37" />
+            <circle
+              cx="248"
+              cy="248"
+              r="229.5"
+              stroke="#14131C"
+              stroke-width="37"
+            />
             <mask id="path-2-inside-1" fill="white">
               <path
                 fill-rule="evenodd"
@@ -95,11 +101,11 @@
 </template>
 
 <script>
-import Header from "../../components/Header";
-import TimeElapsed from "../../components/TimeElapsed.vue";
-import { titles } from "../../constants";
+import Header from '../../components/Header';
+import TimeElapsed from '../../components/TimeElapsed.vue';
+import { titles } from '../../constants';
 export default {
-  name: "TheJourney",
+  name: 'TheJourney',
   data() {
     return {
       title: titles.page1,
@@ -145,14 +151,15 @@ export default {
     flex-direction: column;
     align-items: center;
     margin-top: 4vh;
+    position: relative;
     .probe {
       width: 300px;
       margin-top: 1vh;
     }
     .golden-record {
       position: absolute;
-      top: 11vh;
-      left: 14vw;
+      top: 7.5%;
+      left: 21%;
       transform: scale(0.06);
       transition: all 2s;
     }
