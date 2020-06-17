@@ -4,7 +4,10 @@
     <div class="stars"></div>
     <div class="twinkling"></div>
     <div class="voyager">
-      <div class="probe-background" :class="probeModelOnScreen ? '' : 'probenotonscreen'">
+      <div
+        class="probe-background"
+        :class="probeModelOnScreen ? '' : 'probenotonscreen'"
+      >
         <!-- This is Sketchfab iFrame with the sketchfab controls 
           <iframe
             title="A 3D model"
@@ -36,7 +39,13 @@
             xmlns="http://www.w3.org/2000/svg"
             class="close_probemodel"
           >
-            <circle cx="248" cy="248" r="229.5" stroke="#14131C" stroke-width="37" />
+            <circle
+              cx="248"
+              cy="248"
+              r="229.5"
+              stroke="#14131C"
+              stroke-width="37"
+            />
             <mask id="path-2-inside-1" fill="white">
               <path
                 fill-rule="evenodd"
@@ -81,19 +90,13 @@
       <div class="voyager_description">
         <div>
           <p>
-            NASA placed an amibitous message aboard Voyager 1 and 2, a kind of
-            time capsule, intended to communicate a story of our world to
-            extraterrestrials.
+            {{ text_1 }}
           </p>
           <p>
-            It is carried by a phonograph record, a gold-plated copper disk
-            called “The Golden Record“ containing what’s supposed to be the
-            portray of the diversity of life and culture on Earth.
+            {{ text_2 }}
           </p>
           <p>
-            How intelligent life would be able to use this disk ? Press the
-            right arrow → to discover how scientists tried to answer this
-            question
+            {{ text_3 }}
           </p>
         </div>
         <Time-elapsed class="time" />
@@ -103,23 +106,39 @@
 </template>
 
 <script>
-import Header from "../../components/Header";
-import TimeElapsed from "../../components/TimeElapsed.vue";
-import { titles } from "../../constants";
+import Header from '@/components/Header';
+import TimeElapsed from '@/components/TimeElapsed.vue';
+import { titles } from '@/constants';
+import { url } from '@/constants.js';
 export default {
-  name: "TheJourney",
+  name: 'TheJourney',
   data() {
     return {
       title: titles.page1,
-      probeModelOnScreen: false
+      probeModelOnScreen: false,
+      text_1: 'loading',
+      text_2: 'loading',
+      text_3: 'loading',
     };
+  },
+  beforeCreate() {
+    fetch(`${url}/query/journey`, {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data[0].text_1);
+        this.text_1 = data[0].text_1;
+        this.text_2 = data[0].text_2;
+        this.text_3 = data[0].text_3;
+      });
   },
   methods: {
     toggle3d() {
       this.probeModelOnScreen = !this.probeModelOnScreen;
-    }
+    },
   },
-  components: { Header, TimeElapsed }
+  components: { Header, TimeElapsed },
 };
 </script>
 
