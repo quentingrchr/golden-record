@@ -179,13 +179,13 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
-import AudioPlayer from "@/components/AudioPlayer__Desktop.vue";
-import Playlist from "@/components/Playlist__Desktop.vue";
-import scratchSound from "@/assets/sounds/scratch.wav";
+import Header from '@/components/Header.vue';
+import AudioPlayer from '@/components/AudioPlayer__Desktop.vue';
+import Playlist from '@/components/Playlist__Desktop.vue';
+import scratchSound from '@/assets/sounds/scratch.wav';
 
-import { url } from "@/constants.js";
-import { titles } from "../../constants";
+import { url } from '@/constants.js';
+import { titles } from '../../constants';
 
 export default {
   components: {
@@ -199,34 +199,34 @@ export default {
       songIsActive: false,
       discIsActive: false,
       indexOfSelectedPlaylist: null,
-      randomSongName: "",
-      randomSongSrc: "",
+      randomSongName: '',
+      randomSongSrc: '',
       songIsPlaying: false,
       playlists: [
         {
           playlistId: 1,
-          playlistName: "Musics",
+          playlistName: 'Musics',
           playlistInfo1:
-            "Carl Sagan and his team decided to put 27 songs on the golden record.",
+            'Carl Sagan and his team decided to put 27 songs on the golden record.',
           playlistInfo2:
-            "The style music who’s the most represented in the disc is the classic style.",
+            'The style music who’s the most represented in the disc is the classic style.',
           playlistContent: [],
         },
         {
           playlistId: 2,
-          playlistName: "Greetings",
+          playlistName: 'Greetings',
           playlistInfo1:
-            "People from the Earth took the opportunity to let a message in their own language.",
-          playlistInfo2: "In this disc you can found 55 différents languages.",
+            'People from the Earth took the opportunity to let a message in their own language.',
+          playlistInfo2: 'In this disc you can found 55 différents languages.',
           playlistContent: [],
         },
         {
           playlistId: 3,
-          playlistName: "Noises",
+          playlistName: 'Noises',
           playlistInfo1:
-            "After human words, Sagan and his associates wanted to include sounds from the planet.",
+            'After human words, Sagan and his associates wanted to include sounds from the planet.',
           playlistInfo2:
-            "you can hear sounds of animals, sounds of nature and sounds of city life.",
+            'you can hear sounds of animals, sounds of nature and sounds of city life.',
           playlistContent: [],
         },
       ],
@@ -243,7 +243,7 @@ export default {
       return this.randomSongName;
     },
     audio() {
-      return this.$refs["audio"];
+      return this.$refs['audio'];
     },
   },
   methods: {
@@ -291,19 +291,19 @@ export default {
     };
 
     fetch(`${url}/query/audio_content`, {
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((songs) => {
         songs.forEach((song) => {
           switch (song.name_playlist) {
-            case "music":
+            case 'music':
               setInfos(0, song.name_audio, song.src_audio);
               break;
-            case "greetings":
+            case 'greetings':
               setInfos(1, song.name_audio, song.src_audio);
               break;
-            case "noises":
+            case 'noises':
               setInfos(2, song.name_audio, song.src_audio);
               break;
             default:
