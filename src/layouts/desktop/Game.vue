@@ -122,7 +122,7 @@
         class="playgroung__item item start--item"
         :class="start ? 'start' : null"
       >
-        <h1>You are voyager, try to do its journey from the beginning</h1>
+        <h1>You are Voyager, try to do its journey from the beginning</h1>
         <h1>
           Press <img class="keyboard" src="./../../assets/logo/Q.svg" /> to go
           left and <img class="keyboard" src="./../../assets/logo/D.svg" /> to
@@ -154,6 +154,8 @@
 </template>
 
 <script>
+import explosion from '@/assets/img/planets/explosion.gif';
+
 export default {
   data() {
     return {
@@ -167,30 +169,31 @@ export default {
       isMissionCompleted: false,
       isBackgroundVisible: true,
       restartButtonVisible: false,
+      imgExplosion: explosion,
     };
   },
   methods: {
     moveVoyager(e) {
       let voyagerPosition = this.$refs.voyager.offsetLeft;
-      if (e.key === "q") {
+      if (e.key === 'q') {
         if (!this.start) {
           this.play();
           this.start = true;
         }
         let nextPosition = voyagerPosition - this.voyagerMoveSpeed;
         if (nextPosition > this.leftLimit) {
-          this.$refs.voyager.style.left = nextPosition.toString() + "px";
+          this.$refs.voyager.style.left = nextPosition.toString() + 'px';
         } else {
-          this.$refs.voyager.style.left = this.leftLimit + "px";
+          this.$refs.voyager.style.left = this.leftLimit + 'px';
         }
-      } else if (e.key === "d") {
+      } else if (e.key === 'd') {
         if (!this.start) {
           this.play();
           this.start = true;
         }
         let nextPosition = voyagerPosition + this.voyagerMoveSpeed;
         if (nextPosition < this.rightLimit) {
-          this.$refs.voyager.style.left = nextPosition.toString() + "px";
+          this.$refs.voyager.style.left = nextPosition.toString() + 'px';
         } else {
           this.$refs.voyager.style.left = this.rightLimit + "'px";
         }
@@ -198,14 +201,14 @@ export default {
     },
     backgroundMove() {
       this.$refs.playground.style.top =
-        (this.$refs.playground.offsetTop + 1).toString() + "px";
+        (this.$refs.playground.offsetTop + 1).toString() + 'px';
 
       if (this.$refs.playground.offsetTop === 0) {
         this.success();
       }
     },
     collision() {
-      document.querySelectorAll(".item__obstacle").forEach(($el) => {
+      document.querySelectorAll('.item__obstacle').forEach(($el) => {
         const elementTop = $el.offsetTop + this.$refs.playground.offsetTop;
         if (
           elementTop + 30 <
@@ -221,9 +224,12 @@ export default {
       });
     },
     loose() {
-      this.failed = true;
       clearInterval(this.template);
-      this.template = null;
+      this.$refs.voyager.src = this.imgExplosion;
+      setTimeout(() => {
+        this.failed = true;
+        this.template = null;
+      }, 1200);
     },
     play() {
       const gameTemplate = setInterval(() => {
@@ -248,10 +254,10 @@ export default {
     },
   },
   created() {
-    window.addEventListener("keydown", this.moveVoyager);
+    window.addEventListener('keydown', this.moveVoyager);
   },
   destroyed() {
-    window.removeEventListener("keydown", this.moveVoyager);
+    window.removeEventListener('keydown', this.moveVoyager);
   },
 
   beforeDestroy() {
@@ -311,7 +317,7 @@ export default {
 
     & .item__obstacle {
       &.jupiter {
-        width: 60%;
+        width: 55%;
       }
 
       &.saturne {
