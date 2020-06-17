@@ -426,6 +426,7 @@ figure {
 
     &:hover:not(.focusMode) {
       transition: transform 0.5s ease;
+      z-index: 10;
 
       transform: scale(0.9) translateX(180% - $offsetX)
         translateY(-10% - $hoverOffset);
