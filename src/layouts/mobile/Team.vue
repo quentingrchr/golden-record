@@ -1,5 +1,6 @@
 <template>
   <section>
+    <div class="stars"></div>
     <Header :text="title" />
     <div @click="quitFocus" class="overlay" :class="focusMode ? 'active' : ''"></div>
     <div class="polaroids">
@@ -178,6 +179,7 @@ section {
   background-color: $primary-darkblue;
   color: $primary-white;
   overflow: hidden;
+  position: relative;
 }
 
 header.header {

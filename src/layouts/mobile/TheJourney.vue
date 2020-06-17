@@ -1,5 +1,6 @@
 <template>
   <section class="thejourney">
+    <div class="stars"></div>
     <Header :text="titleChapter" />
     <div class="voyager">
       <div class="voyager_image">
@@ -57,10 +58,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.stars {
+  z-index: -1;
+}
 .thejourney {
-  width: 80vw;
+  width: 100vw;
   margin: auto;
   color: $primary-white;
+  position: relative;
+  z-index: 10;
+  padding: 0 10vw;
   &_title {
     display: flex;
     align-items: center;

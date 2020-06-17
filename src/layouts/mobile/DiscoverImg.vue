@@ -1,6 +1,9 @@
 <template>
   <section class="imagesMobile">
-    <Header :text="titleChapter" />
+
+    <div class="stars"></div>
+    <Header :text="titleChapter" :class="selectedImage ? 'opacity' : ''" />
+
     <h4 class="title title--sub" ref="test">Pictures</h4>
     <p class="imageExplications" :class="selectedImage ? 'opacity' : ''">
       The Golden Records disk contains 116 images supposed to represent
@@ -173,6 +176,7 @@ export default {
   width: 100%;
   color: $primary-white;
   padding-top: 30px;
+  position: relative;
 }
 
 .title {

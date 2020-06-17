@@ -197,6 +197,7 @@ export default {
   align-items: center;
   background-color: $primary-darkblue;
   color: $primary-white;
+  position: relative;
 }
 
 .useIt__title {
