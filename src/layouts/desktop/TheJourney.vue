@@ -253,6 +253,7 @@ export default {
   cursor: pointer;
   color: white;
   opacity: 0.5;
+  transition: transform 0.5s;
   @media (max-width: 1200px) {
     left: 57vw;
   }
@@ -272,7 +273,6 @@ export default {
   }
   &:hover {
     opacity: 1;
-    transform-origin: center;
     transform: scale(1.1);
   }
 }

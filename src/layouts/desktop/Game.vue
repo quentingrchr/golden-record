@@ -2,159 +2,116 @@
   <div class="game">
     <div class="stars"></div>
     <div class="twinkling"></div>
-    <div
-      class="game__playground playground"
-      ref="playground"
-      v-if="!failed && !isMissionCompleted"
-    >
+    <div class="game__playground playground" ref="playground" v-if="!failed && !isMissionCompleted">
       <div class="playgroung__item item item--end">
         <h1 class="final-message">
           We are approximativly in 2035, you have no more energy to continue...
-          Let Voyager do the path it wants, <br />and finally, maybe meet
+          Let Voyager do the path it wants,
+          <br />and finally, maybe meet
           someone... 🖖
         </h1>
       </div>
       <div class="playground__item item item--random">
-        <img
-          src="./../../assets/img/planets/meteorite.png"
-          class="item__obstacle meteorite3"
-        />
+        <img src="./../../assets/img/planets/meteorite.png" class="item__obstacle meteorite3" />
       </div>
       <div class="playground__item item item--random">
-        <img
-          src="./../../assets/img/planets/black-hole.png"
-          class="item__obstacle blackhole1"
-        />
+        <img src="./../../assets/img/planets/black-hole.png" class="item__obstacle blackhole1" />
       </div>
       <div class="playground__item item item--random">
-        <img
-          src="./../../assets/img/planets/meteorite.png"
-          class="item__obstacle meteorite2"
-        />
+        <img src="./../../assets/img/planets/meteorite.png" class="item__obstacle meteorite2" />
       </div>
       <div class="playground__item item item--random">
-        <img
-          src="./../../assets/img/planets/black-hole.png"
-          class="item__obstacle blackhole2"
-        />
+        <img src="./../../assets/img/planets/black-hole.png" class="item__obstacle blackhole2" />
       </div>
       <div class="playground__item item item--random">
-        <img
-          src="./../../assets/img/planets/meteorite.png"
-          class="item__obstacle meteorite1"
-        />
+        <img src="./../../assets/img/planets/meteorite.png" class="item__obstacle meteorite1" />
       </div>
       <div class="playground__item item">
         <p class="item__description">
-          <em class="date">1989</em> <br />
-          Voyager 2 was at <br />
-          <em class="distance">4,950km</em><br />
-          from the clouds of<br />
+          <em class="date">1989</em>
+          <br />Voyager 2 was at
+          <br />
+          <em class="distance">4,950km</em>
+          <br />from the clouds of
+          <br />
           <em class="planet">Neptune</em>
         </p>
-        <img
-          src="./../../assets/img/planets/neptune.png"
-          class="item__obstacle neptune"
-        />
+        <img src="./../../assets/img/planets/neptune.png" class="item__obstacle neptune" />
       </div>
       <div class="playground__item item item--random">
-        <img
-          src="./../../assets/img/planets/satellite.png"
-          class="item__obstacle satellite"
-        />
+        <img src="./../../assets/img/planets/satellite.png" class="item__obstacle satellite" />
       </div>
       <div class="playground__item item">
-        <img
-          src="./../../assets/img/planets/uranus.png"
-          class="item__obstacle uranus"
-        />
+        <img src="./../../assets/img/planets/uranus.png" class="item__obstacle uranus" />
         <p class="item__description">
-          <em class="date">1986</em> <br />
-          Voyager 2 was at <br />
-          <em class="distance">81,500km</em><br />
-          from the clouds of<br />
+          <em class="date">1986</em>
+          <br />Voyager 2 was at
+          <br />
+          <em class="distance">81,500km</em>
+          <br />from the clouds of
+          <br />
           <em class="planet">Uranus</em>
         </p>
       </div>
       <div class="playground__item item">
         <p class="item__description">
-          <em class="date">1980</em> <br />
-          Voyager 1 was at <br />
-          <em class="distance">124,000km</em><br />
-          from the center of<br />
+          <em class="date">1980</em>
+          <br />Voyager 1 was at
+          <br />
+          <em class="distance">124,000km</em>
+          <br />from the center of
+          <br />
           <em class="planet">Saturne</em>
         </p>
-        <img
-          src="./../../assets/img/planets/saturne.png"
-          class="item__obstacle saturne"
-        />
+        <img src="./../../assets/img/planets/saturne.png" class="item__obstacle saturne" />
       </div>
       <div class="playground__item item item--random">
-        <img
-          src="./../../assets/img/planets/spoutnik.png"
-          class="item__obstacle spoutnik"
-        />
+        <img src="./../../assets/img/planets/spoutnik.png" class="item__obstacle spoutnik" />
       </div>
       <div class="playground__item item">
-        <img
-          src="./../../assets/img/planets/jupiter.png"
-          class="item__obstacle jupiter"
-        />
+        <img src="./../../assets/img/planets/jupiter.png" class="item__obstacle jupiter" />
         <p class="item__description">
-          <em class="date">1979</em> <br />
-          Voyager 1 was at <br />
-          <em class="distance">78.000km</em><br />
-          from the surface of<br />
+          <em class="date">1979</em>
+          <br />Voyager 1 was at
+          <br />
+          <em class="distance">78.000km</em>
+          <br />from the surface of
+          <br />
           <em class="planet">Jupiter</em>
         </p>
       </div>
       <div class="playground__item item info">
-        <h1 class="item__start">
-          Don't bump into the planets 🌎
-        </h1>
+        <h1 class="item__start">Don't bump into the planets 🌎</h1>
       </div>
       <div class="playground__item item info">
-        <h1 class="item__start">
-          You are in 1977, Let's Start
-        </h1>
+        <h1 class="item__start">You are in 1977, Let's Start</h1>
       </div>
-      <div
-        class="playgroung__item item start--item"
-        :class="start ? 'start' : null"
-      >
+      <div class="playgroung__item item start--item" :class="start ? 'start' : null">
         <h1>You are Voyager, try to do its journey from the beginning</h1>
         <h1>
-          Press <img class="keyboard" src="./../../assets/logo/Q.svg" /> to go
-          left and <img class="keyboard" src="./../../assets/logo/D.svg" /> to
-          go right <br />
-          Press one of both to start
+          Press
+          <img class="keyboard" src="./../../assets/logo/Q.svg" /> to go
+          left and
+          <img class="keyboard" src="./../../assets/logo/D.svg" /> to
+          go right
+          <br />Press one of both to start
         </h1>
       </div>
 
-      <img
-        src="./../../assets/img/voyager_journey.png"
-        ref="voyager"
-        class="voyager"
-      />
+      <img src="./../../assets/img/voyager_journey.png" ref="voyager" class="voyager" />
     </div>
     <transition name="fade">
       <div class="overlay" v-if="failed">
-        <h3>...Voyager is destroyed 😪 ...</h3>
+        <h3>... Voyager is destroyed 💥 ...</h3>
         <button @click="playAgain" class="play">Try again</button>
       </div>
     </transition>
-    <button
-      @click="playAgain"
-      v-if="restartButtonVisible"
-      class="play play--again"
-    >
-      Play again
-    </button>
+    <button @click="playAgain" v-if="restartButtonVisible" class="play play--again">Play again</button>
   </div>
 </template>
 
 <script>
-import explosion from '@/assets/img/planets/explosion.gif';
+import explosion from "@/assets/img/planets/explosion.gif";
 
 export default {
   data() {
@@ -169,31 +126,31 @@ export default {
       isMissionCompleted: false,
       isBackgroundVisible: true,
       restartButtonVisible: false,
-      imgExplosion: explosion,
+      imgExplosion: explosion
     };
   },
   methods: {
     moveVoyager(e) {
       let voyagerPosition = this.$refs.voyager.offsetLeft;
-      if (e.key === 'q') {
+      if (e.key === "q") {
         if (!this.start) {
           this.play();
           this.start = true;
         }
         let nextPosition = voyagerPosition - this.voyagerMoveSpeed;
         if (nextPosition > this.leftLimit) {
-          this.$refs.voyager.style.left = nextPosition.toString() + 'px';
+          this.$refs.voyager.style.left = nextPosition.toString() + "px";
         } else {
-          this.$refs.voyager.style.left = this.leftLimit + 'px';
+          this.$refs.voyager.style.left = this.leftLimit + "px";
         }
-      } else if (e.key === 'd') {
+      } else if (e.key === "d") {
         if (!this.start) {
           this.play();
           this.start = true;
         }
         let nextPosition = voyagerPosition + this.voyagerMoveSpeed;
         if (nextPosition < this.rightLimit) {
-          this.$refs.voyager.style.left = nextPosition.toString() + 'px';
+          this.$refs.voyager.style.left = nextPosition.toString() + "px";
         } else {
           this.$refs.voyager.style.left = this.rightLimit + "'px";
         }
@@ -201,14 +158,14 @@ export default {
     },
     backgroundMove() {
       this.$refs.playground.style.top =
-        (this.$refs.playground.offsetTop + 1).toString() + 'px';
+        (this.$refs.playground.offsetTop + 1).toString() + "px";
 
       if (this.$refs.playground.offsetTop === 0) {
         this.success();
       }
     },
     collision() {
-      document.querySelectorAll('.item__obstacle').forEach(($el) => {
+      document.querySelectorAll(".item__obstacle").forEach($el => {
         const elementTop = $el.offsetTop + this.$refs.playground.offsetTop;
         if (
           elementTop + 30 <
@@ -251,18 +208,18 @@ export default {
         this.restartButtonVisible = false;
         this.play();
       }, 100);
-    },
+    }
   },
   created() {
-    window.addEventListener('keydown', this.moveVoyager);
+    window.addEventListener("keydown", this.moveVoyager);
   },
   destroyed() {
-    window.removeEventListener('keydown', this.moveVoyager);
+    window.removeEventListener("keydown", this.moveVoyager);
   },
 
   beforeDestroy() {
     clearInterval(this.template);
-  },
+  }
 };
 </script>
 
