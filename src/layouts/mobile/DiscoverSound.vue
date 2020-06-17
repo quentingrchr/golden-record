@@ -322,7 +322,7 @@ export default {
   &__nextChapter {
     display: flex;
     justify-content: center;
-    z-index: 600;
+    z-index: 1;
   }
 }
 </style>
