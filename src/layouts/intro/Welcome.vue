@@ -2,6 +2,11 @@
   <div class="intro" @click="$emit('clickWelcome')">
     <div class="stars"></div>
     <div class="twinkling"></div>
+    <div class="explaination" @click="closeOverlay" :class="{ close: overlayClicked }">
+      <h2 class="explaination__title">Hi Stranger ! 👋🏼👽</h2>
+      <p>Switch to deskop for a better experience</p>
+      <p class="text-welcome">Click anywhere to continue</p>
+    </div>
 
     <div class="infos__container">
       <h1 class="title-blur">
@@ -50,13 +55,51 @@
 
 <script>
 export default {
-  name: "Welcome"
+  name: "Welcome",
+  data() {
+    return {
+      overlayClicked: false
+    };
+  },
+  methods: {
+    closeOverlay() {
+      this.overlayClicked = true;
+      this.$emit("closeOverlay");
+    }
+  }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .text-welcome {
   cursor: pointer;
   user-select: none;
+}
+// Overlay
+@media screen and(max-width: 768px) {
+  .explaination {
+    transition: opacity 0.2s ease;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($color: #000000, $alpha: 0.95);
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    padding: 100px 20vw;
+    h2 {
+      font-size: 30px;
+    }
+  }
+}
+@media screen and(min-width: 768px) {
+  .explaination {
+    display: none;
+  }
+}
+.close {
+  display: none;
 }
 </style>

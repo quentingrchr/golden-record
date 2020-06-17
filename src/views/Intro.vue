@@ -14,19 +14,28 @@ import { appTitle } from "../constants";
 export default {
   components: {
     Welcome,
-    Video,
+    Video
   },
   data() {
     return {
       scrollRate: 0,
       changePageControll: 50,
       launchVideo: false,
+      mobileClicked: 0
     };
   },
   methods: {
     goToVideo() {
-      this.scrollRate = 100;
-      this.launchVideo = true;
+      if (window.innerWidth >= 768) {
+        this.scrollRate = 100;
+        this.launchVideo = true;
+        return;
+      }
+      this.mobileClicked++;
+      if (this.mobileClicked >= 2) {
+        this.scrollRate = 100;
+        this.launchVideo = true;
+      }
     },
     isScrolled(e) {
       e.preventDefault();
@@ -35,7 +44,7 @@ export default {
       } else if (this.scrollRate >= this.changePageControll) {
         this.launchVideo = true;
       }
-    },
+    }
   },
   mounted() {
     let $title = document.querySelector("title");
@@ -47,7 +56,7 @@ export default {
       }, 500);
     }
     titleScroller(appTitle);
-  },
+  }
 };
 </script>
 
