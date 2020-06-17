@@ -180,6 +180,10 @@ section {
   color: $primary-white;
   overflow: hidden;
   position: relative;
+  z-index: 10;
+}
+.stars {
+  z-index: -1;
 }
 
 header.header {
