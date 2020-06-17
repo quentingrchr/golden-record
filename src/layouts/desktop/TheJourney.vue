@@ -4,10 +4,7 @@
     <div class="stars"></div>
     <div class="twinkling"></div>
     <div class="voyager">
-      <div
-        class="probe-background"
-        :class="probeModelOnScreen ? '' : 'probenotonscreen'"
-      >
+      <div class="probe-background" :class="probeModelOnScreen ? '' : 'probenotonscreen'">
         <!-- This is Sketchfab iFrame with the sketchfab controls 
           <iframe
             title="A 3D model"
@@ -39,13 +36,7 @@
             xmlns="http://www.w3.org/2000/svg"
             class="close_probemodel"
           >
-            <circle
-              cx="248"
-              cy="248"
-              r="229.5"
-              stroke="#14131C"
-              stroke-width="37"
-            />
+            <circle cx="248" cy="248" r="229.5" stroke="#14131C" stroke-width="37" />
             <mask id="path-2-inside-1" fill="white">
               <path
                 fill-rule="evenodd"
@@ -89,15 +80,9 @@
       </div>
       <div class="voyager_description">
         <div>
-          <p>
-            {{ text_1 }}
-          </p>
-          <p>
-            {{ text_2 }}
-          </p>
-          <p>
-            {{ text_3 }}
-          </p>
+          <p>{{ text_1 }}</p>
+          <p>{{ text_2 }}</p>
+          <p>{{ text_3 }}</p>
         </div>
         <Time-elapsed class="time" />
       </div>
@@ -112,25 +97,30 @@ import { titles } from "@/constants";
 import { url } from "@/constants.js";
 export default {
   name: "TheJourney",
+
   props: {
     instructionIsClosed: Boolean,
   },
+
   data() {
     return {
       title: titles.page1,
       probeModelOnScreen: false,
       text_1: "loading",
       text_2: "loading",
+
       text_3: "loading",
       overlayIsOpen: true,
     };
   },
   beforeCreate() {
     fetch(`${url}/query/journey`, {
-      method: "GET",
+
+      method: "GET"
+
     })
-      .then((response) => response.json())
-      .then((data) => {
+      .then(response => response.json())
+      .then(data => {
         console.log(data[0].text_1);
         this.text_1 = data[0].text_1;
         this.text_2 = data[0].text_2;
@@ -140,9 +130,9 @@ export default {
   methods: {
     toggle3d() {
       this.probeModelOnScreen = !this.probeModelOnScreen;
-    },
+    }
   },
-  components: { Header, TimeElapsed },
+  components: { Header, TimeElapsed }
 };
 </script>
 
@@ -183,10 +173,10 @@ export default {
     }
     .golden-record {
       position: absolute;
-      top: 52px;
-      left: 105px;
       transform: scale(0.06);
       transition: all 2s;
+      top: 52px;
+      left: 105px;
     }
     .zoom-in-record {
       animation: zooming 1.5s 1.5s ease-in-out forwards;
@@ -212,7 +202,7 @@ export default {
     transform: scale(0.06);
   }
   to {
-    transform: scale(0.9) rotateZ(0deg) translateY(32vh) translateX(1vw);
+    transform: scale(0.9) rotateZ(0deg) translateY(32vh);
   }
 }
 

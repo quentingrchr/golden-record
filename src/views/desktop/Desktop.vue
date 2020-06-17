@@ -1,5 +1,6 @@
 <template>
   <main @wheel="wheel" class="desktopViews-container">
+
     <Explaination
       v-on:closeinstruction="closeInstruction"
       v-show="currentPage === 1"
@@ -14,17 +15,14 @@
         v-if="currentPage === 1"
         key="Journey"
       />
+
       <HowToUseIt v-else-if="currentPage === 2" key="How" />
       <DiscoverImg v-else-if="currentPage === 3" key="img" />
       <DiscoverSound v-else-if="currentPage === 4" key="sound" />
       <Team v-else-if="currentPage === 5" key="team" />
       <Game v-else-if="currentPage === 6" key="game" />
     </transition>
-    <NavBar
-      :page="currentPage"
-      :scroll="scrollSpeed"
-      @jumpToOtherChapter="changeChapter"
-    />
+    <NavBar :page="currentPage" :scroll="scrollSpeed" @jumpToOtherChapter="changeChapter" />
     <Icon />
     <ModalsManager />
   </main>
@@ -55,7 +53,7 @@ export default {
     Icon,
     ModalsManager,
     Game,
-    Explaination,
+    Explaination
   },
   data() {
     return {
@@ -65,6 +63,7 @@ export default {
       scrollSpeed: 6,
       goingNextPart: true,
       pageMoveNext: true,
+      speaking: false
     };
   },
   computed: {
@@ -94,7 +93,7 @@ export default {
       } else {
         return 6;
       }
-    },
+    }
   },
   methods: {
     closeInstruction() {
@@ -178,14 +177,11 @@ export default {
           this.changeChapter(this.scrollSpeed * 5);
         }
       }
-    },
-  },
-  created() {
-    window.addEventListener("keydown", this.changeChapterWithKeyboard);
+    }
   },
   destroyed() {
     window.removeEventListener("keydown", this.changeChapterWithKeyboard);
-  },
+  }
 };
 </script>
 
