@@ -4,11 +4,7 @@
     <div class="twinkling"></div>
     <Header class="Use__mainTitle" :text="title" />
     <div class="Use__container">
-      <div
-        @click="appear"
-        :class="{ none: disappear }"
-        class="Use__instruction"
-      >
+      <div @click="appear" :class="{ none: disappear }" class="Use__instruction">
         <div class="Use__intruction">
           <img class="allsigns" src="@/assets/img/allsigns.png" />
           <h3 class="Use__intructionText">
@@ -28,11 +24,7 @@
           nameIcon="#record"
         >
           <template v-slot:right>
-            <ContentSign
-              class="Use__text"
-              :contentRight="false"
-              title="Radial circle"
-            />
+            <ContentSign class="Use__text" :contentRight="false" title="Radial circle" />
           </template>
         </Sign>
         <Sign
@@ -112,13 +104,13 @@ export default {
     title: titles.page2,
     hovering: 0,
     isClosed: false,
-    disappear: false,
+    disappear: false
   }),
   components: {
     Sign,
     CircleIcon,
     ContentSign,
-    Header,
+    Header
   },
   methods: {
     appear() {
@@ -126,8 +118,8 @@ export default {
     },
     createHover(e) {
       this.hovering = e;
-    },
-  },
+    }
+  }
 };
 </script>
 
