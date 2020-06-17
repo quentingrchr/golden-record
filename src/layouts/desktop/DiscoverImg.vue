@@ -1,7 +1,12 @@
 <template>
   <section class="visualContent">
     <Header class="visualContent__title" :text="title" />
-    <div class="visualContent__images" :style="position" ref="imageContainer">
+    <div
+      class="visualContent__images"
+      :style="position"
+      ref="imageContainer"
+      v-show="!isLoading"
+    >
       <div
         v-for="(image, index) in imgs"
         :key="index"
