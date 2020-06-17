@@ -2,16 +2,8 @@
   <section class="visualContent">
     <Header class="visualContent__title" :text="title" />
     <div class="visualContent__images" :style="position" ref="imageContainer">
-      <div
-        v-for="(image, index) in imgs"
-        :key="index"
-        @click="isSelected(image)"
-      >
-        <img
-          :src="image"
-          alt="One of the golden record pictures"
-          ref="lazyImage"
-        />
+      <div v-for="(image, index) in imgs" :key="index" @click="isSelected(image)">
+        <img :src="image" alt="One of the golden record pictures" ref="lazyImage" />
       </div>
     </div>
     <div class="visualContent__overlays">
@@ -21,17 +13,13 @@
           <div class="loading-overlay__grid">
             <div v-for="img in fakeImgNumber" :key="img"></div>
           </div>
-          <div
-            class="loading-overlay__infos"
-            :class="hideInfos ? 'isInvisible' : null"
-          >
+          <!-- :class="hideInfos ? 'isInvisible' : null" -->
+          <div class="loading-overlay__infos">
             <h3>
               The Golden Records disk contains 116 images supposed to represent
               the Humanity
             </h3>
-            <p class="loading-overlay__instruction">
-              Click on an image to enlarge it
-            </p>
+            <p class="loading-overlay__instruction">Click on an image to enlarge it</p>
             <img src="./../../assets/logo/arrows.svg" />
           </div>
         </div>
@@ -95,9 +83,9 @@
 </template>
 
 <script>
-import { titles } from '../../constants';
-import Header from '@/components/Header.vue';
-import { url } from '@/constants.js';
+import { titles } from "../../constants";
+import Header from "@/components/Header.vue";
+import { url } from "@/constants.js";
 export default {
   data() {
     return {
@@ -108,10 +96,10 @@ export default {
       isLoading: true,
       hideInfos: false,
       position: {
-        top: '-20%',
-        left: '-20%',
+        top: "-20%",
+        left: "-20%"
       },
-      selectedImage: null,
+      selectedImage: null
     };
   },
   computed: {
@@ -121,19 +109,19 @@ export default {
         fakesImg.push(i);
       }
       return fakesImg;
-    },
+    }
   },
   beforeCreate() {
     fetch(`${url}/query/visual_content`, {
-      method: 'GET',
+      method: "GET"
     })
-      .then((response) => response.json())
-      .then((data) => {
-        data.forEach((element) => this.imgs.push(element.src));
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(element => this.imgs.push(element.src));
       });
   },
   components: {
-    Header,
+    Header
   },
   created() {
     setTimeout(() => {
@@ -146,44 +134,44 @@ export default {
   methods: {
     setDirection(value) {
       const imgContainer = this.$refs.imageContainer;
-      if (value === 'down') {
-        this.position.top = '100px';
-      } else if (value === 'right') {
-        this.position.left = '170px';
-      } else if (value === 'left') {
+      if (value === "down") {
+        this.position.top = "100px";
+      } else if (value === "right") {
+        this.position.left = "170px";
+      } else if (value === "left") {
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          'px';
-      } else if (value === 'up') {
+          "px";
+      } else if (value === "up") {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          'px';
-      } else if (value === 'cornerTopRight') {
-        this.position.top = '100px';
+          "px";
+      } else if (value === "cornerTopRight") {
+        this.position.top = "100px";
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          'px';
-      } else if (value === 'cornerTopLeft') {
-        this.position.left = '170px';
-        this.position.top = '100px';
-      } else if (value === 'cornerBottomRight') {
+          "px";
+      } else if (value === "cornerTopLeft") {
+        this.position.left = "170px";
+        this.position.top = "100px";
+      } else if (value === "cornerBottomRight") {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          'px';
+          "px";
         this.position.left =
           (window.innerWidth - imgContainer.offsetWidth - 100).toString() +
-          'px';
-      } else if (value === 'cornerBottomLeft') {
+          "px";
+      } else if (value === "cornerBottomLeft") {
         this.position.top =
           (window.innerHeight - imgContainer.offsetHeight - 80).toString() +
-          'px';
-        this.position.left = '170px';
+          "px";
+        this.position.left = "170px";
       }
     },
     cancelDirection() {
       const imgContainer = this.$refs.imageContainer;
-      const top = imgContainer.offsetTop + 'px';
-      const left = imgContainer.offsetLeft + 'px';
+      const top = imgContainer.offsetTop + "px";
+      const left = imgContainer.offsetLeft + "px";
       this.position.top = top;
       this.position.left = left;
     },
@@ -192,8 +180,8 @@ export default {
     },
     closeOverlay() {
       this.selectedImage = null;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -256,10 +244,10 @@ section {
       display: none;
     }
     & h3 {
-      font-size: 25px;
+      font-size: 30px;
       color: $primary-white;
       width: 50%;
-      line-height: 2rem;
+      line-height: 150%;
       font-weight: 400;
       margin-bottom: 30px;
     }
@@ -281,7 +269,7 @@ section {
     z-index: 5;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    background-image: url('./../../assets/img/patchwork.png');
+    background-image: url("./../../assets/img/patchwork.png");
     background-size: 100%;
     opacity: 0.2;
 
