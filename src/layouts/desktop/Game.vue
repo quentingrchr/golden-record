@@ -111,7 +111,8 @@
 </template>
 
 <script>
-import explosion from "@/assets/img/planets/explosion.gif";
+import imgExplosion from '@/assets/img/planets/explosion.gif';
+import soundExplosion from '@/assets/sounds/explosion-effect.mp3';
 
 export default {
   data() {
@@ -126,7 +127,7 @@ export default {
       isMissionCompleted: false,
       isBackgroundVisible: true,
       restartButtonVisible: false,
-      imgExplosion: explosion
+      imgExplosion: imgExplosion,
     };
   },
   methods: {
@@ -183,6 +184,8 @@ export default {
     loose() {
       clearInterval(this.template);
       this.$refs.voyager.src = this.imgExplosion;
+      let audio = new Audio(soundExplosion);
+      this.playSound(audio, 0.5);
       setTimeout(() => {
         this.failed = true;
         this.template = null;
@@ -208,7 +211,12 @@ export default {
         this.restartButtonVisible = false;
         this.play();
       }, 100);
-    }
+    },
+
+    playSound(audio, volume) {
+      audio.volume = volume;
+      audio.play();
+    },
   },
   created() {
     window.addEventListener("keydown", this.moveVoyager);
