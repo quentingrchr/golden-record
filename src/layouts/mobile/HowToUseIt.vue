@@ -164,7 +164,6 @@ export default {
       .then(Response => Response.json())
       .then(rawData => {
         this.content = [];
-
         rawData.forEach(el => {
           this.content.push({
             text_1: el.text_1,

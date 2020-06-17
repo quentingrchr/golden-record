@@ -125,9 +125,6 @@ export default {
   },
   created() {
     window.speechSynthesis.cancel();
-    let $texts = document.querySelectorAll(".texts");
-    console.log(this.text_1);
-
     window.addEventListener("keydown", this.changeChapterWithKeyboard);
     document.body.onkeyup = function(e) {
       if (e.keyCode == 13 && !speechSynthesis.speaking) {
