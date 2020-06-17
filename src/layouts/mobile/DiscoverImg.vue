@@ -2,6 +2,10 @@
   <section class="imagesMobile">
     <Header text="Gallery" :class="selectedImage ? 'opacity' : ''" />
     <h4 class="title title--sub" ref="test">Pictures</h4>
+    <p class="imageExplications">
+      The Golden Records disk contains 116 images supposed to represent
+      the Humanity
+    </p>
     <div class="imagesContainer" :class="scroll ? 'isScrolling' : null">
       <div
         class="imagesContainer__image"
@@ -182,6 +186,10 @@ export default {
 .title--sub {
   margin-top: 50px;
   margin-bottom: 20px;
+}
+
+.imageExplications {
+  margin: 5vw;
 }
 
 .imagesContainer {

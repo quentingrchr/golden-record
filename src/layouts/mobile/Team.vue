@@ -1,6 +1,6 @@
 <template>
   <section>
-    <Header text="The Team" />
+    <Header :text="title" />
     <div @click="quitFocus" class="overlay" :class="focusMode ? 'active' : ''"></div>
     <div class="polaroids">
       <Polaroid
@@ -30,6 +30,7 @@ import srcImg2 from "../../assets/img/eward_c_stone.jpg";
 import srcImg3 from "../../assets/img/carl_sagan.jpg";
 import srcImg4 from "../../assets/img/jon_lomberg.jpg";
 import srcImg5 from "../../assets/img/frank_drake.jpg";
+import { titles } from "../../constants";
 
 export default {
   components: {
@@ -39,6 +40,7 @@ export default {
   props: {},
   data: () => {
     return {
+      title: titles.page5,
       isTrue: false,
       focusMode: false,
       indexFocused: null,
@@ -213,11 +215,11 @@ header.header {
     transform-origin: center;
     &:nth-child(1) {
       z-index: 2;
-      transform: scale(0.7) rotate(30deg) translateX(-20%) translateY(-150%);
+      transform: scale(0.7) rotate(30deg) translateX(-35%) translateY(-150%);
     }
     &:nth-child(2) {
       z-index: 7;
-      transform: scale(0.8) rotate(10deg) translateY(50%) translateX(-20%);
+      transform: scale(0.8) rotate(10deg) translateY(50%) translateX(-30%);
     }
     &:nth-child(3) {
       z-index: 6;
@@ -225,7 +227,7 @@ header.header {
     }
     &:nth-child(4) {
       z-index: 5;
-      transform: scale(0.7) rotate(-20deg) translateY(80%) translateX(50%);
+      transform: scale(0.7) rotate(-20deg) translateY(80%) translateX(35%);
     }
     &:nth-child(5) {
       z-index: 1;
