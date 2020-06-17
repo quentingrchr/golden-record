@@ -365,7 +365,8 @@ export default {
 
 .audio__categoryContainer {
   height: 435px;
-  margin: 10vh 5vw;
+  margin: 10vh 0;
+  margin-left: $nav-width;
   display: flex;
   justify-content: space-around;
 }
