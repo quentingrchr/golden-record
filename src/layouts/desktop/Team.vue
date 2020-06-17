@@ -186,7 +186,7 @@ export default {
       });
   },
   methods: {
-    handleClickSound: function(i) {
+    handleClickSound: function() {
       if (this.focusMode) {
         this.playSound();
       }
