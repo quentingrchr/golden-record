@@ -171,7 +171,7 @@ export default {
       .then(rawData => {
         this.content = [];
 
-        console.log(rawData);
+  
         rawData.forEach(el => {
           this.content.push({
             text_1: el.text_1,
