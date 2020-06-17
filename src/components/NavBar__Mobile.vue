@@ -7,9 +7,7 @@
           :class="actualSelectedPage - 1 === index ? 'isSelected' : null"
           :key="index"
           @click="jumpToChapter(index)"
-        >
-          {{ title }}
-        </li>
+        >{{ title }}</li>
       </ul>
     </nav>
     <div class="navBar">
@@ -17,6 +15,7 @@
         class="navBar__item navBar__item--volume"
         :class="isVolumeOff ? 'volumeOff' : null"
         @click="toggleVolume"
+        :style="{visibility:'hidden'}"
       >
         <BaseIcon class="iconVolume" href="sound" />
       </div>
@@ -43,22 +42,22 @@ export default {
   data() {
     return {
       isVolumeOff: false,
-      isMenuOpen: false,
+      isMenuOpen: false
     };
   },
   components: {
     Icons,
-    BaseIcon,
+    BaseIcon
   },
   props: {
     titles: {
       type: Array,
-      required: true,
+      required: true
     },
     actualSelectedPage: {
       type: Number,
-      required: true,
-    },
+      required: true
+    }
   },
   methods: {
     toggleVolume() {
@@ -71,10 +70,10 @@ export default {
       this.$emit("getSelectedPageIndex", index);
       this.isMenuOpen = false;
       window.scrollTo({
-        top: 0,
+        top: 0
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

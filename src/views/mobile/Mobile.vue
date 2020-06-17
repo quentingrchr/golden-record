@@ -32,8 +32,8 @@ export default {
   name: "Mobile",
   data() {
     return {
-      chaptersName: Object.values(titles),
-      currentPage: 1,
+      chaptersName: Object.values(titles).splice(0, 5),
+      currentPage: 1
     };
   },
   components: {
@@ -43,7 +43,7 @@ export default {
     HowToUse,
     Journey,
     Team,
-    Icon,
+    Icon
   },
   methods: {
     check(e) {
@@ -54,8 +54,8 @@ export default {
     },
     changeChapter(value) {
       this.currentPage = value;
-    },
-  },
+    }
+  }
 };
 </script>
 
