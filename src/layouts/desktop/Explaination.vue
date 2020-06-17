@@ -1,7 +1,7 @@
 <template>
   <div
     class="explaination"
-    @click="closeInstruction()"
+    @click="jumpToOtherChapter(1)"
     :class="overlayIsOpen ? '' : 'none'"
   >
     <h2 class="explaination__title">Hi Stranger ! 👋🏼👽</h2>
@@ -41,11 +41,11 @@
 </template>
 
 <script>
-import leftArrowSrc from "../../assets/img/left-arrow.png";
-import rightArrowSrc from "../../assets/img/right-arrow.png";
+import leftArrowSrc from '../../assets/img/left-arrow.png';
+import rightArrowSrc from '../../assets/img/right-arrow.png';
 
 export default {
-  name: "Explaination",
+  name: 'Explaination',
   props: {},
   data() {
     return {
@@ -55,10 +55,13 @@ export default {
     };
   },
   methods: {
-    closeInstruction() {
+    jumpToOtherChapter(value) {
+      this.$emit('jumpToOtherChapterFromInto', value);
+    },
+    /* closeInstruction() {
       this.overlayIsOpen = false;
       this.$emit("closeinstruction");
-    },
+    }, */
   },
 };
 </script>
