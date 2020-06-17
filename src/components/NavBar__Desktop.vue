@@ -8,7 +8,11 @@
     <div class="navBar__timeLineContainer">
       <div>
         <router-link to="/">
-          <img src="../assets/logo/earth-logo.png" alt="earth-logo" class="navBar__earthLogo" />
+          <img
+            src="../assets/logo/earth-logo.png"
+            alt="earth-logo"
+            class="navBar__earthLogo"
+          />
         </router-link>
       </div>
       <div
@@ -17,9 +21,17 @@
         :class="isMute ? 'isMute' : null"
         v-show="page !== 4"
       >
-        <img src="../assets/logo/volume-logo.png" alt="volume-logo" class="navBar__volumeLogo" />
+        <img
+          src="../assets/logo/volume-logo.png"
+          alt="volume-logo"
+          class="navBar__volumeLogo"
+        />
       </div>
-      <div class="navBar__containerFullscreen" @click="toggleScreen" ref="fullscreen">
+      <div
+        class="navBar__containerFullscreen"
+        @click="toggleScreen"
+        ref="fullscreen"
+      >
         <img
           src="../assets/logo/notfullscreen.svg"
           v-if="isFullScreen"
@@ -34,27 +46,51 @@
         />
       </div>
       <nav class="navBar__timeLine">
-        <div @click="jumpToOtherChapter(scroll * 5)" :class="page === 1 ? 'isSelected' : null">
-          <p>The origin</p>
+        <div
+          @click="jumpToOtherChapter(scroll * 5)"
+          :class="page === 1 ? 'isSelected' : null"
+        >
+          <p>{{ titles.page1 }}</p>
         </div>
-        <div @click="jumpToOtherChapter(scroll * 15)" :class="page === 2 ? 'isSelected' : null">
-          <p>Decrypt it</p>
+        <div
+          @click="jumpToOtherChapter(scroll * 15)"
+          :class="page === 2 ? 'isSelected' : null"
+        >
+          <p>{{ titles.page2 }}</p>
         </div>
-        <div @click="jumpToOtherChapter(scroll * 25)" :class="page === 3 ? 'isSelected' : null">
-          <p>Visual Content</p>
+        <div
+          @click="jumpToOtherChapter(scroll * 25)"
+          :class="page === 3 ? 'isSelected' : null"
+        >
+          <p>{{ titles.page3 }}</p>
         </div>
-        <div @click="jumpToOtherChapter(scroll * 35)" :class="page === 4 ? 'isSelected' : null">
-          <p>Audio Content</p>
+        <div
+          @click="jumpToOtherChapter(scroll * 35)"
+          :class="page === 4 ? 'isSelected' : null"
+        >
+          <p>{{ titles.page4 }}</p>
         </div>
-        <div @click="jumpToOtherChapter(scroll * 45)" :class="page === 5 ? 'isSelected' : null">
-          <p>The team</p>
+        <div
+          @click="jumpToOtherChapter(scroll * 45)"
+          :class="page === 5 ? 'isSelected' : null"
+        >
+          <p>{{ titles.page5 }}</p>
         </div>
-        <div @click="jumpToOtherChapter(scroll * 55)" :class="page === 6 ? 'isSelected' : null">
-          <p>Game</p>
+        <div
+          @click="jumpToOtherChapter(scroll * 55)"
+          :class="page === 6 ? 'isSelected' : null"
+        >
+          <p>{{ titles.page6 }}</p>
         </div>
       </nav>
     </div>
-    <audio class="experience__song" ref="audio" autoplay loop src="../assets/music/drone.mp3"></audio>
+    <audio
+      class="experience__song"
+      ref="audio"
+      autoplay
+      loop
+      src="../assets/music/drone.mp3"
+    ></audio>
   </div>
 </template>
 
@@ -62,12 +98,14 @@
 import EventBus from "@/EventBus";
 import glitch1 from "../assets/sounds/glitch_1.mp3";
 import glitch2 from "../assets/sounds/glitch_2.mp3";
+import { titles } from "../constants";
 
 export default {
   data() {
     return {
+      titles: titles,
       isMute: false,
-      isFullScreen: false
+      isFullScreen: false,
     };
   },
   methods: {
@@ -106,7 +144,7 @@ export default {
     playSound(audio, volume) {
       audio.volume = volume;
       audio.play();
-    }
+    },
   },
   mounted() {
     this.$refs.audio.volume = 0.2;
@@ -118,11 +156,11 @@ export default {
   },
   props: {
     page: {
-      type: Number
+      type: Number,
     },
     scroll: {
-      type: Number
-    }
+      type: Number,
+    },
   },
   watch: {
     page: function(newProp) {
@@ -131,8 +169,8 @@ export default {
       } else {
         this.$refs.audio.volume = 0.2;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

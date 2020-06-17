@@ -182,6 +182,7 @@ import Playlist from "@/components/Playlist__Desktop.vue";
 import scratchSound from "@/assets/sounds/scratch.wav";
 
 import { url } from "@/constants.js";
+import { titles } from "../../constants";
 
 export default {
   components: {
@@ -191,7 +192,7 @@ export default {
   },
   data() {
     return {
-      title: "Audio content",
+      title: titles.page4,
       songIsActive: false,
       discIsActive: false,
       indexOfSelectedPlaylist: null,
@@ -220,9 +221,9 @@ export default {
           playlistId: 3,
           playlistName: "Noises",
           playlistInfo1:
-            "After human words, Sagan's Team wanted to include sounds from the planet.",
+            "After human words, Sagan and his associates wanted to include sounds from the planet.",
           playlistInfo2:
-            "You can hear sounds of animals, nature and city life.",
+            "you can hear sounds of animals, sounds of nature and sounds of city life.",
           playlistContent: []
         }
       ]
@@ -361,7 +362,9 @@ export default {
 
 .audio__categoryContainer {
   height: 355px;
-  margin: 10vh 5vw;
+
+  margin: 10vh 0;
+  margin-left: $nav-width;
   display: flex;
   justify-content: space-around;
 }

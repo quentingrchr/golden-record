@@ -1,20 +1,16 @@
 <template>
   <section class="thejourney">
-    <Header text="The Journey" />
+    <Header text="The origin" />
     <div class="voyager">
       <div class="voyager_image">
         <img src="@/assets/img/voyager_journey_mobile.png" alt="voyager prob" />
       </div>
       <div class="voyager_description">
         <p>
-          NASA placed an amibitous message aboard Voyager 1 and 2, a kind of
-          time capsule, intended to communicate a story of our world to
-          extraterrestrials.
+          {{ text_1 }}
         </p>
         <p>
-          It is carried by a phonograph record, a gold-plated copper disk called
-          “The Golden Record“ containing what’s supposed to be the portray of
-          the diversity of life and culture on Earth.
+          {{ text_2 }}
         </p>
 
         <Time-elapsed class="time" />
@@ -25,16 +21,34 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
-import TimeElapsed from "@/components/TimeElapsed.vue";
-import Cta from "@/components/MobileCta.vue";
+import Header from '@/components/Header.vue';
+import TimeElapsed from '@/components/TimeElapsed.vue';
+import Cta from '@/components/MobileCta.vue';
+import { url } from '@/constants.js';
 
 export default {
-  name: "TheJourney",
+  name: 'TheJourney',
+  data() {
+    return {
+      text_1: 'loading',
+      text_2: 'loading',
+    };
+  },
   components: { Header, TimeElapsed, Cta },
+  beforeCreate() {
+    fetch(`${url}/query/journey`, {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data[0].text_1);
+        this.text_1 = data[0].text_1;
+        this.text_2 = data[0].text_2;
+      });
+  },
   methods: {
     goNextChapter() {
-      this.$emit("changeChapter", 2);
+      this.$emit('changeChapter', 2);
     },
   },
   created() {

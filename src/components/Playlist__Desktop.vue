@@ -1,5 +1,6 @@
 <template>
-  <div
+  <a
+    href="#"
     class="playlist"
     @mouseenter="showOverlay"
     @mouseleave="resetOverlay"
@@ -20,7 +21,7 @@
         to play a random song of {{ playlistName }}'s playlist.
       </h4>
     </div>
-  </div>
+  </a>
 </template>
 
 <script>
@@ -51,7 +52,9 @@ export default {
     }
   },
   methods: {
-    selectPlaylist() {
+    selectPlaylist(e) {
+      e.preventDefault();
+      console.log("ok");
       this.$emit("select-playlist");
     },
     showOverlay() {
@@ -66,6 +69,7 @@ export default {
 
 <style lang="scss" scoped>
 .playlist {
+  text-decoration: none;
   width: 20vw;
   padding: 3vh;
   display: flex;
@@ -75,31 +79,29 @@ export default {
   color: $primary-white;
   cursor: pointer;
   transition: all 0.2s;
-
+  @media (max-width: 1160px) {
+    width: 25vh;
+  }
   &:hover {
     border-radius: 8px;
     background-color: $primary-white;
     opacity: 0.9;
-
     h3,
     h4 {
       color: $primary-darkblue;
     }
   }
-
   &--isFocus {
     border-radius: 8px;
     background-color: $primary-white;
     opacity: 0.6;
     transform: translate(1vw, 2vh);
-
     h3,
     p {
       color: $primary-darkblue;
     }
   }
 }
-
 h3 {
   @include media_tablet {
     font-size: 24px;
@@ -132,49 +134,38 @@ button {
     transform: translate(-50%, -50%) scale(1);
     transition: transform 1s, opacity 1s;
   }
-
-  &:active::before {
-    transition: 0s;
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(0);
-  }
-
-  @include media_mobile {
-    height: 72px;
+  &:active {
+    button::before {
+      transition: 0s;
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(0);
+    }
   }
 }
-
 svg {
   width: 88px;
   height: 88px;
-
   @include media_mobile {
     height: 64px;
     width: 64px;
   }
 }
-
 p {
   font-size: 1rem;
   user-select: none;
-
   &:first-child {
     margin-bottom: 2vh;
   }
-
   @include media_tablet {
     font-size: 0.8rem;
   }
-
   @include media_mobile {
     min-width: 20vw;
   }
 }
-
 .playlist__textOverlay {
   line-height: 150%;
   color: $primary-darkblue;
-
   span {
     font-weight: 900;
     font-size: 28px;

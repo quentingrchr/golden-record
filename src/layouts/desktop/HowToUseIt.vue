@@ -2,16 +2,21 @@
   <div class="Use">
     <div class="stars"></div>
     <div class="twinkling"></div>
-    <Header class="Use__mainTitle" text="Decrypt It" />
+    <Header class="Use__mainTitle" :text="title" />
     <div class="Use__container">
-      <div @click="appear" :class="{ none: disappear }" class="Use__instruction">
+      <div
+        @click="appear"
+        :class="{ none: disappear }"
+        class="Use__instruction"
+      >
         <div class="Use__intruction">
           <img class="allsigns" src="@/assets/img/allsigns.png" />
           <h3 class="Use__intructionText">
-            This is an entire message saying where we are, and how to use this disc 📀.
-            <br />Click on one item to discover his signification !
+            The Golden Record cover contains 6 distincts symbols saying how to
+            use it and where we are.
+            <br />Click on each items to discover his signification !
           </h3>
-          <p style="fontWeight : bold">Click anywhere to close this window</p>
+          <p class="pass-instructions">Click anywhere to close this window</p>
         </div>
       </div>
       <div class="Use__content">
@@ -23,7 +28,11 @@
           nameIcon="#record"
         >
           <template v-slot:right>
-            <ContentSign class="Use__text" :contentRight="false" title="Radial circle" />
+            <ContentSign
+              class="Use__text"
+              :contentRight="false"
+              title="Radial circle"
+            />
           </template>
         </Sign>
         <Sign
@@ -95,18 +104,21 @@ import ContentSign from "@/components/ContentSign.vue";
 import Header from "@/components/Header.vue";
 import CircleIcon from "@/components/CircleIcon.vue";
 
+import { titles } from "../../constants";
+
 export default {
-  name: "UseIt",
+  name: "HowToUseIt",
   data: () => ({
+    title: titles.page2,
     hovering: 0,
     isClosed: false,
-    disappear: false
+    disappear: false,
   }),
   components: {
     Sign,
     CircleIcon,
     ContentSign,
-    Header
+    Header,
   },
   methods: {
     appear() {
@@ -114,8 +126,8 @@ export default {
     },
     createHover(e) {
       this.hovering = e;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -155,9 +167,15 @@ export default {
 
   &__intruction {
     width: 70vw;
+    & .pass-instructions {
+      font-size: 20px;
+      font-weight: bold;
+    }
   }
 
   &__intructionText {
+    font-size: 25px;
+    font-weight: 400;
     line-height: 250%;
     margin-bottom: 10vh;
   }

@@ -9,12 +9,54 @@
       To navigate between the different pages :
       <em>use keyboard arrows</em>
       <span>
-        <img class="key-arrows" src="@/assets/img/key-arrows.png" />
+        <div>
+          <svg
+            class="key-arrows key-arrows--right"
+            xmlns="http://www.w3.org/2000/svg"
+            width="512"
+            height="512"
+            viewBox="0 0 512 512"
+          >
+            <title>ionicons-v5-a</title>
+            <polyline
+              points="244 400 100 256 244 112"
+              style="stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"
+            />
+            <line
+              x1="120"
+              y1="256"
+              x2="412"
+              y2="256"
+              style="stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"
+            />
+          </svg>
+
+          <svg
+            class="key-arrows key-arrows--left"
+            xmlns="http://www.w3.org/2000/svg"
+            width="512"
+            height="512"
+            viewBox="0 0 512 512"
+          >
+            <title>ionicons-v5-a</title>
+            <polyline
+              points="268 112 412 256 268 400"
+              style="stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"
+            />
+            <line
+              x1="392"
+              y1="256"
+              x2="100"
+              y2="256"
+              style="stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"
+            />
+          </svg>
+        </div>
       </span>
       <br />or <em>click on the parts in the navbar</em> on the left
     </p>
     <p class="explaination__headphones">
-      Use headphones for the best experience 🎧
+      🎧 Use headphones for more immersive experience
     </p>
     <p class="explaination__pass">Click anywhere to pass the instructions</p>
     <div class="disclaimer">
@@ -52,6 +94,24 @@ export default {
   opacity: 0;
 }
 
+@keyframes right-arrow {
+  from {
+    transform: translate(0px, 8px);
+  }
+  to {
+    transform: translate(-5px, 8px);
+  }
+}
+
+@keyframes left-arrow {
+  from {
+    transform: translate(0px, 8px);
+  }
+  to {
+    transform: translate(5px, 8px);
+  }
+}
+
 .explaination {
   transition: opacity 0.2s ease;
   z-index: 100;
@@ -65,15 +125,14 @@ export default {
   align-items: center;
   flex-direction: column;
   padding: 0px 20vw;
-  padding-top: 20vh;
   & h2 {
-    margin-bottom: 100px;
+    margin-top: 80px;
     font-weight: bold;
   }
   &__text {
     width: 60vw;
     font-size: 25px;
-    margin-bottom: 100px;
+    margin-top: 100px;
     & em {
       font-weight: bold;
     }
@@ -82,19 +141,31 @@ export default {
     }
   }
   & .key-arrows {
+    line,
+    polyline {
+      stroke: $primary-white;
+    }
     width: 50px;
     height: auto;
-    transform: translateY(8px);
   }
+
+  .key-arrows--right {
+    animation: right-arrow 0.6s ease infinite alternate-reverse;
+  }
+  .key-arrows--left {
+    animation: left-arrow 0.6s ease infinite alternate-reverse;
+  }
+
   &__headphones {
     font-size: 26px;
-    margin-bottom: 70px;
+    margin-top: 60px;
   }
 
   &__pass {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10vh;
+    margin-top: 30px;
   }
 }
 
@@ -102,6 +173,7 @@ export default {
   height: 50px;
   width: 98vw;
   opacity: 0.5;
+  margin-bottom: 20px;
   justify-self: self-end;
 
   &__title {

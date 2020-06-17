@@ -24,7 +24,7 @@
         <em>d</em>
       </h1>
       <h1 class="title-welcome">The Golden Record</h1>
-      <p class="text-welcome">Click anywhere to start the web documentary</p>
+      <p class="text-welcome">Click anywhere to start the documentary</p>
       <div class="icone-scroll__mobile">
         <p>Click anywhere</p>
         <svg
@@ -50,8 +50,13 @@
 
 <script>
 export default {
-  name: "Welcome",
+  name: "Welcome"
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.text-welcome {
+  cursor: pointer;
+  user-select: none;
+}
+</style>
