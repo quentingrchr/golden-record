@@ -14,6 +14,12 @@
       </div>
       <div class="playground__item item item--random">
         <img
+          src="./../../assets/img/planets/archemede.png"
+          class="item__obstacle archemede"
+        />
+      </div>
+      <div class="playground__item item item--random">
+        <img
           src="./../../assets/img/planets/meteorite.png"
           class="item__obstacle meteorite3"
         />
@@ -165,7 +171,7 @@ export default {
       rightLimit: window.innerWidth - 200,
       leftLimit: 65,
       voyagerMoveSpeed: 10,
-      gameSpeed: 10,
+      gameSpeed: 8,
       template: null,
       gameOver: false,
       start: false,
@@ -216,7 +222,7 @@ export default {
         if (
           elementTop + 30 <
             this.$refs.voyager.offsetTop + this.$refs.voyager.offsetHeight &&
-          elementTop + $el.offsetHeight - 100 >= this.$refs.voyager.offsetTop &&
+          elementTop + $el.offsetHeight - 90 >= this.$refs.voyager.offsetTop &&
           $el.offsetLeft + $el.offsetWidth - 20 >
             this.$refs.voyager.offsetLeft &&
           $el.offsetLeft + 100 <
@@ -325,7 +331,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 50px;
+  margin-left: 2%;
   user-select: none;
 
   & .playground__item {
@@ -466,6 +472,12 @@ export default {
     animation: satellite 3s linear alternate infinite;
     margin-right: 100%;
   }
+
+  & .archemede {
+    width: 20%;
+    animation: satellite 2s linear alternate infinite;
+    margin-right: 100%;
+  }
 }
 
 .start--item {
@@ -540,7 +552,7 @@ export default {
   z-index: 10;
 
   &:hover {
-    transform: scale(1.06);
+    transform: scale(1.06) translateX(-50%);
     opacity: 1;
   }
 }
