@@ -21,18 +21,14 @@ export default {
     Mobile
   },
   created() {
-    this.checkSize();
-    window.addEventListener("keydown", function(e) {
-      if (e.keyCode == 32 && e.target == document.body) {
-        e.preventDefault();
-      }
-    });
+
+    this.getSizeScreen();
     window.addEventListener("resize", () => {
-      this.checkSize();
+      this.getSizeScreen();
     });
   },
   methods: {
-    checkSize() {
+    getSizeScreen() {
       if (window.matchMedia("(min-width: 1024px)").matches) {
         this.isBigScreen = true;
       } else {
