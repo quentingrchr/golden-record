@@ -1,6 +1,6 @@
 <template>
   <div class="useIt__container">
-    <Header text="Symbols" />
+    <Header :text="titleChapter" />
     <div class="disc" :class="step">
       <Icons />
       <BaseIcon class="disc__logo disc__record" href="record" />
@@ -77,12 +77,12 @@
 </template>
 
 <script>
-import EventBus from "@/EventBus";
 import BaseIcon from "@/components/BaseIcon";
 import Icons from "@/components/Icons";
 import Header from "@/components/Header.vue";
 import Cta from "@/components/MobileCta.vue";
 import { url } from "@/constants.js";
+import { titles } from "@/constants.js";
 
 export default {
   props: {
@@ -94,6 +94,7 @@ export default {
   components: { BaseIcon, Icons, Header, Cta },
   data: () => {
     return {
+      titleChapter: titles.page2,
       content: [
         {
           title: "Loading ...",

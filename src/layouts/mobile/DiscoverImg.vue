@@ -1,6 +1,6 @@
 <template>
   <section class="imagesMobile">
-    <Header text="Gallery" :class="selectedImage ? 'opacity' : ''" />
+    <Header :text="titleChapter" :class="selectedImage ? 'opacity' : ''" />
     <h4 class="title title--sub" ref="test">Pictures</h4>
     <p class="imageExplications">
       The Golden Records disk contains 116 images supposed to represent
@@ -38,10 +38,12 @@
 import Header from "@/components/Header.vue";
 import Cta from "@/components/MobileCta.vue";
 import { url } from "@/constants.js";
+import { titles } from "@/constants.js";
 
 export default {
   data() {
     return {
+      titleChapter: titles.page3,
       imgs: [],
       scroll: false,
       isScrollingStop: null,
@@ -167,10 +169,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.header__container {
-  opacity: 0.3;
-}
-
 .imagesMobile {
   width: 100%;
   color: $primary-white;

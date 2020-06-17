@@ -114,7 +114,7 @@
       </defs>
     </svg>
 
-    <Header class="audio__title" text="Sounds" />
+    <Header class="audio__title" :text="titleChapter" />
     <p class="audio__infos">
       Carl Sagan and this Team has selected 24 musics, 20 earth noises and
       greetings from 54 countries.
@@ -153,6 +153,7 @@ import Cta from "@/components/MobileCta.vue";
 import Playlist from "@/components/Playlist__Mobile.vue";
 import AudioPlayer from "@/components/AudioPlayer__Mobile.vue";
 import { url } from "@/constants.js";
+import { titles } from "@/constants.js";
 
 export default {
   components: {
@@ -163,6 +164,7 @@ export default {
   },
   data() {
     return {
+      titleChapter: titles.page4,
       isActive: false,
       indexOfSelectedPlaylist: null,
       randomSongName: "",
@@ -322,7 +324,7 @@ export default {
   &__nextChapter {
     display: flex;
     justify-content: center;
-    z-index: 600;
+    z-index: 1;
   }
 }
 </style>
