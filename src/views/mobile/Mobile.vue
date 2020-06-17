@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       chaptersName: Object.values(titles),
-      currentPage: 1,
+      currentPage: 1
     };
   },
   components: {
@@ -43,7 +43,7 @@ export default {
     HowToUse,
     Journey,
     Team,
-    Icon,
+    Icon
   },
   methods: {
     check(e) {
@@ -54,14 +54,13 @@ export default {
     },
     changeChapter(value) {
       this.currentPage = value;
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 main {
-  background-color: $primary-darkblue;
   width: 100%;
   min-height: 100vh;
 }

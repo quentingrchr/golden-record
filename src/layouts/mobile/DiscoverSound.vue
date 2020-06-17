@@ -281,9 +281,8 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: $primary-darkblue;
   overflow: hidden;
-
+  position: relative;
   p {
     padding: 0 6vw;
   }

@@ -1,5 +1,6 @@
 <template>
   <section class="imagesMobile">
+    <div class="stars"></div>
     <Header :text="titleChapter" :class="selectedImage ? 'opacity' : ''" />
     <h4 class="title title--sub" ref="test">Pictures</h4>
     <p class="imageExplications">
@@ -173,6 +174,7 @@ export default {
   width: 100%;
   color: $primary-white;
   padding-top: 30px;
+  position: relative;
 }
 
 .title {
