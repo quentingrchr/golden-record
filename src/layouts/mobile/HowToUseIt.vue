@@ -1,5 +1,6 @@
 <template>
   <div class="useIt__container">
+    <div class="stars"></div>
     <Header :text="titleChapter" />
     <div class="disc" :class="step">
       <Icons />
@@ -195,9 +196,12 @@ export default {
   width: 100%;
   flex-direction: column;
   align-items: center;
-  background-color: $primary-darkblue;
   color: $primary-white;
   position: relative;
+  z-index: 10;
+}
+.stars {
+  z-index: -1;
 }
 
 .useIt__title {
