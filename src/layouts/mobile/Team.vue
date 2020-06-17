@@ -1,11 +1,7 @@
 <template>
   <section>
-    <Header text="Who did it?" />
-    <div
-      @click="quitFocus"
-      class="overlay"
-      :class="focusMode ? 'active' : ''"
-    ></div>
+    <Header text="The Team" />
+    <div @click="quitFocus" class="overlay" :class="focusMode ? 'active' : ''"></div>
     <div class="polaroids">
       <Polaroid
         v-for="(img, index) in imgs"
@@ -38,7 +34,7 @@ import srcImg5 from "../../assets/img/frank_drake.jpg";
 export default {
   components: {
     Polaroid,
-    Header,
+    Header
   },
   props: {},
   data: () => {
@@ -53,7 +49,7 @@ export default {
           caption: "Ann druyan",
           style: {},
           description:
-            "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou",
+            "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou"
         },
         {
           isFocused: false,
@@ -61,7 +57,7 @@ export default {
           caption: "Eward C Stone",
           description:
             "Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée par l'addition d'humour ou de mots aléatoires qui ne ressemblent pas une seconde à du texte standard. Si vous voulez utiliser un passage du Lorem Ipsum, vous devez être sûr qu'il n'y a rien d'embarrassant caché dans le texte. Tous les générateurs de Lorem Ipsum sur Internet tendent à reproduire le même extrait sans fin, ce qui fait de lipsum.com le seul vrai générateur de Lorem Ipsum. Iil utilise",
-          style: {},
+          style: {}
         },
         {
           isFocused: false,
@@ -70,7 +66,7 @@ export default {
           caption: "Carl Sagan",
           style: {},
           description:
-            "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié",
+            "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié"
         },
         {
           isFocused: false,
@@ -79,7 +75,7 @@ export default {
           caption: "Jon Lomberg",
           style: {},
           description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vulputate massa ac purus venenatis commodo. Pellentesque dictum orci vel gravida tristique. Phasellus in purus tellus. Vivamus lobortis pharetra tortor, eget tempor orci interdum quis. Sed condimentum iaculis risus sit amet imperdiet. Ut efficitur libero ut tellus suscipit maximus. Quisque turpis mauris, fringilla sit amet consectetur id, tempus nec velit. Morbi hendrerit metus sed ornare accumsan. Ut tempor arcu sem, vitae pulvinar ligula accumsan vel. Nulla augue massa, porttitor sit amet mattis condimentum, pellentesque at dui. Maecenas ut commodo magna. Cras efficitur facilisis varius. Quisque ultrices erat erat, id sagittis ex gravida nec. Phasellus eget metus turpis.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vulputate massa ac purus venenatis commodo. Pellentesque dictum orci vel gravida tristique. Phasellus in purus tellus. Vivamus lobortis pharetra tortor, eget tempor orci interdum quis. Sed condimentum iaculis risus sit amet imperdiet. Ut efficitur libero ut tellus suscipit maximus. Quisque turpis mauris, fringilla sit amet consectetur id, tempus nec velit. Morbi hendrerit metus sed ornare accumsan. Ut tempor arcu sem, vitae pulvinar ligula accumsan vel. Nulla augue massa, porttitor sit amet mattis condimentum, pellentesque at dui. Maecenas ut commodo magna. Cras efficitur facilisis varius. Quisque ultrices erat erat, id sagittis ex gravida nec. Phasellus eget metus turpis."
         },
         {
           isFocused: false,
@@ -87,9 +83,9 @@ export default {
           caption: "Frank Drake",
           style: {},
           description:
-            "Integer efficitur erat at sapien pharetra congue. Praesent velit dui, rutrum vitae metus consequat, sagittis tempor massa. Curabitur ligula purus, luctus ac lacus eget, interdum pellentesque est. Pellentesque vel sem et lacus sodales dignissim. Sed enim elit, iaculis quis magna ac, auctor volutpat erat. Ut quis arcu condimentum, suscipit tortor id, condimentum ex. Integer sed sapien enim. Maecenas aliquet suscipit dui, vel dignissim elit dictum pharetra. Nullam dictum pretium ex vel efficitur.",
-        },
-      ],
+            "Integer efficitur erat at sapien pharetra congue. Praesent velit dui, rutrum vitae metus consequat, sagittis tempor massa. Curabitur ligula purus, luctus ac lacus eget, interdum pellentesque est. Pellentesque vel sem et lacus sodales dignissim. Sed enim elit, iaculis quis magna ac, auctor volutpat erat. Ut quis arcu condimentum, suscipit tortor id, condimentum ex. Integer sed sapien enim. Maecenas aliquet suscipit dui, vel dignissim elit dictum pharetra. Nullam dictum pretium ex vel efficitur."
+        }
+      ]
     };
   },
   methods: {
@@ -105,7 +101,7 @@ export default {
 
           img.style = {
             transform: "translate(0px, -50px) rotate(0deg) scale(1.6)",
-            zIndex: 11,
+            zIndex: 11
           };
         } else {
           // Code for unfocused polas
@@ -117,48 +113,48 @@ export default {
     quitFocus: function() {
       this.focusMode = false;
       this.indexFocused = null;
-      this.imgs.forEach((img) => {
+      this.imgs.forEach(img => {
         img.isFocused = false;
         img.style = {};
       });
-    },
+    }
   },
   beforeCreate() {
     let staticData = {
       annDruyan: {
         imgSrc: srcImg1,
         caption: "Ann Druyan",
-        order: 0,
+        order: 0
       },
       carlSagan: {
         imgSrc: srcImg3,
         caption: "Carl Sagan",
-        order: 2,
+        order: 2
       },
       frankDrake: {
         imgSrc: srcImg5,
         caption: "Frank Drake",
-        order: 4,
+        order: 4
       },
       jonLomberg: {
         imgSrc: srcImg4,
         caption: "Jon Lomberg",
-        order: 3,
+        order: 3
       },
       ewardCStone: {
         imgSrc: srcImg2,
         caption: "Eward C Stone",
-        order: 1,
-      },
+        order: 1
+      }
     };
 
     fetch(`${url}/query/polaroids`, {
-      method: "GET",
+      method: "GET"
     })
-      .then((response) => response.json())
-      .then((data) => {
+      .then(response => response.json())
+      .then(data => {
         this.imgs = [];
-        data.forEach((el) => {
+        data.forEach(el => {
           this.imgs[staticData[el.name].order] = {
             isFocused: false,
             vidUrl: staticData[el.name].vidSrc,
@@ -166,11 +162,11 @@ export default {
             title: el.title,
             caption: staticData[el.name].caption,
             style: {},
-            description: el.text_1 + el.text_2,
+            description: el.text_1 + el.text_2
           };
         });
       });
-  },
+  }
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="useIt__container">
-    <Header text="Decrypt it" />
+    <Header text="Symbols" />
     <div class="disc" :class="step">
       <Icons />
       <BaseIcon class="disc__logo disc__record" href="record" />
@@ -42,6 +42,16 @@
         </p>
       </article>
       <article>
+        <BaseIcon class="article__logo article__record" :href="content[5].symbol" />
+        <h3>{{ content[5].title }}</h3>
+        <p>
+          {{ content[5].text_1 }}
+          <br />
+          <br />
+          {{ content[5].text_2 }}
+        </p>
+      </article>
+      <article>
         <BaseIcon class="article__logo article__record" :href="content[3].symbol" />
         <h3>{{ content[3].title }}</h3>
         <p>
@@ -59,16 +69,6 @@
           <br />
           <br />
           {{ content[4].text_2 }}
-        </p>
-      </article>
-      <article>
-        <BaseIcon class="article__logo article__record" :href="content[5].symbol" />
-        <h3>{{ content[5].title }}</h3>
-        <p>
-          {{ content[5].text_1 }}
-          <br />
-          <br />
-          {{ content[5].text_2 }}
         </p>
       </article>
       <Cta nextChapter="Visual content" @goNextChapter="goNextChapter" />
