@@ -72,8 +72,7 @@
           @click="toggle3d"
         />
         <img
-          class="golden-record"
-          :class="!instructionIsClosed ? '' : 'zoom-in-record'"
+          class="golden-record zoom-in-record"
           src="@/assets/img/golden-record.png"
           alt="voyager prob"
         />
