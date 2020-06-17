@@ -165,7 +165,7 @@ export default {
       rightLimit: window.innerWidth - 200,
       leftLimit: 65,
       voyagerMoveSpeed: 10,
-      gameSpeed: 6,
+      gameSpeed: 10,
       template: null,
       gameOver: false,
       start: false,
@@ -173,7 +173,6 @@ export default {
       isBackgroundVisible: true,
       restartButtonVisible: false,
       readyToStart: true,
-      imgExplosion: imgExplosion,
     };
   },
   methods: {
@@ -229,9 +228,9 @@ export default {
     },
     loose() {
       clearInterval(this.template);
-      this.$refs.voyager.src = this.imgExplosion;
+      this.$refs.voyager.src = imgExplosion;
       let audio = new Audio(soundExplosion);
-      this.playSound(audio, 0.5);
+      this.playSound(audio, 0.4);
 
       setTimeout(() => {
         this.gameOver = true;
@@ -285,7 +284,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: white;
-  gameoverflow: hidden;
+  overflow: hidden;
 }
 
 .game__fade {
@@ -293,6 +292,7 @@ export default {
   width: 100%;
   height: 20vh;
   z-index: 10;
+  pointer-events: none;
 
   &.top {
     top: 0;
@@ -533,9 +533,11 @@ export default {
 .play--again {
   position: fixed;
   bottom: 10vh;
-  right: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
   transition: transform 0.2s;
   opacity: 0.7;
+  z-index: 10;
 
   &:hgameover {
     transform: scale(1.05);
