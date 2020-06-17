@@ -5,7 +5,7 @@ export const constants = {
   titles: {
     page1: "The Origin",
     page2: "Symbols",
-    page3: "Gallerie",
+    page3: "Gallery",
     page4: "Music",
     page5: "The Team",
     page6: "Take Controls",

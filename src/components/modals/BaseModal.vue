@@ -20,19 +20,19 @@ import EventBus from "@/EventBus";
 export default {
   name: "BaseModal",
   components: {
-    BaseIcon,
+    BaseIcon
   },
   props: {
     content: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   methods: {
     closeModal() {
       EventBus.$emit("close");
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -92,8 +92,9 @@ export default {
   }
 
   &__title {
+    transform: translateX(-5%);
     @include media_desktop {
-      font-size: 35px;
+      font-size: 30px;
     }
 
     @include media_tablet {
@@ -103,9 +104,9 @@ export default {
 
   &__text {
     text-align: start;
-
+    width: 95%;
     @include media_desktop {
-      font-size: 14px;
+      font-size: 15px;
     }
 
     @include media_tablet {
