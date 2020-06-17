@@ -31,7 +31,6 @@
       <h1 class="title-welcome">The Golden Record</h1>
       <p class="text-welcome">Click anywhere to start the documentary</p>
       <div class="icone-scroll__mobile">
-        <p>Click anywhere</p>
         <svg
           width="15"
           height="18"
