@@ -166,9 +166,18 @@ p {
 .playlist__textOverlay {
   line-height: 150%;
   color: $primary-darkblue;
+
   span {
     font-weight: 900;
     font-size: 28px;
+  }
+
+  @include media_mobile {
+    font-size: 14px;
+
+    span {
+      font-size: 20px;
+    }
   }
 }
 </style>
