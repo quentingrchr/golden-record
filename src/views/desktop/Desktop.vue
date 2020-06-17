@@ -3,6 +3,7 @@
     <Explaination
       v-on:closeinstruction="closeInstruction"
       v-show="currentPage === 0"
+      @jumpToOtherChapterFromInto="changeChapter"
     />
     <transition
       :name="pageMoveNext ? 'slide-forward' : 'slide-backward'"
