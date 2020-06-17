@@ -36,18 +36,18 @@ export default {
   props: {
     source: {
       type: String,
-      required: true
+      required: true,
     },
     name: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       playing: true,
       muted: false,
-      volume: 0
+      volume: 0,
     };
   },
   computed: {
@@ -56,7 +56,7 @@ export default {
     },
     slider() {
       return this.$refs["slider"];
-    }
+    },
   },
   methods: {
     togglePlay() {
@@ -99,13 +99,13 @@ export default {
     },
     isPlaying() {
       return (this.playing = true);
-    }
+    },
   },
   watch: {
-    source: function(newProps, oldProps) {
+    source: function(newProps) {
       this.audio.src = newProps;
-    }
-  }
+    },
+  },
 };
 </script>
 
