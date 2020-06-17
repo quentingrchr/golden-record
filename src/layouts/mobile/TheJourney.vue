@@ -39,7 +39,6 @@ export default {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data[0].text_1);
         this.text_1 = data[0].text_1;
         this.text_2 = data[0].text_2;
       });

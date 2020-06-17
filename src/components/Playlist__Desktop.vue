@@ -9,9 +9,7 @@
     <h3>{{ playlistName }}</h3>
     <button>
       <svg>
-        <use
-          :href="hovering ? '#' + playlistName + 'Reverse' : '#' + playlistName"
-        />
+        <use :href="hovering ? '#' + playlistName + 'Reverse' : '#' + playlistName" />
       </svg>
     </button>
     <div class="paylist__infoContainer">
@@ -28,44 +26,43 @@
 
 <script>
 export default {
-  name: 'Playlist',
+  name: "Playlist",
   props: {
     playlistName: {
       type: String,
-      Required: true,
+      Required: true
     },
     playlistInfo1: {
       type: String,
-      Required: true,
+      Required: true
     },
     playlistInfo2: {
       type: String,
-      Required: true,
-    },
+      Required: true
+    }
   },
   data() {
     return {
-      isHover: false,
+      isHover: false
     };
   },
   computed: {
     hovering() {
       return this.isHover;
-    },
+    }
   },
   methods: {
     selectPlaylist(e) {
       e.preventDefault();
-      console.log('ok');
-      this.$emit('select-playlist');
+      this.$emit("select-playlist");
     },
     showOverlay() {
       this.isHover = true;
     },
     resetOverlay() {
       this.isHover = false;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -74,6 +71,7 @@ export default {
   text-decoration: none;
   width: 20vw;
   padding: 3vh;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -85,7 +83,6 @@ export default {
     width: 25vh;
   }
   &:hover {
-    border-radius: 8px;
     background-color: $primary-white;
     opacity: 0.9;
     h3,
@@ -96,11 +93,19 @@ export default {
   &--isFocus {
     border-radius: 8px;
     background-color: $primary-white;
-    opacity: 0.6;
+    opacity: 0.8;
     transform: translate(1vw, 2vh);
     h3,
     p {
       color: $primary-darkblue;
+    }
+  }
+
+  &:active {
+    button::before {
+      transition: 0s;
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(0);
     }
   }
 }
@@ -125,7 +130,7 @@ button {
   cursor: pointer;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -136,12 +141,10 @@ button {
     transform: translate(-50%, -50%) scale(1);
     transition: transform 1s, opacity 1s;
   }
-  &:active {
-    button::before {
-      transition: 0s;
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(0);
-    }
+  &:activebefore {
+    transition: 0s;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0);
   }
 }
 svg {
