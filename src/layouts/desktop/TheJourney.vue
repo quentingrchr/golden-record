@@ -123,40 +123,6 @@ export default {
         this.text_3 = data[0].text_3;
       });
   },
-  created() {
-    window.speechSynthesis.cancel();
-    window.addEventListener("keydown", this.changeChapterWithKeyboard);
-    document.body.onkeyup = function(e) {
-      if (e.keyCode == 13 && !speechSynthesis.speaking) {
-        window.speechSynthesis.cancel();
-        if (speechSynthesis.speaking) {
-          return speechSynthesis.resume();
-        }
-        const utterance = new SpeechSynthesisUtterance(
-          this.text_1 + this.text_2 + this.text_3
-        );
-        utterance.rate = 0.8;
-        utterance.volume = 0.3;
-        const speak = async () => {
-          speechSynthesis.speak(utterance);
-          await fetch(`${url}/query/journey`, {
-            method: "GET"
-          })
-            .then(response => response.json())
-            .then(data => {
-              this.text_1 = data[0].text_1;
-              this.text_2 = data[0].text_2;
-              this.text_3 = data[0].text_3;
-            });
-        };
-        speak();
-        // PAUSE THE SPEECH
-      } else if (e.keyCode == 80 && speechSynthesis.speaking) {
-        speechSynthesis.pause();
-        window.speechSynthesis.cancel();
-      }
-    };
-  },
   methods: {
     toggle3d() {
       this.probeModelOnScreen = !this.probeModelOnScreen;
