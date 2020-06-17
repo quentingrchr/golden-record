@@ -1,6 +1,6 @@
 <template>
   <section class="imagesMobile">
-    <Header :text="title" :class="selectedImage ? 'opacity' : ''" />
+    <Header :text="titleChapter" :class="selectedImage ? 'opacity' : ''" />
     <h4 class="title title--sub" ref="test">Pictures</h4>
     <p class="imageExplications">
       The Golden Records disk contains 116 images supposed to represent
@@ -43,7 +43,7 @@ import { titles } from "@/constants.js";
 export default {
   data() {
     return {
-      title: titles.page3,
+      titleChapter: titles.page3,
       imgs: [],
       scroll: false,
       isScrollingStop: null,
