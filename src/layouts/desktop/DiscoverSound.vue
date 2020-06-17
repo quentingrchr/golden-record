@@ -179,7 +179,7 @@
 import Header from "@/components/Header.vue";
 import AudioPlayer from "@/components/AudioPlayer__Desktop.vue";
 import Playlist from "@/components/Playlist__Desktop.vue";
-import scratchSound from "@/assets/sounds/scratch.mp3";
+import ah from "@/assets/sounds/ah.mp3";
 
 import { url } from "@/constants.js";
 import { titles } from "../../constants";
@@ -245,7 +245,7 @@ export default {
   },
   methods: {
     playScratch() {
-      let audio = new Audio(scratchSound);
+      let audio = new Audio(ah);
       audio.volume = 1;
       audio.play();
     },

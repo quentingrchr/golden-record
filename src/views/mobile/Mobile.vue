@@ -32,7 +32,7 @@ export default {
   name: "Mobile",
   data() {
     return {
-      chaptersName: Object.values(titles),
+      chaptersName: Object.values(titles).splice(0, 5),
       currentPage: 1
     };
   },
