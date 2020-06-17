@@ -17,7 +17,7 @@ export default {
   props: {
     nameIcon: {
       type: String,
-      required: true
+      required: false
     },
     index: {
       type: Number,
