@@ -126,7 +126,7 @@ input {
   transition: transform 1s, opacity 1s;
 
   &--isFocus {
-    transform: translateY(-2vh);
+    transform: translateY(-3vh);
     opacity: 1;
   }
 

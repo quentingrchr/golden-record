@@ -360,7 +360,7 @@ export default {
 }
 
 .audio__categoryContainer {
-  height: 350px;
+  height: 355px;
   margin: 10vh 5vw;
   display: flex;
   justify-content: space-around;
