@@ -9,7 +9,11 @@
       appear
       mode="out-in"
     >
-      <TheJourney v-if="currentPage === 1" key="Journey" />
+      <TheJourney
+        :instructionIsClosed="instructionIsClosed"
+        v-if="currentPage === 1"
+        key="Journey"
+      />
       <HowToUseIt v-else-if="currentPage === 2" key="How" />
       <DiscoverImg v-else-if="currentPage === 3" key="img" />
       <DiscoverSound v-else-if="currentPage === 4" key="sound" />
@@ -55,6 +59,7 @@ export default {
   },
   data() {
     return {
+      instructionIsClosed: false,
       wheelCount: 0,
       // You just have to change he value below to set the scroll' sensitive rate (the highest is less sensitive)
       scrollSpeed: 6,
@@ -93,7 +98,7 @@ export default {
   },
   methods: {
     closeInstruction() {
-      console.log("ok");
+      this.instructionIsClosed = true;
     },
     wheel(e) {
       e.preventDefault();

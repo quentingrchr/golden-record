@@ -83,7 +83,7 @@ export default {
   methods: {
     closeInstruction() {
       this.overlayIsOpen = false;
-      this.$emit("closeinstructions");
+      this.$emit("closeinstruction");
     },
   },
 };

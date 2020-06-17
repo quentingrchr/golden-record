@@ -82,7 +82,7 @@
         />
         <img
           class="golden-record"
-          :class="overlayIsOpen ? '' : 'zoom-in-record'"
+          :class="!instructionIsClosed ? '' : 'zoom-in-record'"
           src="@/assets/img/golden-record.png"
           alt="voyager prob"
         />
@@ -112,6 +112,9 @@ import { titles } from "@/constants";
 import { url } from "@/constants.js";
 export default {
   name: "TheJourney",
+  props: {
+    instructionIsClosed: Boolean,
+  },
   data() {
     return {
       title: titles.page1,
