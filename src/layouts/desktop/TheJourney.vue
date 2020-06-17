@@ -4,13 +4,8 @@
     <div class="stars"></div>
     <div class="twinkling"></div>
     <div class="voyager">
-      <div class="voyager_image">
-        <h4>Voyager probe and the Golden Record</h4>
-        <h4 class="model-explaination">
-          ↓ Click on the probe
-          <em>🛰</em> image to see the 3d model ↓
-        </h4>
-        <div :class="probeModelOnScreen ? '' : 'probenotonscreen'">
+      <div class="probe-background" :class="probeModelOnScreen ? '' : 'probenotonscreen'">
+        <!-- This is Sketchfab iFrame with the sketchfab controls 
           <iframe
             title="A 3D model"
             width="640"
@@ -21,8 +16,14 @@
             mozallowfullscreen="true"
             webkitallowfullscreen="true"
             class="probe-model"
-          ></iframe>
-        </div>
+        ></iframe>-->
+        <iframe
+          src="https://solarsystem.nasa.gov/gltf_embed/2340"
+          width="100%"
+          height="450px"
+          frameborder="0"
+          class="probe-model"
+        />
         <div
           class="close"
           @click="toggle3d"
@@ -35,13 +36,7 @@
             xmlns="http://www.w3.org/2000/svg"
             class="close_probemodel"
           >
-            <circle
-              cx="248"
-              cy="248"
-              r="229.5"
-              stroke="#14131C"
-              stroke-width="37"
-            />
+            <circle cx="248" cy="248" r="229.5" stroke="#14131C" stroke-width="37" />
             <mask id="path-2-inside-1" fill="white">
               <path
                 fill-rule="evenodd"
@@ -62,6 +57,13 @@
             />
           </svg>
         </div>
+      </div>
+      <div class="voyager_image">
+        <h4>Voyager probe and the Golden Record</h4>
+        <h4 class="model-explaination">
+          ↓ Click on the probe
+          <em>🛰</em> image to see the 3d model ↓
+        </h4>
 
         <img
           class="probe"
@@ -99,23 +101,23 @@
 </template>
 
 <script>
-import Header from '../../components/Header';
-import TimeElapsed from '../../components/TimeElapsed.vue';
-import { titles } from '../../constants';
+import Header from "../../components/Header";
+import TimeElapsed from "../../components/TimeElapsed.vue";
+import { titles } from "../../constants";
 export default {
-  name: 'TheJourney',
+  name: "TheJourney",
   data() {
     return {
       title: titles.page1,
-      probeModelOnScreen: false,
+      probeModelOnScreen: false
     };
   },
   methods: {
     toggle3d() {
       this.probeModelOnScreen = !this.probeModelOnScreen;
-    },
+    }
   },
-  components: { Header, TimeElapsed },
+  components: { Header, TimeElapsed }
 };
 </script>
 
@@ -214,16 +216,25 @@ export default {
 .probe {
   cursor: pointer;
   transform: scale(1);
+  transition: transform 0.4s;
   &:hover {
     transform: scale(1.1);
+  }
+  &-background {
+    position: absolute;
+    transform: translateY(-110px);
+    width: 100vw;
+    height: 110vh;
+    z-index: 59;
+    background-color: rgba($color: #000000, $alpha: 0.9);
   }
 }
 
 .probe-model {
   position: absolute;
-  width: 88%;
-  left: 6%;
-  top: 1vh;
+  width: 40vw;
+  left: 30vw;
+  top: 20vh;
   z-index: 60;
   height: 500px;
 }
@@ -236,20 +247,19 @@ export default {
   display: flex;
   align-items: center;
   position: absolute;
-  top: 5vh;
-  left: 80vw;
+  top: 23vh;
+  left: 59vw;
   z-index: 61;
   cursor: pointer;
-  color: black;
+  color: white;
   opacity: 0.5;
   @media (max-width: 1200px) {
-    left: 77vw;
+    left: 57vw;
   }
-  @media (max-width: 1100px) {
-    left: 75vw;
+  @media (max-width: 1000px) {
+    left: 55vw;
   }
   @media (max-width: 900px) {
-    left: 72vw;
   }
   & .close_probemodel {
     width: 30px;
@@ -258,6 +268,7 @@ export default {
     color: black;
     margin-right: 15px;
     font-weight: bold;
+    width: 70px;
   }
   &:hover {
     opacity: 1;
