@@ -86,12 +86,6 @@ import { url } from "@/constants.js";
 import { titles } from "@/constants.js";
 
 export default {
-  props: {
-    nameIcon: {
-      type: String,
-      required: true
-    }
-  },
   components: { BaseIcon, Icons, Header, Cta },
   data: () => {
     return {
@@ -105,37 +99,37 @@ export default {
         },
         {
           title: "",
-          symbole: "",
+          symbol: "",
           text_1: "",
           text_2: ""
         },
         {
           title: "",
-          symbole: "",
+          symbol: "",
           text_1: "",
           text_2: ""
         },
         {
           title: "",
-          symbole: "",
+          symbol: "",
           text_1: "",
           text_2: ""
         },
         {
           title: "",
-          symbole: "",
+          symbol: "",
           text_1: "",
           text_2: ""
         },
         {
           title: "",
-          symbole: "",
+          symbol: "",
           text_1: "",
           text_2: ""
         }
       ],
       step: "step0",
-      symbol: "record",
+      symbol: "",
       title: "",
       text1: "",
       text2: ""
@@ -170,8 +164,6 @@ export default {
       .then(Response => Response.json())
       .then(rawData => {
         this.content = [];
-
-  
         rawData.forEach(el => {
           this.content.push({
             text_1: el.text_1,

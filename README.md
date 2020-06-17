@@ -67,7 +67,7 @@ Animate On Scroll - [documentation](https://michalsnik.github.io/aos/)
 
 
 ## 🔗 Related repositories
-[Back-end / API](https://github.com/bastien17-dev/docWeb-voyager-back-end). 
+[Back-end / API](https://github.com/bastien17-dev/docWeb-voyager-back-end)  
 [Back-office](https://github.com/bastien17-dev/docWeb-voyager-back-office) 
 
 ## 👥 Contributers

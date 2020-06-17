@@ -41,8 +41,8 @@ export default {
     EventBus.$on("close", this.handleClose);
   },
   beforeDestroy() {
-    EventBus.off("open", this.handleOpen);
-    EventBus.off("close", this.handleClose);
+    EventBus.$off("open", this.handleOpen);
+    EventBus.$off("close", this.handleClose);
   }
 }
 </script>
