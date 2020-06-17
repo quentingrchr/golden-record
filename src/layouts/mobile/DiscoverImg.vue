@@ -1,8 +1,8 @@
 <template>
   <section class="imagesMobile">
-    <Header :text="titleChapter" :class="selectedImage ? 'opacity' : ''" />
+    <Header :text="titleChapter" />
     <h4 class="title title--sub" ref="test">Pictures</h4>
-    <p class="imageExplications">
+    <p class="imageExplications" :class="selectedImage ? 'opacity' : ''">
       The Golden Records disk contains 116 images supposed to represent
       the Humanity
     </p>

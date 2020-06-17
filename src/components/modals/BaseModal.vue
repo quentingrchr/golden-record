@@ -106,7 +106,7 @@ export default {
     text-align: start;
     width: 95%;
     @include media_desktop {
-      font-size: 15px;
+      font-size: 17px;
     }
 
     @include media_tablet {
