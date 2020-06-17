@@ -10,6 +10,8 @@ export const constants = {
     page5: "The Team",
     page6: "Take Controls",
   },
+
+  appTitle: "The Golden Record - The Web Documentary ",
 };
 
-export const { url, ascii, titles } = constants;
+export const { url, ascii, titles, appTitle } = constants;
