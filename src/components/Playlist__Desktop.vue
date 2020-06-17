@@ -81,6 +81,9 @@ export default {
   color: $primary-white;
   cursor: pointer;
   transition: all 0.2s;
+  @media (max-width: 1160px) {
+    width: 25vh;
+  }
   &:hover {
     border-radius: 8px;
     background-color: $primary-white;
@@ -139,9 +142,6 @@ h3 {
       opacity: 1;
       transform: translate(-50%, -50%) scale(0);
     }
-  }
-  @include media_mobile {
-    height: 72px;
   }
 }
 svg {
