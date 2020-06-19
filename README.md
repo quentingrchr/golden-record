@@ -15,7 +15,7 @@ This site has been created for educational purposes as part of the Bachelor's cu
 
 ### Live demo
 
-Website is deployed [here](https://golden-record.netlify.app/#/)
+Website is deployed [here](https://golden-record-webdoc.netlify.app)
 
 ### Installing
 
@@ -64,11 +64,6 @@ VueJS - [documentation](https://vuejs.org/)
 Vue Moment - [documentation](https://github.com/brockpetrie/vue-moment)  
 Vue Router - [documentation](https://router.vuejs.org/)  
 Animate On Scroll - [documentation](https://michalsnik.github.io/aos/)
-
-
-## 🔗 Related repositories
-[Back-end / API](https://github.com/bastien17-dev/docWeb-voyager-back-end)  
-[Back-office](https://github.com/bastien17-dev/docWeb-voyager-back-office) 
 
 ## 👥 Contributers
 
