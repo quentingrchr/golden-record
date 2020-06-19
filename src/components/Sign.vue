@@ -11,55 +11,48 @@
 import EventBus from "@/EventBus";
 import BaseIcon from "@/components/BaseIcon.vue";
 import Icon from "@/components/Icons.vue";
-import { url } from "@/constants.js";
+import { page2 } from "../content";
 
 export default {
   props: {
     nameIcon: {
       type: String,
-      required: false
+      required: false,
     },
     index: {
       type: Number,
       required: true,
-      default: 0
-    }
+      default: 0,
+    },
   },
   components: {
     BaseIcon,
-    Icon
+    Icon,
   },
   data: () => ({
     modalContent: {
       text1: "",
       text2: "",
       title: "",
-      symbol: "nameIcon"
-    }
+      symbol: "nameIcon",
+    },
   }),
   methods: {
     openModal() {
       EventBus.$emit("open", {
         component: "BaseModal",
-        content: this.modalContent
+        content: this.modalContent,
       });
-    }
+    },
   },
-  created() {
-    fetch(`${url}/query/how_use`, {
-      method: "GET"
-    })
-      .then(Response => Response.json())
-      .then(data => {
-        this.modalContent = {
-          text1: data[this.index].text_1,
-          text2: data[this.index].text_2,
-          title: data[this.index].title,
-          symbol: data[this.index].symbol
-        };
-      })
-      .catch(error => console.log(error));
-  }
+  beforeMount() {
+    this.modalContent = {
+      text1: page2[this.index].text_1,
+      text2: page2[this.index].text_2,
+      title: page2[this.index].title,
+      symbol: page2[this.index].symbol,
+    };
+  },
 };
 </script>
 

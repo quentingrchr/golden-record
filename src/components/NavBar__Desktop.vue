@@ -95,10 +95,10 @@
 </template>
 
 <script>
-import EventBus from '@/EventBus';
-import glitch1 from '../assets/sounds/glitch_1.mp3';
-import glitch2 from '../assets/sounds/glitch_2.mp3';
-import { titles } from '../constants';
+import EventBus from "@/EventBus";
+import glitch1 from "../assets/sounds/glitch_1.mp3";
+import glitch2 from "../assets/sounds/glitch_2.mp3";
+import { titles } from "../constants";
 
 export default {
   data() {
@@ -121,16 +121,16 @@ export default {
         document.documentElement.requestFullscreen() ||
           document.documentElement.webkitRequestFullscreen() ||
           document.documentElement.mozRequestFullScreen() ||
-          alert('Full screen is not supported on your browser');
+          alert("Full screen is not supported on your browser");
       } else {
         document.exitFullscreen();
       }
     },
     jumpToOtherChapter(value) {
-      this.$emit('jumpToOtherChapter', value);
+      this.$emit("jumpToOtherChapter", value);
     },
     closeOverlay() {
-      EventBus.$emit('close');
+      EventBus.$emit("close");
     },
     handleEnterNav() {
       let audio = new Audio(glitch1);
@@ -321,7 +321,7 @@ export default {
   }
 
   &.isMute::after {
-    content: '';
+    content: "";
     position: absolute;
     display: block;
     width: 30px;

@@ -4,7 +4,10 @@
     <div class="stars"></div>
     <div class="twinkling"></div>
     <div class="voyager">
-      <div class="probe-background" :class="probeModelOnScreen ? '' : 'probenotonscreen'">
+      <div
+        class="probe-background"
+        :class="probeModelOnScreen ? '' : 'probenotonscreen'"
+      >
         <!-- This is Sketchfab iFrame with the sketchfab controls 
           <iframe
             title="A 3D model"
@@ -36,7 +39,13 @@
             xmlns="http://www.w3.org/2000/svg"
             class="close_probemodel"
           >
-            <circle cx="248" cy="248" r="229.5" stroke="#14131C" stroke-width="37" />
+            <circle
+              cx="248"
+              cy="248"
+              r="229.5"
+              stroke="#14131C"
+              stroke-width="37"
+            />
             <mask id="path-2-inside-1" fill="white">
               <path
                 fill-rule="evenodd"
@@ -93,12 +102,13 @@
 import Header from "@/components/Header";
 import TimeElapsed from "@/components/TimeElapsed.vue";
 import { titles } from "@/constants";
-import { url } from "@/constants.js";
+import { page1 } from "@/content.js";
+
 export default {
   name: "TheJourney",
 
   props: {
-    instructionIsClosed: Boolean
+    instructionIsClosed: Boolean,
   },
 
   data() {
@@ -108,26 +118,20 @@ export default {
       text_1: "loading",
       text_2: "loading",
       text_3: "loading",
-      overlayIsOpen: true
+      overlayIsOpen: true,
     };
   },
-  beforeCreate() {
-    fetch(`${url}/query/journey`, {
-      method: "GET"
-    })
-      .then(response => response.json())
-      .then(data => {
-        this.text_1 = data[0].text_1;
-        this.text_2 = data[0].text_2;
-        this.text_3 = data[0].text_3;
-      });
+  beforeMount() {
+    this.text_1 = page1[0].text_1;
+    this.text_2 = page1[0].text_2;
+    this.text_3 = page1[0].text_3;
   },
   methods: {
     toggle3d() {
       this.probeModelOnScreen = !this.probeModelOnScreen;
-    }
+    },
   },
-  components: { Header, TimeElapsed }
+  components: { Header, TimeElapsed },
 };
 </script>
 

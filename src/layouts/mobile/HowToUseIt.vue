@@ -13,7 +13,10 @@
     </div>
     <section class="useIt__explications">
       <article>
-        <BaseIcon class="article__logo article__record" :href="content[0].symbol" />
+        <BaseIcon
+          class="article__logo article__record"
+          :href="content[0].symbol"
+        />
         <h3>{{ content[0].title }}</h3>
         <p>
           {{ content[0].text_1 }}
@@ -23,7 +26,10 @@
         </p>
       </article>
       <article>
-        <BaseIcon class="article__logo article__record" :href="content[1].symbol" />
+        <BaseIcon
+          class="article__logo article__record"
+          :href="content[1].symbol"
+        />
         <h3>{{ content[1].title }}</h3>
         <p>
           {{ content[1].text_1 }}
@@ -33,7 +39,10 @@
         </p>
       </article>
       <article>
-        <BaseIcon class="article__logo article__record" :href="content[2].symbol" />
+        <BaseIcon
+          class="article__logo article__record"
+          :href="content[2].symbol"
+        />
         <h3>{{ content[2].title }}</h3>
         <p>
           {{ content[2].text_1 }}
@@ -43,7 +52,10 @@
         </p>
       </article>
       <article>
-        <BaseIcon class="article__logo article__record" :href="content[5].symbol" />
+        <BaseIcon
+          class="article__logo article__record"
+          :href="content[5].symbol"
+        />
         <h3>{{ content[5].title }}</h3>
         <p>
           {{ content[5].text_1 }}
@@ -53,7 +65,10 @@
         </p>
       </article>
       <article>
-        <BaseIcon class="article__logo article__record" :href="content[3].symbol" />
+        <BaseIcon
+          class="article__logo article__record"
+          :href="content[3].symbol"
+        />
         <h3>{{ content[3].title }}</h3>
         <p>
           {{ content[3].text_1 }}
@@ -63,7 +78,10 @@
         </p>
       </article>
       <article>
-        <BaseIcon class="article__logo article__record" :href="content[4].symbol" />
+        <BaseIcon
+          class="article__logo article__record"
+          :href="content[4].symbol"
+        />
         <h3>{{ content[4].title }}</h3>
         <p>
           {{ content[4].text_1 }}
@@ -82,8 +100,8 @@ import BaseIcon from "@/components/BaseIcon";
 import Icons from "@/components/Icons";
 import Header from "@/components/Header.vue";
 import Cta from "@/components/MobileCta.vue";
-import { url } from "@/constants.js";
 import { titles } from "@/constants.js";
+import { page2 } from "@/content.js";
 
 export default {
   components: { BaseIcon, Icons, Header, Cta },
@@ -95,89 +113,72 @@ export default {
           title: "Loading ...",
           symbol: "...",
           text_1: "...",
-          text_2: "..."
+          text_2: "...",
         },
         {
           title: "",
           symbol: "",
           text_1: "",
-          text_2: ""
+          text_2: "",
         },
         {
           title: "",
           symbol: "",
           text_1: "",
-          text_2: ""
+          text_2: "",
         },
         {
           title: "",
           symbol: "",
           text_1: "",
-          text_2: ""
+          text_2: "",
         },
         {
           title: "",
           symbol: "",
           text_1: "",
-          text_2: ""
+          text_2: "",
         },
         {
           title: "",
           symbol: "",
           text_1: "",
-          text_2: ""
-        }
+          text_2: "",
+        },
       ],
       step: "step0",
       symbol: "",
       title: "",
       text1: "",
-      text2: ""
+      text2: "",
     };
   },
   methods: {
     goNextChapter() {
       this.$emit("changeChapter", 3);
     },
-    isScrolling() {
-      let isScrollingDown = window.scrollY > this.prevScrollY;
-      let scrollPosition = window.innerHeight + window.scrollY;
-
-      document.querySelectorAll("article").forEach((e, i) => {
-        let initPos = e.offsetTop;
-        if (scrollPosition > e.offsetTop + 150) {
-          scrollPosition > e.offsetTop + 150 && e.offsetTop > window.scrollY;
-          this.step = `step${i.toString()}`;
-        }
-      });
-      this.prevScrollY = window.scrollY;
-    }
   },
   created() {
     window.scrollTo({
-      top: 0
+      top: 0,
     });
+
     document.addEventListener("scroll", this.isScrolling);
-    fetch(`${url}/query/how_use`, {
-      method: "GET"
-    })
-      .then(Response => Response.json())
-      .then(rawData => {
-        this.content = [];
-        rawData.forEach(el => {
-          this.content.push({
-            text_1: el.text_1,
-            text_2: el.text_2,
-            title: el.title,
-            symbol: el.symbol
-          });
-        });
-      })
-      .catch(error => console.log(error));
+  },
+  mounted() {
+    this.content = [];
+    page2.forEach((el) => {
+      this.content.push({
+        text_1: el.text_1,
+        text_2: el.text_2,
+        title: el.title,
+        symbol: el.symbol,
+      });
+    });
   },
   destroyed() {
     window.removeEventListener("scroll", this.isScrolling);
-  }
+  },
 };
 </script>
 

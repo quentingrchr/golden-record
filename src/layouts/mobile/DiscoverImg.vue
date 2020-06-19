@@ -5,8 +5,8 @@
 
     <h4 class="title title--sub" ref="test">Pictures</h4>
     <p class="imageExplications" :class="selectedImage ? 'opacity' : ''">
-      The Golden Records disk contains 116 images supposed to represent
-      the Humanity
+      The Golden Records disk contains 116 images supposed to represent the
+      Humanity
     </p>
     <div class="imagesContainer" :class="scroll ? 'isScrolling' : null">
       <div
@@ -39,8 +39,8 @@
 <script>
 import Header from "@/components/Header.vue";
 import Cta from "@/components/MobileCta.vue";
-import { url } from "@/constants.js";
 import { titles } from "@/constants.js";
+import { page3 } from "../../content";
 
 export default {
   data() {
@@ -50,30 +50,26 @@ export default {
       scroll: false,
       isScrollingStop: null,
       prevScrollY: null,
-      selectedImage: null
+      selectedImage: null,
     };
   },
   components: {
     Header,
-    Cta
+    Cta,
   },
-  beforeCreate() {
-    fetch(`${url}/query/visual_content`, {
-      method: "GET"
-    })
-      .then(response => response.json())
-      .then(data =>
-        data.forEach(element => {
-          this.imgs.push(element.src);
-          this.$nextTick(() => {
-            this.loadImages();
-          });
-        })
-      );
+  beforeMount() {
+    // FETCH GOES HERE
+
+    page3.forEach((element) => {
+      this.imgs.push(element.src);
+      this.$nextTick(() => {
+        this.loadImages();
+      });
+    });
   },
   created() {
     window.scrollTo({
-      top: 0
+      top: 0,
     });
     document.addEventListener("scroll", this.isScrolling);
   },
@@ -87,7 +83,7 @@ export default {
         odd.push(i);
       }
       return odd;
-    }
+    },
   },
   methods: {
     select(image) {
@@ -103,7 +99,7 @@ export default {
     loadImages() {
       const images = this.$refs.imageOdd.concat(this.$refs.imageEven);
 
-      images.forEach($image => {
+      images.forEach(($image) => {
         if (
           $image.parentNode.offsetTop <
           window.innerHeight + window.scrollY + 300
@@ -133,7 +129,7 @@ export default {
       let isScrollingDown = window.scrollY > this.prevScrollY;
       let scrollPosition = window.innerHeight + window.scrollY;
 
-      this.$refs.imageOdd.forEach(el => {
+      this.$refs.imageOdd.forEach((el) => {
         let initPos = el.offsetLeft;
         if (
           scrollPosition > el.parentNode.offsetTop + 100 &&
@@ -148,7 +144,7 @@ export default {
           el.style.left = "0px";
         }
       });
-      this.$refs.imageEven.forEach(el => {
+      this.$refs.imageEven.forEach((el) => {
         let initPos = el.offsetLeft;
         if (
           scrollPosition > el.parentNode.offsetTop + 100 &&
@@ -165,8 +161,8 @@ export default {
       });
       this.prevScrollY = window.scrollY;
       this.loadImages();
-    }
-  }
+    },
+  },
 };
 </script>
 

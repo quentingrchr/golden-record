@@ -21,8 +21,8 @@
 import Header from "@/components/Header.vue";
 import TimeElapsed from "@/components/TimeElapsed.vue";
 import Cta from "@/components/MobileCta.vue";
-import { url } from "@/constants.js";
 import { titles } from "@/constants.js";
+import { page1 } from "@/content.js";
 
 export default {
   name: "TheJourney",
@@ -34,16 +34,10 @@ export default {
     };
   },
   components: { Header, TimeElapsed, Cta },
-  beforeCreate() {
-    fetch(`${url}/query/journey`, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        this.text_1 = data[0].text_1;
-        this.text_2 = data[0].text_2;
-        this.text_3 = data[0].text_3;
-      });
+  beforeMount() {
+    this.text_1 = page1[0].text_1;
+    this.text_2 = page1[0].text_2;
+    this.text_3 = page1[0].text_3;
   },
   methods: {
     goNextChapter() {

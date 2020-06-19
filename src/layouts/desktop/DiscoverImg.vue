@@ -32,7 +32,9 @@
               The Golden Records disk contains 116 images supposed to represent
               the Humanity
             </h3>
-            <p class="loading-overlay__instruction">Click on an image to enlarge it</p>
+            <p class="loading-overlay__instruction">
+              Click on an image to enlarge it
+            </p>
             <img src="./../../assets/logo/arrows.svg" />
           </div>
         </div>
@@ -98,7 +100,8 @@
 <script>
 import { titles } from "../../constants";
 import Header from "@/components/Header.vue";
-import { url } from "@/constants.js";
+import { page3 } from "@/content.js";
+
 export default {
   data() {
     return {
@@ -110,9 +113,9 @@ export default {
       hideInfos: false,
       position: {
         top: "-20%",
-        left: "-20%"
+        left: "-20%",
       },
-      selectedImage: null
+      selectedImage: null,
     };
   },
   computed: {
@@ -122,19 +125,13 @@ export default {
         fakesImg.push(i);
       }
       return fakesImg;
-    }
+    },
   },
-  beforeCreate() {
-    fetch(`${url}/query/visual_content`, {
-      method: "GET"
-    })
-      .then(response => response.json())
-      .then(data => {
-        data.forEach(element => this.imgs.push(element.src));
-      });
+  beforeMount() {
+    page3.forEach((element) => this.imgs.push(element.src));
   },
   components: {
-    Header
+    Header,
   },
   created() {
     setTimeout(() => {
@@ -193,8 +190,8 @@ export default {
     },
     closeOverlay() {
       this.selectedImage = null;
-    }
-  }
+    },
+  },
 };
 </script>
 
