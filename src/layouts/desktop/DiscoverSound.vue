@@ -143,7 +143,10 @@
     </svg>
 
     <Header :text="title" />
-    <div class="audio__imgContainer" :class="discIsActive ? 'audio__imgContainer--isActivate' : ''">
+    <div
+      class="audio__imgContainer"
+      :class="discIsActive ? 'audio__imgContainer--isActivate' : ''"
+    >
       <img
         ref="Disc"
         class="audio__imgDisc"
@@ -181,14 +184,14 @@ import AudioPlayer from "@/components/AudioPlayer__Desktop.vue";
 import Playlist from "@/components/Playlist__Desktop.vue";
 import ah from "@/assets/sounds/ah.mp3";
 
-import { url } from "@/constants.js";
 import { titles } from "../../constants";
+import { page4 } from "@/content";
 
 export default {
   components: {
     Header,
     AudioPlayer,
-    Playlist
+    Playlist,
   },
   data() {
     return {
@@ -207,7 +210,7 @@ export default {
             "Sagan's team decided to put 27 songs on the golden record.",
           playlistInfo2:
             "The style music who’s the most represented in the disc is the classic style.",
-          playlistContent: []
+          playlistContent: [],
         },
         {
           playlistId: 2,
@@ -215,7 +218,7 @@ export default {
           playlistInfo1:
             "People from the Earth took the opportunity to let a message in their own language.",
           playlistInfo2: "In this disc you can found 55 différents languages.",
-          playlistContent: []
+          playlistContent: [],
         },
         {
           playlistId: 3,
@@ -224,9 +227,9 @@ export default {
             "After human words, Sagan's team wanted to include sounds from the planet.",
           playlistInfo2:
             "you can hear sounds of animals, nature and city life.",
-          playlistContent: []
-        }
-      ]
+          playlistContent: [],
+        },
+      ],
     };
   },
   computed: {
@@ -241,7 +244,7 @@ export default {
     },
     audio() {
       return this.$refs["audio"];
-    }
+    },
   },
   methods: {
     playScratch() {
@@ -276,40 +279,33 @@ export default {
       this.randomSongName = this.playlistSelected.playlistContent[
         randomIndex
       ].name_audio;
-    }
+    },
   },
-  beforeCreate() {
+  beforeMount() {
     const setInfos = (index, nameSong, srcSong) => {
       let infos = {
         name_audio: nameSong,
-        src_audio: srcSong
+        src_audio: srcSong,
       };
       this.playlists[index].playlistContent.push(infos);
     };
 
-    fetch(`${url}/query/audio_content`, {
-      method: "GET"
-    })
-      .then(response => response.json())
-      .then(songs => {
-        songs.forEach(song => {
-          switch (song.name_playlist) {
-            case "music":
-              setInfos(0, song.name_audio, song.src_audio);
-              break;
-            case "greetings":
-              setInfos(1, song.name_audio, song.src_audio);
-              break;
-            case "noises":
-              setInfos(2, song.name_audio, song.src_audio);
-              break;
-            default:
-              console.log("Not found playlist's category");
-          }
-        });
-      })
-      .catch(error => console.log(error));
-  }
+    page4.forEach((song) => {
+      switch (song.name_playlist) {
+        case "music":
+          setInfos(0, song.name_audio, song.src_audio);
+          break;
+        case "greetings":
+          setInfos(1, song.name_audio, song.src_audio);
+          break;
+        case "noises":
+          setInfos(2, song.name_audio, song.src_audio);
+          break;
+        default:
+          console.log("Not found playlist's category");
+      }
+    });
+  },
 };
 </script>
 

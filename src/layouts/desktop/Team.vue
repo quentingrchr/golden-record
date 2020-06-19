@@ -63,8 +63,8 @@ import Icons from "../../components/Icons";
 import BaseIcon from "../../components/BaseIcon";
 import Header from "../../components/Header";
 
-import { url } from "@/constants.js";
 import { titles } from "../../constants";
+import { page5 } from "../../content";
 
 export default {
   name: "Team",
@@ -132,7 +132,7 @@ export default {
       ],
     };
   },
-  beforeCreate() {
+  beforeMount() {
     let staticData = {
       annDruyan: {
         vidSrc: srcVid1,
@@ -165,25 +165,18 @@ export default {
         order: 1,
       },
     };
-
-    fetch(`${url}/query/polaroids`, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        this.imgs = [];
-        data.forEach((el) => {
-          this.imgs[staticData[el.name].order] = {
-            isFocused: false,
-            vidUrl: staticData[el.name].vidSrc,
-            imgUrl: staticData[el.name].imgSrc,
-            title: el.title,
-            caption: staticData[el.name].caption,
-            style: {},
-            description: [el.text_1, el.text_2],
-          };
-        });
-      });
+    this.imgs = [];
+    page5.forEach((el) => {
+      this.imgs[staticData[el.name].order] = {
+        isFocused: false,
+        vidUrl: staticData[el.name].vidSrc,
+        imgUrl: staticData[el.name].imgSrc,
+        title: el.title,
+        caption: staticData[el.name].caption,
+        style: {},
+        description: [el.text_1, el.text_2],
+      };
+    });
   },
   methods: {
     handleClickSound: function() {
